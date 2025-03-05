@@ -1,10 +1,7 @@
 import { Milestone, TimelineBranch, TimelineFilter } from '../types';
 import { 
   allMilestones, 
-  allBranches, 
-  historicalMilestones,
-  optimisticFutureMilestones,
-  pessimisticFutureMilestones
+  allBranches
 } from '../data/mockData';
 
 /**
