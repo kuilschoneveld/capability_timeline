@@ -92,8 +92,6 @@ npm run build
 - Advanced navigation with zoom and pan capabilities
 - CMS integration for easier content management
 - Enhanced visualization options
-- User accounts and saved views
-- Collaborative editing features
 
 ## License
 
