@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { TimelineViewMode } from '../../types';
 import { useTimeline } from '../../hooks/useTimeline';
 import TimelineBranch from './TimelineBranch';
@@ -9,6 +9,9 @@ import TimelineControls from './TimelineControls';
  */
 const Timeline: React.FC = () => {
   const timelineRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
   
   const {
     milestones,
@@ -32,23 +35,99 @@ const Timeline: React.FC = () => {
     return acc;
   }, {} as Record<string, typeof milestones>);
 
-  // Handle scroll/drag/zoom interactions based on view mode
+  // Handle drag start
   const handleMouseDown = (e: React.MouseEvent) => {
-    if (viewMode !== TimelineViewMode.DRAG) return;
+    // Don't handle drag if clicking on a timeline item
+    if ((e.target as Element).closest('.timeline-item')) {
+      console.log('Click on timeline item - not starting drag');
+      return;
+    }
     
-    // Placeholder for drag functionality
-    // This would be implemented in a future iteration
-    console.log('Drag start:', e.clientX, e.clientY);
+    // Start a timer to detect if this is a click or a drag
+    const dragTimer = setTimeout(() => {
+      setIsDragging(true);
+      setDragStartX(e.clientX);
+      setScrollLeft(timelineRef.current?.scrollLeft || 0);
+    }, 150); // Short delay to distinguish between click and drag
+    
+    // Store the timer so we can clear it
+    (window as any).dragTimer = dragTimer;
+    
+    // Prevent default behavior while dragging
+    e.preventDefault();
   };
 
-  // Placeholder for zoom functionality
-  const handleWheel = (e: React.WheelEvent) => {
-    if (viewMode !== TimelineViewMode.ZOOM) return;
+  // Handle drag movement
+  const handleMouseMove = (e: React.MouseEvent) => {
+    // Clear the timer if mouse moves before timer expires (real drag, not click)
+    if ((window as any).dragTimer) {
+      clearTimeout((window as any).dragTimer);
+      (window as any).dragTimer = null;
+      setIsDragging(true);
+      setDragStartX(e.clientX);
+      setScrollLeft(timelineRef.current?.scrollLeft || 0);
+    }
     
-    // Placeholder for zoom functionality
-    // This would be implemented in a future iteration
-    console.log('Zoom:', e.deltaY);
+    if (!isDragging) return;
+    
+    const deltaX = e.clientX - dragStartX;
+    if (timelineRef.current) {
+      timelineRef.current.scrollLeft = scrollLeft - deltaX;
+    }
+    
+    e.preventDefault();
   };
+
+  // Handle drag end
+  const handleMouseUp = () => {
+    // Clear any pending drag timer
+    if ((window as any).dragTimer) {
+      clearTimeout((window as any).dragTimer);
+      (window as any).dragTimer = null;
+    }
+    
+    setIsDragging(false);
+  };
+
+  // Handle mouse leave to end dragging if cursor leaves the element
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  // Add global event listener for mouseup to handle cases where mouse is released outside the component
+  useEffect(() => {
+    const handleGlobalMouseUp = () => {
+      if (isDragging) {
+        setIsDragging(false);
+      }
+    };
+    
+    window.addEventListener('mouseup', handleGlobalMouseUp);
+    
+    return () => {
+      window.removeEventListener('mouseup', handleGlobalMouseUp);
+    };
+  }, [isDragging]);
+  
+  // Get main timeline branch and its milestones
+  const mainBranch = branches.find(branch => branch.isMainTimeline);
+  const mainBranchMilestones = mainBranch ? milestonesByBranch[mainBranch.id] || [] : [];
+  
+  // Find the future branches and determine branch point
+  const futureBranches = branches.filter(branch => !branch.isMainTimeline);
+  const branchPointDate = futureBranches.length > 0 && futureBranches[0].startDate 
+    ? futureBranches[0].startDate 
+    : '2025-01-01';
+  
+  // Sort main branch milestones by date
+  const sortedMainMilestones = [...mainBranchMilestones].sort((a, b) => {
+    return new Date(a.date).getTime() - new Date(b.date).getTime();
+  });
+  
+  // Find the milestone at which the timeline branches
+  const milestonesBeforeBranchPoint = sortedMainMilestones.filter(
+    milestone => new Date(milestone.date) < new Date(branchPointDate)
+  );
 
   return (
     <div className="timeline-container">
@@ -68,17 +147,41 @@ const Timeline: React.FC = () => {
       {loading && <div className="timeline-loading">Loading timeline data...</div>}
       {error && <div className="timeline-error">Error: {error}</div>}
       
-      {/* Main timeline content */}
+      {/* Main timeline content - horizontal layout */}
       <div 
         ref={timelineRef}
-        className={`timeline-content ${viewMode.toLowerCase()}-mode`}
+        className={`timeline-content drag-mode ${isDragging ? 'dragging' : ''}`}
         onMouseDown={handleMouseDown}
-        onWheel={handleWheel}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
       >
-        {/* Render branches */}
-        {branches
-          .filter(branch => branch.isMainTimeline || filter.showBranches)
-          .map(branch => (
+        <div className="horizontal-timeline-wrapper">
+          {/* Render main timeline branch */}
+          {mainBranch && (
+            <TimelineBranch
+              key={mainBranch.id}
+              branch={mainBranch}
+              milestones={milestonesBeforeBranchPoint}
+              expandedMilestoneId={expandedMilestoneId}
+              onToggleExpand={toggleMilestoneExpansion}
+            />
+          )}
+          
+          {/* Show the future branches toggle button at the branch point */}
+          <div className="future-branches-toggle">
+            <div className="timeline-branch-point"></div>
+            <button 
+              className="show-future-branches-button" 
+              onClick={toggleBranchVisibility}
+            >
+              {filter.showBranches ? 'Hide Future Branches' : 'Show Future Branches'}
+            </button>
+            <div className="timeline-branch-date">{branchPointDate}</div>
+          </div>
+          
+          {/* Render future branches if showBranches is true */}
+          {filter.showBranches && futureBranches.map(branch => (
             <TimelineBranch
               key={branch.id}
               branch={branch}
@@ -87,6 +190,7 @@ const Timeline: React.FC = () => {
               onToggleExpand={toggleMilestoneExpansion}
             />
           ))}
+        </div>
         
         {/* Empty state */}
         {!loading && milestones.length === 0 && (

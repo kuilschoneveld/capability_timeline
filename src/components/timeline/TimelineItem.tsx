@@ -25,8 +25,17 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   });
   
   // Handle click to expand/collapse
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
+    console.log('Timeline item clicked:', id, 'Current expanded state:', isExpanded);
+    // Stop propagation to prevent the parent container's click event from firing
+    e.stopPropagation();
     onToggleExpand(id);
+  };
+  
+  // Prevent collapse when interacting with details content
+  const handleDetailsClick = (e: React.MouseEvent) => {
+    console.log('Details clicked, stopping propagation');
+    e.stopPropagation();
   };
   
   return (
@@ -34,6 +43,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
       className={`timeline-item ${isExpanded ? 'expanded' : ''}`}
       onClick={handleClick}
       data-branch={milestone.branchId}
+      style={{ cursor: 'pointer' }} // Explicitly set cursor
     >
       <div className="timeline-item-header">
         <div className="timeline-item-date">{formattedDate}</div>
@@ -50,7 +60,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
       </div>
       
       {isExpanded && (
-        <div className="timeline-item-details">
+        <div className="timeline-item-details" onClick={handleDetailsClick}>
           <p className="timeline-item-description">{description}</p>
           
           {/* Thematic tags visualization */}

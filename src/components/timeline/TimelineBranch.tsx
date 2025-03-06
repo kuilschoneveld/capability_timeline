@@ -23,6 +23,15 @@ const TimelineBranch: React.FC<TimelineBranchProps> = ({
     return new Date(a.date).getTime() - new Date(b.date).getTime();
   });
 
+  // Prevent drag events from interfering with timeline item clicks
+  const handleItemsClick = (e: React.MouseEvent) => {
+    if (e.target && (e.target as Element).closest('.timeline-item')) {
+      // Don't stop propagation for clicks inside items as they need to bubble to the item itself
+      // But do stop propagation to the parent container to prevent drag
+      e.stopPropagation();
+    }
+  };
+
   return (
     <div className={`timeline-branch ${branch.isMainTimeline ? 'main-timeline' : 'branch-timeline'}`}>
       <div className="timeline-branch-header">
@@ -35,7 +44,7 @@ const TimelineBranch: React.FC<TimelineBranchProps> = ({
         <div className="timeline-connector" />
         
         {/* Timeline items */}
-        <div className="timeline-items">
+        <div className="timeline-items" onClick={handleItemsClick}>
           {sortedMilestones.map(milestone => (
             <TimelineItem
               key={milestone.id}

@@ -30,11 +30,6 @@ const TimelineControls: React.FC<TimelineControlsProps> = ({
     onChangeBranch(e.target.value);
   };
 
-  // Handle view mode change
-  const handleViewModeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onChangeViewMode(e.target.value as TimelineViewMode);
-  };
-
   // Handle thematic dimension toggle
   const handleDimensionToggle = (dimension: string) => {
     const newDimensions = {
@@ -80,30 +75,9 @@ const TimelineControls: React.FC<TimelineControlsProps> = ({
           </select>
         </div>
         
-        {/* View mode selection */}
-        <div className="control-group">
-          <label htmlFor="view-mode-select">View Mode:</label>
-          <select 
-            id="view-mode-select" 
-            value={viewMode}
-            onChange={handleViewModeChange}
-          >
-            <option value={TimelineViewMode.SCROLL}>Scroll</option>
-            <option value={TimelineViewMode.DRAG}>Drag</option>
-            <option value={TimelineViewMode.ZOOM}>Zoom</option>
-          </select>
-        </div>
-        
-        {/* Branch visibility toggle */}
-        <div className="control-group">
-          <label>
-            <input 
-              type="checkbox" 
-              checked={filter.showBranches}
-              onChange={onToggleBranchVisibility}
-            />
-            Show Future Branches
-          </label>
+        {/* Drag mode description */}
+        <div className="view-mode-description">
+          <span>Drag Mode: Click and drag anywhere on the timeline to move it up and down.</span>
         </div>
       </div>
       

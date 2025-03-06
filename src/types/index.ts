@@ -44,9 +44,7 @@ export interface TimelineBranch {
  * Timeline view mode for different navigation methods
  */
 export enum TimelineViewMode {
-  SCROLL = 'scroll',
-  DRAG = 'drag',
-  ZOOM = 'zoom'
+  DRAG = 'drag'
 }
 
 /**

@@ -34,7 +34,7 @@ export const useTimeline = () => {
   
   // State for filtering and view mode
   const [filter, setFilter] = useState<TimelineFilter>(defaultFilter);
-  const [viewMode, setViewMode] = useState<TimelineViewMode>(TimelineViewMode.SCROLL);
+  const [viewMode, setViewMode] = useState<TimelineViewMode>(TimelineViewMode.DRAG);
   
   // State for expanded milestone details
   const [expandedMilestoneId, setExpandedMilestoneId] = useState<string | null>(null);
