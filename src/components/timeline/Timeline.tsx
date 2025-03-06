@@ -13,6 +13,11 @@ const Timeline: React.FC = () => {
   const [dragStartX, setDragStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   
+  // Add state for tracking velocity and animation
+  const lastMousePositionRef = useRef(0);
+  const velocityRef = useRef(0);
+  const animationFrameRef = useRef<number | null>(null);
+  
   const {
     milestones,
     branches,
@@ -43,6 +48,10 @@ const Timeline: React.FC = () => {
       return;
     }
     
+    // Initialize mouse position for velocity tracking
+    lastMousePositionRef.current = e.clientX;
+    velocityRef.current = 0;
+    
     // Start a timer to detect if this is a click or a drag
     const dragTimer = setTimeout(() => {
       setIsDragging(true);
@@ -70,6 +79,11 @@ const Timeline: React.FC = () => {
     
     if (!isDragging) return;
     
+    // Calculate velocity
+    const currentMouseX = e.clientX;
+    velocityRef.current = currentMouseX - lastMousePositionRef.current;
+    lastMousePositionRef.current = currentMouseX;
+    
     const deltaX = e.clientX - dragStartX;
     if (timelineRef.current) {
       timelineRef.current.scrollLeft = scrollLeft - deltaX;
@@ -78,7 +92,7 @@ const Timeline: React.FC = () => {
     e.preventDefault();
   };
 
-  // Handle drag end
+  // Handle drag end with inertia
   const handleMouseUp = () => {
     // Clear any pending drag timer
     if ((window as any).dragTimer) {
@@ -86,18 +100,69 @@ const Timeline: React.FC = () => {
       (window as any).dragTimer = null;
     }
     
+    if (isDragging && Math.abs(velocityRef.current) > 1) {
+      // Start inertial scrolling
+      startInertialScroll();
+    }
+    
     setIsDragging(false);
   };
 
-  // Handle mouse leave to end dragging if cursor leaves the element
+  // Function to start inertial scrolling
+  const startInertialScroll = () => {
+    // Cancel any existing animation
+    if (animationFrameRef.current !== null) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+    
+    const inertialScroll = () => {
+      if (!timelineRef.current || Math.abs(velocityRef.current) < 0.5) {
+        // Stop the animation when velocity becomes very small
+        animationFrameRef.current = null;
+        return;
+      }
+      
+      // Apply velocity to scroll position
+      timelineRef.current.scrollLeft -= velocityRef.current;
+      
+      // Reduce velocity by friction
+      velocityRef.current *= 0.95;
+      
+      // Continue the animation
+      animationFrameRef.current = requestAnimationFrame(inertialScroll);
+    };
+    
+    // Start the animation
+    animationFrameRef.current = requestAnimationFrame(inertialScroll);
+  };
+
+  // Handle mouse leave
   const handleMouseLeave = () => {
+    if (isDragging && Math.abs(velocityRef.current) > 1) {
+      // Start inertial scrolling when mouse leaves while dragging
+      startInertialScroll();
+    }
+    
     setIsDragging(false);
   };
+
+  // Clean up animations on unmount
+  useEffect(() => {
+    return () => {
+      if (animationFrameRef.current !== null) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
 
   // Add global event listener for mouseup to handle cases where mouse is released outside the component
   useEffect(() => {
     const handleGlobalMouseUp = () => {
       if (isDragging) {
+        if (Math.abs(velocityRef.current) > 1) {
+          // Start inertial scrolling
+          startInertialScroll();
+        }
         setIsDragging(false);
       }
     };
