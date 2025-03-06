@@ -1,5 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { TimelineViewMode } from '../../types';
+import React, { useRef } from 'react';
 import { useTimeline } from '../../hooks/useTimeline';
 import TimelineBranch from './TimelineBranch';
 import TimelineControls from './TimelineControls';
@@ -8,16 +7,6 @@ import TimelineControls from './TimelineControls';
  * Main Timeline component that displays the entire timeline
  */
 const Timeline: React.FC = () => {
-  const timelineRef = useRef<HTMLDivElement>(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStartX, setDragStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  
-  // Add state for tracking velocity and animation
-  const lastMousePositionRef = useRef(0);
-  const velocityRef = useRef(0);
-  const animationFrameRef = useRef<number | null>(null);
-  
   const {
     milestones,
     branches,
@@ -40,187 +29,47 @@ const Timeline: React.FC = () => {
     return acc;
   }, {} as Record<string, typeof milestones>);
 
-  // Handle drag start
-  const handleMouseDown = (e: React.MouseEvent) => {
-    // Don't handle drag if clicking on a timeline item
-    if ((e.target as Element).closest('.timeline-item')) {
-      console.log('Click on timeline item - not starting drag');
-      return;
-    }
-    
-    // Initialize mouse position for velocity tracking
-    lastMousePositionRef.current = e.clientX;
-    velocityRef.current = 0;
-    
-    // Start a timer to detect if this is a click or a drag
-    const dragTimer = setTimeout(() => {
-      setIsDragging(true);
-      setDragStartX(e.clientX);
-      setScrollLeft(timelineRef.current?.scrollLeft || 0);
-    }, 150); // Short delay to distinguish between click and drag
-    
-    // Store the timer so we can clear it
-    (window as any).dragTimer = dragTimer;
-    
-    // Prevent default behavior while dragging
-    e.preventDefault();
-  };
-
-  // Handle drag movement
-  const handleMouseMove = (e: React.MouseEvent) => {
-    // Clear the timer if mouse moves before timer expires (real drag, not click)
-    if ((window as any).dragTimer) {
-      clearTimeout((window as any).dragTimer);
-      (window as any).dragTimer = null;
-      setIsDragging(true);
-      setDragStartX(e.clientX);
-      setScrollLeft(timelineRef.current?.scrollLeft || 0);
-    }
-    
-    if (!isDragging) return;
-    
-    // Calculate velocity
-    const currentMouseX = e.clientX;
-    velocityRef.current = currentMouseX - lastMousePositionRef.current;
-    lastMousePositionRef.current = currentMouseX;
-    
-    const deltaX = e.clientX - dragStartX;
-    if (timelineRef.current) {
-      timelineRef.current.scrollLeft = scrollLeft - deltaX;
-    }
-    
-    e.preventDefault();
-  };
-
-  // Handle drag end with inertia
-  const handleMouseUp = () => {
-    // Clear any pending drag timer
-    if ((window as any).dragTimer) {
-      clearTimeout((window as any).dragTimer);
-      (window as any).dragTimer = null;
-    }
-    
-    if (isDragging && Math.abs(velocityRef.current) > 1) {
-      // Start inertial scrolling
-      startInertialScroll();
-    }
-    
-    setIsDragging(false);
-  };
-
-  // Function to start inertial scrolling
-  const startInertialScroll = () => {
-    // Cancel any existing animation
-    if (animationFrameRef.current !== null) {
-      cancelAnimationFrame(animationFrameRef.current);
-    }
-    
-    const inertialScroll = () => {
-      if (!timelineRef.current || Math.abs(velocityRef.current) < 0.5) {
-        // Stop the animation when velocity becomes very small
-        animationFrameRef.current = null;
-        return;
-      }
-      
-      // Apply velocity to scroll position
-      timelineRef.current.scrollLeft -= velocityRef.current;
-      
-      // Reduce velocity by friction
-      velocityRef.current *= 0.95;
-      
-      // Continue the animation
-      animationFrameRef.current = requestAnimationFrame(inertialScroll);
-    };
-    
-    // Start the animation
-    animationFrameRef.current = requestAnimationFrame(inertialScroll);
-  };
-
-  // Handle mouse leave
-  const handleMouseLeave = () => {
-    if (isDragging && Math.abs(velocityRef.current) > 1) {
-      // Start inertial scrolling when mouse leaves while dragging
-      startInertialScroll();
-    }
-    
-    setIsDragging(false);
-  };
-
-  // Clean up animations on unmount
-  useEffect(() => {
-    return () => {
-      if (animationFrameRef.current !== null) {
-        cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, []);
-
-  // Add global event listener for mouseup to handle cases where mouse is released outside the component
-  useEffect(() => {
-    const handleGlobalMouseUp = () => {
-      if (isDragging) {
-        if (Math.abs(velocityRef.current) > 1) {
-          // Start inertial scrolling
-          startInertialScroll();
-        }
-        setIsDragging(false);
-      }
-    };
-    
-    window.addEventListener('mouseup', handleGlobalMouseUp);
-    
-    return () => {
-      window.removeEventListener('mouseup', handleGlobalMouseUp);
-    };
-  }, [isDragging]);
-  
   // Get main timeline branch and its milestones
   const mainBranch = branches.find(branch => branch.isMainTimeline);
-  const mainBranchMilestones = mainBranch ? milestonesByBranch[mainBranch.id] || [] : [];
-  
-  // Find the future branches and determine branch point
   const futureBranches = branches.filter(branch => !branch.isMainTimeline);
+  
+  // Get branch point date - the date when timeline branches
   const branchPointDate = futureBranches.length > 0 && futureBranches[0].startDate 
     ? futureBranches[0].startDate 
-    : '2025-01-01';
+    : new Date().toISOString();
   
-  // Sort main branch milestones by date
-  const sortedMainMilestones = [...mainBranchMilestones].sort((a, b) => {
-    return new Date(a.date).getTime() - new Date(b.date).getTime();
-  });
-  
-  // Find the milestone at which the timeline branches
-  const milestonesBeforeBranchPoint = sortedMainMilestones.filter(
-    milestone => new Date(milestone.date) < new Date(branchPointDate)
-  );
+  // Get milestones before branch point (on main branch)
+  const milestonesBeforeBranchPoint = mainBranch 
+    ? milestonesByBranch[mainBranch.id]?.filter(
+      milestone => new Date(milestone.date) < new Date(branchPointDate)
+    )
+    : [];
 
   return (
     <div className="timeline-container">
-      {/* Timeline controls */}
-      <TimelineControls
-        branches={branches}
-        selectedBranch={selectedBranch}
-        viewMode={viewMode}
-        filter={filter}
-        onChangeBranch={changeBranch}
-        onChangeViewMode={changeViewMode}
-        onUpdateFilter={updateFilter}
-        onToggleBranchVisibility={toggleBranchVisibility}
-      />
+      {/* Timeline controls - hidden visually but maintain functionality */}
+      <div className="timeline-controls-hidden">
+        <TimelineControls
+          branches={branches}
+          selectedBranch={selectedBranch}
+          viewMode={viewMode}
+          filter={filter}
+          onChangeBranch={changeBranch}
+          onChangeViewMode={changeViewMode}
+          onUpdateFilter={updateFilter}
+          onToggleBranchVisibility={toggleBranchVisibility}
+        />
+      </div>
       
       {/* Loading and error states */}
       {loading && <div className="timeline-loading">Loading timeline data...</div>}
       {error && <div className="timeline-error">Error: {error}</div>}
       
-      {/* Main timeline content - horizontal layout */}
-      <div 
-        ref={timelineRef}
-        className={`timeline-content drag-mode ${isDragging ? 'dragging' : ''}`}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
-      >
+      <div className="vertical-metric-axis">
+        <span>PFlops / some loose metric</span>
+      </div>
+      
+      <div className="timeline-content">
         <div className="horizontal-timeline-wrapper">
           {/* Render main timeline branch */}
           {mainBranch && (
