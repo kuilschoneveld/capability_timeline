@@ -25,11 +25,6 @@ const TimelineControls: React.FC<TimelineControlsProps> = ({
   onUpdateFilter,
   onToggleBranchVisibility,
 }) => {
-  // Handle branch selection
-  const handleBranchChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onChangeBranch(e.target.value);
-  };
-
   // Handle thematic dimension toggle
   const handleDimensionToggle = (dimension: string) => {
     const newDimensions = {
@@ -56,32 +51,7 @@ const TimelineControls: React.FC<TimelineControlsProps> = ({
 
   return (
     <div className="timeline-controls">
-      <div className="timeline-controls-section">
-        <h3>Timeline Navigation</h3>
-        
-        {/* Branch selection */}
-        <div className="control-group">
-          <label htmlFor="branch-select">Timeline Branch:</label>
-          <select 
-            id="branch-select" 
-            value={selectedBranch}
-            onChange={handleBranchChange}
-          >
-            {branches.map(branch => (
-              <option key={branch.id} value={branch.id}>
-                {branch.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        
-        {/* Drag mode description */}
-        <div className="view-mode-description">
-          <span>Drag Mode: Click and drag anywhere on the timeline to move it up and down.</span>
-        </div>
-      </div>
-      
-      <div className="timeline-controls-section">
+      <div className="timeline-controls-section filters-section">
         <h3>Thematic Filters</h3>
         
         {/* Thematic dimension toggles */}
