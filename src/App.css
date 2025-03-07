@@ -246,23 +246,32 @@ body {
 
 /* Vertical metric axis */
 .vertical-metric-axis {
-  position: absolute;
+  position: fixed;
   left: 20px;
-  top: 0;
-  bottom: 0;
-  width: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  width: 32px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 20;
 }
 
 .vertical-metric-axis span {
   transform: rotate(-90deg);
   white-space: nowrap;
   color: var(--text-color);
-  opacity: 0.7;
   font-size: 0.9rem;
+  font-weight: 500;
+  opacity: 0.9;
+  position: absolute;
+  width: 180px;
+  text-align: center;
 }
 
 /* Timeline controls */
@@ -577,20 +586,35 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 4px;
   overflow: hidden;
+  margin-top: 0.5rem;
 }
 
 .filter-option {
   padding: 0.5rem 1rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-width: 100px;
+  text-align: center;
+  outline: none;
 }
 
 .filter-option.active {
   background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
 }
 
 .filter-option:hover:not(.active) {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.filter-option:focus {
+  outline: none;
 }
 
 /* Timeline scrollbar styles */

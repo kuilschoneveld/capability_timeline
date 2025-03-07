@@ -2,17 +2,29 @@ import './App.css';
 import Timeline from './components/timeline/Timeline';
 import { useRef, useState, useEffect } from 'react';
 
+// Define filter mode type for type safety
+type FilterMode = 'Technical' | 'Societal' | 'Philosophical';
+
 function App() {
   const mainRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   
+  // Add state for active filter mode
+  const [activeFilter, setActiveFilter] = useState<FilterMode>('Technical');
+  
   // Refs for inertial scrolling
   const lastMouseX = useRef(0);
   const velocity = useRef(0);
   const lastTimestamp = useRef(0);
   const animationFrame = useRef<number | null>(null);
+  
+  // Handle filter change
+  const handleFilterChange = (mode: FilterMode) => {
+    setActiveFilter(mode);
+    // Future implementation can change filtering behavior here
+  };
   
   // Handle drag start
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -191,9 +203,24 @@ function App() {
           <button className="title-button">~</button>
         </div>
         <div className="filter-options">
-          <div className="filter-option active">Technical</div>
-          <div className="filter-option">Societal</div>
-          <div className="filter-option">Philosophical</div>
+          <button 
+            className={`filter-option ${activeFilter === 'Technical' ? 'active' : ''}`}
+            onClick={() => handleFilterChange('Technical')}
+          >
+            Technical
+          </button>
+          <button 
+            className={`filter-option ${activeFilter === 'Societal' ? 'active' : ''}`}
+            onClick={() => handleFilterChange('Societal')}
+          >
+            Societal
+          </button>
+          <button 
+            className={`filter-option ${activeFilter === 'Philosophical' ? 'active' : ''}`}
+            onClick={() => handleFilterChange('Philosophical')}
+          >
+            Philosophical
+          </button>
         </div>
       </div>
       
