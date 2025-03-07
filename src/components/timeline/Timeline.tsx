@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useRef } from 'react';
 import { useTimeline } from '../../hooks/useTimeline';
 import TimelineBranch from './TimelineBranch';

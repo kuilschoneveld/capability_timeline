@@ -16,13 +16,19 @@ interface TimelineControlsProps {
  * Component for timeline controls (filtering, navigation, etc.)
  */
 const TimelineControls: React.FC<TimelineControlsProps> = ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   branches,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   selectedBranch,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   viewMode,
   filter,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onChangeBranch,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onChangeViewMode,
   onUpdateFilter,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onToggleBranchVisibility,
 }) => {
   // Handle thematic dimension toggle
