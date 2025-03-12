@@ -150,6 +150,42 @@ export const optimisticFutureMilestones: Milestone[] = [
     },
     branchId: 'future-optimistic',
   },
+  {
+    id: 'global-coordination-2030',
+    title: 'Global AI Governance Framework',
+    date: '2030-09-14',
+    description: 'Nations worldwide adopt a comprehensive framework for AI governance, ensuring safe and beneficial development of advanced systems.',
+    thematicTags: {
+      technical: 6,
+      societal: 9,
+      philosophical: 8,
+    },
+    branchId: 'future-optimistic',
+  },
+  {
+    id: 'climate-solution-2032',
+    title: 'AI-Powered Climate Solution',
+    date: '2032-04-22',
+    description: 'AI systems help design and implement transformative climate technologies, reversing global warming trends.',
+    thematicTags: {
+      technical: 9,
+      societal: 10,
+      philosophical: 7,
+    },
+    branchId: 'future-optimistic',
+  },
+  {
+    id: 'space-exploration-2035',
+    title: 'AI-Human Space Exploration',
+    date: '2035-11-30',
+    description: 'Advanced AI systems partner with humans to accelerate deep space exploration, enabling breakthrough discoveries.',
+    thematicTags: {
+      technical: 10,
+      societal: 8,
+      philosophical: 9,
+    },
+    branchId: 'future-optimistic',
+  },
 ];
 
 /**
@@ -177,6 +213,42 @@ export const pessimisticFutureMilestones: Milestone[] = [
       technical: 7,
       societal: 10,
       philosophical: 8,
+    },
+    branchId: 'future-pessimistic',
+  },
+  {
+    id: 'algorithmic-manipulation-2031',
+    title: 'Mass Algorithmic Manipulation',
+    date: '2031-02-17',
+    description: 'Sophisticated AI systems are weaponized to manipulate public opinion, undermining democratic institutions worldwide.',
+    thematicTags: {
+      technical: 9,
+      societal: 10,
+      philosophical: 9,
+    },
+    branchId: 'future-pessimistic',
+  },
+  {
+    id: 'ai-arms-race-2033',
+    title: 'Global AI Arms Race',
+    date: '2033-08-05',
+    description: 'Nations engage in a dangerous arms race to develop autonomous military AI systems, heightening global tensions.',
+    thematicTags: {
+      technical: 10,
+      societal: 9,
+      philosophical: 8,
+    },
+    branchId: 'future-pessimistic',
+  },
+  {
+    id: 'human-dependence-2036',
+    title: 'Critical Human Dependence',
+    date: '2036-03-21',
+    description: 'Society becomes critically dependent on AI systems for basic functioning, with humans losing essential skills and knowledge.',
+    thematicTags: {
+      technical: 7,
+      societal: 10,
+      philosophical: 10,
     },
     branchId: 'future-pessimistic',
   },

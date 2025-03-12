@@ -406,6 +406,11 @@ const NetworkedTimelinePage: React.FC = () => {
           zIndex: 3
         }} />
 
+        {/* Vertical metric axis */}
+        <div className="vertical-metric-axis">
+          <span>PFlops / some loose metric</span>
+        </div>
+
         {/* SVG for connections */}
         <svg 
           style={{

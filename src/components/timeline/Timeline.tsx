@@ -132,10 +132,6 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
       {loading && <div className="timeline-loading">Loading timeline data...</div>}
       {error && <div className="timeline-error">Error: {error}</div>}
       
-      <div className="vertical-metric-axis">
-        <span>PFlops / some loose metric</span>
-      </div>
-      
       <div className={getTimelineContentClassName()}>
         {/* Historical section label */}
         <div className="timeline-section-label historical-label">Historical</div>
@@ -174,7 +170,6 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
                 {/* Optimistic branch */}
                 {optimisticBranch && (
                   <div className={getOptimisticClassName()}>
-                    <div className="branch-type-label">Optimistic</div>
                     <TimelineBranch
                       key={optimisticBranch.id}
                       branch={optimisticBranch}
@@ -188,7 +183,6 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
                 {/* Pessimistic branch */}
                 {pessimisticBranch && (
                   <div className={getPessimisticClassName()}>
-                    <div className="branch-type-label">Pessimistic</div>
                     <TimelineBranch
                       key={pessimisticBranch.id}
                       branch={pessimisticBranch}

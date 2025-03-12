@@ -267,41 +267,42 @@ body {
   position: fixed;
   top: 70px;
   left: 20px;
-  background-color: rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(99, 102, 241, 0.4);
-  border-radius: 8px;
+  background-color: rgba(10, 30, 40, 0.8);
+  border: 1px solid #0A93FF;
+  border-radius: 12px;
   padding: 15px;
   width: 280px;
   z-index: 100;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   text-align: left;
   opacity: 1;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .timeline-options-box h3 {
   margin: 0 0 8px 0;
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: #0A93FF;
+  font-weight: bold;
 }
 
 .timeline-options-box p {
   margin: 0;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: #0A93FF;
   line-height: 1.4;
 }
 
-/* Animation for options box */
-[data-show-options="false"] ~ * .timeline-options-box {
+/* Animation for options box - fix the selector */
+[data-show-options="false"] .timeline-options-box {
   opacity: 0;
-  transform: translateX(-20px);
+  transform: translateX(-40px);
   pointer-events: none;
 }
 
 /* Timeline content */
 .timeline-content {
-  --branch-gap: 220px; /* Default gap between branches */
+  --branch-gap: 80px; /* Further reduced from 120px to bring branches even closer */
   height: 100%;
   position: relative;
   width: 100%;
@@ -429,7 +430,7 @@ body {
 /* Optimistic branch specific styles */
 .optimistic-branch {
   position: relative;
-  margin-bottom: 40px; /* Use margin instead of absolute positioning */
+  margin-bottom: 10px; /* Further reduced from 20px */
   top: auto;
   left: auto;
 }
@@ -437,20 +438,9 @@ body {
 /* Pessimistic branch specific styles */
 .pessimistic-branch {
   position: relative;
-  margin-top: 40px; /* Use margin instead of absolute positioning */
+  margin-top: 10px; /* Further reduced from 20px */
   top: auto;
   left: auto;
-}
-
-/* Branch type labels */
-.branch-type-label {
-  position: absolute;
-  left: 0;
-  top: -30px;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
-  font-weight: 600;
-  white-space: nowrap;
 }
 
 /* Add adaptive spacing for expanded timeline items */
@@ -463,20 +453,20 @@ body {
 /* When optimistic branch has an expanded item */
 .optimistic-branch.has-expanded {
   z-index: 20; /* Raise above other elements */
-  padding-bottom: 60px; /* Add extra padding at the bottom */
-  margin-bottom: 40px; /* Extra margin to prevent overlap */
+  padding-bottom: 30px; /* Reduced from 40px */
+  margin-bottom: 20px; /* Reduced from 30px */
 }
 
 /* When pessimistic branch has an expanded item */
 .pessimistic-branch.has-expanded {
   z-index: 20; /* Raise above other elements */
-  padding-top: 60px; /* Add extra padding at the top */
-  margin-top: 40px; /* Extra margin to prevent overlap */
+  padding-top: 30px; /* Reduced from 40px */
+  margin-top: 20px; /* Reduced from 30px */
 }
 
 /* When both branches have expanded items, increase the gap */
 .optimistic-branch.has-expanded + .pessimistic-branch.has-expanded {
-  margin-top: 100px; /* Further increase gap when both have expanded items */
+  margin-top: 40px; /* Reduced from 60px */
 }
 
 /* Reduce gap in future paths container when either branch is expanded */
@@ -1311,10 +1301,10 @@ body {
 
 /* When both branches have expanded items (using JavaScript-applied classes) */
 .both-expanded .future-paths-container {
-  --branch-gap: 300px;
+  --branch-gap: 120px; /* Reduced from 160px */
 }
 
 /* When only one branch has expanded items */
 .one-expanded .future-paths-container {
-  --branch-gap: 250px;
+  --branch-gap: 100px; /* Reduced from 140px */
 }

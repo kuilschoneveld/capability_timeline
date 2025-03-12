@@ -303,6 +303,11 @@ const BasicTestPage: React.FC = () => {
         height: '100%',
         overflow: 'hidden'
       }}>
+        {/* Vertical metric axis */}
+        <div className="vertical-metric-axis">
+          <span>PFlops / some loose metric</span>
+        </div>
+        
         {/* SVG for connections */}
         <svg 
           style={{

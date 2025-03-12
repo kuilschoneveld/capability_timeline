@@ -222,9 +222,20 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       if (mainRef.current) {
-        // Show options box only when scrolling position is near the beginning
-        // Hide it when scrolled further to the right
-        setShowOptionsBox(mainRef.current.scrollLeft < 500);
+        // Calculate midpoint of window
+        const windowMidpoint = window.innerWidth / 2;
+        
+        // Show options box only when scrolling position is before the midpoint
+        // Hide it when scrolled further to the right (past the midpoint)
+        const shouldShowOptions = mainRef.current.scrollLeft < windowMidpoint;
+        setShowOptionsBox(shouldShowOptions);
+        
+        // Apply the data-show-options attribute directly to the timeline container as well
+        // This provides a fallback in case the CSS selector isn't working properly
+        const timelineContainer = mainRef.current.querySelector('.timeline-container');
+        if (timelineContainer) {
+          timelineContainer.setAttribute('data-show-options', shouldShowOptions ? 'true' : 'false');
+        }
       }
     };
     
