@@ -85,13 +85,13 @@ const NetworkedTimelinePage: React.FC = () => {
       }
     };
     
-    // Slight delay to ensure proper rendering
+    // Initial centering only, without any subsequent resets
     const timer = setTimeout(() => {
       centerView();
     }, 100);
     
     return () => clearTimeout(timer);
-  }, [timelineState, setTimelineState, windowDimensions]);
+  }, []); // Only run once on mount, removed timelineState and other dependencies
 
   // Handle search
   const handleSearch = useCallback((term: string) => {
@@ -115,9 +115,18 @@ const NetworkedTimelinePage: React.FC = () => {
   // Mouse event handlers for dragging
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
     if (e.button !== 0) return; // Only respond to left mouse button
+    
+    // Don't initiate dragging if clicking on interactive elements
+    if ((e.target as Element).closest('button, input, .timeline-node')) {
+      return;
+    }
+    
     setIsDragging(true);
     setDragStart({ x: e.clientX, y: e.clientY });
     document.body.style.cursor = 'grabbing';
+    
+    // Prevent default to avoid text selection during drag
+    e.preventDefault();
   }, []);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
@@ -175,18 +184,56 @@ const NetworkedTimelinePage: React.FC = () => {
     };
   }, [timelineState]);
 
+  // Common button style based on the image (Dark style)
+  const buttonStyle = {
+    backgroundColor: 'rgba(15, 23, 42, 0.8)',
+    color: 'white',
+    padding: '8px 16px',
+    border: '1px solid rgba(99, 102, 241, 0.4)',
+    borderRadius: '20px',
+    cursor: 'pointer',
+    fontSize: '14px',
+    fontWeight: 'bold',
+    backdropFilter: 'blur(4px)',
+    transition: 'all 0.2s ease',
+    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+  };
+
   // Message with loading status or debug info
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
   
   useEffect(() => {
     if (timelineState) {
-      setStatusMessage(`Nodes: ${timelineState.nodes.length}, Center: (${Math.round(timelineState.viewState.position.x)}, ${Math.round(timelineState.viewState.position.y)}), Zoom: ${timelineState.viewState.zoom}`);
+      setStatusMessage(`Nodes: ${timelineState.nodes.length}, Center: (${Math.round(timelineState.viewState.position.x)}, ${Math.round(timelineState.viewState.position.y)}), Zoom: ${timelineState.viewState.zoom.toFixed(1)}`);
       
       // Clear message after 5 seconds
       const timer = setTimeout(() => setStatusMessage(null), 5000);
       return () => clearTimeout(timer);
     }
   }, [timelineState]);
+
+  // Add effect to prevent scrolling at the document level
+  useEffect(() => {
+    // Save original styles
+    const originalStyle = {
+      html: document.documentElement.style.cssText,
+      body: document.body.style.cssText
+    };
+    
+    // Apply no-scroll styles
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.height = '100%';
+    document.body.style.overflow = 'hidden';
+    document.body.style.height = '100%';
+    document.body.style.margin = '0';
+    document.body.style.padding = '0';
+    
+    // Cleanup function to restore original styles
+    return () => {
+      document.documentElement.style.cssText = originalStyle.html;
+      document.body.style.cssText = originalStyle.body;
+    };
+  }, []);
 
   if (isLoading) return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: 'white' }}>Loading timeline data...</div>;
   if (error) return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: 'white' }}>Error: {error}</div>;
@@ -195,12 +242,20 @@ const NetworkedTimelinePage: React.FC = () => {
   return (
     <div 
       style={{
-        width: '100vw',
-        height: '100vh',
+        width: '100%',
+        height: '100%',
+        maxWidth: '100vw',
+        maxHeight: '100vh',
         backgroundColor: '#1a202c',
-        position: 'relative',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         overflow: 'hidden',
-        cursor: isDragging ? 'grabbing' : 'grab'
+        cursor: isDragging ? 'grabbing' : 'grab',
+        margin: 0,
+        padding: 0
       }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
@@ -229,11 +284,11 @@ const NetworkedTimelinePage: React.FC = () => {
             value={searchTerm}
             onChange={(e) => handleSearch(e.target.value)}
             style={{
-              backgroundColor: '#2d3748',
+              backgroundColor: 'rgba(45, 55, 72, 0.8)',
               color: 'white',
-              border: '1px solid #4a5568',
-              borderRadius: '4px',
-              padding: '8px 12px',
+              border: '1px solid rgba(99, 102, 241, 0.4)',
+              borderRadius: '20px',
+              padding: '8px 16px',
               width: '250px'
             }}
           />
@@ -278,26 +333,22 @@ const NetworkedTimelinePage: React.FC = () => {
           <button 
             onClick={zoomIn}
             style={{
-              backgroundColor: '#3182ce',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              padding: '8px 16px',
-              cursor: 'pointer'
+              ...buttonStyle,
+              fontSize: '18px',
+              padding: '8px 12px',
             }}
+            title="Zoom In"
           >
             +
           </button>
           <button 
             onClick={zoomOut}
             style={{
-              backgroundColor: '#3182ce',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              padding: '8px 16px',
-              cursor: 'pointer'
+              ...buttonStyle,
+              fontSize: '18px',
+              padding: '8px 14px',
             }}
+            title="Zoom Out"
           >
             -
           </button>
@@ -306,14 +357,8 @@ const NetworkedTimelinePage: React.FC = () => {
               resetView();
               setStatusMessage("View reset to center");
             }}
-            style={{
-              backgroundColor: '#3182ce',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              padding: '8px 16px',
-              cursor: 'pointer'
-            }}
+            style={buttonStyle}
+            title="Reset View"
           >
             Reset
           </button>
@@ -327,11 +372,13 @@ const NetworkedTimelinePage: React.FC = () => {
           bottom: '20px',
           left: '50%',
           transform: 'translateX(-50%)',
-          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
           color: 'white',
-          padding: '8px 16px',
-          borderRadius: '4px',
-          zIndex: 100
+          padding: '10px 20px',
+          borderRadius: '8px',
+          zIndex: 100,
+          fontWeight: 'bold',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)'
         }}>
           {statusMessage}
         </div>
@@ -344,7 +391,8 @@ const NetworkedTimelinePage: React.FC = () => {
         left: '0',
         width: '100%',
         height: '100%',
-        background: 'linear-gradient(rgba(26, 32, 44, 0.97), rgba(26, 32, 44, 0.97)), radial-gradient(circle, rgba(66, 153, 225, 0.15) 1px, transparent 1px) 0 0 / 20px 20px repeat'
+        background: 'linear-gradient(rgba(26, 32, 44, 0.97), rgba(26, 32, 44, 0.97)), radial-gradient(circle, rgba(66, 153, 225, 0.15) 1px, transparent 1px) 0 0 / 20px 20px repeat',
+        overflow: 'hidden'
       }}>
         {/* Debug center marker */}
         <div style={{
@@ -420,6 +468,7 @@ const NetworkedTimelinePage: React.FC = () => {
           return (
             <div
               key={node.id}
+              className="timeline-node"
               style={{
                 position: 'absolute',
                 left: `${position.x}px`,

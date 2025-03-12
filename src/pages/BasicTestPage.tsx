@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 /**
  * An enhanced basic test page with dragging functionality and more nodes
@@ -8,6 +8,29 @@ const BasicTestPage: React.FC = () => {
   const [viewPosition, setViewPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  // Add zoom state
+  const [zoom, setZoom] = useState(1);
+  // Add state for hiding future branches
+  const [hideFutureBranches, setHideFutureBranches] = useState(false);
+  
+  // To store window dimensions
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
+
+  // Update window dimensions on resize
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Static test data - timeline nodes with position and branch information
   const testNodes = [
@@ -37,6 +60,33 @@ const BasicTestPage: React.FC = () => {
     { from: 'node5', to: 'node10', type: 'dashed' }
   ];
 
+  // Define which branches are "future" branches (for demo purposes)
+  const futureBranches = ['ai', 'web'];
+
+  // Get filtered nodes based on hideFutureBranches state
+  const getFilteredNodes = () => {
+    if (!hideFutureBranches) return testNodes;
+    return testNodes.filter(node => !futureBranches.includes(node.branch));
+  };
+
+  // Get filtered connections based on hideFutureBranches state
+  const getFilteredConnections = () => {
+    if (!hideFutureBranches) return connections;
+    
+    // Get IDs of visible nodes
+    const visibleNodeIds = getFilteredNodes().map(node => node.id);
+    
+    // Only keep connections where both source and target nodes are visible
+    return connections.filter(conn => {
+      return visibleNodeIds.includes(conn.from) && visibleNodeIds.includes(conn.to);
+    });
+  };
+
+  // Toggle hide future branches
+  const toggleFutureBranches = () => {
+    setHideFutureBranches(prev => !prev);
+  };
+
   // Branch colors
   const branchColors = {
     main: '#3b82f6', // Blue
@@ -46,8 +96,17 @@ const BasicTestPage: React.FC = () => {
 
   // Mouse event handlers for dragging
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
+    // Don't initiate drag if clicking on interactive elements
+    if ((e.target as Element).closest('button')) {
+      return;
+    }
+    
     setIsDragging(true);
     setDragStart({ x: e.clientX, y: e.clientY });
+    document.body.style.cursor = 'grabbing';
+    
+    // Prevent default to avoid text selection during drag
+    e.preventDefault();
   }, []);
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
@@ -66,31 +125,100 @@ const BasicTestPage: React.FC = () => {
 
   const handleMouseUp = useCallback(() => {
     setIsDragging(false);
+    document.body.style.cursor = '';
   }, []);
 
   // Reset view to center
   const resetView = useCallback(() => {
     setViewPosition({ x: 0, y: 0 });
+    setZoom(1);
+  }, []);
+
+  // Zoom in
+  const zoomIn = useCallback(() => {
+    setZoom(prev => Math.min(prev + 0.1, 2)); // Max zoom is 2x
+  }, []);
+
+  // Zoom out
+  const zoomOut = useCallback(() => {
+    setZoom(prev => Math.max(prev - 0.1, 0.5)); // Min zoom is 0.5x
   }, []);
 
   // Find a node by ID
   const getNodeById = (id: string) => testNodes.find(node => node.id === id);
 
-  // Calculate adjusted position with the view offset
-  const getAdjustedPosition = (x: number, y: number) => ({
-    x: x + viewPosition.x,
-    y: y + viewPosition.y
-  });
+  // Calculate adjusted position with the view offset and zoom
+  const getAdjustedPosition = (x: number, y: number) => {
+    // Use window center as the zoom origin
+    const centerX = windowDimensions.width / 2;
+    const centerY = windowDimensions.height / 2;
+    
+    // Apply zoom and pan
+    return {
+      x: (x - centerX) * zoom + centerX + viewPosition.x,
+      y: (y - centerY) * zoom + centerY + viewPosition.y
+    };
+  };
+
+  // Common button style based on the image
+  const buttonStyle = {
+    backgroundColor: 'rgba(15, 23, 42, 0.8)',
+    color: 'white',
+    padding: '8px 16px',
+    border: '1px solid rgba(99, 102, 241, 0.4)',
+    borderRadius: '20px',
+    cursor: 'pointer',
+    fontSize: '14px',
+    fontWeight: 'bold',
+    backdropFilter: 'blur(4px)',
+    transition: 'all 0.2s ease',
+    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.3)',
+  };
+
+  // Get the visible nodes and connections
+  const filteredNodes = getFilteredNodes();
+  const filteredConnections = getFilteredConnections();
+
+  // Add effect to prevent scrolling at the document level
+  useEffect(() => {
+    // Save original styles
+    const originalStyle = {
+      html: document.documentElement.style.cssText,
+      body: document.body.style.cssText
+    };
+    
+    // Apply no-scroll styles
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.height = '100%';
+    document.body.style.overflow = 'hidden';
+    document.body.style.height = '100%';
+    document.body.style.margin = '0';
+    document.body.style.padding = '0';
+    
+    // Cleanup function to restore original styles
+    return () => {
+      document.documentElement.style.cssText = originalStyle.html;
+      document.body.style.cssText = originalStyle.body;
+    };
+  }, []);
 
   return (
     <div 
       style={{
-        width: '100vw',
-        height: '100vh',
+        width: '100%',
+        height: '100%', 
+        maxWidth: '100vw',
+        maxHeight: '100vh',
         backgroundColor: '#1a202c',
-        position: 'relative',
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
         overflow: 'hidden',
-        cursor: isDragging ? 'grabbing' : 'grab'
+        cursor: isDragging ? 'grabbing' : 'grab',
+        margin: 0,
+        padding: 0
       }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
@@ -110,13 +238,44 @@ const BasicTestPage: React.FC = () => {
         Basic Network Test (Draggable)
       </div>
 
+      {/* Future branches toggle button */}
+      <div style={{
+        position: 'absolute',
+        top: '20px',
+        right: '20px',
+        zIndex: 10,
+      }}>
+        <button 
+          style={buttonStyle}
+          onClick={toggleFutureBranches}
+        >
+          {hideFutureBranches ? 'Show Future Branches' : 'Hide Future Branches'}
+        </button>
+      </div>
+
+      {/* Status display */}
+      <div style={{
+        position: 'absolute',
+        top: '60px',
+        left: '20px',
+        zIndex: 10,
+        color: 'white',
+        fontSize: '14px',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
+        padding: '8px',
+        borderRadius: '4px',
+      }}>
+        Zoom: {zoom.toFixed(1)}x
+      </div>
+
       {/* Network visualization container */}
       <div style={{
         position: 'absolute',
         top: '0',
         left: '0',
         width: '100%',
-        height: '100%'
+        height: '100%',
+        overflow: 'hidden'
       }}>
         {/* SVG for connections */}
         <svg 
@@ -126,10 +285,11 @@ const BasicTestPage: React.FC = () => {
             left: 0,
             width: '100%',
             height: '100%',
-            zIndex: 1
+            zIndex: 1,
+            overflow: 'visible'
           }}
         >
-          {connections.map((conn, idx) => {
+          {filteredConnections.map((conn, idx) => {
             const fromNode = getNodeById(conn.from);
             const toNode = getNodeById(conn.to);
             
@@ -158,9 +318,11 @@ const BasicTestPage: React.FC = () => {
         </svg>
 
         {/* Nodes */}
-        {testNodes.map(node => {
+        {filteredNodes.map(node => {
           const pos = getAdjustedPosition(node.x, node.y);
           const branchColor = branchColors[node.branch as keyof typeof branchColors];
+          // Scale node size based on zoom
+          const nodeWidth = 140 * (1 / Math.max(zoom, 0.8));
           
           return (
             <div
@@ -170,7 +332,7 @@ const BasicTestPage: React.FC = () => {
                 left: `${pos.x}px`,
                 top: `${pos.y}px`,
                 transform: 'translate(-50%, -50%)',
-                width: '140px',
+                width: `${nodeWidth}px`,
                 padding: '10px',
                 backgroundColor: `${branchColor}`,
                 color: 'white',
@@ -205,13 +367,30 @@ const BasicTestPage: React.FC = () => {
       }}>
         <button 
           style={{
-            backgroundColor: '#4299e1',
-            color: 'white',
-            padding: '8px 16px',
-            border: 'none',
-            borderRadius: '4px',
-            cursor: 'pointer'
+            ...buttonStyle,
+            fontSize: '18px',
+            padding: '8px 14px',
           }}
+          onClick={zoomOut}
+          title="Zoom Out"
+        >
+          –
+        </button>
+
+        <button 
+          style={{
+            ...buttonStyle,
+            fontSize: '18px',
+            padding: '8px 12px',
+          }}
+          onClick={zoomIn}
+          title="Zoom In"
+        >
+          +
+        </button>
+
+        <button 
+          style={buttonStyle}
           onClick={resetView}
         >
           Reset View

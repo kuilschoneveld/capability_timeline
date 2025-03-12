@@ -84,6 +84,118 @@ body {
   color: var(--text-color);
 }
 
+/* Common header for all views */
+.common-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Title container with logo and view toggle */
+.title-container {
+  display: flex;
+  align-items: center;
+}
+
+.main-title {
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--text-color);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* View toggle button (circular with star/ship icon) */
+.toggle-view-btn {
+  margin-left: 12px;
+  background: rgba(15, 23, 42, 0.8);
+  color: white;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 0;
+}
+
+.toggle-view-btn:hover {
+  background: rgba(30, 41, 59, 0.9);
+  transform: scale(1.05);
+  border-color: rgba(99, 102, 241, 0.7);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+}
+
+.toggle-view-btn:active {
+  transform: scale(0.95);
+}
+
+/* Dimension toggle buttons */
+.dimension-toggles {
+  display: flex;
+  background-color: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.dimension-toggle-btn {
+  padding: 0.4rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  outline: none;
+  position: relative;
+}
+
+.dimension-toggle-btn:not(:last-child) {
+  border-right: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.dimension-toggle-btn.active {
+  background-color: rgba(59, 130, 246, 0.6);
+  font-weight: 600;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.dimension-toggle-btn:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dimension-toggle-btn:focus {
+  outline: none;
+}
+
+/* View container to hold the different views */
+.view-container {
+  flex: 1;
+  margin-top: 60px; /* Height of the common header */
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 60px);
+  overflow: hidden;
+}
+
 .App-header {
   background-color: var(--primary-color);
   color: white;
@@ -636,17 +748,6 @@ body {
   padding: 1rem;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--background-color);
-}
-
-.title-container {
-  display: flex;
-  align-items: center;
-}
-
-.main-title {
-  font-size: 1.5rem;
-  margin: 0;
-  color: var(--text-color);
 }
 
 .title-button {

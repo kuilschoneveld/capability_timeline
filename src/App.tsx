@@ -2,11 +2,20 @@ import './App.css';
 import Timeline from './components/timeline/Timeline';
 import NetworkedTimelinePage from './pages/NetworkedTimelinePage';
 import BasicTestPage from './pages/BasicTestPage';
-import SimpleNetworkDisplay from './components/SimpleNetworkDisplay';
 import { useRef, useState, useEffect } from 'react';
 
 // Define view mode type for timeline views
-type ViewMode = 'standard' | 'networked' | 'test' | 'simple';
+type ViewMode = 'standard' | 'networked' | 'test';
+
+// Ship/Star icon for the toggle button
+const ShipStarIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2L14.5 9H21L16 13.5L18 20L12 16L6 20L8 13.5L3 9H9.5L12 2Z" 
+          fill="currentColor" 
+          stroke="currentColor" 
+          strokeWidth="1" />
+  </svg>
+);
 
 function App() {
   const mainRef = useRef<HTMLDivElement>(null);
@@ -16,6 +25,11 @@ function App() {
   
   // Add state for active view mode
   const [viewMode, setViewMode] = useState<ViewMode>('standard');
+  
+  // Add filter states (non-functional for now)
+  const [filterTechnical, setFilterTechnical] = useState(true);
+  const [filterSocietal, setFilterSocietal] = useState(true);
+  const [filterPhilosophical, setFilterPhilosophical] = useState(true);
   
   // Refs for inertial scrolling
   const lastMouseX = useRef(0);
@@ -28,7 +42,6 @@ function App() {
     setViewMode(current => {
       if (current === 'standard') return 'networked';
       if (current === 'networked') return 'test';
-      if (current === 'test') return 'simple';
       return 'standard';
     });
   };
@@ -204,62 +217,76 @@ function App() {
   
   return (
     <div className="App">
-      <div className="title-bar">
+      {/* Common header for all views */}
+      <header className="common-header">
         <div className="title-container">
           <h1 className="main-title">Wayfaring on a Starless Night</h1>
           
-          {/* Toggle button to switch between timeline views */}
+          {/* Circular toggle button with ship/star icon */}
           <button 
-            className="title-button"
+            className="toggle-view-btn"
             onClick={toggleViewMode}
-            title={`Switch view mode`}
+            title={`Switch to ${
+              viewMode === 'standard' ? 'Network' : 
+              viewMode === 'networked' ? 'Test' : 'Standard'
+            } view`}
           >
-            {viewMode === 'standard' ? 'Network' : 
-             viewMode === 'networked' ? 'Test' : 
-             viewMode === 'test' ? 'Simple' : 'Standard'}
+            <ShipStarIcon />
           </button>
         </div>
         
-        {/* Only show filter options for standard view */}
-        {viewMode === 'standard' && (
-          <div className="filter-options">
-            {/* Keep existing filter buttons */}
-            {/* ... existing code ... */}
-          </div>
-        )}
-      </div>
+        {/* Filter toggles: Technical/Societal/Philosophical */}
+        <div className="dimension-toggles">
+          <button 
+            className={`dimension-toggle-btn ${filterTechnical ? 'active' : ''}`}
+            onClick={() => setFilterTechnical(!filterTechnical)}
+          >
+            Technical
+          </button>
+          <button 
+            className={`dimension-toggle-btn ${filterSocietal ? 'active' : ''}`}
+            onClick={() => setFilterSocietal(!filterSocietal)}
+          >
+            Societal
+          </button>
+          <button 
+            className={`dimension-toggle-btn ${filterPhilosophical ? 'active' : ''}`}
+            onClick={() => setFilterPhilosophical(!filterPhilosophical)}
+          >
+            Philosophical
+          </button>
+        </div>
+      </header>
 
       {/* Render the appropriate view based on viewMode */}
-      {viewMode === 'standard' && (
-        <>
-          <main 
-            ref={mainRef}
-            className={`App-main ${isDragging ? 'dragging' : ''}`}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseLeave}
-          >
-            <Timeline />
-          </main>
-          
-          <div className="timeline-scrollbar">
-            <div className="year-indicator">Year</div>
-          </div>
-        </>
-      )}
+      <div className="view-container">
+        {viewMode === 'standard' && (
+          <>
+            <main 
+              ref={mainRef}
+              className={`App-main ${isDragging ? 'dragging' : ''}`}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseLeave}
+            >
+              <Timeline />
+            </main>
+            
+            <div className="timeline-scrollbar">
+              <div className="year-indicator">Year</div>
+            </div>
+          </>
+        )}
 
-      {viewMode === 'networked' && (
-        <NetworkedTimelinePage />
-      )}
-      
-      {viewMode === 'test' && (
-        <BasicTestPage />
-      )}
-
-      {viewMode === 'simple' && (
-        <SimpleNetworkDisplay />
-      )}
+        {viewMode === 'networked' && (
+          <NetworkedTimelinePage />
+        )}
+        
+        {viewMode === 'test' && (
+          <BasicTestPage />
+        )}
+      </div>
     </div>
   );
 }

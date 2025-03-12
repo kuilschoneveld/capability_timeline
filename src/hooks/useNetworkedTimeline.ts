@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { TimelineNode, TimelineConnection, NetworkedTimelineState } from '../types/networkedTimeline';
 import { initialTimelineState } from '../data/networkedMockData';
 
@@ -9,9 +9,16 @@ export const useNetworkedTimeline = () => {
   const [timelineState, setTimelineState] = useState<NetworkedTimelineState | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  
+  // Add ref to track if initial centering has been done
+  const hasInitialized = useRef(false);
 
   // Initialize timeline data
   useEffect(() => {
+    if (hasInitialized.current) {
+      return; // Skip if already initialized
+    }
+    
     try {
       // In a real application, we might fetch this data from an API
       // Create a new object to ensure we're not mutating external data
@@ -31,6 +38,7 @@ export const useNetworkedTimeline = () => {
       console.log("Setting initial state:", initialState);
       setTimelineState(initialState);
       setIsLoading(false);
+      hasInitialized.current = true;
     } catch (err) {
       console.error("Failed to load timeline data:", err);
       setError('Failed to load timeline data');
@@ -38,9 +46,11 @@ export const useNetworkedTimeline = () => {
     }
   }, []);
 
-  // Reset the view to default position and zoom
+  // Reset the view to default position and zoom (user-requested reset, not automatic)
   const resetView = useCallback(() => {
     if (!timelineState) return;
+    
+    console.log("User requested reset view");
     
     setTimelineState(prev => {
       if (!prev) return prev;
@@ -60,6 +70,8 @@ export const useNetworkedTimeline = () => {
   const zoomIn = useCallback(() => {
     if (!timelineState) return;
     
+    console.log("Zooming in");
+    
     setTimelineState(prev => {
       if (!prev) return prev;
       
@@ -78,6 +90,8 @@ export const useNetworkedTimeline = () => {
   // Zoom out
   const zoomOut = useCallback(() => {
     if (!timelineState) return;
+    
+    console.log("Zooming out");
     
     setTimelineState(prev => {
       if (!prev) return prev;
