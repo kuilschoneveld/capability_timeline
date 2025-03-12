@@ -211,6 +211,10 @@ body {
   cursor: grab;
   user-select: none; /* Prevent text selection during drag */
   padding: 0;
+  height: calc(100vh - 110px); /* Full height minus header and scrollbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center timeline vertically */
   
   /* Hide scrollbar while maintaining functionality */
   scrollbar-width: none; /* Firefox */
@@ -249,33 +253,352 @@ body {
 /* Timeline container */
 .timeline-container {
   width: 100%;
-  height: 100%;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: max-content; /* Ensure it's at least as wide as its content */
-  padding: 2rem 1rem;
+  padding: 0;
   -webkit-user-drag: none; /* Prevent native dragging */
 }
 
-/* Timeline content - no longer needs dragging styles */
+/* Options box in the top left corner */
+.timeline-options-box {
+  position: fixed;
+  top: 70px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 8px;
+  padding: 15px;
+  width: 280px;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.timeline-options-box h3 {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.timeline-options-box p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.4;
+}
+
+/* Animation for options box */
+[data-show-options="false"] ~ * .timeline-options-box {
+  opacity: 0;
+  transform: translateX(-20px);
+  pointer-events: none;
+}
+
+/* Timeline content */
 .timeline-content {
+  --branch-gap: 220px; /* Default gap between branches */
   height: 100%;
   position: relative;
   width: 100%;
-  padding: 1rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Horizontal timeline wrapper - no longer needs overflow styles */
-.horizontal-timeline-wrapper {
+/* Timeline section labels */
+.timeline-section-label {
+  position: absolute;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.historical-label {
+  left: -90px; /* Position to the left of the timeline */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Main timeline layout */
+.timeline-layout {
+  display: flex;
+  flex-direction: row; /* Changed to row to align historical and future horizontally */
+  width: 100%;
+  position: relative;
+  padding: 100px 0; /* Add vertical space above and below the timeline */
+  align-items: center; /* Center everything vertically */
+  margin-left: 100px; /* Left margin to accommodate the Historical label */
+}
+
+/* Historical timeline section */
+.historical-timeline-section {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 0;
+  height: 40px; /* Fixed height to align with branch points */
+}
+
+/* Branch point connector */
+.branch-point-connector {
+  position: relative;
+  margin: 0 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.show-future-button-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Show future branches button */
+.show-future-branches-button {
+  background-color: rgba(10, 147, 255, 0.2);
+  color: #0A93FF;
+  border: 1px solid rgba(10, 147, 255, 0.6);
+  border-radius: 30px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 15; /* Ensure button is above connection lines */
+  box-shadow: 0 0 10px rgba(10, 147, 255, 0.3);
+  white-space: nowrap;
+}
+
+.show-future-branches-button:hover {
+  background-color: rgba(10, 147, 255, 0.3);
+  box-shadow: 0 0 15px rgba(10, 147, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Future timelines section */
+.future-timelines-section {
+  position: relative;
+  margin-left: 20px; /* Add some space from the Show Future button */
+  min-height: 300px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Future paths container */
+.future-paths-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--branch-gap);
+  position: relative;
+  margin-left: 0;
+  min-height: 300px;
+  transition: all 0.3s ease; /* Smooth transition when adjusting spacing */
+}
+
+/* Individual future branch */
+.future-branch {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
+  transition: all 0.3s ease; /* Add smooth transition for repositioning */
+  padding: 20px 0; /* Add padding to create space for expanded items */
+}
+
+/* Remove the connecting lines between branches and the button */
+.future-branch::before,
+.future-timelines-section::before,
+.future-timelines-section::after,
+.show-future-button-container::before,
+.show-future-button-container::after {
+  display: none; /* Hide all connection lines */
+}
+
+/* Optimistic branch specific styles */
+.optimistic-branch {
   position: relative;
-  justify-content: flex-start;
-  padding: 1rem 0;
-  min-width: max-content; /* Ensure it's at least as wide as its content */
+  margin-bottom: 40px; /* Use margin instead of absolute positioning */
+  top: auto;
+  left: auto;
+}
+
+/* Pessimistic branch specific styles */
+.pessimistic-branch {
+  position: relative;
+  margin-top: 40px; /* Use margin instead of absolute positioning */
+  top: auto;
+  left: auto;
+}
+
+/* Branch type labels */
+.branch-type-label {
+  position: absolute;
+  left: 0;
+  top: -30px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Add adaptive spacing for expanded timeline items */
+.timeline-item.expanded {
+  z-index: 25; /* Ensure expanded items are above others */
+  box-shadow: 0 0 20px rgba(10, 147, 255, 0.8); /* Enhanced shadow for better visibility */
+  margin: 20px 0; /* Add extra margin to expanded items */
+}
+
+/* When optimistic branch has an expanded item */
+.optimistic-branch.has-expanded {
+  z-index: 20; /* Raise above other elements */
+  padding-bottom: 60px; /* Add extra padding at the bottom */
+  margin-bottom: 40px; /* Extra margin to prevent overlap */
+}
+
+/* When pessimistic branch has an expanded item */
+.pessimistic-branch.has-expanded {
+  z-index: 20; /* Raise above other elements */
+  padding-top: 60px; /* Add extra padding at the top */
+  margin-top: 40px; /* Extra margin to prevent overlap */
+}
+
+/* When both branches have expanded items, increase the gap */
+.optimistic-branch.has-expanded + .pessimistic-branch.has-expanded {
+  margin-top: 100px; /* Further increase gap when both have expanded items */
+}
+
+/* Reduce gap in future paths container when either branch is expanded */
+.future-paths-container:has(.has-expanded) {
+  gap: var(--branch-gap);
+}
+
+/* Adjust spacing when both branches have expanded items */
+.future-paths-container:has(.optimistic-branch.has-expanded):has(.pessimistic-branch.has-expanded) {
+  gap: var(--branch-gap);
+}
+
+/* Timeline branch */
+.timeline-branch {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-width: 300px;
+  margin: 0 1rem;
+  flex-shrink: 0;
+}
+
+/* Branch connection lines */
+.branch-connection {
+  position: absolute;
+  background-color: #0A93FF;
+  box-shadow: 0 0 8px rgba(10, 147, 255, 0.4);
+  z-index: 2;
+}
+
+/* Vertical connector from branch point to optimistic branch */
+.branch-connection-upper {
+  width: 2px;
+  height: 40px;
+  left: -20px; /* Position it to the left of the branch row */
+  top: -40px; /* Position it above the branch row */
+}
+
+/* Vertical connector from branch point to pessimistic branch */
+.branch-connection-lower {
+  width: 2px;
+  height: 40px;
+  left: -20px; /* Position it to the left of the branch row */
+  top: -40px; /* Position it above the branch row */
+}
+
+/* Horizontal connector from main timeline to branch point */
+.branch-connection-main {
+  height: 2px;
+  width: 40px;
+  top: 50%;
+  left: -40px;
+  transform: translateY(-50%);
+}
+
+/* Add diagonal connectors for the Y-shape */
+.branch-connection-diagonal-upper {
+  height: 2px;
+  width: 30px;
+  top: 40px; /* Position relative to future-branches-toggle */
+  left: 0px;
+  transform: rotate(-30deg) translateY(-50%);
+  transform-origin: left center;
+}
+
+.branch-connection-diagonal-lower {
+  height: 2px;
+  width: 30px;
+  top: 60px; /* Position relative to future-branches-toggle */
+  left: 0px;
+  transform: rotate(30deg) translateY(-50%);
+  transform-origin: left center;
+}
+
+/* Timeline branch point styles - updated for Y-shape */
+.future-branches-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+  flex-shrink: 0;
+  z-index: 10;
+  height: 100px; /* Fixed height to allow for proper connector positioning */
+}
+
+.timeline-branch-point {
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background-color: transparent;
+  position: relative;
+  margin-bottom: 1rem;
+  z-index: 4; /* Ensure it's above connectors */
+  color: #0A93FF;
+  font-size: 24px;
+  text-shadow: 0 0 10px rgba(10, 147, 255, 0.7);
+}
+
+.timeline-branch-point::before {
+  content: "✦"; /* Star character */
+  position: absolute;
+  top: -10px; /* Adjusted for better alignment */
+  left: 50%;
+  transform: translateX(-50%);
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Timeline connector - make it stand out more */
+.timeline-connector {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  width: 100%;
+  background-color: #0A93FF;
+  opacity: 0.6;
+  box-shadow: 0 0 8px rgba(10, 147, 255, 0.2);
+  z-index: 0;
+  transform: translateY(-50%);
 }
 
 .timeline-events-container {
@@ -356,13 +679,13 @@ body {
   opacity: 0.8;
 }
 
-/* Vertical metric axis */
+/* Vertical metric axis - updated position */
 .vertical-metric-axis {
   position: fixed;
   left: 20px;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 100;
+  z-index: 900; /* Ensure it's above other elements */
   background-color: rgba(0, 0, 0, 0.7);
   border-radius: 4px;
   border: 1px solid var(--border-color);
@@ -461,16 +784,6 @@ body {
 
 .timeline-error {
   color: var(--danger-color);
-}
-
-/* Timeline branch */
-.timeline-branch {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  min-width: 300px;
-  margin: 0 1rem;
-  flex-shrink: 0;
 }
 
 .timeline-branch-header {
@@ -680,38 +993,6 @@ body {
 }
 
 /* Timeline branch point styles */
-.future-branches-toggle {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem;
-  position: relative;
-  flex-shrink: 0;
-  z-index: 10;
-}
-
-.timeline-branch-point {
-  width: auto;
-  height: auto;
-  border-radius: 0;
-  background-color: transparent;
-  position: relative;
-  margin-bottom: 1rem;
-  z-index: 2;
-  color: #0A93FF;
-  font-size: 24px;
-  text-shadow: 0 0 10px rgba(10, 147, 255, 0.7);
-}
-
-.timeline-branch-point::before {
-  content: "✦"; /* Star character */
-  position: absolute;
-  top: -10px; /* Adjusted for better alignment */
-  left: 50%;
-  transform: translateX(-50%);
-  animation: float 3s ease-in-out infinite;
-}
-
 .show-future-branches-button {
   background-color: #0A1B29;
   color: white;
@@ -813,12 +1094,18 @@ body {
 /* Timeline scrollbar styles */
 .timeline-scrollbar {
   height: 50px;
-  padding: 0 1rem;
   border-top: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 900;
+  padding: 0;
 }
 
 .timeline-scrollbar::before {
@@ -832,9 +1119,42 @@ body {
   transform: translateY(-50%);
 }
 
+/* Year markers */
+.year-markers {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.year-marker {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.year-marker-line {
+  width: 2px;
+  height: 16px;
+  background-color: rgba(99, 102, 241, 0.7);
+  margin-bottom: 2px;
+}
+
+.year-marker-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
 .year-indicator {
   background-color: var(--background-color);
-  border: 1px solid var(--border-color);
+  border: 1px solid #0A93FF;
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -842,8 +1162,10 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 1;
+  z-index: 901;
   font-size: 0.8rem;
+  box-shadow: 0 0 8px rgba(10, 147, 255, 0.4);
+  color: #0A93FF;
 }
 
 /* Hidden timeline controls */
@@ -974,4 +1296,25 @@ body {
 
 .network-background {
   pointer-events: none;
+}
+
+/* Remove all duplicate connection line styles */
+/* Add a connection from the historical timeline to the Show Future button */
+.show-future-button-container::before,
+/* Add the Y-shaped connections from the Show Future button to the branches */
+.future-timelines-section::before,
+.future-timelines-section::after,
+/* Remove the connection line between historical timeline and branch point */
+.historical-timeline-section::after {
+  display: none;
+}
+
+/* When both branches have expanded items (using JavaScript-applied classes) */
+.both-expanded .future-paths-container {
+  --branch-gap: 300px;
+}
+
+/* When only one branch has expanded items */
+.one-expanded .future-paths-container {
+  --branch-gap: 250px;
 }

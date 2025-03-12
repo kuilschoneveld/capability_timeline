@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 
 /**
  * An enhanced basic test page with dragging functionality and more nodes
@@ -12,26 +12,15 @@ const BasicTestPage: React.FC = () => {
   const [zoom, setZoom] = useState(1);
   // Add state for hiding future branches
   const [hideFutureBranches, setHideFutureBranches] = useState(false);
+  // Ref to track if the view has been initialized
+  const isInitialized = useRef(false);
   
   // To store window dimensions
   const [windowDimensions, setWindowDimensions] = useState({
     width: window.innerWidth,
     height: window.innerHeight
   });
-
-  // Update window dimensions on resize
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
-    };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
+  
   // Static test data - timeline nodes with position and branch information
   const testNodes = [
     { id: 'node1', title: 'ENIAC (1945)', x: 100, y: 200, branch: 'main' },
@@ -45,6 +34,43 @@ const BasicTestPage: React.FC = () => {
     { id: 'node9', title: 'ARPANET (1969)', x: 500, y: 300, branch: 'web' },
     { id: 'node10', title: 'World Wide Web (1989)', x: 650, y: 300, branch: 'web' }
   ];
+
+  // Update window dimensions on resize
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
+  // Center the view on first render only, but preserve state on subsequent renders
+  useEffect(() => {
+    if (!isInitialized.current) {
+      // Calculate center position
+      const minX = Math.min(...testNodes.map(node => node.x));
+      const maxX = Math.max(...testNodes.map(node => node.x));
+      const minY = Math.min(...testNodes.map(node => node.y));
+      const maxY = Math.max(...testNodes.map(node => node.y));
+      
+      const centerX = (minX + maxX) / 2;
+      const centerY = (minY + maxY) / 2;
+      
+      // Calculate offset to center the graph
+      const offsetX = windowDimensions.width / 2 - centerX;
+      const offsetY = windowDimensions.height / 2 - centerY;
+      
+      // Set initial position
+      setViewPosition({ x: offsetX, y: offsetY });
+      
+      // Mark as initialized
+      isInitialized.current = true;
+    }
+  }, [windowDimensions, testNodes]);
 
   // Define connections between nodes
   const connections = [

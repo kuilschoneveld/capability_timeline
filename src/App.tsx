@@ -31,6 +31,9 @@ function App() {
   const [filterSocietal, setFilterSocietal] = useState(true);
   const [filterPhilosophical, setFilterPhilosophical] = useState(true);
   
+  // Add state for options box visibility
+  const [showOptionsBox, setShowOptionsBox] = useState(true);
+  
   // Refs for inertial scrolling
   const lastMouseX = useRef(0);
   const velocity = useRef(0);
@@ -215,6 +218,29 @@ function App() {
     };
   }, [isDragging, startX, scrollLeft]);
   
+  // Add scroll event listener to hide/show options box
+  useEffect(() => {
+    const handleScroll = () => {
+      if (mainRef.current) {
+        // Show options box only when scrolling position is near the beginning
+        // Hide it when scrolled further to the right
+        setShowOptionsBox(mainRef.current.scrollLeft < 500);
+      }
+    };
+    
+    // Add scroll event listener
+    if (mainRef.current) {
+      mainRef.current.addEventListener('scroll', handleScroll);
+    }
+    
+    // Clean up
+    return () => {
+      if (mainRef.current) {
+        mainRef.current.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
+  
   return (
     <div className="App">
       {/* Common header for all views */}
@@ -269,8 +295,9 @@ function App() {
               onMouseMove={handleMouseMove}
               onMouseUp={handleMouseUp}
               onMouseLeave={handleMouseLeave}
+              data-show-options={showOptionsBox}
             >
-              <Timeline />
+              <Timeline showOptionsBox={showOptionsBox} />
             </main>
             
             <div className="timeline-scrollbar">

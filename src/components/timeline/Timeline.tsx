@@ -1,13 +1,17 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useTimeline } from '../../hooks/useTimeline';
 import TimelineBranch from './TimelineBranch';
 import TimelineControls from './TimelineControls';
 
+interface TimelineProps {
+  showOptionsBox?: boolean;
+}
+
 /**
  * Main Timeline component that displays the entire timeline
  */
-const Timeline: React.FC = () => {
+const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
   const {
     milestones,
     branches,
@@ -23,6 +27,10 @@ const Timeline: React.FC = () => {
     changeViewMode,
     toggleBranchVisibility,
   } = useTimeline();
+  
+  // Track the expanded state for each branch separately for better positioning
+  const [hasExpandedOptimistic, setHasExpandedOptimistic] = useState(false);
+  const [hasExpandedPessimistic, setHasExpandedPessimistic] = useState(false);
 
   // Group milestones by branch
   const milestonesByBranch = branches.reduce((acc, branch) => {
@@ -32,7 +40,14 @@ const Timeline: React.FC = () => {
 
   // Get main timeline branch and its milestones
   const mainBranch = branches.find(branch => branch.isMainTimeline);
+  
+  // Get future branches and separate them into optimistic and pessimistic
   const futureBranches = branches.filter(branch => !branch.isMainTimeline);
+  
+  // For demo purposes, we'll consider the first future branch as optimistic and the second as pessimistic
+  // In a real app, this would be determined by branch metadata
+  const optimisticBranch = futureBranches.length > 0 ? futureBranches[0] : null;
+  const pessimisticBranch = futureBranches.length > 1 ? futureBranches[1] : null;
   
   // Get branch point date - the date when timeline branches
   const branchPointDate = futureBranches.length > 0 && futureBranches[0].startDate 
@@ -45,9 +60,60 @@ const Timeline: React.FC = () => {
       milestone => new Date(milestone.date) < new Date(branchPointDate)
     )
     : [];
+    
+  // Update expanded state for branches whenever expandedMilestoneId changes
+  useEffect(() => {
+    if (!expandedMilestoneId) {
+      setHasExpandedOptimistic(false);
+      setHasExpandedPessimistic(false);
+      return;
+    }
+    
+    // Check if expanded milestone is in optimistic branch
+    if (optimisticBranch && milestonesByBranch[optimisticBranch.id]) {
+      setHasExpandedOptimistic(
+        milestonesByBranch[optimisticBranch.id].some(m => m.id === expandedMilestoneId)
+      );
+    }
+    
+    // Check if expanded milestone is in pessimistic branch
+    if (pessimisticBranch && milestonesByBranch[pessimisticBranch.id]) {
+      setHasExpandedPessimistic(
+        milestonesByBranch[pessimisticBranch.id].some(m => m.id === expandedMilestoneId)
+      );
+    }
+  }, [expandedMilestoneId, milestonesByBranch, optimisticBranch, pessimisticBranch]);
+
+  // Generate dynamic classes for branches based on expansion state
+  const getOptimisticClassName = () => {
+    return `future-branch optimistic-branch ${hasExpandedOptimistic ? 'has-expanded' : ''}`;
+  };
+  
+  const getPessimisticClassName = () => {
+    return `future-branch pessimistic-branch ${hasExpandedPessimistic ? 'has-expanded' : ''}`;
+  };
+  
+  // Generate class for the timeline content based on expanded branches
+  const getTimelineContentClassName = () => {
+    const baseClass = 'timeline-content';
+    if (hasExpandedOptimistic && hasExpandedPessimistic) {
+      return `${baseClass} both-expanded`;
+    } else if (hasExpandedOptimistic || hasExpandedPessimistic) {
+      return `${baseClass} one-expanded`;
+    }
+    return baseClass;
+  };
 
   return (
     <div className="timeline-container">
+      {/* Options box fixed in the top left corner - only display when showOptionsBox is true */}
+      {showOptionsBox && (
+        <div className="timeline-options-box">
+          <h3>Further Options</h3>
+          <p>for searching, comparing milestone metrics, or engaging with the future tradeoffs and decisions.</p>
+        </div>
+      )}
+      
       {/* Timeline controls - hidden visually but maintain functionality */}
       <div className="timeline-controls-hidden">
         <TimelineControls
@@ -70,40 +136,71 @@ const Timeline: React.FC = () => {
         <span>PFlops / some loose metric</span>
       </div>
       
-      <div className="timeline-content">
-        <div className="horizontal-timeline-wrapper">
-          {/* Render main timeline branch */}
-          {mainBranch && (
-            <TimelineBranch
-              key={mainBranch.id}
-              branch={mainBranch}
-              milestones={milestonesBeforeBranchPoint}
-              expandedMilestoneId={expandedMilestoneId}
-              onToggleExpand={toggleMilestoneExpansion}
-            />
-          )}
-          
-          {/* Show the future branches toggle button at the branch point */}
-          <div className="future-branches-toggle">
-            <div className="timeline-branch-point"></div>
-            <button 
-              className="show-future-branches-button" 
-              onClick={toggleBranchVisibility}
-            >
-              {filter.showBranches ? 'Hide Future Branches' : 'Show Future Branches'}
-            </button>
+      <div className={getTimelineContentClassName()}>
+        {/* Historical section label */}
+        <div className="timeline-section-label historical-label">Historical</div>
+        
+        <div className="timeline-layout">
+          {/* Historical timeline section */}
+          <div className="historical-timeline-section">
+            {mainBranch && (
+              <TimelineBranch
+                key={mainBranch.id}
+                branch={mainBranch}
+                milestones={milestonesBeforeBranchPoint}
+                expandedMilestoneId={expandedMilestoneId}
+                onToggleExpand={toggleMilestoneExpansion}
+              />
+            )}
           </div>
           
-          {/* Render future branches if showBranches is true */}
-          {filter.showBranches && futureBranches.map(branch => (
-            <TimelineBranch
-              key={branch.id}
-              branch={branch}
-              milestones={milestonesByBranch[branch.id] || []}
-              expandedMilestoneId={expandedMilestoneId}
-              onToggleExpand={toggleMilestoneExpansion}
-            />
-          ))}
+          {/* Branch point connecting historical to future */}
+          <div className="branch-point-connector">
+            <div className="show-future-button-container">
+              <button 
+                className="show-future-branches-button" 
+                onClick={toggleBranchVisibility}
+              >
+                {filter.showBranches ? 'Hide Future' : 'Show Future'}
+              </button>
+            </div>
+          </div>
+          
+          {/* Future timelines section - only visible when toggled */}
+          {filter.showBranches && (
+            <div className="future-timelines-section">
+              {/* Future branch paths section */}
+              <div className="future-paths-container">
+                {/* Optimistic branch */}
+                {optimisticBranch && (
+                  <div className={getOptimisticClassName()}>
+                    <div className="branch-type-label">Optimistic</div>
+                    <TimelineBranch
+                      key={optimisticBranch.id}
+                      branch={optimisticBranch}
+                      milestones={milestonesByBranch[optimisticBranch.id] || []}
+                      expandedMilestoneId={expandedMilestoneId}
+                      onToggleExpand={toggleMilestoneExpansion}
+                    />
+                  </div>
+                )}
+                
+                {/* Pessimistic branch */}
+                {pessimisticBranch && (
+                  <div className={getPessimisticClassName()}>
+                    <div className="branch-type-label">Pessimistic</div>
+                    <TimelineBranch
+                      key={pessimisticBranch.id}
+                      branch={pessimisticBranch}
+                      milestones={milestonesByBranch[pessimisticBranch.id] || []}
+                      expandedMilestoneId={expandedMilestoneId}
+                      onToggleExpand={toggleMilestoneExpansion}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
         
         {/* Empty state */}
