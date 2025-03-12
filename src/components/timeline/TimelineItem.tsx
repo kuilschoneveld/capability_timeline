@@ -58,23 +58,30 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
       
       {isExpanded && (
         <div className="timeline-item-details" onClick={handleDetailsClick}>
+          {/* Chart placeholder for algorithm visualization */}
+          <div className="chart-placeholder">
+            <div className="chart-connector"></div>
+          </div>
+          
           <p className="timeline-item-description">{description}</p>
           
           {/* Thematic tags visualization */}
-          <div className="timeline-item-tags">
-            {Object.entries(thematicTags).map(([tag, value]) => (
-              <div key={tag} className="timeline-item-tag">
-                <span className="tag-name">{tag}</span>
-                <div className="tag-bar-container">
-                  <div 
-                    className="tag-bar" 
-                    style={{ width: `${value * 10}%` }}
-                    title={`${tag}: ${value}/10`}
-                  />
+          {thematicTags && Object.keys(thematicTags).length > 0 && (
+            <div className="timeline-item-tags">
+              {Object.entries(thematicTags).map(([tag, value]) => (
+                <div key={tag} className="timeline-item-tag">
+                  <span className="tag-name">{tag}</span>
+                  <div className="tag-bar-container">
+                    <div 
+                      className="tag-bar" 
+                      style={{ width: `${value * 10}%` }}
+                      title={`${tag}: ${value}/10`}
+                    />
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
           
           {/* Source links if available */}
           {sourceUrls && sourceUrls.length > 0 && (
@@ -98,6 +105,9 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
           )}
         </div>
       )}
+      
+      {/* Diamond icon below expanded cards */}
+      {isExpanded && <div className="diamond-icon"></div>}
     </div>
   );
 };

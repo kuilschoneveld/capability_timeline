@@ -92,7 +92,6 @@ const Timeline: React.FC = () => {
             >
               {filter.showBranches ? 'Hide Future Branches' : 'Show Future Branches'}
             </button>
-            <div className="timeline-branch-date">{branchPointDate}</div>
           </div>
           
           {/* Render future branches if showBranches is true */}

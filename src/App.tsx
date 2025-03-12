@@ -1,9 +1,12 @@
 import './App.css';
 import Timeline from './components/timeline/Timeline';
+import NetworkedTimelinePage from './pages/NetworkedTimelinePage';
+import BasicTestPage from './pages/BasicTestPage';
+import SimpleNetworkDisplay from './components/SimpleNetworkDisplay';
 import { useRef, useState, useEffect } from 'react';
 
-// Define filter mode type for type safety
-type FilterMode = 'Technical' | 'Societal' | 'Philosophical';
+// Define view mode type for timeline views
+type ViewMode = 'standard' | 'networked' | 'test' | 'simple';
 
 function App() {
   const mainRef = useRef<HTMLDivElement>(null);
@@ -11,8 +14,8 @@ function App() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   
-  // Add state for active filter mode
-  const [activeFilter, setActiveFilter] = useState<FilterMode>('Technical');
+  // Add state for active view mode
+  const [viewMode, setViewMode] = useState<ViewMode>('standard');
   
   // Refs for inertial scrolling
   const lastMouseX = useRef(0);
@@ -20,10 +23,14 @@ function App() {
   const lastTimestamp = useRef(0);
   const animationFrame = useRef<number | null>(null);
   
-  // Handle filter change
-  const handleFilterChange = (mode: FilterMode) => {
-    setActiveFilter(mode);
-    // Future implementation can change filtering behavior here
+  // Toggle between view modes
+  const toggleViewMode = () => {
+    setViewMode(current => {
+      if (current === 'standard') return 'networked';
+      if (current === 'networked') return 'test';
+      if (current === 'test') return 'simple';
+      return 'standard';
+    });
   };
   
   // Handle drag start
@@ -200,44 +207,59 @@ function App() {
       <div className="title-bar">
         <div className="title-container">
           <h1 className="main-title">Wayfaring on a Starless Night</h1>
-          <button className="title-button">~</button>
-        </div>
-        <div className="filter-options">
+          
+          {/* Toggle button to switch between timeline views */}
           <button 
-            className={`filter-option ${activeFilter === 'Technical' ? 'active' : ''}`}
-            onClick={() => handleFilterChange('Technical')}
+            className="title-button"
+            onClick={toggleViewMode}
+            title={`Switch view mode`}
           >
-            Technical
-          </button>
-          <button 
-            className={`filter-option ${activeFilter === 'Societal' ? 'active' : ''}`}
-            onClick={() => handleFilterChange('Societal')}
-          >
-            Societal
-          </button>
-          <button 
-            className={`filter-option ${activeFilter === 'Philosophical' ? 'active' : ''}`}
-            onClick={() => handleFilterChange('Philosophical')}
-          >
-            Philosophical
+            {viewMode === 'standard' ? 'Network' : 
+             viewMode === 'networked' ? 'Test' : 
+             viewMode === 'test' ? 'Simple' : 'Standard'}
           </button>
         </div>
+        
+        {/* Only show filter options for standard view */}
+        {viewMode === 'standard' && (
+          <div className="filter-options">
+            {/* Keep existing filter buttons */}
+            {/* ... existing code ... */}
+          </div>
+        )}
       </div>
+
+      {/* Render the appropriate view based on viewMode */}
+      {viewMode === 'standard' && (
+        <>
+          <main 
+            ref={mainRef}
+            className={`App-main ${isDragging ? 'dragging' : ''}`}
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Timeline />
+          </main>
+          
+          <div className="timeline-scrollbar">
+            <div className="year-indicator">Year</div>
+          </div>
+        </>
+      )}
+
+      {viewMode === 'networked' && (
+        <NetworkedTimelinePage />
+      )}
       
-      <main 
-        ref={mainRef}
-        className={`App-main ${isDragging ? 'dragging' : ''}`}
-        onMouseDown={handleMouseDown}
-        onMouseMove={handleMouseMove}
-        onMouseUp={handleMouseUp}
-        onMouseLeave={handleMouseLeave}
-      >
-        <Timeline />
-      </main>
-      
-      <div className="timeline-scrollbar">
-        <div className="year-indicator">Year</div>
-      </div>
+      {viewMode === 'test' && (
+        <BasicTestPage />
+      )}
+
+      {viewMode === 'simple' && (
+        <SimpleNetworkDisplay />
+      )}
     </div>
   );
 }

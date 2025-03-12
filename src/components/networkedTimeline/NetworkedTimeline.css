@@ -1,0 +1,236 @@
+/* NetworkedTimeline.css - Styles for the networked timeline visualization */
+
+.networked-timeline-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #0f172a;
+  overflow: hidden;
+}
+
+.network-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.network-visualization {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.connections-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.nodes-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.network-node {
+  position: absolute;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, opacity 0.2s ease-out;
+  cursor: pointer;
+  will-change: transform, box-shadow, opacity;
+}
+
+.network-node.selected {
+  z-index: 30 !important;
+}
+
+.network-node.highlighted {
+  z-index: 20 !important;
+}
+
+.network-node:hover {
+  z-index: 15 !important;
+  transform: translate(-50%, -50%) scale(1.05) !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3), 0 4px 12px rgba(0, 0, 0, 0.6) !important;
+  opacity: 1 !important;
+}
+
+.network-connection {
+  pointer-events: none;
+  transition: opacity 0.2s ease-out;
+  will-change: opacity;
+}
+
+.network-connection.highlighted {
+  z-index: 10 !important;
+}
+
+.node-title {
+  font-weight: 600;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.node-date {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.node-description {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  opacity: 0;
+  max-height: 0;
+  transition: opacity 0.3s ease, max-height 0.3s ease;
+  overflow: hidden;
+}
+
+.network-node.selected .node-description,
+.network-node.highlighted .node-description {
+  opacity: 1;
+  max-height: 80px;
+}
+
+.network-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 50;
+}
+
+.network-control-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(51, 65, 85, 0.8);
+  border: 1px solid rgba(100, 116, 139, 0.5);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.network-control-button:hover {
+  background-color: rgba(59, 130, 246, 0.8);
+  transform: scale(1.1);
+}
+
+.node-detail-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 280px;
+  background-color: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(100, 116, 139, 0.5);
+  border-radius: 6px;
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  z-index: 50;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.thematic-dimension {
+  margin-top: 0.5rem;
+}
+
+.thematic-dimension-bar {
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.thematic-dimension-value {
+  height: 100%;
+  border-radius: 2px;
+}
+
+.axis-line {
+  position: absolute;
+  background-color: rgba(100, 100, 120, 0.3);
+  z-index: 5;
+}
+
+.axis-label {
+  position: absolute;
+  font-size: 0.75rem;
+  color: rgba(200, 200, 220, 0.7);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.axis-marker {
+  position: absolute;
+  font-size: 0.7rem;
+  color: rgba(180, 180, 200, 0.5);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Year markers */
+.timeline-year-markers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* For tooltip hover effects */
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip-container:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
+  z-index: 100;
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.network-node.new {
+  animation: pulse 1.5s ease-in-out infinite;
+} 
