@@ -1219,6 +1219,7 @@ body {
 .year-indicator.no-year {
   background-color: rgba(30, 30, 30, 0.6);
   opacity: 0.7;
+  padding: 8px 30px; /* Increase horizontal padding to accommodate wider ship */
 }
 
 /* Closing progress styles */
@@ -1259,6 +1260,49 @@ body {
   text-align: center;
   min-width: 80px;
   transition: opacity 0.3s ease;
+}
+
+/* Ship icon styles */
+.ship-icon {
+  display: inline-block;
+  filter: drop-shadow(0 0 8px rgba(10, 147, 255, 0.7));
+  transition: transform 0.3s ease;
+  margin: -5px -10px; /* Adjust margins to keep the icon centered in the container */
+}
+
+.year-indicator.no-year:hover .ship-icon {
+  transform: translateY(-2px);
+}
+
+@keyframes ship-float {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-2px) rotate(-0.5deg); }
+  50% { transform: translateY(-3px) rotate(0deg); }
+  75% { transform: translateY(-2px) rotate(0.5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.year-indicator:not(.closing-progress).no-year .ship-icon {
+  animation: ship-float 4s ease-in-out infinite;
+}
+
+/* Stars animation */
+@keyframes twinkle {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+.ship-icon circle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.ship-icon circle:nth-child(odd) {
+  animation-delay: 1s;
+}
+
+.ship-icon circle:nth-child(even) {
+  animation-delay: 2s;
 }
 
 /* Animation for year indicator when it changes */
