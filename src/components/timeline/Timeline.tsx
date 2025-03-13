@@ -340,34 +340,28 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
         ) : (
           <div className="year-indicator-content">
             <svg className="ship-icon" width="72" height="38" viewBox="0 0 72 38" fill="none" xmlns="http://www.w3.org/2000/svg">
-              {/* Main hull */}
-              <path d="M15 26H57C57 31 52 33 46 33H26C20 33 15 31 15 26Z" fill="#0A93FF" fillOpacity="0.8" />
+              {/* Main hull - shaped for rightward motion with pointed bow */}
+              <path d="M12 26H50C50 26 58 26 60 22C62 18 57 31 50 31H20C14 31 12 28 12 26Z" fill="#0A93FF" fillOpacity="0.95" />
               
-              {/* Main sail structure */}
-              <path d="M36 5L26 22H46L36 5Z" fill="#0A93FF" />
+              {/* Two asymmetrical sails */}
+              <path d="M30 6L20 22H40L30 6Z" fill="#0A93FF" fillOpacity="0.95" />
+              <path d="M42 10L36 22H48L42 10Z" fill="#0A93FF" fillOpacity="0.95" />
               
-              {/* Secondary sails */}
-              <path d="M24 10L18 22H30L24 10Z" fill="#0A93FF" fillOpacity="0.7" />
-              <path d="M48 10L42 22H54L48 10Z" fill="#0A93FF" fillOpacity="0.7" />
+              {/* Portholes/windows in hull */}
+              <circle cx="22" cy="28" r="1.5" fill="#0A93FF" fillOpacity="1" />
+              <circle cx="32" cy="28" r="1.5" fill="#0A93FF" fillOpacity="1" />
+              <circle cx="42" cy="28" r="1.5" fill="#0A93FF" fillOpacity="1" />
               
-              {/* Masts */}
-              <path d="M36 5V26" stroke="#0A93FF" strokeWidth="1.5" />
-              <path d="M24 10V26" stroke="#0A93FF" strokeWidth="1" />
-              <path d="M48 10V26" stroke="#0A93FF" strokeWidth="1" />
-              
-              {/* Windows/portholes */}
-              <circle cx="26" cy="28" r="1.5" fill="#0A93FF" fillOpacity="0.9" />
-              <circle cx="36" cy="28" r="1.5" fill="#0A93FF" fillOpacity="0.9" />
-              <circle cx="46" cy="28" r="1.5" fill="#0A93FF" fillOpacity="0.9" />
-              
-              {/* Deck details */}
-              <line x1="20" y1="26" x2="52" y2="26" stroke="#0A93FF" strokeWidth="1" strokeDasharray="2 1" />
+              {/* Deck details with asymmetry */}
+              <line x1="15" y1="26" x2="55" y2="26" stroke="#0A93FF" strokeWidth="1.2" strokeDasharray="2 1" />
               
               {/* Stars around the ship */}
-              <circle cx="13" cy="12" r="1" fill="white" fillOpacity="0.8" />
-              <circle cx="60" cy="15" r="1" fill="white" fillOpacity="0.8" />
-              <circle cx="8" cy="20" r="0.8" fill="white" fillOpacity="0.7" />
-              <circle cx="65" cy="9" r="0.8" fill="white" fillOpacity="0.7" />
+              <circle cx="10" cy="12" r="1" fill="white" fillOpacity="0.8" className="twinkle-star" />
+              <circle cx="62" cy="10" r="1" fill="white" fillOpacity="0.8" className="twinkle-star" />
+              <circle cx="6" cy="20" r="0.8" fill="white" fillOpacity="0.7" className="twinkle-star" />
+              <circle cx="58" cy="20" r="0.8" fill="white" fillOpacity="0.7" className="twinkle-star" />
+              <circle cx="18" cy="8" r="0.7" fill="white" fillOpacity="0.6" className="twinkle-star" />
+              <circle cx="50" cy="8" r="0.7" fill="white" fillOpacity="0.6" className="twinkle-star" />
             </svg>
           </div>
         )}

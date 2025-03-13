@@ -1217,9 +1217,10 @@ body {
 }
 
 .year-indicator.no-year {
-  background-color: rgba(30, 30, 30, 0.6);
-  opacity: 0.7;
+  background-color: rgba(25, 25, 25, 0.92);
+  opacity: 0.95;
   padding: 8px 30px; /* Increase horizontal padding to accommodate wider ship */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
 }
 
 /* Closing progress styles */
@@ -1260,6 +1261,20 @@ body {
   text-align: center;
   min-width: 80px;
   transition: opacity 0.3s ease;
+  position: relative;
+}
+
+.year-indicator.no-year .year-indicator-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 24px;
+  background-color: rgba(10, 10, 10, 0.7);
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
+  z-index: 1;
 }
 
 /* Ship icon styles */
@@ -1268,22 +1283,25 @@ body {
   filter: drop-shadow(0 0 8px rgba(10, 147, 255, 0.7));
   transition: transform 0.3s ease;
   margin: -5px -10px; /* Adjust margins to keep the icon centered in the container */
+  position: relative;
+  z-index: 2; /* Ensure the ship icon is above any background content */
 }
 
 .year-indicator.no-year:hover .ship-icon {
-  transform: translateY(-2px);
+  transform: translateY(-2px) rotate(2deg); /* Add slight rotation on hover */
 }
 
 @keyframes ship-float {
-  0% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-2px) rotate(-0.5deg); }
-  50% { transform: translateY(-3px) rotate(0deg); }
-  75% { transform: translateY(-2px) rotate(0.5deg); }
-  100% { transform: translateY(0) rotate(0deg); }
+  0% { transform: translateY(0) rotate(-1deg); }
+  25% { transform: translateY(-2px) rotate(1deg); }
+  50% { transform: translateY(-4px) rotate(2deg); }
+  75% { transform: translateY(-2px) rotate(0deg); }
+  100% { transform: translateY(0) rotate(-1deg); }
 }
 
 .year-indicator:not(.closing-progress).no-year .ship-icon {
-  animation: ship-float 4s ease-in-out infinite;
+  animation: ship-float 5s ease-in-out infinite;
+  transform-origin: center bottom; /* Set rotation origin to bottom of ship */
 }
 
 /* Stars animation */
@@ -1293,16 +1311,22 @@ body {
   100% { opacity: 0.4; }
 }
 
-.ship-icon circle {
+/* Only apply twinkling to stars with the twinkle-star class */
+.ship-icon .twinkle-star {
   animation: twinkle 3s ease-in-out infinite;
 }
 
-.ship-icon circle:nth-child(odd) {
-  animation-delay: 1s;
+.ship-icon .twinkle-star:nth-of-type(odd) {
+  animation-delay: 0.5s;
 }
 
-.ship-icon circle:nth-child(even) {
-  animation-delay: 2s;
+.ship-icon .twinkle-star:nth-of-type(even) {
+  animation-delay: 1.5s;
+}
+
+/* Remove general circle animation that would affect portholes */
+.ship-icon circle:not(.twinkle-star) {
+  animation: none;
 }
 
 /* Animation for year indicator when it changes */
