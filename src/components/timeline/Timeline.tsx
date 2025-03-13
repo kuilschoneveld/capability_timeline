@@ -8,12 +8,13 @@ import ProspectingMenu from '../ProspectingMenu';
 
 interface TimelineProps {
   showOptionsBox?: boolean;
+  onTimelineTitleChange?: (title: 'historical' | 'optimistic' | 'pessimistic' | 'future') => void;
 }
 
 /**
  * Main Timeline component that displays the entire timeline
  */
-const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
+const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTitleChange }) => {
   const {
     milestones,
     branches,
@@ -259,13 +260,39 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
     return baseClass;
   };
 
+  // Update the header title when expandedMilestoneId changes
+  useEffect(() => {
+    if (!onTimelineTitleChange) return;
+    
+    if (expandedMilestoneId) {
+      // Find which branch the expanded milestone belongs to
+      const branchId = milestones.find(m => m.id === expandedMilestoneId)?.branchId;
+      
+      if (branchId) {
+        const branch = branches.find(b => b.id === branchId);
+        
+        if (branch) {
+          if (branch.isMainTimeline) {
+            onTimelineTitleChange('historical');
+          } else if (branch.name.toLowerCase().includes('optimistic')) {
+            onTimelineTitleChange('optimistic');
+          } else if (branch.name.toLowerCase().includes('pessimistic')) {
+            onTimelineTitleChange('pessimistic');
+          } else {
+            onTimelineTitleChange('future');
+          }
+        }
+      }
+    }
+  }, [expandedMilestoneId, milestones, branches, onTimelineTitleChange]);
+
   return (
     <div 
       className="timeline-container" 
       ref={timelineContainerRef}
-      data-show-options={showOptionsBox.toString()}
+      data-show-options={showOptionsBox}
     >
-      {/* Options box fixed in the top left corner - only display when showOptionsBox is true */}
+      {/* Options box in the top corner - only visible when showOptionsBox is true */}
       {showOptionsBox && (
         <div className="timeline-options-box">
           <h3>Further Options</h3>
@@ -292,8 +319,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
       {error && <div className="timeline-error">Error: {error}</div>}
       
       <div className={getTimelineContentClassName()}>
-        {/* Historical section label */}
-        <div className="timeline-section-label historical-label">Historical</div>
+        {/* Historical section label is removed, now shown in the header */}
         
         <div className="timeline-layout">
           {/* Historical timeline section */}
@@ -305,6 +331,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
                 milestones={milestonesBeforeBranchPoint}
                 expandedMilestoneId={expandedMilestoneId}
                 onToggleExpand={toggleMilestoneExpansion}
+                hideTitle={true} /* Hide the title as it's now in the header */
               />
             )}
           </div>
@@ -324,6 +351,8 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
           {/* Future timelines section - only visible when toggled */}
           {filter.showBranches && (
             <div className="future-timelines-section">
+              {/* Future section label is now shown in the header */}
+              
               {/* Future branch paths section */}
               <div className="future-paths-container">
                 {/* Optimistic branch */}
@@ -335,6 +364,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
                       milestones={milestonesByBranch[optimisticBranch.id] || []}
                       expandedMilestoneId={expandedMilestoneId}
                       onToggleExpand={toggleMilestoneExpansion}
+                      hideTitle={true} /* Hide the title as it's now in the header */
                     />
                   </div>
                 )}
@@ -348,9 +378,13 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
                       milestones={milestonesByBranch[pessimisticBranch.id] || []}
                       expandedMilestoneId={expandedMilestoneId}
                       onToggleExpand={toggleMilestoneExpansion}
+                      hideTitle={true} /* Hide the title as it's now in the header */
                     />
                   </div>
                 )}
+                
+                {/* Extra spacer at the end to provide room for telescope button */}
+                <div style={{ minWidth: '40px', flexShrink: 0 }}></div>
               </div>
             </div>
           )}

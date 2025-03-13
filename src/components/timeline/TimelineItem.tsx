@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Milestone } from '../../types';
+import PieChart from './PieChart';
+import NarrativeLines from './NarrativeLines';
 
 interface TimelineItemProps {
   milestone: Milestone;
@@ -42,6 +44,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
       // Store the center position in a data attribute for use after the transition
       itemRef.current.dataset.centerX = elementCenterX.toString();
       itemRef.current.dataset.scrollOffset = scrollOffset.toString();
+      itemRef.current.dataset.topPosition = rect.top.toString(); // Store the top position for upward expansion
       
       // Add collapsing animation if we're about to collapse
       if (isExpanded) {
@@ -144,30 +147,13 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
           onClick={handleDetailsClick}
           data-milestone-id={id}
         >
-          {/* Chart placeholder for algorithm visualization */}
-          <div className="chart-placeholder">
-            <div className="chart-connector"></div>
-          </div>
+          {/* Pie chart visualization of technical, societal, philosophical dimensions */}
+          <PieChart data={thematicTags} />
           
           <p className="timeline-item-description">{description}</p>
           
-          {/* Thematic tags visualization */}
-          {thematicTags && Object.keys(thematicTags).length > 0 && (
-            <div className="timeline-item-tags">
-              {Object.entries(thematicTags).map(([tag, value]) => (
-                <div key={tag} className="timeline-item-tag">
-                  <span className="tag-name">{tag}</span>
-                  <div className="tag-bar-container">
-                    <div 
-                      className="tag-bar" 
-                      style={{ width: `${value * 10}%` }}
-                      title={`${tag}: ${value}/10`}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          {/* Narrative lines visualization - replaces the thematic tags bar graphs */}
+          <NarrativeLines milestoneId={id} />
           
           {/* Source links if available */}
           {sourceUrls && sourceUrls.length > 0 && (
@@ -191,9 +177,6 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
           )}
         </div>
       )}
-      
-      {/* Diamond icon below expanded cards */}
-      {isExpanded && <div className="diamond-icon"></div>}
     </div>
   );
 };

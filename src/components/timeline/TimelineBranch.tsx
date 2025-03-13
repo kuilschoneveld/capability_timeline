@@ -7,6 +7,7 @@ interface TimelineBranchProps {
   milestones: Milestone[];
   expandedMilestoneId: string | null;
   onToggleExpand: (id: string) => void;
+  hideTitle?: boolean; // Optional prop to hide the title
 }
 
 /**
@@ -16,7 +17,8 @@ const TimelineBranch: React.FC<TimelineBranchProps> = ({
   branch,
   milestones,
   expandedMilestoneId,
-  onToggleExpand
+  onToggleExpand,
+  hideTitle = false // Default to showing the title
 }) => {
   // Sort milestones by date
   const sortedMilestones = [...milestones].sort((a, b) => {
@@ -32,10 +34,12 @@ const TimelineBranch: React.FC<TimelineBranchProps> = ({
 
   return (
     <div className={`timeline-branch ${branch.isMainTimeline ? 'main-timeline' : 'branch-timeline'}`}>
-      <div className="timeline-branch-header">
-        <h2 className="timeline-branch-title">{branch.name}</h2>
-        <p className="timeline-branch-description">{branch.description}</p>
-      </div>
+      {!hideTitle && (
+        <div className="timeline-branch-header">
+          <h2 className="timeline-branch-title">{branch.name}</h2>
+          <p className="timeline-branch-description">{branch.description}</p>
+        </div>
+      )}
       
       <div className="timeline-branch-content">
         {/* Timeline line/connector */}
@@ -57,6 +61,9 @@ const TimelineBranch: React.FC<TimelineBranchProps> = ({
               No milestones available for this branch.
             </div>
           )}
+          
+          {/* Add spacer at the end to ensure telescope button visibility */}
+          <div className="timeline-end-spacer"></div>
         </div>
       </div>
     </div>

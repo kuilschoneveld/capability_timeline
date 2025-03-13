@@ -7,6 +7,9 @@ import { useRef, useState, useEffect } from 'react';
 // Define view mode type for timeline views
 type ViewMode = 'standard' | 'networked' | 'test';
 
+// Define timeline title type
+type TimelineTitle = 'historical' | 'optimistic' | 'pessimistic' | 'future';
+
 // Ship/Star icon for the toggle button
 const ShipStarIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,6 +37,9 @@ function App() {
   // Add state for options box visibility
   const [showOptionsBox, setShowOptionsBox] = useState(true);
   
+  // Add state for current timeline title
+  const [timelineTitle, setTimelineTitle] = useState<TimelineTitle>('historical');
+  
   // Refs for inertial scrolling
   const lastMouseX = useRef(0);
   const velocity = useRef(0);
@@ -47,6 +53,22 @@ function App() {
       if (current === 'networked') return 'test';
       return 'standard';
     });
+  };
+  
+  // Helper to get the title text based on current timeline title state
+  const getTimelineTitleText = () => {
+    switch(timelineTitle) {
+      case 'historical':
+        return 'Historical Timeline - increasing algorithmic capability';
+      case 'optimistic':
+        return 'Future Branches - opportunities and challenges';
+      case 'pessimistic':
+        return 'Future Branches - opportunities and challenges';
+      case 'future':
+        return 'Future Branches - opportunities and challenges';
+      default:
+        return '';
+    }
   };
   
   // Handle drag start
@@ -218,7 +240,7 @@ function App() {
     };
   }, [isDragging, startX, scrollLeft]);
   
-  // Add scroll event listener to hide/show options box
+  // Add scroll event listener to hide/show options box and update timeline title
   useEffect(() => {
     const handleScroll = () => {
       if (mainRef.current) {
@@ -229,6 +251,13 @@ function App() {
         // Hide it when scrolled further to the right (past the midpoint)
         const shouldShowOptions = mainRef.current.scrollLeft < windowMidpoint;
         setShowOptionsBox(shouldShowOptions);
+        
+        // If scrolled past midpoint, change to future title
+        if (!shouldShowOptions) {
+          setTimelineTitle('future');
+        } else {
+          setTimelineTitle('historical');
+        }
         
         // Apply the data-show-options attribute directly to relevant elements
         mainRef.current.setAttribute('data-show-options', shouldShowOptions ? 'true' : 'false');
@@ -276,6 +305,13 @@ function App() {
           </button>
         </div>
         
+        {/* Timeline title - new addition */}
+        {viewMode === 'standard' && (
+          <div className="timeline-header-title">
+            {getTimelineTitleText()}
+          </div>
+        )}
+        
         {/* Filter toggles: Technical/Societal/Philosophical */}
         <div className="dimension-toggles">
           <button 
@@ -312,7 +348,10 @@ function App() {
               onMouseLeave={handleMouseLeave}
               data-show-options={showOptionsBox}
             >
-              <Timeline showOptionsBox={showOptionsBox} />
+              <Timeline 
+                showOptionsBox={showOptionsBox} 
+                onTimelineTitleChange={setTimelineTitle}
+              />
             </main>
             
             <div className="timeline-scrollbar">
