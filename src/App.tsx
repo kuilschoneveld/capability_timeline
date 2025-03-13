@@ -230,8 +230,9 @@ function App() {
         const shouldShowOptions = mainRef.current.scrollLeft < windowMidpoint;
         setShowOptionsBox(shouldShowOptions);
         
-        // Apply the data-show-options attribute directly to the timeline container as well
-        // This provides a fallback in case the CSS selector isn't working properly
+        // Apply the data-show-options attribute directly to relevant elements
+        mainRef.current.setAttribute('data-show-options', shouldShowOptions ? 'true' : 'false');
+        
         const timelineContainer = mainRef.current.querySelector('.timeline-container');
         if (timelineContainer) {
           timelineContainer.setAttribute('data-show-options', shouldShowOptions ? 'true' : 'false');
@@ -242,6 +243,9 @@ function App() {
     // Add scroll event listener
     if (mainRef.current) {
       mainRef.current.addEventListener('scroll', handleScroll);
+      
+      // Initial check
+      handleScroll();
     }
     
     // Clean up

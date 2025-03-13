@@ -220,7 +220,11 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
   };
 
   return (
-    <div className="timeline-container" ref={timelineContainerRef}>
+    <div 
+      className="timeline-container" 
+      ref={timelineContainerRef}
+      data-show-options={showOptionsBox.toString()}
+    >
       {/* Options box fixed in the top left corner - only display when showOptionsBox is true */}
       {showOptionsBox && (
         <div className="timeline-options-box">
