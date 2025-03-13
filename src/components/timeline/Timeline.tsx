@@ -31,6 +31,18 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
   // Track the expanded state for each branch separately for better positioning
   const [hasExpandedOptimistic, setHasExpandedOptimistic] = useState(false);
   const [hasExpandedPessimistic, setHasExpandedPessimistic] = useState(false);
+  
+  // Track the currently displayed year for the year indicator
+  const [displayedYear, setDisplayedYear] = useState<string | null>(null);
+  
+  // Track the scroll position when a milestone is expanded
+  const [expansionScrollPosition, setExpansionScrollPosition] = useState<number | null>(null);
+  
+  // Track how close we are to the scroll threshold (0-100%)
+  const [scrollThresholdProgress, setScrollThresholdProgress] = useState(0);
+  
+  // Reference to the timeline container for visibility checking
+  const timelineContainerRef = useRef<HTMLDivElement>(null);
 
   // Group milestones by branch
   const milestonesByBranch = branches.reduce((acc, branch) => {
@@ -66,7 +78,22 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
     if (!expandedMilestoneId) {
       setHasExpandedOptimistic(false);
       setHasExpandedPessimistic(false);
+      setDisplayedYear(null);
+      setExpansionScrollPosition(null);
       return;
+    }
+    
+    // Find the expanded milestone to get its year
+    const expandedMilestone = milestones.find(m => m.id === expandedMilestoneId);
+    if (expandedMilestone) {
+      const date = new Date(expandedMilestone.date);
+      setDisplayedYear(date.getFullYear().toString());
+      
+      // Store the current scroll position when a milestone is expanded
+      const parentContainer = document.querySelector('.App-main');
+      if (parentContainer) {
+        setExpansionScrollPosition(parentContainer.scrollLeft);
+      }
     }
     
     // Check if expanded milestone is in optimistic branch
@@ -82,7 +109,95 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
         milestonesByBranch[pessimisticBranch.id].some(m => m.id === expandedMilestoneId)
       );
     }
-  }, [expandedMilestoneId, milestonesByBranch, optimisticBranch, pessimisticBranch]);
+  }, [expandedMilestoneId, milestones, milestonesByBranch, optimisticBranch, pessimisticBranch]);
+
+  // Check if user has scrolled beyond the threshold to close the expanded milestone
+  useEffect(() => {
+    if (!expandedMilestoneId || expansionScrollPosition === null) return;
+
+    const handleScroll = () => {
+      const parentContainer = document.querySelector('.App-main');
+      if (!parentContainer) return;
+      
+      const currentScrollPosition = parentContainer.scrollLeft;
+      const scrollDistance = Math.abs(currentScrollPosition - expansionScrollPosition);
+      
+      // Define a scroll threshold based on a percentage of viewport width
+      const viewportWidth = window.innerWidth;
+      const scrollThreshold = viewportWidth * 0.3; // 30% of viewport width
+      
+      // Calculate and update progress toward threshold (as a percentage)
+      const progress = Math.min(100, Math.round((scrollDistance / scrollThreshold) * 100));
+      setScrollThresholdProgress(progress);
+      
+      // If scrolled beyond threshold, close the expanded milestone
+      if (scrollDistance > scrollThreshold) {
+        // Before closing, smoothly scroll to the current position to prevent jumps
+        const expandedElement = document.querySelector(`[data-milestone-id="${expandedMilestoneId}"][data-expanded="true"]`);
+        if (expandedElement) {
+          const rect = expandedElement.getBoundingClientRect();
+          const elementCenterX = rect.left + rect.width / 2;
+          const viewportCenterX = window.innerWidth / 2;
+          
+          // If the element is not centered, center it smoothly
+          if (Math.abs(elementCenterX - viewportCenterX) > 50) {
+            const scrollAdjustment = elementCenterX - viewportCenterX;
+            parentContainer.scrollBy({
+              left: scrollAdjustment,
+              behavior: 'smooth'
+            });
+            
+            // Give time for the scroll animation before closing
+            setTimeout(() => {
+              setDisplayedYear(null);
+              toggleMilestoneExpansion(expandedMilestoneId);
+              setScrollThresholdProgress(0);
+            }, 150);
+            return;
+          }
+        }
+        
+        // If no element found or element is already centered, close immediately
+        setDisplayedYear(null);
+        toggleMilestoneExpansion(expandedMilestoneId);
+        setScrollThresholdProgress(0);
+        return;
+      }
+      
+      // Backup check: Also close if the milestone is completely out of view
+      const expandedElement = document.querySelector(`[data-milestone-id="${expandedMilestoneId}"][data-expanded="true"]`);
+      if (expandedElement) {
+        const rect = expandedElement.getBoundingClientRect();
+        const containerRect = parentContainer.getBoundingClientRect();
+        
+        const isCompletelyOutOfView = (
+          rect.right < containerRect.left ||
+          rect.left > containerRect.right
+        );
+        
+        if (isCompletelyOutOfView) {
+          setDisplayedYear(null);
+          toggleMilestoneExpansion(expandedMilestoneId);
+          setScrollThresholdProgress(0);
+        }
+      }
+    };
+    
+    // Listen for scroll events on the parent container
+    const parentContainer = document.querySelector('.App-main');
+    if (parentContainer) {
+      parentContainer.addEventListener('scroll', handleScroll, { passive: true });
+      
+      // Initial check
+      handleScroll();
+    }
+    
+    return () => {
+      if (parentContainer) {
+        parentContainer.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, [expandedMilestoneId, expansionScrollPosition, toggleMilestoneExpansion]);
 
   // Generate dynamic classes for branches based on expansion state
   const getOptimisticClassName = () => {
@@ -105,7 +220,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
   };
 
   return (
-    <div className="timeline-container">
+    <div className="timeline-container" ref={timelineContainerRef}>
       {/* Options box fixed in the top left corner - only display when showOptionsBox is true */}
       {showOptionsBox && (
         <div className="timeline-options-box">
@@ -202,6 +317,27 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
           <div className="timeline-empty">
             <p>No milestones found. Try adjusting your filters.</p>
           </div>
+        )}
+      </div>
+      
+      {/* Year indicator at the bottom */}
+      <div 
+        className={`year-indicator ${displayedYear ? 'has-year' : 'no-year'} ${
+          scrollThresholdProgress > 0 ? 'closing-progress' : ''
+        }`} 
+        style={
+          scrollThresholdProgress > 0 ? 
+          { '--closing-progress': `${scrollThresholdProgress}%` } as React.CSSProperties : 
+          undefined
+        }
+      >
+        {displayedYear ? (
+          <div className="year-indicator-content">{displayedYear}</div>
+        ) : (
+          <div className="year-indicator-content">Year</div>
+        )}
+        {scrollThresholdProgress > 0 && (
+          <div className="closing-progress-indicator" />
         )}
       </div>
     </div>

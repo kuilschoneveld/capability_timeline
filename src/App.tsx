@@ -312,7 +312,7 @@ function App() {
             </main>
             
             <div className="timeline-scrollbar">
-              <div className="year-indicator">Year</div>
+              {/* Year indicator moved to Timeline.tsx for dynamic updates */}
             </div>
           </>
         )}
