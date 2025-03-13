@@ -3,6 +3,8 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useTimeline } from '../../hooks/useTimeline';
 import TimelineBranch from './TimelineBranch';
 import TimelineControls from './TimelineControls';
+import TimelineExploreButton from './TimelineExploreButton';
+import ProspectingMenu from '../ProspectingMenu';
 
 interface TimelineProps {
   showOptionsBox?: boolean;
@@ -41,6 +43,9 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
   // Track how close we are to the scroll threshold (0-100%)
   const [scrollThresholdProgress, setScrollThresholdProgress] = useState(0);
   
+  // Track if user has reached the end of the timeline
+  const [hasReachedEnd, setHasReachedEnd] = useState(false);
+  
   // Reference to the timeline container for visibility checking
   const timelineContainerRef = useRef<HTMLDivElement>(null);
 
@@ -73,6 +78,9 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
     )
     : [];
     
+  // Track if the prospecting menu is open
+  const [menuOpen, setMenuOpen] = useState(false);
+  
   // Update expanded state for branches whenever expandedMilestoneId changes
   useEffect(() => {
     if (!expandedMilestoneId) {
@@ -198,6 +206,38 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
       }
     };
   }, [expandedMilestoneId, expansionScrollPosition, toggleMilestoneExpansion]);
+
+  // Detect when user has scrolled to the end of the timeline
+  useEffect(() => {
+    const parentContainer = document.querySelector('.App-main');
+    if (!parentContainer) return;
+    
+    const handleScrollEnd = () => {
+      const isAtEnd = parentContainer.scrollLeft + parentContainer.clientWidth >= parentContainer.scrollWidth - 50;
+      setHasReachedEnd(isAtEnd);
+    };
+    
+    // Add scroll event listener
+    parentContainer.addEventListener('scroll', handleScrollEnd);
+    
+    // Initial check
+    handleScrollEnd();
+    
+    // Clean up
+    return () => {
+      parentContainer.removeEventListener('scroll', handleScrollEnd);
+    };
+  }, []);
+
+  // Handler for the explore button click
+  const handleExploreClick = () => {
+    setMenuOpen(true);
+  };
+
+  // Handler to close the prospecting menu
+  const handleCloseMenu = () => {
+    setMenuOpen(false);
+  };
 
   // Generate dynamic classes for branches based on expansion state
   const getOptimisticClassName = () => {
@@ -369,6 +409,15 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true }) => {
           <div className="closing-progress-indicator" />
         )}
       </div>
+
+      {/* Telescope explore button - visible when user has scrolled to the end and future branches are shown */}
+      <TimelineExploreButton
+        visible={hasReachedEnd && filter.showBranches}
+        onClick={handleExploreClick}
+      />
+
+      {/* Prospecting Menu */}
+      <ProspectingMenu isOpen={menuOpen} onClose={handleCloseMenu} />
     </div>
   );
 };
