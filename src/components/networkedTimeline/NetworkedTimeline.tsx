@@ -3,6 +3,7 @@ import { useNetworkedTimeline } from '../../hooks/useNetworkedTimeline';
 import { TimelineNode, TimelineConnection } from '../../types/networkedTimeline';
 import NodeDetailPanel from '../nodeDetailPanel/NodeDetailPanel';
 import './NetworkedTimeline.css';
+import timelineEvents from '../../data/timelineDatabase';
 
 interface NetworkedTimelineProps {
   initialSearchTerm?: string;

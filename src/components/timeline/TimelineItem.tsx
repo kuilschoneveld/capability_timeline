@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Milestone } from '../../types';
 import PieChart from './PieChart';
 import NarrativeLines from './NarrativeLines';
+import timelineEvents from '../../data/timelineDatabase';
 
 interface TimelineItemProps {
   milestone: Milestone;
@@ -130,15 +131,6 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
       <div className="timeline-item-header">
         <div className="timeline-item-date">{formattedDate}</div>
         <h3 className="timeline-item-title">{title}</h3>
-        {imageUrl && (
-          <div className="timeline-item-image-container">
-            <img 
-              src={imageUrl} 
-              alt={title} 
-              className="timeline-item-image" 
-            />
-          </div>
-        )}
       </div>
       
       {isExpanded && (
@@ -155,26 +147,37 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
           {/* Narrative lines visualization - replaces the thematic tags bar graphs */}
           <NarrativeLines milestoneId={id} />
           
-          {/* Source links if available */}
-          {sourceUrls && sourceUrls.length > 0 && (
+          {/* Hiding the references section for now */}
+          {/* {sourceUrls && sourceUrls.length > 0 && (
             <div className="timeline-item-sources">
-              <h4>Sources:</h4>
-              <ul>
-                {sourceUrls.map((url, index) => (
-                  <li key={index}>
-                    <a 
-                      href={url} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      Source {index + 1}
-                    </a>
-                  </li>
-                ))}
+              <h4>References</h4>
+              <ul className="source-links-list">
+                {sourceUrls.map((url, index) => {
+                  // Extract domain name for a cleaner display
+                  let displayText;
+                  try {
+                    const urlObj = new URL(url);
+                    displayText = urlObj.hostname.replace('www.', '');
+                  } catch {
+                    displayText = `Reference ${index + 1}`;
+                  }
+                  
+                  return (
+                    <li key={index}>
+                      <a 
+                        href={url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {displayText}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
-          )}
+          )} */}
         </div>
       )}
     </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Milestone, TimelineBranch as TimelineBranchType } from '../../types';
 import TimelineItem from './TimelineItem';
+import timelineEvents from '../../data/timelineDatabase';
 
 interface TimelineBranchProps {
   branch: TimelineBranchType;

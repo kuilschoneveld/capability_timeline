@@ -1,5 +1,6 @@
 import React from 'react';
 import { TimelineBranch, TimelineFilter, TimelineViewMode } from '../../types';
+import timelineEvents from '../../data/timelineDatabase';
 
 interface TimelineControlsProps {
   branches: TimelineBranch[];

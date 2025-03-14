@@ -5,6 +5,7 @@ import TimelineBranch from './TimelineBranch';
 import TimelineControls from './TimelineControls';
 import TimelineExploreButton from './TimelineExploreButton';
 import ProspectingMenu from '../ProspectingMenu';
+import timelineEvents from '../../data/timelineDatabase';
 
 interface TimelineProps {
   showOptionsBox?: boolean;
@@ -56,16 +57,26 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
     return acc;
   }, {} as Record<string, typeof milestones>);
 
+  // Add console logging to see what data Timeline component is working with
+  console.log("Timeline component data:");
+  console.log("Branches:", branches);
+  console.log("Milestones:", milestones);
+  console.log("Milestones by branch:", milestonesByBranch);
+
   // Get main timeline branch and its milestones
   const mainBranch = branches.find(branch => branch.isMainTimeline);
   
   // Get future branches and separate them into optimistic and pessimistic
   const futureBranches = branches.filter(branch => !branch.isMainTimeline);
+  console.log("Future branches:", futureBranches);
   
   // For demo purposes, we'll consider the first future branch as optimistic and the second as pessimistic
   // In a real app, this would be determined by branch metadata
-  const optimisticBranch = futureBranches.length > 0 ? futureBranches[0] : null;
-  const pessimisticBranch = futureBranches.length > 1 ? futureBranches[1] : null;
+  const optimisticBranch = futureBranches.find(branch => branch.id === 'future-optimistic');
+  const pessimisticBranch = futureBranches.find(branch => branch.id === 'future-pessimistic');
+  
+  console.log("Optimistic branch:", optimisticBranch);
+  console.log("Pessimistic branch:", pessimisticBranch);
   
   // Get branch point date - the date when timeline branches
   const branchPointDate = futureBranches.length > 0 && futureBranches[0].startDate 

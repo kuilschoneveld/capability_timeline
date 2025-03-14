@@ -17,6 +17,7 @@ const defaultFilter: TimelineFilter = {
     philosophical: 0,
   },
   showBranches: false, // Initially only show main timeline
+  dateRange: undefined // No date range filtering by default
 };
 
 /**
@@ -47,14 +48,17 @@ export const useTimeline = () => {
       try {
         setLoading(true);
         
-        // Load branches and milestones in parallel
-        const [branchesData, milestonesData] = await Promise.all([
-          TimelineService.getBranches(),
-          TimelineService.getMilestonesByBranch('main'), // Initially load only main timeline
-        ]);
-        
+        // Load all branches
+        const branchesData = await TimelineService.getBranches();
+        console.log("Loaded branches:", branchesData);
         setBranches(branchesData);
-        setMilestones(milestonesData);
+        
+        // Load main timeline milestones
+        console.log("Loading main branch milestones");
+        const mainMilestones = await TimelineService.getMilestonesByBranch('main');
+        console.log("Loaded main milestones:", mainMilestones);
+        setMilestones(mainMilestones);
+        
         setError(null);
       } catch (err) {
         setError('Failed to load timeline data');
@@ -127,8 +131,49 @@ export const useTimeline = () => {
    */
   const toggleBranchVisibility = useCallback(async () => {
     const showBranches = !filter.showBranches;
-    await updateFilter({ showBranches });
-  }, [filter.showBranches, updateFilter]);
+    
+    try {
+      setLoading(true);
+      
+      // Log what we're doing
+      console.log(`Toggling branch visibility. showBranches: ${showBranches}`);
+      
+      if (showBranches) {
+        // When showing branches, load all milestones
+        console.log("Loading all milestones including future branches");
+        const allMilestones = await TimelineService.getAllMilestones();
+        console.log(`Loaded ${allMilestones.length} total milestones across all branches`);
+        
+        // Count per branch for debugging
+        const branchCounts = branches.map(branch => ({
+          branch: branch.id,
+          count: allMilestones.filter(m => m.branchId === branch.id).length
+        }));
+        console.log("Milestone counts by branch:", branchCounts);
+        
+        setMilestones(allMilestones);
+      } else {
+        // When hiding branches, only show main timeline
+        console.log("Loading only main branch milestones");
+        const mainMilestones = await TimelineService.getMilestonesByBranch('main');
+        console.log(`Loaded ${mainMilestones.length} milestones from main branch`);
+        setMilestones(mainMilestones);
+      }
+      
+      // Update filter
+      setFilter(prevFilter => ({
+        ...prevFilter,
+        showBranches
+      }));
+      
+      setError(null);
+    } catch (err) {
+      setError('Failed to toggle branch visibility');
+      console.error('Error toggling branch visibility:', err);
+    } finally {
+      setLoading(false);
+    }
+  }, [filter.showBranches, branches]);
 
   return {
     // Data

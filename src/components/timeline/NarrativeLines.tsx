@@ -1,4 +1,5 @@
 import React from 'react';
+import timelineEvents from '../../data/timelineDatabase';
 
 interface NarrativeLinesProps {
   milestoneId: string;
