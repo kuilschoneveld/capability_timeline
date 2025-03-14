@@ -329,15 +329,9 @@ body {
 
 /* Timeline content */
 .timeline-content {
-  --branch-gap: 80px; /* Further reduced from 120px to bring branches even closer */
   height: 100%;
   position: relative;
   width: 100%;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 /* Timeline section labels */
@@ -439,14 +433,12 @@ body {
 
 /* Future paths container */
 .future-paths-container {
-  display: flex;
-  flex-direction: column;
-  gap: var(--branch-gap);
   position: relative;
   margin-left: 0;
-  min-height: 300px;
+  min-height: 500px; /* Increased height to better accommodate the wider branch separation */
   transition: all 0.3s ease; /* Smooth transition when adjusting spacing */
   padding-right: 60px; /* Halved from 120px */
+  width: 100%; /* Ensure full width */
 }
 
 /* Timeline end spacer - provides space for the telescope button */
@@ -459,12 +451,13 @@ body {
 
 /* Individual future branch */
 .future-branch {
-  position: relative;
+  position: absolute;
   display: flex;
   flex-direction: row;
   align-items: center; /* Center items vertically */
   transition: all 0.3s ease; /* Add smooth transition for repositioning */
   padding: 20px 0; /* Add padding to create space for expanded items */
+  width: 100%; /* Ensure the branch takes full width of container */
 }
 
 /* Remove the connecting lines between branches and the button */
@@ -478,18 +471,56 @@ body {
 
 /* Optimistic branch specific styles */
 .optimistic-branch {
-  position: relative;
-  margin-bottom: 10px; /* Further reduced from 20px */
-  top: auto;
-  left: auto;
+  position: absolute;
+  top: 25%; /* Position 25% from the top (was 30%) */
+  left: 0;
+  transform: translateY(-50%); /* Center at the 25% point */
+  z-index: 10; /* Ensure proper layering */
 }
 
 /* Pessimistic branch specific styles */
 .pessimistic-branch {
-  position: relative;
-  margin-top: 10px; /* Further reduced from 20px */
-  top: auto;
-  left: auto;
+  position: absolute;
+  top: 75%; /* Position 25% from the bottom (75% from the top) */
+  left: 0;
+  transform: translateY(-50%); /* Center at the 75% point */
+  z-index: 10; /* Ensure proper layering */
+}
+
+/* Make optimistic branch timeline items expand more downward */
+.optimistic-branch .timeline-item {
+  transform-origin: center top; /* This makes it expand more downward */
+}
+
+/* Make optimistic branch's expanded items have more bottom padding */
+.optimistic-branch .timeline-item.expanded {
+  padding-bottom: 2rem; /* Extra padding at the bottom for expanded state */
+  margin-bottom: 1rem; /* Add some margin at the bottom */
+}
+
+/* Make pessimistic branch timeline items expand more upward */
+.pessimistic-branch .timeline-item {
+  transform-origin: center bottom; /* This makes it expand more upward */
+}
+
+/* Make pessimistic branch's expanded items have more top padding */
+.pessimistic-branch .timeline-item.expanded {
+  padding-top: 2rem; /* Extra padding at the top for expanded state */
+  margin-top: 1rem; /* Add some margin at the top */
+}
+
+/* Remove margin adjustment for expanded states since we're using absolute positioning */
+.optimistic-branch.has-expanded + .pessimistic-branch.has-expanded {
+  margin-top: 0;
+}
+
+/* Adjust z-index for expanded state to ensure they overlay properly */
+.optimistic-branch.has-expanded {
+  z-index: 20;
+}
+
+.pessimistic-branch.has-expanded {
+  z-index: 20;
 }
 
 /* Timeline item styles */
@@ -531,24 +562,8 @@ body {
   min-width: 250px;
   max-width: 350px;
   z-index: 10; /* Raise above other items when expanded, but below the options box */
-  animation: item-expand 0.4s ease-out;
   margin: 0 1rem; /* Keep consistent margins */
   padding-bottom: 1.5rem; /* Add some padding at the bottom for better spacing */
-}
-
-/* When optimistic branch has an expanded item */
-.optimistic-branch.has-expanded {
-  z-index: 20; /* Raise above other elements but below options box */
-}
-
-/* When pessimistic branch has an expanded item */
-.pessimistic-branch.has-expanded {
-  z-index: 20; /* Raise above other elements but below options box */
-}
-
-/* When both branches have expanded items, ensure proper spacing */
-.optimistic-branch.has-expanded + .pessimistic-branch.has-expanded {
-  margin-top: 10px;
 }
 
 /* Timeline branch */
@@ -1483,12 +1498,14 @@ body {
 
 /* When both branches have expanded items (using JavaScript-applied classes) */
 .both-expanded .future-paths-container {
-  --branch-gap: 120px; /* Reduced from 160px */
+  /* Remove the gap since we're using absolute positioning now */
+  min-height: 550px; /* Increase height to accommodate for expanded elements with wider separation */
 }
 
 /* When only one branch has expanded items */
 .one-expanded .future-paths-container {
-  --branch-gap: 100px; /* Reduced from 140px */
+  /* Remove the gap since we're using absolute positioning now */
+  min-height: 530px; /* Slightly increased height for expanded elements with wider separation */
 }
 
 /* Animation keyframes for timeline item expansion */
@@ -1518,17 +1535,62 @@ body {
   }
 }
 
+/* Animation for optimistic branch items - expand more downward */
+@keyframes optimistic-expand {
+  0% {
+    opacity: 0.9;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* Animation for pessimistic branch items - expand more upward */
+@keyframes pessimistic-expand {
+  0% {
+    opacity: 0.9;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+/* Apply branch-specific animations */
+.optimistic-branch .timeline-item.expanded {
+  animation: optimistic-expand 0.4s ease-out;
+  padding-bottom: 2rem; /* Extra padding at the bottom for expanded state */
+  margin-bottom: 1rem; /* Add some margin at the bottom */
+}
+
+.pessimistic-branch .timeline-item.expanded {
+  animation: pessimistic-expand 0.4s ease-out;
+  padding-top: 2rem; /* Extra padding at the top for expanded state */
+  margin-top: 1rem; /* Add some margin at the top */
+}
+
 /* Telescope Explore Button Styles */
 .timeline-explore-button {
-  position: absolute;
+  position: fixed;
   right: 30px;
   top: 50%;
   transform: translateY(-50%);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
-  z-index: 20; /* Increased z-index to ensure it's above timeline items */
-  margin-right: 10px; /* Halved from 20px */
+  z-index: 1020;
+  margin-right: 0;
 }
 
 .timeline-explore-button.visible {
@@ -1814,9 +1876,9 @@ body {
   }
 }
 
-/* Reduce gap in future paths container when either branch is expanded */
+/* No longer need gap adjustment with absolute positioning */
 .future-paths-container:has(.has-expanded) {
-  gap: var(--branch-gap);
+  /* No need for gap with absolute positioning */
 }
 
 /* Apply collapsing animation through JavaScript by adding this class */

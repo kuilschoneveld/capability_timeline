@@ -384,7 +384,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
                 )}
                 
                 {/* Extra spacer at the end to provide room for telescope button */}
-                <div style={{ minWidth: '40px', flexShrink: 0 }}></div>
+                {/* With absolute positioning, this spacer may be better as a right padding */}
               </div>
             </div>
           )}
