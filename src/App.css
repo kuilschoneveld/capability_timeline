@@ -290,16 +290,279 @@ body {
   border-radius: 12px;
   padding: 15px;
   width: 280px;
-  z-index: 1100; /* Higher than expanded timeline items */
+  z-index: 2000; /* Increased z-index to ensure it's above everything */
   box-shadow: 0 0 15px rgba(10, 147, 255, 0.4);
   text-align: left;
   opacity: 1;
-  transition: all 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.5s ease;
   backdrop-filter: blur(4px);
+  will-change: opacity, transform;
+  overflow: hidden;
+  pointer-events: auto; /* Ensure it captures all pointer events */
+}
+
+/* Add a higher stacking context for the options box container */
+.timeline-options-box * {
+  pointer-events: auto; /* Ensure all children elements capture pointer events */
+}
+
+/* Animation for options box */
+.timeline-container[data-show-options="false"] .timeline-options-box:not(.collapsed),
+[data-show-options="false"] .timeline-options-box:not(.collapsed) {
+  opacity: 0;
+  transform: translateX(-50px) scale(0.95);
+  pointer-events: none;
+  box-shadow: 0 0 5px rgba(10, 147, 255, 0);
+}
+
+/* Special styling for collapsed options box in future view */
+.timeline-container[data-show-options="false"] .timeline-options-box.collapsed,
+[data-show-options="false"] .timeline-options-box.collapsed {
+  background-color: rgba(10, 30, 40, 0.7);
+  border-color: rgba(10, 147, 255, 0.4);
+  box-shadow: 0 0 8px rgba(10, 147, 255, 0.2);
+  pointer-events: auto; /* Ensure collapsed state still captures events */
+}
+
+/* Make the options box more prominent when there's an expanded item */
+.timeline-item.expanded ~ .timeline-options-box,
+.timeline-container:has(.timeline-item.expanded) .timeline-options-box {
+  box-shadow: 0 0 20px rgba(10, 147, 255, 0.6);
+  border-color: rgba(10, 147, 255, 0.8);
+  transform: translateX(0) scale(1.03);
+  pointer-events: auto; /* Ensure expanded state captures events */
+}
+
+/* Ensure options content has smooth transition */
+.options-content {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Search functionality styles */
+.options-search {
+  position: relative;
+  margin: 15px 0;
+  padding-bottom: 15px;
+}
+
+.search-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-container svg {
+  position: absolute;
+  left: 8px;
+  color: #0A93FF;
+  opacity: 0.8;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 10px 8px 30px; /* Slightly increased vertical padding */
+  border-radius: 6px;
+  border: 1px solid rgba(10, 147, 255, 0.5);
+  background-color: rgba(10, 30, 40, 0.4);
+  color: white;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #0A93FF;
+  background-color: rgba(10, 30, 40, 0.6);
+  box-shadow: 0 0 8px rgba(10, 147, 255, 0.3);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Search results dropdown */
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 5px;
+  background-color: rgba(10, 30, 40, 0.95);
+  border: 1px solid rgba(10, 147, 255, 0.6);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 1200;
+}
+
+.search-result-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 1px solid rgba(10, 147, 255, 0.2);
+  transition: background-color 0.15s;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover,
+.search-result-item.selected {
+  background-color: rgba(10, 147, 255, 0.2);
+}
+
+.search-result-item.selected {
+  border-left: 2px solid #0A93FF;
+}
+
+.result-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.result-description {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.3;
+}
+
+.result-title {
+  font-size: 0.85rem;
+  color: white;
+  margin-right: 10px;
+}
+
+.result-date {
+  font-size: 0.75rem;
+  color: rgba(10, 147, 255, 0.8);
+  font-weight: 500;
+}
+
+/* Highlighted event */
+.highlight-event {
+  animation: pulse-highlight 1.5s ease-in-out;
+}
+
+@keyframes pulse-highlight {
+  0%, 100% {
+    box-shadow: 0 0 0 rgba(10, 147, 255, 0);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(10, 147, 255, 0.8);
+  }
+}
+
+/* Refined collapsed state styles */
+.timeline-options-box.collapsed {
+  width: auto;
+  min-width: 70px;
+  max-width: 80px;
+  padding: 8px 12px;
+  background-color: rgba(10, 30, 40, 0.9);
+  transform: translateX(0) scale(1) !important;
+  border-color: rgba(10, 147, 255, 0.6);
+}
+
+/* Ensure collapsed state animations work well */
+.timeline-options-box.collapsed .options-content {
+  opacity: 0;
+  height: 0;
+  min-height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style for the Details button */
+.options-expand-btn {
+  color: #0A93FF;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: none; /* Hidden by default */
+  transition: all 0.2s;
+  text-align: center;
+  width: 100%;
+}
+
+.timeline-options-box.collapsed .options-expand-btn {
+  display: block; /* Show only when collapsed */
+}
+
+/* Hover style for Details button */
+.options-expand-btn:hover {
+  text-shadow: 0 0 8px rgba(10, 147, 255, 0.7);
+  transform: scale(1.05);
+}
+
+/* Enhanced hover effect for future view */
+[data-show-options="false"] .timeline-options-box.collapsed .options-expand-btn:hover {
+  text-shadow: 0 0 10px rgba(10, 147, 255, 0.9);
+  color: #2AADFF;
+}
+
+.options-expand-btn:active {
+  transform: scale(0.95);
+}
+
+/* Close button for options box */
+.options-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #0A93FF;
+  font-size: 16px;
+  border: 1px solid rgba(10, 147, 255, 0.5);
+  border-radius: 50%;
+  background-color: transparent;
+  transition: all 0.2s;
+  padding: 0;
+  line-height: 1;
+}
+
+/* Hide close button when collapsed */
+.timeline-options-box.collapsed .options-close-btn {
+  display: none;
+}
+
+.options-close-btn:hover {
+  background-color: rgba(10, 147, 255, 0.1);
+  transform: scale(1.1);
+}
+
+.options-close-btn:active {
+  transform: scale(0.95);
 }
 
 .timeline-options-box h3 {
-  margin: 0 0 8px 0;
+  margin: 0;
   font-size: 1rem;
   color: #0A93FF;
   font-weight: bold;
@@ -310,21 +573,6 @@ body {
   font-size: 0.85rem;
   color: #0A93FF;
   line-height: 1.4;
-}
-
-/* Animation for options box */
-.timeline-container[data-show-options="false"] .timeline-options-box,
-[data-show-options="false"] .timeline-options-box {
-  opacity: 0;
-  transform: translateX(-40px);
-  pointer-events: none;
-}
-
-/* Make the options box more prominent when there's an expanded item */
-.timeline-item.expanded ~ .timeline-options-box,
-.timeline-container:has(.timeline-item.expanded) .timeline-options-box {
-  box-shadow: 0 0 20px rgba(10, 147, 255, 0.6);
-  border-color: rgba(10, 147, 255, 0.8);
 }
 
 /* Timeline content */
@@ -2022,4 +2270,62 @@ body {
   height: 100%;
   border-radius: 4px;
   transition: width 0.5s ease-out;
+}
+
+/* Era display in options box */
+.era-display {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: rgba(10, 30, 40, 0.6);
+  border-radius: 8px;
+  padding: 8px 10px;
+  border: 1px solid rgba(10, 147, 255, 0.3);
+  transition: all 0.2s ease;
+  gap: 5px;
+}
+
+.era-display:hover {
+  border-color: rgba(10, 147, 255, 0.6);
+  box-shadow: 0 0 10px rgba(10, 147, 255, 0.2);
+}
+
+.era-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-right: 5px;
+}
+
+.era-value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0A93FF;
+  margin-right: 5px;
+}
+
+.era-original {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+/* Specific colors for different eras */
+.era-value[data-era="Agricultural"] {
+  color: #6a994e; /* Earthy green */
+}
+
+.era-value[data-era="Exploration"] {
+  color: #f9c74f; /* Vibrant yellow */
+}
+
+.era-value[data-era="Industrial"] {
+  color: #f8961e; /* Industrial orange */
+}
+
+.era-value[data-era="Digital"] {
+  color: #0A93FF; /* Digital blue */
+}
+
+.era-value[data-era="Informational"] {
+  color: #8338ec; /* Information purple */
 }

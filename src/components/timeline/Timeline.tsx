@@ -297,19 +297,95 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
     }
   }, [expandedMilestoneId, milestones, branches, onTimelineTitleChange]);
 
+  // Return the appropriate branch component(s) based on whether branches are shown
+  const renderBranches = () => {
+    if (mainBranch) {
+      return (
+        <div className="timeline-layout">
+          {/* Main timeline (historical section) */}
+          <div className="historical-timeline-section">
+            <TimelineBranch
+              branch={mainBranch}
+              milestones={milestonesBeforeBranchPoint}
+              expandedMilestoneId={expandedMilestoneId}
+              onToggleExpand={toggleMilestoneExpansion}
+              hideTitle={true}
+            />
+            
+            {/* Branch point - transition to future */}
+            <div className="timeline-branch-point timeline-present-marker" data-testid="branch-point">
+              <div className="branch-point-connector"></div>
+              
+              <button 
+                className="show-future-branches-button timeline-present-marker" 
+                onClick={() => updateFilter({ ...filter, showBranches: !filter.showBranches })}
+              >
+                {filter.showBranches ? "Hide Future" : "Show Future Branches"}
+              </button>
+              
+              {/* Only show branch date if we're not showing branches */}
+              {!filter.showBranches && (
+                <div className="timeline-branch-date">
+                  {new Date().toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                  })}
+                </div>
+              )}
+            </div>
+            
+            {/* Future branches section - only shown if showBranches is true */}
+            {filter.showBranches && (
+              <div className="future-timelines-section">
+                {/* Container for future branches */}
+                <div className={`future-paths-container ${
+                  (hasExpandedOptimistic && hasExpandedPessimistic) ? 'both-expanded' :
+                  (hasExpandedOptimistic || hasExpandedPessimistic) ? 'one-expanded' : ''
+                }`}>
+                  {/* Optimistic branch */}
+                  {optimisticBranch && (
+                    <div className={`future-branch optimistic-branch ${hasExpandedOptimistic ? 'has-expanded' : ''}`}>
+                      <TimelineBranch
+                        branch={optimisticBranch}
+                        milestones={milestonesByBranch[optimisticBranch.id] || []}
+                        expandedMilestoneId={expandedMilestoneId}
+                        onToggleExpand={toggleMilestoneExpansion}
+                        hideTitle={true}
+                      />
+                    </div>
+                  )}
+                  
+                  {/* Pessimistic branch */}
+                  {pessimisticBranch && (
+                    <div className={`future-branch pessimistic-branch ${hasExpandedPessimistic ? 'has-expanded' : ''}`}>
+                      <TimelineBranch
+                        branch={pessimisticBranch}
+                        milestones={milestonesByBranch[pessimisticBranch.id] || []}
+                        expandedMilestoneId={expandedMilestoneId}
+                        onToggleExpand={toggleMilestoneExpansion}
+                        hideTitle={true}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      );
+    }
+    
+    return null;
+  };
+
   return (
     <div 
       className="timeline-container" 
       ref={timelineContainerRef}
       data-show-options={showOptionsBox}
     >
-      {/* Options box in the top corner - only visible when showOptionsBox is true */}
-      {showOptionsBox && (
-        <div className="timeline-options-box">
-          <h3>Further Options</h3>
-          <p>for searching, comparing milestone metrics, or engaging with the future tradeoffs and decisions.</p>
-        </div>
-      )}
+      {/* Options box is now handled by the App component */}
       
       {/* Timeline controls - hidden visually but maintain functionality */}
       <div className="timeline-controls-hidden">
@@ -330,76 +406,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
       {error && <div className="timeline-error">Error: {error}</div>}
       
       <div className={getTimelineContentClassName()}>
-        {/* Historical section label is removed, now shown in the header */}
-        
-        <div className="timeline-layout">
-          {/* Historical timeline section */}
-          <div className="historical-timeline-section">
-            {mainBranch && (
-              <TimelineBranch
-                key={mainBranch.id}
-                branch={mainBranch}
-                milestones={milestonesBeforeBranchPoint}
-                expandedMilestoneId={expandedMilestoneId}
-                onToggleExpand={toggleMilestoneExpansion}
-                hideTitle={true} /* Hide the title as it's now in the header */
-              />
-            )}
-          </div>
-          
-          {/* Branch point connecting historical to future */}
-          <div className="branch-point-connector">
-            <div className="show-future-button-container">
-              <button 
-                className="show-future-branches-button" 
-                onClick={toggleBranchVisibility}
-              >
-                {filter.showBranches ? 'Hide Future' : 'Show Future'}
-              </button>
-            </div>
-          </div>
-          
-          {/* Future timelines section - only visible when toggled */}
-          {filter.showBranches && (
-            <div className="future-timelines-section">
-              {/* Future section label is now shown in the header */}
-              
-              {/* Future branch paths section */}
-              <div className="future-paths-container">
-                {/* Optimistic branch */}
-                {optimisticBranch && (
-                  <div className={getOptimisticClassName()}>
-                    <TimelineBranch
-                      key={optimisticBranch.id}
-                      branch={optimisticBranch}
-                      milestones={milestonesByBranch[optimisticBranch.id] || []}
-                      expandedMilestoneId={expandedMilestoneId}
-                      onToggleExpand={toggleMilestoneExpansion}
-                      hideTitle={true} /* Hide the title as it's now in the header */
-                    />
-                  </div>
-                )}
-                
-                {/* Pessimistic branch */}
-                {pessimisticBranch && (
-                  <div className={getPessimisticClassName()}>
-                    <TimelineBranch
-                      key={pessimisticBranch.id}
-                      branch={pessimisticBranch}
-                      milestones={milestonesByBranch[pessimisticBranch.id] || []}
-                      expandedMilestoneId={expandedMilestoneId}
-                      onToggleExpand={toggleMilestoneExpansion}
-                      hideTitle={true} /* Hide the title as it's now in the header */
-                    />
-                  </div>
-                )}
-                
-                {/* Extra spacer at the end to provide room for telescope button */}
-                {/* With absolute positioning, this spacer may be better as a right padding */}
-              </div>
-            </div>
-          )}
-        </div>
+        {renderBranches()}
         
         {/* Empty state */}
         {!loading && milestones.length === 0 && (

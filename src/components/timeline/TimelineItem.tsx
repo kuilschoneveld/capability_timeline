@@ -125,6 +125,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
       onClick={handleClick}
       data-branch={milestone.branchId}
       data-milestone-id={id}
+      data-event-id={id}
       data-expanded={isExpanded ? 'true' : 'false'}
       data-milestone-year={new Date(date).getFullYear()}
     >
