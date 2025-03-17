@@ -1,13 +1,12 @@
 import './App.css';
 import Timeline from './components/timeline/Timeline';
-import NetworkedTimelinePage from './pages/NetworkedTimelinePage';
 import BasicTestPage from './pages/BasicTestPage';
 import { useRef, useState, useEffect } from 'react';
 import timelineEvents from './data/timelineDatabase';
 import { Milestone } from './types';
 
 // Define view mode type for timeline views
-type ViewMode = 'standard' | 'networked' | 'test';
+type ViewMode = 'standard' | 'test';
 
 // Define timeline title type
 type TimelineTitle = 'historical' | 'optimistic' | 'pessimistic' | 'future';
@@ -137,12 +136,9 @@ function App() {
   const resultsRef = useRef<HTMLDivElement>(null);
   
   // Toggle between view modes
-  const toggleViewMode = () => {
-    setViewMode(current => {
-      if (current === 'standard') return 'networked';
-      if (current === 'networked') return 'test';
-      return 'standard';
-    });
+  const toggleViewMode = (current: ViewMode): ViewMode => {
+    if (current === 'standard') return 'test';
+    return 'standard';
   };
   
   // Helper to get the title text based on current timeline title state
@@ -590,10 +586,9 @@ function App() {
           {/* Circular toggle button with ship/star icon */}
           <button 
             className="toggle-view-btn"
-            onClick={toggleViewMode}
+            onClick={() => setViewMode(toggleViewMode)}
             title={`Switch to ${
-              viewMode === 'standard' ? 'Network' : 
-              viewMode === 'networked' ? 'Test' : 'Standard'
+              viewMode === 'standard' ? 'Test' : 'Standard'
             } view`}
           >
             <ShipStarIcon />
@@ -755,10 +750,6 @@ function App() {
           </>
         )}
 
-        {viewMode === 'networked' && (
-          <NetworkedTimelinePage />
-        )}
-        
         {viewMode === 'test' && (
           <BasicTestPage />
         )}

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { TimelineNode, TimelineConnection, NetworkedTimelineState } from '../types/networkedTimeline';
-import { initialTimelineState } from '../data/networkedMockData';
+import { mockTimelineState } from '../data/networkedMockData';
 
 /**
  * Custom hook for managing networked timeline state
@@ -23,9 +23,9 @@ export const useNetworkedTimeline = () => {
       // In a real application, we might fetch this data from an API
       // Create a new object to ensure we're not mutating external data
       const initialState = {
-        ...initialTimelineState,
+        ...mockTimelineState,
         viewState: {
-          ...initialTimelineState.viewState,
+          ...mockTimelineState.viewState,
           // Ensure position is centered in the window
           position: { 
             x: window.innerWidth / 2, 

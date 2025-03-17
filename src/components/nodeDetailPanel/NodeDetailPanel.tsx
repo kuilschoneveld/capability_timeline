@@ -1,12 +1,12 @@
 import React from 'react';
-import { TimelineNode } from '../../types/networkedTimeline';
+import { TimelineEvent, TimelineConnection } from '../../types/timeline';
 
 interface NodeDetailPanelProps {
-  node: TimelineNode;
+  node: TimelineEvent;
   onClose: () => void;
-  connections: any[]; // Will be properly typed when TimelineConnection is available
+  connections: TimelineConnection[];
   onNodeSelect: (nodeId: string) => void;
-  allNodes: TimelineNode[];
+  allNodes: TimelineEvent[];
 }
 
 /**
@@ -20,8 +20,8 @@ const NodeDetailPanel: React.FC<NodeDetailPanelProps> = ({
   allNodes
 }) => {
   // Get a connected node by its ID
-  const getConnectedNode = (nodeId: string) => {
-    return allNodes.find(n => n.id === nodeId);
+  const getConnectedNode = (nodeId: string): TimelineEvent | undefined => {
+    return allNodes.find((n: TimelineEvent) => n.id === nodeId);
   };
 
   // Get dimension color for thematic tags
@@ -64,7 +64,7 @@ const NodeDetailPanel: React.FC<NodeDetailPanelProps> = ({
       <div className="mb-6">
         <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Thematic Dimensions</h3>
         <div className="space-y-3">
-          {Object.entries(node.thematicTags).map(([dimension, value]) => (
+          {Object.entries(node.thematicTags).map(([dimension, value]: [string, number]) => (
             <div key={dimension} className="flex items-center">
               <div className="w-24 text-sm capitalize text-gray-300">{dimension}</div>
               <div className="flex-1 h-2 bg-gray-800 rounded-full overflow-hidden">

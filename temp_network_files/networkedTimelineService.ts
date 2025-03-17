@@ -1,14 +1,144 @@
-import { 
-  TimelineNode,
-  NetworkedTimelineBranch,
-  NetworkedTimelineState,
-  ThematicTags
-} from '../types/networkedTimeline';
 import {
-  timelineNodes,
-  timelineBranches,
-  initialNetworkedTimelineState
+  TimelineNode,
+  TimelineConnection,
+  TimelineBranch,
+  NetworkedTimelineState
+} from '../types/networkedTimeline';
+
+import {
+  mockTimelineState,
+  nodes as timelineNodes,
+  connections as timelineConnections,
+  timelineBranches
 } from '../data/networkedMockData';
+
+// Get all nodes for a specific branch
+export const getNodesForBranch = async (branchId: string): Promise<TimelineNode[]> => {
+  return Object.values(timelineNodes).filter(node => node.branchId === branchId);
+};
+
+// Get all connections between nodes
+export const getConnections = async (): Promise<TimelineConnection[]> => {
+  return timelineConnections;
+};
+
+// Get incoming connections for a node
+export const getIncomingConnections = async (nodeId: string): Promise<string[]> => {
+  return Object.values(timelineNodes)
+    .filter(node => node.connections?.includes(nodeId) ?? false)
+    .map(node => node.id);
+};
+
+// Get the initial timeline state
+export const getInitialState = async (): Promise<NetworkedTimelineState> => {
+  return mockTimelineState;
+};
+
+// Filter nodes based on various criteria
+export const filterNodes = async (
+  dimension: string,
+  threshold: number,
+  dateRange: [Date, Date] | null = null
+): Promise<TimelineNode[]> => {
+  let filteredNodes = Object.values(timelineNodes)
+    .filter(node => node.branchId === 'main');
+
+  // Apply thematic filter if dimension is provided
+  if (dimension && threshold > 0) {
+    filteredNodes = filteredNodes.filter(node =>
+      node.thematicTags[dimension] !== undefined &&
+      node.thematicTags[dimension] >= threshold
+    );
+  }
+
+  // Apply date range filter if provided
+  if (dateRange) {
+    const [startDate, endDate] = dateRange;
+    filteredNodes = filteredNodes.filter(node => {
+      const nodeDate = new Date(node.date);
+      return nodeDate >= startDate && nodeDate <= endDate;
+    });
+  }
+
+  return filteredNodes;
+};
+
+// Search nodes by title or description
+export const searchNodes = async (term: string): Promise<TimelineNode[]> => {
+  const searchTerm = term.toLowerCase();
+  return Object.values(timelineNodes).filter(node =>
+    node.title.toLowerCase().includes(searchTerm) ||
+    node.description.toLowerCase().includes(searchTerm)
+  );
+};
+
+// Calculate node importance based on connections and thematic tags
+export const calculateNodeImportance = async (nodeId: string): Promise<number> => {
+  const node = timelineNodes[nodeId];
+  if (!node) return 0;
+
+  // Count outgoing connections
+  const outgoingCount = node.connections?.length ?? 0;
+
+  // Count incoming connections
+  const incomingCount = Object.values(timelineNodes)
+    .filter(node => node.connections?.includes(nodeId) ?? false)
+    .length;
+
+  // Sum thematic tag values
+  const thematicSum = Object.values(node.thematicTags).reduce((sum, val) => sum + val, 0);
+
+  // Return weighted importance score
+  return Promise.resolve(outgoingCount * 2 + incomingCount * 3 + thematicSum * 0.5);
+};
+
+// Add a new node to the timeline
+export const addNode = async (node: TimelineNode): Promise<TimelineNode> => {
+  const newNode: TimelineNode = {
+    ...node,
+    connections: []
+  };
+  
+  timelineNodes[node.id] = newNode;
+  return newNode;
+};
+
+// Remove a node and its connections
+export const removeNode = async (nodeId: string): Promise<void> => {
+  // Remove the node's connections from other nodes
+  Object.values(timelineNodes).forEach(node => {
+    node.connections = node.connections ?? [];
+    node.connections = node.connections.filter(id => id !== nodeId);
+  });
+
+  // Remove the node from branch nodeIds
+  Object.values(timelineBranches).forEach(branch => {
+    branch.nodeIds = branch.nodeIds.filter(id => id !== nodeId);
+  });
+
+  // Delete the node
+  delete timelineNodes[nodeId];
+};
+
+// Add a connection between nodes
+export const addConnection = async (sourceId: string, targetId: string): Promise<void> => {
+  const sourceNode = timelineNodes[sourceId];
+  if (!sourceNode) throw new Error(`Source node ${sourceId} not found`);
+
+  sourceNode.connections = sourceNode.connections ?? [];
+  if (!sourceNode.connections.includes(targetId)) {
+    sourceNode.connections.push(targetId);
+  }
+};
+
+// Remove a connection between nodes
+export const removeConnection = async (sourceId: string, targetId: string): Promise<void> => {
+  const sourceNode = timelineNodes[sourceId];
+  if (!sourceNode) return;
+
+  sourceNode.connections = sourceNode.connections ?? [];
+  sourceNode.connections = sourceNode.connections.filter(id => id !== targetId);
+};
 
 /**
  * NetworkedTimelineService provides methods for manipulating and querying timeline data
@@ -35,7 +165,7 @@ export class NetworkedTimelineService {
   /**
    * Get all branches in the timeline
    */
-  async getAllBranches(): Promise<Record<string, NetworkedTimelineBranch>> {
+  async getAllBranches(): Promise<Record<string, TimelineBranch>> {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 300));
     return timelineBranches;
@@ -44,7 +174,7 @@ export class NetworkedTimelineService {
   /**
    * Get a specific branch by ID
    */
-  async getBranchById(branchId: string): Promise<NetworkedTimelineBranch | undefined> {
+  async getBranchById(branchId: string): Promise<TimelineBranch | undefined> {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 200));
     return timelineBranches[branchId];
@@ -62,20 +192,23 @@ export class NetworkedTimelineService {
   /**
    * Get all connections between nodes
    */
-  async getAllConnections(): Promise<{sourceId: string, targetId: string}[]> {
+  async getAllConnections(): Promise<TimelineConnection[]> {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 300));
     
-    const connections: {sourceId: string, targetId: string}[] = [];
+    const connections: TimelineConnection[] = [];
     
     // Collect all connections from nodes
-    Object.values(timelineNodes).forEach(node => {
-      node.connections.forEach(targetId => {
-        connections.push({
-          sourceId: node.id,
-          targetId
+    Object.values(timelineNodes).forEach((node: TimelineNode) => {
+      if (node.connections) {
+        node.connections.forEach((targetId: string) => {
+          connections.push({
+            id: `${node.id}-${targetId}`,
+            sourceId: node.id,
+            targetId
+          });
         });
-      });
+      }
     });
     
     return connections;
@@ -100,15 +233,6 @@ export class NetworkedTimelineService {
       .map(n => n.id);
     
     return { outgoing, incoming };
-  }
-  
-  /**
-   * Get the initial state for the networked timeline
-   */
-  async getInitialState(): Promise<NetworkedTimelineState> {
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-    return initialNetworkedTimelineState;
   }
   
   /**
@@ -255,36 +379,6 @@ export class NetworkedTimelineService {
   }
   
   /**
-   * Calculate impact score for a node based on its connections
-   */
-  async calculateNodeImpact(nodeId: string): Promise<number> {
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    // Simplified impact calculation based on:
-    // 1. Number of direct outgoing connections
-    // 2. Number of incoming connections (how many other nodes reference this one)
-    // 3. Sum of thematic tag values
-    
-    const node = timelineNodes[nodeId];
-    if (!node) return Promise.resolve(0);
-    
-    // Count outgoing connections
-    const outgoingCount = node.connections.length;
-    
-    // Count incoming connections
-    const incomingCount = Object.values(timelineNodes)
-      .filter(n => n.connections.includes(nodeId))
-      .length;
-    
-    // Sum thematic tags
-    const thematicSum = Object.values(node.thematicTags).reduce((sum, val) => sum + val, 0);
-    
-    // Weighted impact score
-    return Promise.resolve(outgoingCount * 2 + incomingCount * 3 + thematicSum * 0.5);
-  }
-  
-  /**
    * Save a timeline node (create or update)
    */
   async saveNode(node: TimelineNode): Promise<TimelineNode> {
@@ -325,47 +419,6 @@ export class NetworkedTimelineService {
       });
       
       return true;
-    }
-    
-    return false;
-  }
-  
-  /**
-   * Add a connection between two nodes
-   */
-  async addConnection(sourceId: string, targetId: string): Promise<boolean> {
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    const sourceNode = timelineNodes[sourceId];
-    const targetNode = timelineNodes[targetId];
-    
-    if (sourceNode && targetNode) {
-      // Add connection if it doesn't already exist
-      if (!sourceNode.connections.includes(targetId)) {
-        sourceNode.connections.push(targetId);
-        return true;
-      }
-    }
-    
-    return false;
-  }
-  
-  /**
-   * Remove a connection between two nodes
-   */
-  async removeConnection(sourceId: string, targetId: string): Promise<boolean> {
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    const sourceNode = timelineNodes[sourceId];
-    
-    if (sourceNode) {
-      // Remove connection if it exists
-      const initialLength = sourceNode.connections.length;
-      sourceNode.connections = sourceNode.connections.filter(id => id !== targetId);
-      
-      return sourceNode.connections.length < initialLength;
     }
     
     return false;
