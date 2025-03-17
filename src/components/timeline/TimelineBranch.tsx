@@ -23,7 +23,24 @@ const TimelineBranch: React.FC<TimelineBranchProps> = ({
 }) => {
   // Sort milestones by date
   const sortedMilestones = [...milestones].sort((a, b) => {
-    return new Date(a.date).getTime() - new Date(b.date).getTime();
+    // Handle BCE dates (negative years) correctly
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    
+    // For BCE dates (starting with '-'), we need special handling
+    if (a.date.startsWith('-') && b.date.startsWith('-')) {
+      // Both are BCE - earlier BCE dates should come first (larger negative year)
+      return dateB.getTime() - dateA.getTime();
+    } else if (a.date.startsWith('-')) {
+      // Only A is BCE, it should come first
+      return -1;
+    } else if (b.date.startsWith('-')) {
+      // Only B is BCE, it should come first
+      return 1;
+    }
+    
+    // Standard date comparison for CE dates
+    return dateA.getTime() - dateB.getTime();
   });
 
   // Prevent parent drag events when interacting with timeline items

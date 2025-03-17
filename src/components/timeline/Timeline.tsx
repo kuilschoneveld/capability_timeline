@@ -6,16 +6,18 @@ import TimelineControls from './TimelineControls';
 import TimelineExploreButton from './TimelineExploreButton';
 import ProspectingMenu from '../ProspectingMenu';
 import timelineEvents from '../../data/timelineDatabase';
+import { Milestone } from '../../types';
 
 interface TimelineProps {
   showOptionsBox?: boolean;
   onTimelineTitleChange?: (title: 'historical' | 'optimistic' | 'pessimistic' | 'future') => void;
+  filterEvents: (events: Milestone[]) => Milestone[];
 }
 
 /**
  * Main Timeline component that displays the entire timeline
  */
-const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTitleChange }) => {
+const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTitleChange, filterEvents }) => {
   const {
     milestones,
     branches,
@@ -31,6 +33,9 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
     changeViewMode,
     toggleBranchVisibility,
   } = useTimeline();
+  
+  // Filter the milestones based on the active filters
+  const filteredMilestones = filterEvents(milestones);
   
   // Track the expanded state for each branch separately for better positioning
   const [hasExpandedOptimistic, setHasExpandedOptimistic] = useState(false);
@@ -53,7 +58,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
 
   // Group milestones by branch
   const milestonesByBranch = branches.reduce((acc, branch) => {
-    acc[branch.id] = milestones.filter(m => m.branchId === branch.id);
+    acc[branch.id] = filteredMilestones.filter(m => m.branchId === branch.id);
     return acc;
   }, {} as Record<string, typeof milestones>);
 

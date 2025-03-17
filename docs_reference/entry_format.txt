@@ -1,0 +1,47 @@
+id: string;
+  title: string;
+  date: string; // ISO format date
+  description: string; - one sentence
+    
+  urls: { - space for related links giving sources.
+    primary?: string;
+ 
+  };
+  
+  connections: { - a series of relations showing how events connect. 
+    preceding: string[]; // IDs of events that led to this
+    following: string[]; // IDs of events that followed from this
+    parallel: string[]; // IDs of concurrent/related events
+  };
+  
+  technicalNature: {
+    medium: string; // e.g., "Digital hardware", "Software", "Theoretical model"
+    abstractionLevel: string; // One of a descriptive list from most abstract to most concrete e.g. "mathematical/theory", "cybernetics", "", "mechanical/embedded system". Use a generalization of Marr's Levels here ("computational", "algorithmic", "implementational") to create a small list to choose from.
+    centralMechanism: string; // 100-word summary - what are the distinguishing features of this system? Broadly, locate it within the overall landscape quickly and explain its novel insights.
+    complexityScore: number; // 1-10 scale - amount of computation needed to drive the central algorithm.
+    innovationScore: number; // 1-10 scale - how ahead of its time was this algorithm?
+  };
+  
+  cognitiveDimensions: { -What is demonstrated most clearly in this algorithm? 
+    computation: number; // 1-10 scale Is it thanks to repetition of something simple?
+    pattern_recognition: number; 1-10 scale  is there a known pattern exploited?
+    reasoning: number; 1-10 scale Is the system pushing ahead in reasoning, either through logic or other methods?
+    self_awareness: number; 1-10 scale How is this constructed out of the other systems, and what might be missing?
+    creativity: number; 1-10 scale Creativity of the system, ability to surprise its designers, or otherwise explore a creative space.
+    notable_innovation: string; // Description of why it advanced the state of the art, opened a cultural wave, etc. 
+  };
+  
+  impact: {
+    technical: number; // 1-10 scale Did this mostly impact other technical domains?
+    societal: number; // 1-10 scale  Did this have an immediately recognizable social impact?
+    philosophical: number; // 1-10 scale Did this shake any longstanding ideas on meaning, identity, innateness, humanity, or otherwise?
+    economic: number; // 1-10 scale Did this cause some significant economic reaction, or change our economic relations? 
+    geopolitical: number; // 1-10 scale Did this alter the status of political relations, given the newfound abilities?
+  };
+  
+  // Additional metadata
+  tags: string[];
+  contributors: string[];
+  era: string; // among "Agricultural" (up to 1400), "Exploration/Exploitation" (1400-1800), "Industrial" (1800-1945), "Digital" (1945-2000), "Informational" (2000 onwards) };
+
+<example>

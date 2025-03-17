@@ -4,6 +4,7 @@ import NetworkedTimelinePage from './pages/NetworkedTimelinePage';
 import BasicTestPage from './pages/BasicTestPage';
 import { useRef, useState, useEffect } from 'react';
 import timelineEvents from './data/timelineDatabase';
+import { Milestone } from './types';
 
 // Define view mode type for timeline views
 type ViewMode = 'standard' | 'networked' | 'test';
@@ -101,9 +102,9 @@ function App() {
   const [viewMode, setViewMode] = useState<ViewMode>('standard');
   
   // Add filter states (non-functional for now)
-  const [filterTechnical, setFilterTechnical] = useState(true);
-  const [filterSocietal, setFilterSocietal] = useState(true);
-  const [filterPhilosophical, setFilterPhilosophical] = useState(true);
+  const [filterTechnical, setFilterTechnical] = useState(false);
+  const [filterSocietal, setFilterSocietal] = useState(false);
+  const [filterPhilosophical, setFilterPhilosophical] = useState(false);
   
   // Add state for options box visibility
   const [showOptionsBox, setShowOptionsBox] = useState(true);
@@ -548,6 +549,37 @@ function App() {
     };
   }, [optionsManuallyCollapsed, timelineTitle]);
   
+  // Function to handle filter toggling
+  const handleFilterToggle = (filter: 'technical' | 'societal' | 'philosophical') => {
+    // If clicking the active filter, deactivate it
+    if (filter === 'technical' && filterTechnical) {
+      setFilterTechnical(false);
+    } else if (filter === 'societal' && filterSocietal) {
+      setFilterSocietal(false);
+    } else if (filter === 'philosophical' && filterPhilosophical) {
+      setFilterPhilosophical(false);
+    } else {
+      // Otherwise, activate the clicked filter and deactivate others
+      setFilterTechnical(filter === 'technical');
+      setFilterSocietal(filter === 'societal');
+      setFilterPhilosophical(filter === 'philosophical');
+    }
+  };
+  
+  // Function to filter events based on impact scores
+  const filterEvents = (events: Milestone[]) => {
+    if (!filterTechnical && !filterSocietal && !filterPhilosophical) {
+      return events; // If no filter is active, show all events
+    }
+
+    return events.filter(event => {
+      if (filterTechnical && event.thematicTags.technical >= 8) return true;
+      if (filterSocietal && event.thematicTags.societal >= 8) return true;
+      if (filterPhilosophical && event.thematicTags.philosophical >= 8) return true;
+      return false;
+    });
+  };
+  
   return (
     <div className="App">
       {/* Common header for all views */}
@@ -579,19 +611,19 @@ function App() {
         <div className="dimension-toggles">
           <button 
             className={`dimension-toggle-btn ${filterTechnical ? 'active' : ''}`}
-            onClick={() => setFilterTechnical(!filterTechnical)}
+            onClick={() => handleFilterToggle('technical')}
           >
             Technical
           </button>
           <button 
             className={`dimension-toggle-btn ${filterSocietal ? 'active' : ''}`}
-            onClick={() => setFilterSocietal(!filterSocietal)}
+            onClick={() => handleFilterToggle('societal')}
           >
             Societal
           </button>
           <button 
             className={`dimension-toggle-btn ${filterPhilosophical ? 'active' : ''}`}
-            onClick={() => setFilterPhilosophical(!filterPhilosophical)}
+            onClick={() => handleFilterToggle('philosophical')}
           >
             Philosophical
           </button>
@@ -713,6 +745,7 @@ function App() {
               <Timeline 
                 showOptionsBox={showOptionsBox} 
                 onTimelineTitleChange={setTimelineTitle}
+                filterEvents={filterEvents}
               />
             </main>
             

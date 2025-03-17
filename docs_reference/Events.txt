@@ -1,0 +1,1640 @@
+[
+  {
+    "id": "greek_myths_automata",
+    "title": "Greek Myths of Animated Statues (Talos)",
+    "date": "0800-01-01",
+    "description": "Greek legends describe Talos as a giant bronze automaton guarding Crete.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Talos"
+    },
+    "connections": {
+      "preceding": [],
+      "following": ["eratosthenes_240bce"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Conceptual/Folklore",
+      "abstractionLevel": "mythical/theory",
+      "centralMechanism": "Mythical bronze giant powered by divine or magical means, representing an early conception of artificially created guardians.",
+      "complexityScore": 1,
+      "innovationScore": 3
+    },
+    "cognitiveDimensions": {
+      "computation": 1,
+      "pattern_recognition": 1,
+      "reasoning": 1,
+      "self_awareness": 1,
+      "creativity": 4,
+      "notable_innovation": "Earliest myths hinting at mechanical beings protecting or serving humans."
+    },
+    "impact": {
+      "technical": 1,
+      "societal": 4,
+      "philosophical": 5,
+      "economic": 1,
+      "geopolitical": 1
+    },
+    "tags": ["myth", "automaton", "ancient"],
+    "contributors": ["Unknown storytellers"],
+    "era": "Agricultural"
+  },
+  {
+    "id": "eratosthenes_240bce",
+    "title": "Eratosthenes Measures Earth's Circumference",
+    "date": "0240-06-21",
+    "description": "Eratosthenes estimates Earth's circumference with remarkable accuracy using shadows.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Eratosthenes"
+    },
+    "connections": {
+      "preceding": ["greek_myths_automata"],
+      "following": ["al_khwarizmi_820"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Observational mathematics",
+      "abstractionLevel": "computational",
+      "centralMechanism": "He used geometric proportions based on shadow angles in different cities to infer the planet’s total circumference.",
+      "complexityScore": 2,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 3,
+      "pattern_recognition": 5,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 6,
+      "notable_innovation": "Showed how data-driven algorithmic thinking can solve large-scale scientific problems."
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 5,
+      "philosophical": 8,
+      "economic": 2,
+      "geopolitical": 2
+    },
+    "tags": ["astronomy", "geometry", "ancient"],
+    "contributors": ["Eratosthenes"],
+    "era": "Agricultural"
+  },
+  {
+    "id": "al_khwarizmi_820",
+    "title": "Al-Khwarizmi Defines Algebra and Algorithms",
+    "date": "0820-01-01",
+    "description": "Al-Khwarizmi publishes systematic methods for solving equations, coining the term 'algorithm'.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi"
+    },
+    "connections": {
+      "preceding": ["eratosthenes_240bce"],
+      "following": ["leibniz_stepped_reckoner_1672"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Mathematical treatise",
+      "abstractionLevel": "computational",
+      "centralMechanism": "Introduced algebraic operations and step-by-step procedures for arithmetic, paving the way for modern algorithmic thought.",
+      "complexityScore": 4,
+      "innovationScore": 10
+    },
+    "cognitiveDimensions": {
+      "computation": 7,
+      "pattern_recognition": 3,
+      "reasoning": 6,
+      "self_awareness": 1,
+      "creativity": 5,
+      "notable_innovation": "Laid foundational algorithmic principles and the word 'algorithm' stems from his name."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 7,
+      "philosophical": 6,
+      "economic": 8,
+      "geopolitical": 3
+    },
+    "tags": ["mathematics", "algorithm", "IslamicGoldenAge"],
+    "contributors": ["Al-Khwarizmi"],
+    "era": "Agricultural"
+  },
+  {
+    "id": "leibniz_stepped_reckoner_1672",
+    "title": "Leibniz’s Stepped Reckoner",
+    "date": "1672-01-01",
+    "description": "Leibniz constructs a mechanical calculator capable of all four arithmetic operations.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Stepped_Reckoner"
+    },
+    "connections": {
+      "preceding": ["al_khwarizmi_820"],
+      "following": ["jacquard_loom_1801"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Mechanical device",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "A stepped-drum mechanism turning input dials into results for addition, subtraction, multiplication, and division.",
+      "complexityScore": 3,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 7,
+      "pattern_recognition": 2,
+      "reasoning": 1,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Extended mechanical calculation to full arithmetic, influencing later computing machines."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 4,
+      "philosophical": 5,
+      "economic": 6,
+      "geopolitical": 2
+    },
+    "tags": ["mechanical_calculator", "Leibniz", "arithmetic"],
+    "contributors": ["Gottfried Wilhelm Leibniz"],
+    "era": "Exploration/Exploitation"
+  },
+  {
+    "id": "jacquard_loom_1801",
+    "title": "Jacquard Loom Pioneers Punched-Card Programming",
+    "date": "1801-01-01",
+    "description": "Joseph Marie Jacquard’s loom uses punched cards to weave complex patterns automatically.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Jacquard_loom"
+    },
+    "connections": {
+      "preceding": ["leibniz_stepped_reckoner_1672"],
+      "following": ["babbage_analytical_engine_1830s"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Mechanical loom",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Punch cards feed instructions to control thread lifts, effectively 'programming' weaving patterns.",
+      "complexityScore": 5,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 4,
+      "pattern_recognition": 1,
+      "reasoning": 1,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Used external instructions (cards) to direct machine actions, inspiring future computer punch cards."
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 5,
+      "philosophical": 3,
+      "economic": 8,
+      "geopolitical": 3
+    },
+    "tags": ["textile", "punched_cards", "automation"],
+    "contributors": ["Joseph Marie Jacquard"],
+    "era": "Industrial"
+  },
+  {
+    "id": "babbage_analytical_engine_1830s",
+    "title": "Babbage’s Analytical Engine Concept",
+    "date": "1837-01-01",
+    "description": "Charles Babbage and Ada Lovelace outline a general-purpose programmable computer.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Analytical_Engine"
+    },
+    "connections": {
+      "preceding": ["jacquard_loom_1801"],
+      "following": ["boole_laws_of_thought_1854"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Mechanical hardware design",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Proposed a mill (CPU) and store (memory) with punch card programs, enabling loops and conditional branches.",
+      "complexityScore": 7,
+      "innovationScore": 10
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 1,
+      "reasoning": 2,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "First blueprint for a fully programmable, Turing-complete mechanical computer."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 2,
+      "philosophical": 8,
+      "economic": 1,
+      "geopolitical": 1
+    },
+    "tags": ["Babbage", "Lovelace", "mechanical_computer"],
+    "contributors": ["Charles Babbage", "Ada Lovelace"],
+    "era": "Industrial"
+  },
+  {
+    "id": "boole_laws_of_thought_1854",
+    "title": "George Boole’s Laws of Thought",
+    "date": "1854-01-01",
+    "description": "Boole unifies logic and algebra, introducing the basis of binary operations.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/The_Laws_of_Thought"
+    },
+    "connections": {
+      "preceding": ["babbage_analytical_engine_1830s"],
+      "following": ["mcculloch_pitts_1943"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Mathematical/theory",
+      "abstractionLevel": "computational",
+      "centralMechanism": "Proposes that logical statements can be expressed and manipulated algebraically using AND, OR, NOT.",
+      "complexityScore": 3,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 6,
+      "pattern_recognition": 2,
+      "reasoning": 9,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Foundational for digital circuit logic and symbolic AI."
+    },
+    "impact": {
+      "technical": 10,
+      "societal": 5,
+      "philosophical": 8,
+      "economic": 4,
+      "geopolitical": 3
+    },
+    "tags": ["logic", "mathematics", "binary"],
+    "contributors": ["George Boole"],
+    "era": "Industrial"
+  },
+  {
+    "id": "mcculloch_pitts_1943",
+    "title": "McCulloch and Pitts Model of Neural Networks",
+    "date": "1943-01-01",
+    "description": "They formalize neurons as threshold logic units, founding early neural network theory.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Warren_Sturgis_McCulloch#McCulloch–Pitts_model"
+    },
+    "connections": {
+      "preceding": ["boole_laws_of_thought_1854"],
+      "following": ["turing_test_1950", "cybernetics_1943_parallel"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Theoretical model",
+      "abstractionLevel": "computational",
+      "centralMechanism": "Represented neurons with binary on/off states aggregated in networks to explain some aspects of cognition.",
+      "complexityScore": 4,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 7,
+      "pattern_recognition": 5,
+      "reasoning": 2,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Linked neural structures to logical computation, inspiring perceptrons and deep networks."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 3,
+      "philosophical": 7,
+      "economic": 2,
+      "geopolitical": 2
+    },
+    "tags": ["neural_networks", "theory", "threshold_logic"],
+    "contributors": ["Warren McCulloch", "Walter Pitts"],
+    "era": "Digital"
+  },
+  {
+    "id": "cybernetics_1943_parallel",
+    "title": "Cybernetics Coined (Rosenblueth, Wiener, Bigelow)",
+    "date": "1943-01-01",
+    "description": "Cybernetics emerges to study feedback and control in animals and machines, an interdisciplinary field.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Cybernetics"
+    },
+    "connections": {
+      "preceding": ["boole_laws_of_thought_1854"],
+      "following": ["turing_test_1950"],
+      "parallel": ["mcculloch_pitts_1943"]
+    },
+    "technicalNature": {
+      "medium": "Theoretical model",
+      "abstractionLevel": "computational",
+      "centralMechanism": "Investigates communication, feedback loops, and adaptive control in mechanical and biological systems.",
+      "complexityScore": 4,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 5,
+      "pattern_recognition": 3,
+      "reasoning": 2,
+      "self_awareness": 1,
+      "creativity": 1,
+      "notable_innovation": "Founded an interdisciplinary approach influencing AI, control theory, and robotics."
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 4,
+      "philosophical": 6,
+      "economic": 2,
+      "geopolitical": 2
+    },
+    "tags": ["cybernetics", "feedback", "Wiener"],
+    "contributors": ["Norbert Wiener", "Arturo Rosenblueth", "Julian Bigelow"],
+    "era": "Digital"
+  },
+  {
+    "id": "turing_test_1950",
+    "title": "Alan Turing Proposes the Imitation Game",
+    "date": "1950-10-01",
+    "description": "Turing posits a conversational test for machine intelligence in 'Computing Machinery and Intelligence'.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Turing_test"
+    },
+    "connections": {
+      "preceding": ["mcculloch_pitts_1943", "cybernetics_1943_parallel"],
+      "following": ["dartmouth_conference_1956"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Theoretical model",
+      "abstractionLevel": "mathematical/theory",
+      "centralMechanism": "Human judges text chat with a hidden interlocutor; if they cannot distinguish the machine from a human, it is deemed 'intelligent.'",
+      "complexityScore": 3,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 5,
+      "pattern_recognition": 5,
+      "reasoning": 5,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "First operational definition of AI based on indistinguishability in conversation."
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 8,
+      "philosophical": 9,
+      "economic": 3,
+      "geopolitical": 2
+    },
+    "tags": ["Turing", "AI_definition", "NLP"],
+    "contributors": ["Alan Turing"],
+    "era": "Digital"
+  },
+  {
+    "id": "dartmouth_conference_1956",
+    "title": "Dartmouth Conference Founds AI as a Field",
+    "date": "1956-06-01",
+    "description": "Researchers gather at Dartmouth College, coining the term 'Artificial Intelligence' and launching the discipline.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Dartmouth_workshop"
+    },
+    "connections": {
+      "preceding": ["turing_test_1950"],
+      "following": ["lisp_1958"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Workshop/Proposal",
+      "abstractionLevel": "mathematical/theory",
+      "centralMechanism": "Participants hypothesize that human-level intelligence can be precisely described so machines can simulate it.",
+      "complexityScore": 3,
+      "innovationScore": 10
+    },
+    "cognitiveDimensions": {
+      "computation": 6,
+      "pattern_recognition": 4,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Unified many researchers under one goal: building intelligent machines."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 5,
+      "philosophical": 8,
+      "economic": 3,
+      "geopolitical": 4
+    },
+    "tags": ["AI_origin", "McCarthy", "Minsky", "Newell", "Simon"],
+    "contributors": ["John McCarthy", "Marvin Minsky", "Allen Newell", "Herbert Simon"],
+    "era": "Digital"
+  },
+  {
+    "id": "lisp_1958",
+    "title": "John McCarthy Invents Lisp",
+    "date": "1958-01-01",
+    "description": "Lisp becomes the primary AI programming language for decades, enabling symbolic computation.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Lisp_(programming_language)"
+    },
+    "connections": {
+      "preceding": ["dartmouth_conference_1956"],
+      "following": ["eliza_1966"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Provides list-processing, recursion, garbage collection, symbolic expression handling—ideal for AI.",
+      "complexityScore": 5,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 7,
+      "pattern_recognition": 3,
+      "reasoning": 6,
+      "self_awareness": 1,
+      "creativity": 4,
+      "notable_innovation": "Enables fast prototyping of AI algorithms with symbolic data structures."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 5,
+      "philosophical": 5,
+      "economic": 4,
+      "geopolitical": 3
+    },
+    "tags": ["programming_language", "AI", "McCarthy"],
+    "contributors": ["John McCarthy"],
+    "era": "Digital"
+  },
+  {
+    "id": "eliza_1966",
+    "title": "Weizenbaum’s ELIZA Chatbot",
+    "date": "1966-01-01",
+    "description": "ELIZA mimics a Rogerian therapist through simple pattern matching, revealing user tendency to anthropomorphize machines.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/ELIZA"
+    },
+    "connections": {
+      "preceding": ["lisp_1958"],
+      "following": ["shakey_robot_1969"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Script-based keyword matching and textual reformatting gives an illusion of understanding.",
+      "complexityScore": 3,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 4,
+      "pattern_recognition": 4,
+      "reasoning": 2,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Demonstrated how shallow text processing can appear conversationally intelligent."
+    },
+    "impact": {
+      "technical": 5,
+      "societal": 8,
+      "philosophical": 6,
+      "economic": 2,
+      "geopolitical": 1
+    },
+    "tags": ["chatbot", "NLP", "Weizenbaum"],
+    "contributors": ["Joseph Weizenbaum"],
+    "era": "Digital"
+  },
+  {
+    "id": "shakey_robot_1969",
+    "title": "SRI’s Shakey Robot Integrates Perception and Planning",
+    "date": "1969-01-01",
+    "description": "Shakey is the first general-purpose mobile robot to reason about its actions using AI.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Shakey_the_robot"
+    },
+    "connections": {
+      "preceding": ["eliza_1966"],
+      "following": ["mycin_1974"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Hardware/Software hybrid",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Uses cameras, rangefinders, and a STRIPS planner to navigate and manipulate objects in a structured environment.",
+      "complexityScore": 7,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 6,
+      "pattern_recognition": 5,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Unified robotics, computer vision, and AI planning in one platform."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 4,
+      "philosophical": 5,
+      "economic": 3,
+      "geopolitical": 3
+    },
+    "tags": ["robotics", "planning", "SRI"],
+    "contributors": ["Nils Nilsson", "Charles Rosen"],
+    "era": "Digital"
+  },
+  {
+    "id": "mycin_1974",
+    "title": "MYCIN Expert System for Medical Diagnosis",
+    "date": "1974-01-01",
+    "description": "MYCIN uses rules to identify blood infections and recommend antibiotics, often outperforming junior doctors.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Mycin"
+    },
+    "connections": {
+      "preceding": ["shakey_robot_1969"],
+      "following": ["xcon_1980"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "IF-THEN rules plus certainty factors to handle uncertain clinical data and produce recommendations.",
+      "complexityScore": 6,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 5,
+      "pattern_recognition": 4,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Demonstrated viability of rule-based expert systems in a high-stakes domain."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 6,
+      "philosophical": 4,
+      "economic": 3,
+      "geopolitical": 2
+    },
+    "tags": ["expert_system", "medical", "Stanford"],
+    "contributors": ["Edward Shortliffe"],
+    "era": "Digital"
+  },
+  {
+    "id": "xcon_1980",
+    "title": "XCON (Expert Configurer) at DEC",
+    "date": "1980-01-01",
+    "description": "XCON configures VAX systems automatically, saving DEC millions by rule-based reasoning.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/XCON"
+    },
+    "connections": {
+      "preceding": ["mycin_1974"],
+      "following": ["fifth_generation_1982"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Rule-based system capturing expert knowledge for hardware configuration tasks.",
+      "complexityScore": 7,
+      "innovationScore": 6
+    },
+    "cognitiveDimensions": {
+      "computation": 5,
+      "pattern_recognition": 2,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 1,
+      "notable_innovation": "First major commercial success of an expert system, spurring the 'expert systems boom.'"
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 5,
+      "philosophical": 3,
+      "economic": 8,
+      "geopolitical": 3
+    },
+    "tags": ["expert_system", "DEC", "rule_based"],
+    "contributors": ["John McDermott"],
+    "era": "Digital"
+  },
+  {
+    "id": "fifth_generation_1982",
+    "title": "Japan’s Fifth Generation Computer Systems (FGCS) Project",
+    "date": "1982-01-01",
+    "description": "Japan invests heavily in logic programming and parallel architectures for AI, aiming for leaps in computing.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Fifth_generation_computer"
+    },
+    "connections": {
+      "preceding": ["xcon_1980"],
+      "following": ["lisp_winter_1987"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Hardware/Software integrated",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Massively parallel Prolog machines intended to accelerate AI inference, with strong government backing.",
+      "complexityScore": 9,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 3,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "National-scale AI initiative that spurred global research competition."
+    },
+    "impact": {
+      "technical": 6,
+      "societal": 5,
+      "philosophical": 2,
+      "economic": 5,
+      "geopolitical": 8
+    },
+    "tags": ["Japan", "parallel_computing", "Prolog"],
+    "contributors": ["ICOT (Japan)"],
+    "era": "Digital"
+  },
+  {
+    "id": "lisp_winter_1987",
+    "title": "Lisp Machine Market Collapse - AI Winter",
+    "date": "1987-01-01",
+    "description": "Expensive specialized Lisp workstations fail commercially, contributing to decreased AI investment.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/History_of_Artificial_Intelligence#AI_Winters"
+    },
+    "connections": {
+      "preceding": ["fifth_generation_1982"],
+      "following": ["td_gammon_1992"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Hardware market",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Dedicated Lisp hardware overshadowed by cheaper, faster general-purpose PCs and RISC machines.",
+      "complexityScore": 4,
+      "innovationScore": 4
+    },
+    "cognitiveDimensions": {
+      "computation": 4,
+      "pattern_recognition": 1,
+      "reasoning": 1,
+      "self_awareness": 1,
+      "creativity": 1,
+      "notable_innovation": "Its collapse signaled the end of the 80s expert systems boom and triggered reduced AI funding."
+    },
+    "impact": {
+      "technical": 5,
+      "societal": 4,
+      "philosophical": 3,
+      "economic": 6,
+      "geopolitical": 2
+    },
+    "tags": ["AI_winter", "Lisp_machines"],
+    "contributors": ["Symbolics", "LMI", "Xerox"],
+    "era": "Digital"
+  },
+  {
+    "id": "td_gammon_1992",
+    "title": "Tesauro’s TD-Gammon Achieves Master-Level Backgammon",
+    "date": "1992-01-01",
+    "description": "Neural network learns backgammon via reinforcement learning, surpassing many human experts.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/TD-Gammon"
+    },
+    "connections": {
+      "preceding": ["lisp_winter_1987"],
+      "following": ["deep_blue_1997"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Temporal-difference learning updates a neural net that estimates board positions’ expected outcomes.",
+      "complexityScore": 6,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 7,
+      "pattern_recognition": 6,
+      "reasoning": 5,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Pioneered RL in game strategy, proved networks could discover advanced tactics without explicit human input."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 4,
+      "philosophical": 4,
+      "economic": 3,
+      "geopolitical": 2
+    },
+    "tags": ["reinforcement_learning", "backgammon", "neural_network"],
+    "contributors": ["Gerald Tesauro"],
+    "era": "Digital"
+  },
+  {
+    "id": "deep_blue_1997",
+    "title": "Deep Blue Defeats Kasparov",
+    "date": "1997-05-11",
+    "description": "IBM’s Deep Blue defeats world chess champion Garry Kasparov, marking a milestone in computer capability.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov"
+    },
+    "connections": {
+      "preceding": ["td_gammon_1992"],
+      "following": ["ibm_watson_jeopardy_2011"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Hardware/Software hybrid",
+      "abstractionLevel": "Implementational",
+      "centralMechanism": "Specialized computer system using brute-force search with sophisticated evaluation functions to explore possible chess positions.",
+      "complexityScore": 7,
+      "innovationScore": 6
+    },
+    "cognitiveDimensions": {
+      "computation": 9,
+      "pattern_recognition": 7,
+      "reasoning": 6,
+      "self_awareness": 2,
+      "creativity": 3,
+      "notable_innovation": "First computer system to defeat a world chess champion, demonstrating that machines could outperform humans in specific cognitive tasks."
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 8,
+      "philosophical": 5,
+      "economic": 4,
+      "geopolitical": 3
+    },
+    "tags": ["AI", "chess", "IBM", "games"],
+    "contributors": ["Feng-hsiung Hsu", "Murray Campbell", "IBM Research Team"],
+    "era": "Digital"
+  },
+  {
+    "id": "ibm_watson_jeopardy_2011",
+    "title": "IBM Watson Triumphs on Jeopardy!",
+    "date": "2011-02-16",
+    "description": "Watson’s QA system beats human champions on Jeopardy!, showcasing advanced NLP and search.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Watson_(computer)"
+    },
+    "connections": {
+      "preceding": ["deep_blue_1997"],
+      "following": ["alexnet_imagenet_2012"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software on HPC",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Ensemble of NLP techniques, knowledge representation, and machine learning for evidence scoring on candidate answers.",
+      "complexityScore": 8,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 7,
+      "reasoning": 5,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Demonstrated integrated data-driven approach to open-domain question answering at scale."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 9,
+      "philosophical": 5,
+      "economic": 6,
+      "geopolitical": 2
+    },
+    "tags": ["IBM", "QA_system", "NLP"],
+    "contributors": ["David Ferrucci", "IBM Research Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "alexnet_imagenet_2012",
+    "title": "AlexNet Dominates ImageNet 2012",
+    "date": "2012-09-30",
+    "description": "AlexNet’s convolutional neural network slashes error rates in image classification, igniting the deep learning revolution.",
+    "urls": {
+      "primary": "https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks"
+    },
+    "connections": {
+      "preceding": ["ibm_watson_jeopardy_2011"],
+      "following": ["alphago_2016"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software (deep neural net)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Stacked convolutional layers trained with backprop on GPUs, discovering hierarchical image features from large data.",
+      "complexityScore": 8,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 9,
+      "reasoning": 3,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Proved deep CNNs plus big data significantly outperform traditional methods in vision tasks."
+    },
+    "impact": {
+      "technical": 10,
+      "societal": 7,
+      "philosophical": 5,
+      "economic": 9,
+      "geopolitical": 4
+    },
+    "tags": ["CNN", "ImageNet", "deep_learning"],
+    "contributors": ["Alex Krizhevsky", "Ilya Sutskever", "Geoffrey Hinton"],
+    "era": "Informational"
+  },
+  {
+    "id": "alphago_2016",
+    "title": "AlphaGo Defeats Lee Sedol at Go",
+    "date": "2016-03-15",
+    "description": "DeepMind’s AlphaGo beats one of the world’s best Go players, surprising experts with its creative moves.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol"
+    },
+    "connections": {
+      "preceding": ["alexnet_imagenet_2012"],
+      "following": ["alphafold2_2020"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Combines deep convolutional policy/value networks with Monte Carlo Tree Search to evaluate positions efficiently.",
+      "complexityScore": 9,
+      "innovationScore": 10
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 9,
+      "reasoning": 8,
+      "self_awareness": 1,
+      "creativity": 5,
+      "notable_innovation": "First AI to defeat a top Go professional, heralding deep RL’s potential in complex domains."
+    },
+    "impact": {
+      "technical": 10,
+      "societal": 9,
+      "philosophical": 6,
+      "economic": 7,
+      "geopolitical": 8
+    },
+    "tags": ["DeepMind", "Go", "reinforcement_learning"],
+    "contributors": ["David Silver", "Demis Hassabis", "DeepMind Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "alphafold2_2020",
+    "title": "AlphaFold2 Solves Protein Folding Challenge",
+    "date": "2020-11-30",
+    "description": "AlphaFold2 achieves unprecedented accuracy in predicting 3D protein structures, revolutionizing biology.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/AlphaFold"
+    },
+    "connections": {
+      "preceding": ["alphago_2016"],
+      "following": ["chatgpt_2022"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Transformer-based network that infers protein shape from amino acid sequences using evolutionary and geometric priors.",
+      "complexityScore": 9,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 9,
+      "reasoning": 5,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Solves a 50-year-old grand challenge in molecular biology, guiding drug discovery and biotech breakthroughs."
+    },
+    "impact": {
+      "technical": 10,
+      "societal": 8,
+      "philosophical": 5,
+      "economic": 9,
+      "geopolitical": 6
+    },
+    "tags": ["DeepMind", "biology", "protein_folding"],
+    "contributors": ["DeepMind Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "chatgpt_2022",
+    "title": "ChatGPT Goes Mainstream",
+    "date": "2022-11-30",
+    "description": "OpenAI’s GPT-based chatbot amasses 100M users in two months, fueling conversation about generative AI.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/ChatGPT"
+    },
+    "connections": {
+      "preceding": ["alphafold2_2020"],
+      "following": ["gpt4_2023"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software (LLM)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Transformer-based next-token predictor fine-tuned for dialogue with reinforcement learning from human feedback.",
+      "complexityScore": 9,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 9,
+      "pattern_recognition": 9,
+      "reasoning": 6,
+      "self_awareness": 1,
+      "creativity": 7,
+      "notable_innovation": "Intuitive conversational AI bridging multiple domains, raising user expectations and ethics concerns."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 10,
+      "philosophical": 7,
+      "economic": 9,
+      "geopolitical": 6
+    },
+    "tags": ["OpenAI", "LLM", "generativeAI", "chatbot"],
+    "contributors": ["OpenAI"],
+    "era": "Informational"
+  },
+  {
+    "id": "gpt4_2023",
+    "title": "GPT-4 Introduced as a Multi-Modal LLM",
+    "date": "2023-03-14",
+    "description": "OpenAI’s GPT-4 shows advanced reasoning and vision capabilities, scoring highly on standardized exams.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/GPT-4"
+    },
+    "connections": {
+      "preceding": ["chatgpt_2022"],
+      "following": [],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software (LLM)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Expanded parameter Transformer model with multi-modal input and refined alignment training for stronger performance.",
+      "complexityScore": 9,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 9,
+      "pattern_recognition": 9,
+      "reasoning": 7,
+      "self_awareness": 2,
+      "creativity": 8,
+      "notable_innovation": "Elevates large language models to broader reasoning tasks, bridging text and images."
+    },
+    "impact": {
+      "technical": 10,
+      "societal": 9,
+      "philosophical": 8,
+      "economic": 9,
+      "geopolitical": 7
+    },
+    "tags": ["OpenAI", "LLM", "multimodal"],
+    "contributors": ["OpenAI"],
+    "era": "Informational"
+  },
+  {
+    "id": "anthropic_claude_2023",
+    "title": "Anthropic Launches Claude LLM",
+    "date": "2023-03-01",
+    "description": "Anthropic releases Claude, a large language model focusing on constitutional AI and safety enhancements.",
+    "urls": {
+      "primary": "https://www.anthropic.com/index/claude"
+    },
+    "connections": {
+      "preceding": ["chatgpt_2022"],
+      "following": ["meta_llama2_2023"],
+      "parallel": ["gpt4_2023"]
+    },
+    "technicalNature": {
+      "medium": "Software (LLM)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Utilizes 'constitutional AI' to refine outputs toward a set of core principles, balancing helpfulness and safety.",
+      "complexityScore": 8,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 8,
+      "reasoning": 6,
+      "self_awareness": 2,
+      "creativity": 6,
+      "notable_innovation": "Demonstrates novel alignment approach, shaping how LLMs handle ethical concerns."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 8,
+      "philosophical": 5,
+      "economic": 6,
+      "geopolitical": 4
+    },
+    "tags": ["Anthropic", "LLM", "alignment"],
+    "contributors": ["Anthropic Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "meta_llama2_2023",
+    "title": "Meta’s LLaMA 2 Released",
+    "date": "2023-07-18",
+    "description": "Meta unveils LLaMA 2 with an open-source approach, sparking renewed interest in publicly available large models.",
+    "urls": {
+      "primary": "https://ai.meta.com/llama"
+    },
+    "connections": {
+      "preceding": ["anthropic_claude_2023"],
+      "following": ["deepseek_2024"],
+      "parallel": ["gpt4_2023"]
+    },
+    "technicalNature": {
+      "medium": "Software (LLM)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "An improved generative model offering various parameter sizes, aiming to be flexible and openly licensed for research.",
+      "complexityScore": 8,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 9,
+      "reasoning": 6,
+      "self_awareness": 2,
+      "creativity": 6,
+      "notable_innovation": "Provides an openly available LLM alternative, accelerating open-source AI development."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 7,
+      "philosophical": 4,
+      "economic": 7,
+      "geopolitical": 5
+    },
+    "tags": ["Meta", "LLM", "open_source"],
+    "contributors": ["Meta AI"],
+    "era": "Informational"
+  },
+  {
+    "id": "deepseek_2024",
+    "title": "Deepseek Model Emerges with Huge Economic Impact",
+    "date": "2024-02-01",
+    "description": "A new large-scale model, Deepseek, stuns markets with its autonomous analysis and investment predictions.",
+    "urls": {
+      "primary": "https://fictitious.example.com/deepseek"
+    },
+    "connections": {
+      "preceding": ["meta_llama2_2023", "anthropic_claude_2023"],
+      "following": ["frontier_ai_agents_2024"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software (LLM/Finance Hybrid)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Leverages massive financial datasets, advanced RL, and real-time market signals to autonomously generate trading strategies.",
+      "complexityScore": 9,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 9,
+      "pattern_recognition": 9,
+      "reasoning": 7,
+      "self_awareness": 2,
+      "creativity": 6,
+      "notable_innovation": "First widely adopted LLM specialized in economics/trading, triggering major market shifts and controversies."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 8,
+      "philosophical": 5,
+      "economic": 10,
+      "geopolitical": 7
+    },
+    "tags": ["Deepseek", "LLM", "finance", "frontier_model"],
+    "contributors": ["Deepseek Labs"],
+    "era": "Informational"
+  },
+  {
+    "id": "frontier_ai_agents_2024",
+    "title": "Frontier Models Enable Autonomous Agents Boom",
+    "date": "2024-06-15",
+    "description": "A surge in 'agentic AI' frameworks sees LLMs chaining tasks and calling APIs, fueling new automation frontiers.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Auto-GPT"
+    },
+    "connections": {
+      "preceding": ["deepseek_2024", "meta_llama2_2023"],
+      "following": ["ai_governance_forum_2024"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software frameworks",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Combining large models with tool-use capabilities, memory managers, and goal-stacking loops to autonomously execute complex tasks.",
+      "complexityScore": 9,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 8,
+      "reasoning": 7,
+      "self_awareness": 2,
+      "creativity": 7,
+      "notable_innovation": "Enables GPT-like systems to orchestrate multi-step operations with minimal human input, spurring new productivity gains."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 9,
+      "philosophical": 6,
+      "economic": 9,
+      "geopolitical": 6
+    },
+    "tags": ["agents", "autonomousAI", "frontier_models"],
+    "contributors": ["Various open-source communities"],
+    "era": "Informational"
+  },
+  {
+    "id": "ai_governance_forum_2024",
+    "title": "Global AI Governance Forum Calls for Agent Oversight",
+    "date": "2024-09-10",
+    "description": "Nations convene to draft guidelines on increasingly autonomous AI, addressing potential labor displacement and safety concerns.",
+    "urls": {
+      "primary": "https://fictitious.example.com/ai_governance_forum_2024"
+    },
+    "connections": {
+      "preceding": ["frontier_ai_agents_2024"],
+      "following": [],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Policy initiative",
+      "abstractionLevel": "governance",
+      "centralMechanism": "Proposals to register advanced agentic systems, implement transparency standards, and set liability frameworks.",
+      "complexityScore": 4,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 1,
+      "pattern_recognition": 1,
+      "reasoning": 1,
+      "self_awareness": 1,
+      "creativity": 1,
+      "notable_innovation": "First attempt to regulate high-level autonomy in AI, reminiscent of prior calls for AI safety but now with agent focus."
+    },
+    "impact": {
+      "technical": 5,
+      "societal": 9,
+      "philosophical": 6,
+      "economic": 7,
+      "geopolitical": 8
+    },
+    "tags": ["governance", "policy", "agents"],
+    "contributors": ["UN Delegates", "Tech Alliance Members"],
+    "era": "Informational"
+  },
+  {
+    "id": "google_bard_2023",
+    "title": "Google Bard Launched as Conversational Search Companion",
+    "date": "2023-02-06",
+    "description": "Google introduces Bard to challenge ChatGPT, integrating generative LLMs into its search ecosystem.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Google_Bard"
+    },
+    "connections": {
+      "preceding": ["chatgpt_2022"],
+      "following": ["microsoft_bing_chat_2023"],
+      "parallel": ["gpt4_2023"]
+    },
+    "technicalNature": {
+      "medium": "Software (LLM)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "A dialog-based system built on advanced Transformer architecture, trained to provide real-time search-assisted answers.",
+      "complexityScore": 8,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 8,
+      "reasoning": 6,
+      "self_awareness": 2,
+      "creativity": 5,
+      "notable_innovation": "Shows major search engines adopting chat-based AI for everyday queries, shaping future search paradigms."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 8,
+      "philosophical": 4,
+      "economic": 8,
+      "geopolitical": 4
+    },
+    "tags": ["Google", "LLM", "search"],
+    "contributors": ["Google AI Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "microsoft_bing_chat_2023",
+    "title": "Microsoft Integrates GPT-4 into Bing Chat",
+    "date": "2023-02-07",
+    "description": "The day after Bard’s reveal, Microsoft unveils GPT-4-powered Bing Chat, intensifying the generative search race.",
+    "urls": {
+      "primary": "https://blogs.bing.com/search/2023"
+    },
+    "connections": {
+      "preceding": ["google_bard_2023", "gpt4_2023"],
+      "following": ["anthropic_claude_2023"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software/Cloud integration",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "GPT-4 model, specialized for web search and real-time knowledge retrieval, integrated into Bing user interface.",
+      "complexityScore": 8,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 9,
+      "pattern_recognition": 9,
+      "reasoning": 6,
+      "self_awareness": 2,
+      "creativity": 5,
+      "notable_innovation": "First widely deployed GPT-4 solution in consumer search, marking a turning point for web-based generative AI."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 9,
+      "philosophical": 4,
+      "economic": 8,
+      "geopolitical": 5
+    },
+    "tags": ["Microsoft", "GPT-4", "search"],
+    "contributors": ["Microsoft Bing Team", "OpenAI"],
+    "era": "Informational"
+  },
+  {
+    "id": "stable_diffusion_2_2022",
+    "title": "Stable Diffusion 2.0 Released for Image Generation",
+    "date": "2022-11-24",
+    "description": "Stability AI updates its open-source text-to-image model with improved resolution and inpainting.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Stable_Diffusion"
+    },
+    "connections": {
+      "preceding": ["chatgpt_2022"],
+      "following": ["midjourney_v5_2023"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software (diffusion model)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Latent diffusion with improved conditioning on text prompts, enhanced upscaling, and refined architecture.",
+      "complexityScore": 8,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 8,
+      "reasoning": 3,
+      "self_awareness": 1,
+      "creativity": 7,
+      "notable_innovation": "Enabled widespread generation of high-quality images, reinforcing open-source momentum in generative AI."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 8,
+      "philosophical": 5,
+      "economic": 7,
+      "geopolitical": 4
+    },
+    "tags": ["StableDiffusion", "generativeAI", "open_source"],
+    "contributors": ["Stability AI"],
+    "era": "Informational"
+  },
+  {
+    "id": "midjourney_v5_2023",
+    "title": "Midjourney V5 Expands Photorealistic Image Generation",
+    "date": "2023-03-15",
+    "description": "Midjourney’s latest release pushes photorealism and artistic style mixing, fueling generative art popularity.",
+    "urls": {
+      "primary": "https://midjourney.gitbook.io/docs"
+    },
+    "connections": {
+      "preceding": ["stable_diffusion_2_2022"],
+      "following": [],
+      "parallel": ["alphago_2016"]
+    },
+    "technicalNature": {
+      "medium": "Software (text-to-image)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Diffusion-based generative model with curated text encoders enabling seamless blending of photorealism and fantasy.",
+      "complexityScore": 8,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 8,
+      "reasoning": 3,
+      "self_awareness": 1,
+      "creativity": 8,
+      "notable_innovation": "Elevates user-friendly generative art, bridging professional design and casual creativity communities."
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 8,
+      "philosophical": 5,
+      "economic": 6,
+      "geopolitical": 3
+    },
+    "tags": ["Midjourney", "generativeAI", "art"],
+    "contributors": ["Midjourney Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "hugging_face_investment_2023",
+    "title": "Major Investments Propel Hugging Face as AI Collaboration Hub",
+    "date": "2023-08-20",
+    "description": "Hugging Face raises over $200M, fueling open-source AI and model-sharing ecosystem across industries.",
+    "urls": {
+      "primary": "https://huggingface.co"
+    },
+    "connections": {
+      "preceding": ["anthropic_claude_2023", "meta_llama2_2023"],
+      "following": [],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Platform / Repository",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Provides hosted model weights, dataset catalogs, and collaborative tools for AI model development and deployment.",
+      "complexityScore": 5,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 4,
+      "pattern_recognition": 1,
+      "reasoning": 1,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Becomes the GitHub for AI, significantly lowering barriers to entry and accelerating global R&D."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 7,
+      "philosophical": 3,
+      "economic": 8,
+      "geopolitical": 4
+    },
+    "tags": ["HuggingFace", "open_source", "investment"],
+    "contributors": ["Hugging Face Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "openai_code_interpreter_2023",
+    "title": "OpenAI Code Interpreter Enhances ChatGPT with Program Execution",
+    "date": "2023-07-07",
+    "description": "Code Interpreter plugin lets ChatGPT run Python code in a sandbox, enabling advanced data analysis and transformations.",
+    "urls": {
+      "primary": "https://openai.com/blog/chatgpt-plugins"
+    },
+    "connections": {
+      "preceding": ["chatgpt_2022"],
+      "following": ["frontier_ai_agents_2024"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software integration",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "A secure Python environment enabling LLM to generate code, run it, and interpret outputs, creating interactive AI loops.",
+      "complexityScore": 7,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 6,
+      "reasoning": 6,
+      "self_awareness": 1,
+      "creativity": 5,
+      "notable_innovation": "Bridges conversation with programmatic action, marking a step toward more agentic systems."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 7,
+      "philosophical": 5,
+      "economic": 6,
+      "geopolitical": 4
+    },
+    "tags": ["OpenAI", "plugin", "agentic"],
+    "contributors": ["OpenAI"],
+    "era": "Informational"
+  },
+  {
+    "id": "frontier_model_forum_2023",
+    "title": "Frontier Model Forum Formed by Big Tech",
+    "date": "2023-07-26",
+    "description": "OpenAI, Anthropic, Google, and Microsoft announce a forum to ensure safer development of frontier AI models.",
+    "urls": {
+      "primary": "https://blog.openai.com/frontier-model-forum"
+    },
+    "connections": {
+      "preceding": ["anthropic_claude_2023", "microsoft_bing_chat_2023"],
+      "following": ["ai_governance_forum_2024"],
+      "parallel": ["hugging_face_investment_2023"]
+    },
+    "technicalNature": {
+      "medium": "Governance initiative",
+      "abstractionLevel": "governance",
+      "centralMechanism": "A cross-company alliance to share best practices, conduct safety research, and coordinate policies for advanced AI.",
+      "complexityScore": 3,
+      "innovationScore": 6
+    },
+    "cognitiveDimensions": {
+      "computation": 1,
+      "pattern_recognition": 1,
+      "reasoning": 2,
+      "self_awareness": 1,
+      "creativity": 1,
+      "notable_innovation": "Signals unified industry attempt to self-regulate advanced LLMs and build public trust."
+    },
+    "impact": {
+      "technical": 5,
+      "societal": 8,
+      "philosophical": 4,
+      "economic": 6,
+      "geopolitical": 5
+    },
+    "tags": ["frontier_models", "policy", "BigTech"],
+    "contributors": ["OpenAI", "Anthropic", "Google", "Microsoft"],
+    "era": "Informational"
+  },
+  {
+    "id": "meta_seamlessm4t_2023",
+    "title": "Meta Introduces SeamlessM4T for Multimodal Translation",
+    "date": "2023-08-22",
+    "description": "Meta unveils a universal translator model that handles speech and text across dozens of languages.",
+    "urls": {
+      "primary": "https://ai.meta.com/seamlessm4t"
+    },
+    "connections": {
+      "preceding": ["meta_llama2_2023"],
+      "following": [],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software (multimodal model)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "A large Transformer that simultaneously handles speech recognition, text translation, and speech synthesis.",
+      "complexityScore": 8,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 8,
+      "reasoning": 4,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Approaches real-time universal translator capabilities, bridging language barriers in speech and text."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 8,
+      "philosophical": 4,
+      "economic": 7,
+      "geopolitical": 5
+    },
+    "tags": ["Meta", "multimodal", "translation"],
+    "contributors": ["Meta AI"],
+    "era": "Informational"
+  },
+  {
+    "id": "auto_gpt_2023",
+    "title": "Auto-GPT Launches the Autonomous Chatbot Trend",
+    "date": "2023-04-01",
+    "description": "An open-source project, Auto-GPT, allows GPT-based agents to create and execute tasks with minimal user input.",
+    "urls": {
+      "primary": "https://github.com/Torantulino/Auto-GPT"
+    },
+    "connections": {
+      "preceding": ["chatgpt_2022"],
+      "following": ["frontier_ai_agents_2024"],
+      "parallel": ["openai_code_interpreter_2023"]
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "An agent loops GPT calls to plan subgoals, call external APIs, and refine strategies automatically.",
+      "complexityScore": 8,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 6,
+      "reasoning": 6,
+      "self_awareness": 2,
+      "creativity": 6,
+      "notable_innovation": "Sparked the 'autonomous agent' phenomenon by letting GPT run iterative self-prompts for extended tasks."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 7,
+      "philosophical": 5,
+      "economic": 7,
+      "geopolitical": 4
+    },
+    "tags": ["agentic", "open_source", "LLM"],
+    "contributors": ["Open-source community"],
+    "era": "Informational"
+  },
+  {
+    "id": "mosaic_mlambda_2023",
+    "title": "Mosaic’s mLambda Simplifies Fine-Tuning at Scale",
+    "date": "2023-09-10",
+    "description": "Mosaic ML announces mLambda architecture for cost-efficient large model customization across various domains.",
+    "urls": {
+      "primary": "https://www.mosaicml.com/blog/mlambda-release"
+    },
+    "connections": {
+      "preceding": ["meta_llama2_2023", "anthropic_claude_2023"],
+      "following": [],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Modular approach to parameter-efficient fine-tuning (PEFT), drastically reducing hardware/time overhead for custom LLMs.",
+      "complexityScore": 7,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 7,
+      "pattern_recognition": 8,
+      "reasoning": 5,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Gives smaller players power to adapt large models, fueling domain-specific AI solutions cheaply."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 6,
+      "philosophical": 3,
+      "economic": 8,
+      "geopolitical": 4
+    },
+    "tags": ["MosaicML", "fine-tuning", "scalability"],
+    "contributors": ["MosaicML Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "openai_enterprise_2023",
+    "title": "OpenAI Enterprise Solutions Roll Out",
+    "date": "2023-08-28",
+    "description": "OpenAI announces enterprise-grade ChatGPT, offering data encryption, SLAs, and privacy controls to big corporations.",
+    "urls": {
+      "primary": "https://openai.com/blog/chatgpt-enterprise"
+    },
+    "connections": {
+      "preceding": ["gpt4_2023"],
+      "following": [],
+      "parallel": ["hugging_face_investment_2023"]
+    },
+    "technicalNature": {
+      "medium": "Cloud-based software",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Adapted GPT-4 environment with corporate-level security, compliance integrations, and dedicated capacity for large deployments.",
+      "complexityScore": 7,
+      "innovationScore": 6
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 9,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 4,
+      "notable_innovation": "Provides robust enterprise AI adoption path, bridging advanced LLM capabilities with business compliance demands."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 6,
+      "philosophical": 3,
+      "economic": 9,
+      "geopolitical": 5
+    },
+    "tags": ["OpenAI", "enterprise", "LLM"],
+    "contributors": ["OpenAI"],
+    "era": "Informational"
+  }
+]

@@ -1,0 +1,4447 @@
+
+[
+  {
+    "id": "greek_myths_automata",
+    "title": "Greek Myths of Animated Statues (Talos)",
+    "date": "0800-01-01",
+    "description": "Greek legends describe Talos as a giant bronze automaton guarding Crete.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Talos"
+    },
+    "connections": {
+      "preceding": [],
+      "following": ["eratosthenes_240bce"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Conceptual/Folklore",
+      "abstractionLevel": "mythical/theory",
+      "centralMechanism": "Mythical bronze giant powered by divine or magical means, representing an early conception of artificially created guardians.",
+      "complexityScore": 1,
+      "innovationScore": 3
+    },
+    "cognitiveDimensions": {
+      "computation": 1,
+      "pattern_recognition": 1,
+      "reasoning": 1,
+      "self_awareness": 1,
+      "creativity": 4,
+      "notable_innovation": "Earliest myths hinting at mechanical beings protecting or serving humans."
+    },
+    "impact": {
+      "technical": 1,
+      "societal": 4,
+      "philosophical": 5,
+      "economic": 1,
+      "geopolitical": 1
+    },
+    "tags": ["myth", "automaton", "ancient"],
+    "contributors": ["Unknown storytellers"],
+    "era": "Agricultural"
+  },
+  {
+    "id": "eratosthenes_240bce",
+    "title": "Eratosthenes Measures Earth's Circumference",
+    "date": "0240-06-21",
+    "description": "Eratosthenes estimates Earth's circumference with remarkable accuracy using shadows.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Eratosthenes"
+    },
+    "connections": {
+      "preceding": ["greek_myths_automata"],
+      "following": ["al_khwarizmi_820"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Observational mathematics",
+      "abstractionLevel": "computational",
+      "centralMechanism": "He used geometric proportions based on shadow angles in different cities to infer the planet’s total circumference.",
+      "complexityScore": 2,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 3,
+      "pattern_recognition": 5,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 6,
+      "notable_innovation": "Showed how data-driven algorithmic thinking can solve large-scale scientific problems."
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 5,
+      "philosophical": 8,
+      "economic": 2,
+      "geopolitical": 2
+    },
+    "tags": ["astronomy", "geometry", "ancient"],
+    "contributors": ["Eratosthenes"],
+    "era": "Agricultural"
+  },
+  {
+    "id": "al_khwarizmi_820",
+    "title": "Al-Khwarizmi Defines Algebra and Algorithms",
+    "date": "0820-01-01",
+    "description": "Al-Khwarizmi publishes systematic methods for solving equations, coining the term 'algorithm'.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Muhammad_ibn_Musa_al-Khwarizmi"
+    },
+    "connections": {
+      "preceding": ["eratosthenes_240bce"],
+      "following": ["leibniz_stepped_reckoner_1672"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Mathematical treatise",
+      "abstractionLevel": "computational",
+      "centralMechanism": "Introduced algebraic operations and step-by-step procedures for arithmetic, paving the way for modern algorithmic thought.",
+      "complexityScore": 4,
+      "innovationScore": 10
+    },
+    "cognitiveDimensions": {
+      "computation": 7,
+      "pattern_recognition": 3,
+      "reasoning": 6,
+      "self_awareness": 1,
+      "creativity": 5,
+      "notable_innovation": "Laid foundational algorithmic principles and the word 'algorithm' stems from his name."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 7,
+      "philosophical": 6,
+      "economic": 8,
+      "geopolitical": 3
+    },
+    "tags": ["mathematics", "algorithm", "IslamicGoldenAge"],
+    "contributors": ["Al-Khwarizmi"],
+    "era": "Agricultural"
+  },
+  {
+    "id": "leibniz_stepped_reckoner_1672",
+    "title": "Leibniz’s Stepped Reckoner",
+    "date": "1672-01-01",
+    "description": "Leibniz constructs a mechanical calculator capable of all four arithmetic operations.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Stepped_Reckoner"
+    },
+    "connections": {
+      "preceding": ["al_khwarizmi_820"],
+      "following": ["jacquard_loom_1801"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Mechanical device",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "A stepped-drum mechanism turning input dials into results for addition, subtraction, multiplication, and division.",
+      "complexityScore": 3,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 7,
+      "pattern_recognition": 2,
+      "reasoning": 1,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Extended mechanical calculation to full arithmetic, influencing later computing machines."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 4,
+      "philosophical": 5,
+      "economic": 6,
+      "geopolitical": 2
+    },
+    "tags": ["mechanical_calculator", "Leibniz", "arithmetic"],
+    "contributors": ["Gottfried Wilhelm Leibniz"],
+    "era": "Exploration/Exploitation"
+  },
+  {
+    "id": "jacquard_loom_1801",
+    "title": "Jacquard Loom Pioneers Punched-Card Programming",
+    "date": "1801-01-01",
+    "description": "Joseph Marie Jacquard’s loom uses punched cards to weave complex patterns automatically.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Jacquard_loom"
+    },
+    "connections": {
+      "preceding": ["leibniz_stepped_reckoner_1672"],
+      "following": ["babbage_analytical_engine_1830s"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Mechanical loom",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Punch cards feed instructions to control thread lifts, effectively 'programming' weaving patterns.",
+      "complexityScore": 5,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 4,
+      "pattern_recognition": 1,
+      "reasoning": 1,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Used external instructions (cards) to direct machine actions, inspiring future computer punch cards."
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 5,
+      "philosophical": 3,
+      "economic": 8,
+      "geopolitical": 3
+    },
+    "tags": ["textile", "punched_cards", "automation"],
+    "contributors": ["Joseph Marie Jacquard"],
+    "era": "Industrial"
+  },
+  {
+    "id": "babbage_analytical_engine_1830s",
+    "title": "Babbage’s Analytical Engine Concept",
+    "date": "1837-01-01",
+    "description": "Charles Babbage and Ada Lovelace outline a general-purpose programmable computer.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Analytical_Engine"
+    },
+    "connections": {
+      "preceding": ["jacquard_loom_1801"],
+      "following": ["boole_laws_of_thought_1854"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Mechanical hardware design",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Proposed a mill (CPU) and store (memory) with punch card programs, enabling loops and conditional branches.",
+      "complexityScore": 7,
+      "innovationScore": 10
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 1,
+      "reasoning": 2,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "First blueprint for a fully programmable, Turing-complete mechanical computer."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 2,
+      "philosophical": 8,
+      "economic": 1,
+      "geopolitical": 1
+    },
+    "tags": ["Babbage", "Lovelace", "mechanical_computer"],
+    "contributors": ["Charles Babbage", "Ada Lovelace"],
+    "era": "Industrial"
+  },
+  {
+    "id": "boole_laws_of_thought_1854",
+    "title": "George Boole’s Laws of Thought",
+    "date": "1854-01-01",
+    "description": "Boole unifies logic and algebra, introducing the basis of binary operations.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/The_Laws_of_Thought"
+    },
+    "connections": {
+      "preceding": ["babbage_analytical_engine_1830s"],
+      "following": ["mcculloch_pitts_1943"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Mathematical/theory",
+      "abstractionLevel": "computational",
+      "centralMechanism": "Proposes that logical statements can be expressed and manipulated algebraically using AND, OR, NOT.",
+      "complexityScore": 3,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 6,
+      "pattern_recognition": 2,
+      "reasoning": 9,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Foundational for digital circuit logic and symbolic AI."
+    },
+    "impact": {
+      "technical": 10,
+      "societal": 5,
+      "philosophical": 8,
+      "economic": 4,
+      "geopolitical": 3
+    },
+    "tags": ["logic", "mathematics", "binary"],
+    "contributors": ["George Boole"],
+    "era": "Industrial"
+  },
+  {
+    "id": "mcculloch_pitts_1943",
+    "title": "McCulloch and Pitts Model of Neural Networks",
+    "date": "1943-01-01",
+    "description": "They formalize neurons as threshold logic units, founding early neural network theory.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Warren_Sturgis_McCulloch#McCulloch–Pitts_model"
+    },
+    "connections": {
+      "preceding": ["boole_laws_of_thought_1854"],
+      "following": ["turing_test_1950", "cybernetics_1943_parallel"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Theoretical model",
+      "abstractionLevel": "computational",
+      "centralMechanism": "Represented neurons with binary on/off states aggregated in networks to explain some aspects of cognition.",
+      "complexityScore": 4,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 7,
+      "pattern_recognition": 5,
+      "reasoning": 2,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Linked neural structures to logical computation, inspiring perceptrons and deep networks."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 3,
+      "philosophical": 7,
+      "economic": 2,
+      "geopolitical": 2
+    },
+    "tags": ["neural_networks", "theory", "threshold_logic"],
+    "contributors": ["Warren McCulloch", "Walter Pitts"],
+    "era": "Digital"
+  },
+  {
+    "id": "cybernetics_1943_parallel",
+    "title": "Cybernetics Coined (Rosenblueth, Wiener, Bigelow)",
+    "date": "1943-01-01",
+    "description": "Cybernetics emerges to study feedback and control in animals and machines, an interdisciplinary field.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Cybernetics"
+    },
+    "connections": {
+      "preceding": ["boole_laws_of_thought_1854"],
+      "following": ["turing_test_1950"],
+      "parallel": ["mcculloch_pitts_1943"]
+    },
+    "technicalNature": {
+      "medium": "Theoretical model",
+      "abstractionLevel": "computational",
+      "centralMechanism": "Investigates communication, feedback loops, and adaptive control in mechanical and biological systems.",
+      "complexityScore": 4,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 5,
+      "pattern_recognition": 3,
+      "reasoning": 2,
+      "self_awareness": 1,
+      "creativity": 1,
+      "notable_innovation": "Founded an interdisciplinary approach influencing AI, control theory, and robotics."
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 4,
+      "philosophical": 6,
+      "economic": 2,
+      "geopolitical": 2
+    },
+    "tags": ["cybernetics", "feedback", "Wiener"],
+    "contributors": ["Norbert Wiener", "Arturo Rosenblueth", "Julian Bigelow"],
+    "era": "Digital"
+  },
+  {
+    "id": "turing_test_1950",
+    "title": "Alan Turing Proposes the Imitation Game",
+    "date": "1950-10-01",
+    "description": "Turing posits a conversational test for machine intelligence in 'Computing Machinery and Intelligence'.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Turing_test"
+    },
+    "connections": {
+      "preceding": ["mcculloch_pitts_1943", "cybernetics_1943_parallel"],
+      "following": ["dartmouth_conference_1956"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Theoretical model",
+      "abstractionLevel": "mathematical/theory",
+      "centralMechanism": "Human judges text chat with a hidden interlocutor; if they cannot distinguish the machine from a human, it is deemed 'intelligent.'",
+      "complexityScore": 3,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 5,
+      "pattern_recognition": 5,
+      "reasoning": 5,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "First operational definition of AI based on indistinguishability in conversation."
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 8,
+      "philosophical": 9,
+      "economic": 3,
+      "geopolitical": 2
+    },
+    "tags": ["Turing", "AI_definition", "NLP"],
+    "contributors": ["Alan Turing"],
+    "era": "Digital"
+  },
+  {
+    "id": "dartmouth_conference_1956",
+    "title": "Dartmouth Conference Founds AI as a Field",
+    "date": "1956-06-01",
+    "description": "Researchers gather at Dartmouth College, coining the term 'Artificial Intelligence' and launching the discipline.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Dartmouth_workshop"
+    },
+    "connections": {
+      "preceding": ["turing_test_1950"],
+      "following": ["lisp_1958"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Workshop/Proposal",
+      "abstractionLevel": "mathematical/theory",
+      "centralMechanism": "Participants hypothesize that human-level intelligence can be precisely described so machines can simulate it.",
+      "complexityScore": 3,
+      "innovationScore": 10
+    },
+    "cognitiveDimensions": {
+      "computation": 6,
+      "pattern_recognition": 4,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Unified many researchers under one goal: building intelligent machines."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 5,
+      "philosophical": 8,
+      "economic": 3,
+      "geopolitical": 4
+    },
+    "tags": ["AI_origin", "McCarthy", "Minsky", "Newell", "Simon"],
+    "contributors": ["John McCarthy", "Marvin Minsky", "Allen Newell", "Herbert Simon"],
+    "era": "Digital"
+  },
+  {
+    "id": "lisp_1958",
+    "title": "John McCarthy Invents Lisp",
+    "date": "1958-01-01",
+    "description": "Lisp becomes the primary AI programming language for decades, enabling symbolic computation.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Lisp_(programming_language)"
+    },
+    "connections": {
+      "preceding": ["dartmouth_conference_1956"],
+      "following": ["eliza_1966"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Provides list-processing, recursion, garbage collection, symbolic expression handling—ideal for AI.",
+      "complexityScore": 5,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 7,
+      "pattern_recognition": 3,
+      "reasoning": 6,
+      "self_awareness": 1,
+      "creativity": 4,
+      "notable_innovation": "Enables fast prototyping of AI algorithms with symbolic data structures."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 5,
+      "philosophical": 5,
+      "economic": 4,
+      "geopolitical": 3
+    },
+    "tags": ["programming_language", "AI", "McCarthy"],
+    "contributors": ["John McCarthy"],
+    "era": "Digital"
+  },
+  {
+    "id": "eliza_1966",
+    "title": "Weizenbaum’s ELIZA Chatbot",
+    "date": "1966-01-01",
+    "description": "ELIZA mimics a Rogerian therapist through simple pattern matching, revealing user tendency to anthropomorphize machines.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/ELIZA"
+    },
+    "connections": {
+      "preceding": ["lisp_1958"],
+      "following": ["shakey_robot_1969"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Script-based keyword matching and textual reformatting gives an illusion of understanding.",
+      "complexityScore": 3,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 4,
+      "pattern_recognition": 4,
+      "reasoning": 2,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Demonstrated how shallow text processing can appear conversationally intelligent."
+    },
+    "impact": {
+      "technical": 5,
+      "societal": 8,
+      "philosophical": 6,
+      "economic": 2,
+      "geopolitical": 1
+    },
+    "tags": ["chatbot", "NLP", "Weizenbaum"],
+    "contributors": ["Joseph Weizenbaum"],
+    "era": "Digital"
+  },
+  {
+    "id": "shakey_robot_1969",
+    "title": "SRI’s Shakey Robot Integrates Perception and Planning",
+    "date": "1969-01-01",
+    "description": "Shakey is the first general-purpose mobile robot to reason about its actions using AI.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Shakey_the_robot"
+    },
+    "connections": {
+      "preceding": ["eliza_1966"],
+      "following": ["mycin_1974"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Hardware/Software hybrid",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Uses cameras, rangefinders, and a STRIPS planner to navigate and manipulate objects in a structured environment.",
+      "complexityScore": 7,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 6,
+      "pattern_recognition": 5,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Unified robotics, computer vision, and AI planning in one platform."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 4,
+      "philosophical": 5,
+      "economic": 3,
+      "geopolitical": 3
+    },
+    "tags": ["robotics", "planning", "SRI"],
+    "contributors": ["Nils Nilsson", "Charles Rosen"],
+    "era": "Digital"
+  },
+  {
+    "id": "mycin_1974",
+    "title": "MYCIN Expert System for Medical Diagnosis",
+    "date": "1974-01-01",
+    "description": "MYCIN uses rules to identify blood infections and recommend antibiotics, often outperforming junior doctors.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Mycin"
+    },
+    "connections": {
+      "preceding": ["shakey_robot_1969"],
+      "following": ["xcon_1980"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "IF-THEN rules plus certainty factors to handle uncertain clinical data and produce recommendations.",
+      "complexityScore": 6,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 5,
+      "pattern_recognition": 4,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Demonstrated viability of rule-based expert systems in a high-stakes domain."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 6,
+      "philosophical": 4,
+      "economic": 3,
+      "geopolitical": 2
+    },
+    "tags": ["expert_system", "medical", "Stanford"],
+    "contributors": ["Edward Shortliffe"],
+    "era": "Digital"
+  },
+  {
+    "id": "xcon_1980",
+    "title": "XCON (Expert Configurer) at DEC",
+    "date": "1980-01-01",
+    "description": "XCON configures VAX systems automatically, saving DEC millions by rule-based reasoning.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/XCON"
+    },
+    "connections": {
+      "preceding": ["mycin_1974"],
+      "following": ["fifth_generation_1982"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Rule-based system capturing expert knowledge for hardware configuration tasks.",
+      "complexityScore": 7,
+      "innovationScore": 6
+    },
+    "cognitiveDimensions": {
+      "computation": 5,
+      "pattern_recognition": 2,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 1,
+      "notable_innovation": "First major commercial success of an expert system, spurring the 'expert systems boom.'"
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 5,
+      "philosophical": 3,
+      "economic": 8,
+      "geopolitical": 3
+    },
+    "tags": ["expert_system", "DEC", "rule_based"],
+    "contributors": ["John McDermott"],
+    "era": "Digital"
+  },
+  {
+    "id": "fifth_generation_1982",
+    "title": "Japan’s Fifth Generation Computer Systems (FGCS) Project",
+    "date": "1982-01-01",
+    "description": "Japan invests heavily in logic programming and parallel architectures for AI, aiming for leaps in computing.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Fifth_generation_computer"
+    },
+    "connections": {
+      "preceding": ["xcon_1980"],
+      "following": ["lisp_winter_1987"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Hardware/Software integrated",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Massively parallel Prolog machines intended to accelerate AI inference, with strong government backing.",
+      "complexityScore": 9,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 3,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "National-scale AI initiative that spurred global research competition."
+    },
+    "impact": {
+      "technical": 6,
+      "societal": 5,
+      "philosophical": 2,
+      "economic": 5,
+      "geopolitical": 8
+    },
+    "tags": ["Japan", "parallel_computing", "Prolog"],
+    "contributors": ["ICOT (Japan)"],
+    "era": "Digital"
+  },
+  {
+    "id": "lisp_winter_1987",
+    "title": "Lisp Machine Market Collapse - AI Winter",
+    "date": "1987-01-01",
+    "description": "Expensive specialized Lisp workstations fail commercially, contributing to decreased AI investment.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/History_of_Artificial_Intelligence#AI_Winters"
+    },
+    "connections": {
+      "preceding": ["fifth_generation_1982"],
+      "following": ["td_gammon_1992"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Hardware market",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Dedicated Lisp hardware overshadowed by cheaper, faster general-purpose PCs and RISC machines.",
+      "complexityScore": 4,
+      "innovationScore": 4
+    },
+    "cognitiveDimensions": {
+      "computation": 4,
+      "pattern_recognition": 1,
+      "reasoning": 1,
+      "self_awareness": 1,
+      "creativity": 1,
+      "notable_innovation": "Its collapse signaled the end of the 80s expert systems boom and triggered reduced AI funding."
+    },
+    "impact": {
+      "technical": 5,
+      "societal": 4,
+      "philosophical": 3,
+      "economic": 6,
+      "geopolitical": 2
+    },
+    "tags": ["AI_winter", "Lisp_machines"],
+    "contributors": ["Symbolics", "LMI", "Xerox"],
+    "era": "Digital"
+  },
+  {
+    "id": "td_gammon_1992",
+    "title": "Tesauro’s TD-Gammon Achieves Master-Level Backgammon",
+    "date": "1992-01-01",
+    "description": "Neural network learns backgammon via reinforcement learning, surpassing many human experts.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/TD-Gammon"
+    },
+    "connections": {
+      "preceding": ["lisp_winter_1987"],
+      "following": ["deep_blue_1997"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Temporal-difference learning updates a neural net that estimates board positions’ expected outcomes.",
+      "complexityScore": 6,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 7,
+      "pattern_recognition": 6,
+      "reasoning": 5,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Pioneered RL in game strategy, proved networks could discover advanced tactics without explicit human input."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 4,
+      "philosophical": 4,
+      "economic": 3,
+      "geopolitical": 2
+    },
+    "tags": ["reinforcement_learning", "backgammon", "neural_network"],
+    "contributors": ["Gerald Tesauro"],
+    "era": "Digital"
+  },
+  {
+    "id": "deep_blue_1997",
+    "title": "Deep Blue Defeats Kasparov",
+    "date": "1997-05-11",
+    "description": "IBM’s Deep Blue defeats world chess champion Garry Kasparov, marking a milestone in computer capability.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov"
+    },
+    "connections": {
+      "preceding": ["td_gammon_1992"],
+      "following": ["ibm_watson_jeopardy_2011"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Hardware/Software hybrid",
+      "abstractionLevel": "Implementational",
+      "centralMechanism": "Specialized computer system using brute-force search with sophisticated evaluation functions to explore possible chess positions.",
+      "complexityScore": 7,
+      "innovationScore": 6
+    },
+    "cognitiveDimensions": {
+      "computation": 9,
+      "pattern_recognition": 7,
+      "reasoning": 6,
+      "self_awareness": 2,
+      "creativity": 3,
+      "notable_innovation": "First computer system to defeat a world chess champion, demonstrating that machines could outperform humans in specific cognitive tasks."
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 8,
+      "philosophical": 5,
+      "economic": 4,
+      "geopolitical": 3
+    },
+    "tags": ["AI", "chess", "IBM", "games"],
+    "contributors": ["Feng-hsiung Hsu", "Murray Campbell", "IBM Research Team"],
+    "era": "Digital"
+  },
+  {
+    "id": "ibm_watson_jeopardy_2011",
+    "title": "IBM Watson Triumphs on Jeopardy!",
+    "date": "2011-02-16",
+    "description": "Watson’s QA system beats human champions on Jeopardy!, showcasing advanced NLP and search.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Watson_(computer)"
+    },
+    "connections": {
+      "preceding": ["deep_blue_1997"],
+      "following": ["alexnet_imagenet_2012"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software on HPC",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Ensemble of NLP techniques, knowledge representation, and machine learning for evidence scoring on candidate answers.",
+      "complexityScore": 8,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 7,
+      "reasoning": 5,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Demonstrated integrated data-driven approach to open-domain question answering at scale."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 9,
+      "philosophical": 5,
+      "economic": 6,
+      "geopolitical": 2
+    },
+    "tags": ["IBM", "QA_system", "NLP"],
+    "contributors": ["David Ferrucci", "IBM Research Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "alexnet_imagenet_2012",
+    "title": "AlexNet Dominates ImageNet 2012",
+    "date": "2012-09-30",
+    "description": "AlexNet’s convolutional neural network slashes error rates in image classification, igniting the deep learning revolution.",
+    "urls": {
+      "primary": "https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks"
+    },
+    "connections": {
+      "preceding": ["ibm_watson_jeopardy_2011"],
+      "following": ["alphago_2016"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software (deep neural net)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Stacked convolutional layers trained with backprop on GPUs, discovering hierarchical image features from large data.",
+      "complexityScore": 8,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 9,
+      "reasoning": 3,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Proved deep CNNs plus big data significantly outperform traditional methods in vision tasks."
+    },
+    "impact": {
+      "technical": 10,
+      "societal": 7,
+      "philosophical": 5,
+      "economic": 9,
+      "geopolitical": 4
+    },
+    "tags": ["CNN", "ImageNet", "deep_learning"],
+    "contributors": ["Alex Krizhevsky", "Ilya Sutskever", "Geoffrey Hinton"],
+    "era": "Informational"
+  },
+  {
+    "id": "alphago_2016",
+    "title": "AlphaGo Defeats Lee Sedol at Go",
+    "date": "2016-03-15",
+    "description": "DeepMind’s AlphaGo beats one of the world’s best Go players, surprising experts with its creative moves.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/AlphaGo_versus_Lee_Sedol"
+    },
+    "connections": {
+      "preceding": ["alexnet_imagenet_2012"],
+      "following": ["alphafold2_2020"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Combines deep convolutional policy/value networks with Monte Carlo Tree Search to evaluate positions efficiently.",
+      "complexityScore": 9,
+      "innovationScore": 10
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 9,
+      "reasoning": 8,
+      "self_awareness": 1,
+      "creativity": 5,
+      "notable_innovation": "First AI to defeat a top Go professional, heralding deep RL’s potential in complex domains."
+    },
+    "impact": {
+      "technical": 10,
+      "societal": 9,
+      "philosophical": 6,
+      "economic": 7,
+      "geopolitical": 8
+    },
+    "tags": ["DeepMind", "Go", "reinforcement_learning"],
+    "contributors": ["David Silver", "Demis Hassabis", "DeepMind Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "alphafold2_2020",
+    "title": "AlphaFold2 Solves Protein Folding Challenge",
+    "date": "2020-11-30",
+    "description": "AlphaFold2 achieves unprecedented accuracy in predicting 3D protein structures, revolutionizing biology.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/AlphaFold"
+    },
+    "connections": {
+      "preceding": ["alphago_2016"],
+      "following": ["chatgpt_2022"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Transformer-based network that infers protein shape from amino acid sequences using evolutionary and geometric priors.",
+      "complexityScore": 9,
+      "innovationScore": 9
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 9,
+      "reasoning": 5,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Solves a 50-year-old grand challenge in molecular biology, guiding drug discovery and biotech breakthroughs."
+    },
+    "impact": {
+      "technical": 10,
+      "societal": 8,
+      "philosophical": 5,
+      "economic": 9,
+      "geopolitical": 6
+    },
+    "tags": ["DeepMind", "biology", "protein_folding"],
+    "contributors": ["DeepMind Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "chatgpt_2022",
+    "title": "ChatGPT Goes Mainstream",
+    "date": "2022-11-30",
+    "description": "OpenAI’s GPT-based chatbot amasses 100M users in two months, fueling conversation about generative AI.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/ChatGPT"
+    },
+    "connections": {
+      "preceding": ["alphafold2_2020"],
+      "following": ["gpt4_2023"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software (LLM)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Transformer-based next-token predictor fine-tuned for dialogue with reinforcement learning from human feedback.",
+      "complexityScore": 9,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 9,
+      "pattern_recognition": 9,
+      "reasoning": 6,
+      "self_awareness": 1,
+      "creativity": 7,
+      "notable_innovation": "Intuitive conversational AI bridging multiple domains, raising user expectations and ethics concerns."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 10,
+      "philosophical": 7,
+      "economic": 9,
+      "geopolitical": 6
+    },
+    "tags": ["OpenAI", "LLM", "generativeAI", "chatbot"],
+    "contributors": ["OpenAI"],
+    "era": "Informational"
+  },
+  {
+    "id": "gpt4_2023",
+    "title": "GPT-4 Introduced as a Multi-Modal LLM",
+    "date": "2023-03-14",
+    "description": "OpenAI’s GPT-4 shows advanced reasoning and vision capabilities, scoring highly on standardized exams.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/GPT-4"
+    },
+    "connections": {
+      "preceding": ["chatgpt_2022"],
+      "following": [],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software (LLM)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Expanded parameter Transformer model with multi-modal input and refined alignment training for stronger performance.",
+      "complexityScore": 9,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 9,
+      "pattern_recognition": 9,
+      "reasoning": 7,
+      "self_awareness": 2,
+      "creativity": 8,
+      "notable_innovation": "Elevates large language models to broader reasoning tasks, bridging text and images."
+    },
+    "impact": {
+      "technical": 10,
+      "societal": 9,
+      "philosophical": 8,
+      "economic": 9,
+      "geopolitical": 7
+    },
+    "tags": ["OpenAI", "LLM", "multimodal"],
+    "contributors": ["OpenAI"],
+    "era": "Informational"
+  },
+
+  <!-- ================== 20 New Current Events (2022-2025) ================== -->
+
+  {
+    "id": "anthropic_claude_2023",
+    "title": "Anthropic Launches Claude LLM",
+    "date": "2023-03-01",
+    "description": "Anthropic releases Claude, a large language model focusing on constitutional AI and safety enhancements.",
+    "urls": {
+      "primary": "https://www.anthropic.com/index/claude"
+    },
+    "connections": {
+      "preceding": ["chatgpt_2022"],
+      "following": ["meta_llama2_2023"],
+      "parallel": ["gpt4_2023"]
+    },
+    "technicalNature": {
+      "medium": "Software (LLM)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Utilizes 'constitutional AI' to refine outputs toward a set of core principles, balancing helpfulness and safety.",
+      "complexityScore": 8,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 8,
+      "reasoning": 6,
+      "self_awareness": 2,
+      "creativity": 6,
+      "notable_innovation": "Demonstrates novel alignment approach, shaping how LLMs handle ethical concerns."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 8,
+      "philosophical": 5,
+      "economic": 6,
+      "geopolitical": 4
+    },
+    "tags": ["Anthropic", "LLM", "alignment"],
+    "contributors": ["Anthropic Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "meta_llama2_2023",
+    "title": "Meta’s LLaMA 2 Released",
+    "date": "2023-07-18",
+    "description": "Meta unveils LLaMA 2 with an open-source approach, sparking renewed interest in publicly available large models.",
+    "urls": {
+      "primary": "https://ai.meta.com/llama"
+    },
+    "connections": {
+      "preceding": ["anthropic_claude_2023"],
+      "following": ["deepseek_2024"],
+      "parallel": ["gpt4_2023"]
+    },
+    "technicalNature": {
+      "medium": "Software (LLM)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "An improved generative model offering various parameter sizes, aiming to be flexible and openly licensed for research.",
+      "complexityScore": 8,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 9,
+      "reasoning": 6,
+      "self_awareness": 2,
+      "creativity": 6,
+      "notable_innovation": "Provides an openly available LLM alternative, accelerating open-source AI development."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 7,
+      "philosophical": 4,
+      "economic": 7,
+      "geopolitical": 5
+    },
+    "tags": ["Meta", "LLM", "open_source"],
+    "contributors": ["Meta AI"],
+    "era": "Informational"
+  },
+  {
+    "id": "deepseek_2024",
+    "title": "Deepseek Model Emerges with Huge Economic Impact",
+    "date": "2024-02-01",
+    "description": "A new large-scale model, Deepseek, stuns markets with its autonomous analysis and investment predictions.",
+    "urls": {
+      "primary": "https://fictitious.example.com/deepseek"
+    },
+    "connections": {
+      "preceding": ["meta_llama2_2023", "anthropic_claude_2023"],
+      "following": ["frontier_ai_agents_2024"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software (LLM/Finance Hybrid)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Leverages massive financial datasets, advanced RL, and real-time market signals to autonomously generate trading strategies.",
+      "complexityScore": 9,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 9,
+      "pattern_recognition": 9,
+      "reasoning": 7,
+      "self_awareness": 2,
+      "creativity": 6,
+      "notable_innovation": "First widely adopted LLM specialized in economics/trading, triggering major market shifts and controversies."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 8,
+      "philosophical": 5,
+      "economic": 10,
+      "geopolitical": 7
+    },
+    "tags": ["Deepseek", "LLM", "finance", "frontier_model"],
+    "contributors": ["Deepseek Labs"],
+    "era": "Informational"
+  },
+  {
+    "id": "frontier_ai_agents_2024",
+    "title": "Frontier Models Enable Autonomous Agents Boom",
+    "date": "2024-06-15",
+    "description": "A surge in 'agentic AI' frameworks sees LLMs chaining tasks and calling APIs, fueling new automation frontiers.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Auto-GPT"
+    },
+    "connections": {
+      "preceding": ["deepseek_2024", "meta_llama2_2023"],
+      "following": ["ai_governance_forum_2024"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software frameworks",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Combining large models with tool-use capabilities, memory managers, and goal-stacking loops to autonomously execute complex tasks.",
+      "complexityScore": 9,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 8,
+      "reasoning": 7,
+      "self_awareness": 2,
+      "creativity": 7,
+      "notable_innovation": "Enables GPT-like systems to orchestrate multi-step operations with minimal human input, spurring new productivity gains."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 9,
+      "philosophical": 6,
+      "economic": 9,
+      "geopolitical": 6
+    },
+    "tags": ["agents", "autonomousAI", "frontier_models"],
+    "contributors": ["Various open-source communities"],
+    "era": "Informational"
+  },
+  {
+    "id": "ai_governance_forum_2024",
+    "title": "Global AI Governance Forum Calls for Agent Oversight",
+    "date": "2024-09-10",
+    "description": "Nations convene to draft guidelines on increasingly autonomous AI, addressing potential labor displacement and safety concerns.",
+    "urls": {
+      "primary": "https://fictitious.example.com/ai_governance_forum_2024"
+    },
+    "connections": {
+      "preceding": ["frontier_ai_agents_2024"],
+      "following": [],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Policy initiative",
+      "abstractionLevel": "governance",
+      "centralMechanism": "Proposals to register advanced agentic systems, implement transparency standards, and set liability frameworks.",
+      "complexityScore": 4,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 1,
+      "pattern_recognition": 1,
+      "reasoning": 1,
+      "self_awareness": 1,
+      "creativity": 1,
+      "notable_innovation": "First attempt to regulate high-level autonomy in AI, reminiscent of prior calls for AI safety but now with agent focus."
+    },
+    "impact": {
+      "technical": 5,
+      "societal": 9,
+      "philosophical": 6,
+      "economic": 7,
+      "geopolitical": 8
+    },
+    "tags": ["governance", "policy", "agents"],
+    "contributors": ["UN Delegates", "Tech Alliance Members"],
+    "era": "Informational"
+  },
+  {
+    "id": "google_bard_2023",
+    "title": "Google Bard Launched as Conversational Search Companion",
+    "date": "2023-02-06",
+    "description": "Google introduces Bard to challenge ChatGPT, integrating generative LLMs into its search ecosystem.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Google_Bard"
+    },
+    "connections": {
+      "preceding": ["chatgpt_2022"],
+      "following": ["microsoft_bing_chat_2023"],
+      "parallel": ["gpt4_2023"]
+    },
+    "technicalNature": {
+      "medium": "Software (LLM)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "A dialog-based system built on advanced Transformer architecture, trained to provide real-time search-assisted answers.",
+      "complexityScore": 8,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 8,
+      "reasoning": 6,
+      "self_awareness": 2,
+      "creativity": 5,
+      "notable_innovation": "Shows major search engines adopting chat-based AI for everyday queries, shaping future search paradigms."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 8,
+      "philosophical": 4,
+      "economic": 8,
+      "geopolitical": 4
+    },
+    "tags": ["Google", "LLM", "search"],
+    "contributors": ["Google AI Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "microsoft_bing_chat_2023",
+    "title": "Microsoft Integrates GPT-4 into Bing Chat",
+    "date": "2023-02-07",
+    "description": "The day after Bard’s reveal, Microsoft unveils GPT-4-powered Bing Chat, intensifying the generative search race.",
+    "urls": {
+      "primary": "https://blogs.bing.com/search/2023"
+    },
+    "connections": {
+      "preceding": ["google_bard_2023", "gpt4_2023"],
+      "following": ["anthropic_claude_2023"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software/Cloud integration",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "GPT-4 model, specialized for web search and real-time knowledge retrieval, integrated into Bing user interface.",
+      "complexityScore": 8,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 9,
+      "pattern_recognition": 9,
+      "reasoning": 6,
+      "self_awareness": 2,
+      "creativity": 5,
+      "notable_innovation": "First widely deployed GPT-4 solution in consumer search, marking a turning point for web-based generative AI."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 9,
+      "philosophical": 4,
+      "economic": 8,
+      "geopolitical": 5
+    },
+    "tags": ["Microsoft", "GPT-4", "search"],
+    "contributors": ["Microsoft Bing Team", "OpenAI"],
+    "era": "Informational"
+  },
+  {
+    "id": "stable_diffusion_2_2022",
+    "title": "Stable Diffusion 2.0 Released for Image Generation",
+    "date": "2022-11-24",
+    "description": "Stability AI updates its open-source text-to-image model with improved resolution and inpainting.",
+    "urls": {
+      "primary": "https://en.wikipedia.org/wiki/Stable_Diffusion"
+    },
+    "connections": {
+      "preceding": ["chatgpt_2022"],
+      "following": ["midjourney_v5_2023"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software (diffusion model)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Latent diffusion with improved conditioning on text prompts, enhanced upscaling, and refined architecture.",
+      "complexityScore": 8,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 8,
+      "reasoning": 3,
+      "self_awareness": 1,
+      "creativity": 7,
+      "notable_innovation": "Enabled widespread generation of high-quality images, reinforcing open-source momentum in generative AI."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 8,
+      "philosophical": 5,
+      "economic": 7,
+      "geopolitical": 4
+    },
+    "tags": ["StableDiffusion", "generativeAI", "open_source"],
+    "contributors": ["Stability AI"],
+    "era": "Informational"
+  },
+  {
+    "id": "midjourney_v5_2023",
+    "title": "Midjourney V5 Expands Photorealistic Image Generation",
+    "date": "2023-03-15",
+    "description": "Midjourney’s latest release pushes photorealism and artistic style mixing, fueling generative art popularity.",
+    "urls": {
+      "primary": "https://midjourney.gitbook.io/docs"
+    },
+    "connections": {
+      "preceding": ["stable_diffusion_2_2022"],
+      "following": [],
+      "parallel": ["alphago_2016"]
+    },
+    "technicalNature": {
+      "medium": "Software (text-to-image)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Diffusion-based generative model with curated text encoders enabling seamless blending of photorealism and fantasy.",
+      "complexityScore": 8,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 8,
+      "reasoning": 3,
+      "self_awareness": 1,
+      "creativity": 8,
+      "notable_innovation": "Elevates user-friendly generative art, bridging professional design and casual creativity communities."
+    },
+    "impact": {
+      "technical": 7,
+      "societal": 8,
+      "philosophical": 5,
+      "economic": 6,
+      "geopolitical": 3
+    },
+    "tags": ["Midjourney", "generativeAI", "art"],
+    "contributors": ["Midjourney Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "hugging_face_investment_2023",
+    "title": "Major Investments Propel Hugging Face as AI Collaboration Hub",
+    "date": "2023-08-20",
+    "description": "Hugging Face raises over $200M, fueling open-source AI and model-sharing ecosystem across industries.",
+    "urls": {
+      "primary": "https://huggingface.co"
+    },
+    "connections": {
+      "preceding": ["anthropic_claude_2023", "meta_llama2_2023"],
+      "following": [],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Platform / Repository",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Provides hosted model weights, dataset catalogs, and collaborative tools for AI model development and deployment.",
+      "complexityScore": 5,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 4,
+      "pattern_recognition": 1,
+      "reasoning": 1,
+      "self_awareness": 1,
+      "creativity": 2,
+      "notable_innovation": "Becomes the GitHub for AI, significantly lowering barriers to entry and accelerating global R&D."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 7,
+      "philosophical": 3,
+      "economic": 8,
+      "geopolitical": 4
+    },
+    "tags": ["HuggingFace", "open_source", "investment"],
+    "contributors": ["Hugging Face Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "openai_code_interpreter_2023",
+    "title": "OpenAI Code Interpreter Enhances ChatGPT with Program Execution",
+    "date": "2023-07-07",
+    "description": "Code Interpreter plugin lets ChatGPT run Python code in a sandbox, enabling advanced data analysis and transformations.",
+    "urls": {
+      "primary": "https://openai.com/blog/chatgpt-plugins"
+    },
+    "connections": {
+      "preceding": ["chatgpt_2022"],
+      "following": ["frontier_ai_agents_2024"],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software integration",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "A secure Python environment enabling LLM to generate code, run it, and interpret outputs, creating interactive AI loops.",
+      "complexityScore": 7,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 6,
+      "reasoning": 6,
+      "self_awareness": 1,
+      "creativity": 5,
+      "notable_innovation": "Bridges conversation with programmatic action, marking a step toward more agentic systems."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 7,
+      "philosophical": 5,
+      "economic": 6,
+      "geopolitical": 4
+    },
+    "tags": ["OpenAI", "plugin", "agentic"],
+    "contributors": ["OpenAI"],
+    "era": "Informational"
+  },
+  {
+    "id": "frontier_model_forum_2023",
+    "title": "Frontier Model Forum Formed by Big Tech",
+    "date": "2023-07-26",
+    "description": "OpenAI, Anthropic, Google, and Microsoft announce a forum to ensure safer development of frontier AI models.",
+    "urls": {
+      "primary": "https://blog.openai.com/frontier-model-forum"
+    },
+    "connections": {
+      "preceding": ["anthropic_claude_2023", "microsoft_bing_chat_2023"],
+      "following": ["ai_governance_forum_2024"],
+      "parallel": ["hugging_face_investment_2023"]
+    },
+    "technicalNature": {
+      "medium": "Governance initiative",
+      "abstractionLevel": "governance",
+      "centralMechanism": "A cross-company alliance to share best practices, conduct safety research, and coordinate policies for advanced AI.",
+      "complexityScore": 3,
+      "innovationScore": 6
+    },
+    "cognitiveDimensions": {
+      "computation": 1,
+      "pattern_recognition": 1,
+      "reasoning": 2,
+      "self_awareness": 1,
+      "creativity": 1,
+      "notable_innovation": "Signals unified industry attempt to self-regulate advanced LLMs and build public trust."
+    },
+    "impact": {
+      "technical": 5,
+      "societal": 8,
+      "philosophical": 4,
+      "economic": 6,
+      "geopolitical": 5
+    },
+    "tags": ["frontier_models", "policy", "BigTech"],
+    "contributors": ["OpenAI", "Anthropic", "Google", "Microsoft"],
+    "era": "Informational"
+  },
+  {
+    "id": "meta_seamlessm4t_2023",
+    "title": "Meta Introduces SeamlessM4T for Multimodal Translation",
+    "date": "2023-08-22",
+    "description": "Meta unveils a universal translator model that handles speech and text across dozens of languages.",
+    "urls": {
+      "primary": "https://ai.meta.com/seamlessm4t"
+    },
+    "connections": {
+      "preceding": ["meta_llama2_2023"],
+      "following": [],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software (multimodal model)",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "A large Transformer that simultaneously handles speech recognition, text translation, and speech synthesis.",
+      "complexityScore": 8,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 8,
+      "reasoning": 4,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Approaches real-time universal translator capabilities, bridging language barriers in speech and text."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 8,
+      "philosophical": 4,
+      "economic": 7,
+      "geopolitical": 5
+    },
+    "tags": ["Meta", "multimodal", "translation"],
+    "contributors": ["Meta AI"],
+    "era": "Informational"
+  },
+  {
+    "id": "auto_gpt_2023",
+    "title": "Auto-GPT Launches the Autonomous Chatbot Trend",
+    "date": "2023-04-01",
+    "description": "An open-source project, Auto-GPT, allows GPT-based agents to create and execute tasks with minimal user input.",
+    "urls": {
+      "primary": "https://github.com/Torantulino/Auto-GPT"
+    },
+    "connections": {
+      "preceding": ["chatgpt_2022"],
+      "following": ["frontier_ai_agents_2024"],
+      "parallel": ["openai_code_interpreter_2023"]
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "An agent loops GPT calls to plan subgoals, call external APIs, and refine strategies automatically.",
+      "complexityScore": 8,
+      "innovationScore": 8
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 6,
+      "reasoning": 6,
+      "self_awareness": 2,
+      "creativity": 6,
+      "notable_innovation": "Sparked the 'autonomous agent' phenomenon by letting GPT run iterative self-prompts for extended tasks."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 7,
+      "philosophical": 5,
+      "economic": 7,
+      "geopolitical": 4
+    },
+    "tags": ["agentic", "open_source", "LLM"],
+    "contributors": ["Open-source community"],
+    "era": "Informational"
+  },
+  {
+    "id": "mosaic_mlambda_2023",
+    "title": "Mosaic’s mLambda Simplifies Fine-Tuning at Scale",
+    "date": "2023-09-10",
+    "description": "Mosaic ML announces mLambda architecture for cost-efficient large model customization across various domains.",
+    "urls": {
+      "primary": "https://www.mosaicml.com/blog/mlambda-release"
+    },
+    "connections": {
+      "preceding": ["meta_llama2_2023", "anthropic_claude_2023"],
+      "following": [],
+      "parallel": []
+    },
+    "technicalNature": {
+      "medium": "Software",
+      "abstractionLevel": "algorithmic",
+      "centralMechanism": "Modular approach to parameter-efficient fine-tuning (PEFT), drastically reducing hardware/time overhead for custom LLMs.",
+      "complexityScore": 7,
+      "innovationScore": 7
+    },
+    "cognitiveDimensions": {
+      "computation": 7,
+      "pattern_recognition": 8,
+      "reasoning": 5,
+      "self_awareness": 1,
+      "creativity": 3,
+      "notable_innovation": "Gives smaller players power to adapt large models, fueling domain-specific AI solutions cheaply."
+    },
+    "impact": {
+      "technical": 9,
+      "societal": 6,
+      "philosophical": 3,
+      "economic": 8,
+      "geopolitical": 4
+    },
+    "tags": ["MosaicML", "fine-tuning", "scalability"],
+    "contributors": ["MosaicML Team"],
+    "era": "Informational"
+  },
+  {
+    "id": "openai_enterprise_2023",
+    "title": "OpenAI Enterprise Solutions Roll Out",
+    "date": "2023-08-28",
+    "description": "OpenAI announces enterprise-grade ChatGPT, offering data encryption, SLAs, and privacy controls to big corporations.",
+    "urls": {
+      "primary": "https://openai.com/blog/chatgpt-enterprise"
+    },
+    "connections": {
+      "preceding": ["gpt4_2023"],
+      "following": [],
+      "parallel": ["hugging_face_investment_2023"]
+    },
+    "technicalNature": {
+      "medium": "Cloud-based software",
+      "abstractionLevel": "implementational",
+      "centralMechanism": "Adapted GPT-4 environment with corporate-level security, compliance integrations, and dedicated capacity for large deployments.",
+      "complexityScore": 7,
+      "innovationScore": 6
+    },
+    "cognitiveDimensions": {
+      "computation": 8,
+      "pattern_recognition": 9,
+      "reasoning": 7,
+      "self_awareness": 1,
+      "creativity": 4,
+      "notable_innovation": "Provides robust enterprise AI adoption path, bridging advanced LLM capabilities with business compliance demands."
+    },
+    "impact": {
+      "technical": 8,
+      "societal": 6,
+      "philosophical": 3,
+      "economic": 9,
+      "geopolitical": 5
+    },
+    "tags": ["OpenAI", "enterprise", "LLM"],
+    "contributors": ["OpenAI"],
+    "era": "Informational"
+  }
+]
+
+[
+  {
+    "id": 1,
+    "name": "Greek myths of intelligent automata (Talos, Pandora, etc)",
+    "year": "Antiquity",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Mythological concept",
+      "abstraction_level": "Anthropomorphic idea",
+      "innovation": "Imagined self-moving beings",
+      "complexity": "N/A (fictional)"
+    },
+    "cognitive_aspects": {
+      "computation": "None (mythical)",
+      "reasoning": "Attribution of intelligence to machines",
+      "pattern_recognition": "None",
+      "creativity": "Mythical creation"
+    },
+    "impact": {
+      "social": "Influenced early thinking about artificial life&#8203;:contentReference[oaicite:0]{index=0}",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [],
+      "following": [2, 5],
+      "parallel": []
+    }
+  },
+  {
+    "id": 2,
+    "name": "Ancient Egyptian & Greek mechanical statues believed to have life",
+    "year": "Antiquity",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Mechanical automata",
+      "abstraction_level": "Physical device",
+      "innovation": "Earliest automata with ritual use",
+      "complexity": "Moderate (lever-based movement)"
+    },
+    "cognitive_aspects": {
+      "computation": "None",
+      "reasoning": "N/A",
+      "pattern_recognition": "N/A",
+      "creativity": "Mechanical imitation of life"
+    },
+    "impact": {
+      "social": "Regarded with awe as having 'sensus and spiritus'&#8203;:contentReference[oaicite:1]{index=1}",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [1],
+      "following": [5, 8],
+      "parallel": []
+    }
+  },
+  {
+    "id": 3,
+    "name": "Yan Shi’s mechanical automaton presented to King Mu of Zhou",
+    "year": "10th century BC",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Mechanical humanoid",
+      "abstraction_level": "Physical automaton",
+      "innovation": "First recorded humanoid robot",
+      "complexity": "High for time (moving parts)"
+    },
+    "cognitive_aspects": {
+      "computation": "Preset mechanical motions",
+      "reasoning": "None",
+      "pattern_recognition": "None",
+      "creativity": "Engineered mimicry of life"
+    },
+    "impact": {
+      "social": "Impressed ancient Chinese court&#8203;:contentReference[oaicite:2]{index=2}",
+      "economic": "None",
+      "geopolitical": "Cultural tale of technological marvel"
+    },
+    "connections": {
+      "preceding": [1],
+      "following": [4, 8],
+      "parallel": []
+    }
+  },
+  {
+    "id": 4,
+    "name": "Archytas of Tarentum designs a steam-powered mechanical dove",
+    "year": "~350 BC",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Mechanical bird automaton",
+      "abstraction_level": "Physical device",
+      "innovation": "First self-propelled flying automaton",
+      "complexity": "High (air-powered movement)"
+    },
+    "cognitive_aspects": {
+      "computation": "None",
+      "reasoning": "None",
+      "pattern_recognition": "None",
+      "creativity": "Engineered flight imitation"
+    },
+    "impact": {
+      "social": "Earliest known automaton demonstrating flight&#8203;:contentReference[oaicite:3]{index=3}",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [1],
+      "following": [5, 8],
+      "parallel": []
+    }
+  },
+  {
+    "id": 5,
+    "name": "Aristotle formalizes syllogistic logic and means-ends reasoning",
+    "year": "384–322 BC",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Philosophical theory",
+      "abstraction_level": "Abstract logic",
+      "innovation": "First system of formal deductive reasoning",
+      "complexity": "High (logical rules)"
+    },
+    "cognitive_aspects": {
+      "computation": "Logical inference",
+      "reasoning": "Deductive reasoning formalized",
+      "pattern_recognition": "N/A",
+      "creativity": "Systematic thought process"
+    },
+    "impact": {
+      "social": "Foundation for formal logic&#8203;:contentReference[oaicite:4]{index=4}",
+      "economic": "None",
+      "geopolitical": "Enduring influence on philosophy and science"
+    },
+    "connections": {
+      "preceding": [1, 2],
+      "following": [6, 38],
+      "parallel": [4]
+    }
+  },
+  {
+    "id": 6,
+    "name": "Pāṇini develops formal grammar rules for Sanskrit (Astadhyayi)",
+    "year": "~5th c. BC",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Linguistic treatise",
+      "abstraction_level": "Abstract formal system",
+      "innovation": "Earliest formal language and rule system",
+      "complexity": "High (3,959 grammar rules)"
+    },
+    "cognitive_aspects": {
+      "computation": "Rule-based symbol manipulation",
+      "reasoning": "Linguistic reasoning",
+      "pattern_recognition": "Language pattern generalization",
+      "creativity": "Systematic generation of language forms"
+    },
+    "impact": {
+      "social": "Forerunner of formal language theory&#8203;:contentReference[oaicite:5]{index=5}",
+      "economic": "None",
+      "geopolitical": "Influenced Indian scientific literature"
+    },
+    "connections": {
+      "preceding": [],
+      "following": [5, 22],
+      "parallel": []
+    }
+  },
+  {
+    "id": 7,
+    "name": "Euclid’s algorithm for greatest common divisor (Elements)",
+    "year": "~300 BC",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Mathematical text",
+      "abstraction_level": "Algorithmic procedure",
+      "innovation": "Oldest known algorithm&#8203;:contentReference[oaicite:6]{index=6}",
+      "complexity": "Low (iterative subtraction/division)"
+    },
+    "cognitive_aspects": {
+      "computation": "Arithmetic computation",
+      "reasoning": "Procedural problem solving",
+      "pattern_recognition": "N/A",
+      "creativity": "Systematic approach to calculation"
+    },
+    "impact": {
+      "social": "Provided a model for algorithmic thinking",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [5],
+      "following": [35, 43],
+      "parallel": []
+    }
+  },
+  {
+    "id": 8,
+    "name": "Hero of Alexandria builds automata and a programmable machine",
+    "year": "1st century",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Mechanical automata & theater",
+      "abstraction_level": "Physical device",
+      "innovation": "Earliest programmable machine (automatic theater)&#8203;:contentReference[oaicite:7]{index=7}",
+      "complexity": "High (gears, ropes, mechanisms)"
+    },
+    "cognitive_aspects": {
+      "computation": "Sequential control (program via pegs/cams)",
+      "reasoning": "None (predefined sequence)",
+      "pattern_recognition": "None",
+      "creativity": "Mechanized storytelling"
+    },
+    "impact": {
+      "social": "Demonstrated potential of programmable devices&#8203;:contentReference[oaicite:8]{index=8}",
+      "economic": "None",
+      "geopolitical": "Inspired later inventors"
+    },
+    "connections": {
+      "preceding": [2, 3, 4],
+      "following": [13, 16],
+      "parallel": []
+    }
+  },
+  {
+    "id": 9,
+    "name": "Porphyry’s Isagoge introduces categories and a semantic tree",
+    "year": "260",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Philosophical text",
+      "abstraction_level": "Abstract ontology",
+      "innovation": "Early taxonomy of concepts (Porphyrian tree)&#8203;:contentReference[oaicite:9]{index=9}",
+      "complexity": "Moderate (logical classification)"
+    },
+    "cognitive_aspects": {
+      "computation": "Categorization",
+      "reasoning": "Logical grouping of ideas",
+      "pattern_recognition": "N/A",
+      "creativity": "Formal organization of knowledge"
+    },
+    "impact": {
+      "social": "Influenced medieval concept of knowledge organization",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [5],
+      "following": [40],
+      "parallel": []
+    }
+  },
+  {
+    "id": 10,
+    "name": "Jābir ibn Hayyān speculates on Takwin (artificial life creation)",
+    "year": "~800",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Alchemical theory",
+      "abstraction_level": "Conceptual experiment",
+      "innovation": "Idea of artificially creating life&#8203;:contentReference[oaicite:10]{index=10}",
+      "complexity": "N/A (conceptual)"
+    },
+    "cognitive_aspects": {
+      "computation": "None",
+      "reasoning": "Philosophical reasoning on life",
+      "pattern_recognition": "None",
+      "creativity": "Imaginative scientific speculation"
+    },
+    "impact": {
+      "social": "Early discourse on synthetic life and its possibility&#8203;:contentReference[oaicite:11]{index=11}",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [],
+      "following": [],
+      "parallel": []
+    }
+  },
+  {
+    "id": 11,
+    "name": "Banū Mūsā brothers invent a programmable music automaton",
+    "year": "9th century",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Mechanical automaton (flute)",
+      "abstraction_level": "Physical device with program",
+      "innovation": "First machine with stored program (pins on cylinder)&#8203;:contentReference[oaicite:12]{index=12}",
+      "complexity": "High (steam power, cam-based program)"
+    },
+    "cognitive_aspects": {
+      "computation": "Predefined sequence execution",
+      "reasoning": "None (mechanical control)",
+      "pattern_recognition": "None",
+      "creativity": "Automated musical performance"
+    },
+    "impact": {
+      "social": "Early example of programmed automation&#8203;:contentReference[oaicite:13]{index=13}",
+      "economic": "None",
+      "geopolitical": "Illustrated advanced Islamic engineering"
+    },
+    "connections": {
+      "preceding": [8],
+      "following": [12, 13],
+      "parallel": []
+    }
+  },
+  {
+    "id": 12,
+    "name": "Al-Khwarizmi writes treatises on algebra; 'algorithm' coined",
+    "year": "9th century",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Mathematical textbooks",
+      "abstraction_level": "Abstract procedure",
+      "innovation": "Systematic step-by-step methods (algorithms)&#8203;:contentReference[oaicite:14]{index=14}",
+      "complexity": "Moderate (arithmetic, algebra steps)"
+    },
+    "cognitive_aspects": {
+      "computation": "Systematic calculations",
+      "reasoning": "Algorithmic problem-solving",
+      "pattern_recognition": "N/A",
+      "creativity": "Generalized mathematical procedures"
+    },
+    "impact": {
+      "social": "Term 'algorithm' derives from his name&#8203;:contentReference[oaicite:15]{index=15}; standardized math methods in Old World",
+      "economic": "Improved commerce calculations",
+      "geopolitical": "Spread of mathematical knowledge across cultures"
+    },
+    "connections": {
+      "preceding": [7],
+      "following": [35, 43],
+      "parallel": [11]
+    }
+  },
+  {
+    "id": 13,
+    "name": "Su Song’s astronomical clock tower with mechanical automata",
+    "year": "1088",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Hydro-mechanical clock tower",
+      "abstraction_level": "Complex mechanical system",
+      "innovation": "Escapement mechanism & chain drive; 133 automatons to indicate time&#8203;:contentReference[oaicite:16]{index=16}",
+      "complexity": "Very high (multi-story clock with moving figures)"
+    },
+    "cognitive_aspects": {
+      "computation": "Timekeeping calculations mechanized",
+      "reasoning": "None (mechanical design)",
+      "pattern_recognition": "Astronomical tracking",
+      "creativity": "Automated display of information"
+    },
+    "impact": {
+      "social": "Demonstrated advanced engineering in Song Dynasty&#8203;:contentReference[oaicite:17]{index=17}",
+      "economic": "Improved timekeeping for scheduling",
+      "geopolitical": "Technological prestige in medieval China"
+    },
+    "connections": {
+      "preceding": [11],
+      "following": [14],
+      "parallel": []
+    }
+  },
+  {
+    "id": 14,
+    "name": "Ismail al-Jazari builds programmable humanoid automata and machines",
+    "year": "1206",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Mechanical robots (water-powered)",
+      "abstraction_level": "Physical automata",
+      "innovation": "Programmable orchestra of automata&#8203;:contentReference[oaicite:18]{index=18}",
+      "complexity": "High (cams and pegs controlling motions)"
+    },
+    "cognitive_aspects": {
+      "computation": "Sequential mechanical control",
+      "reasoning": "None (fixed program)",
+      "pattern_recognition": "None",
+      "creativity": "Automated performance, clever engineering"
+    },
+    "impact": {
+      "social": "Inspired wonder; recorded in engineering history&#8203;:contentReference[oaicite:19]{index=19}",
+      "economic": "None (court entertainment)",
+      "geopolitical": "Illustrated Islamic Golden Age ingenuity"
+    },
+    "connections": {
+      "preceding": [11],
+      "following": [16],
+      "parallel": []
+    }
+  },
+  {
+    "id": 15,
+    "name": "Ramon Llull invents Ars Magna, a logical combinatorial device",
+    "year": "1275",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Mechanical calculation device",
+      "abstraction_level": "Symbolic combinatorics",
+      "innovation": "Mechanical method to combine concepts for reasoning&#8203;:contentReference[oaicite:20]{index=20}",
+      "complexity": "Moderate (rotating disks with symbols)"
+    },
+    "cognitive_aspects": {
+      "computation": "Combinatorial generation of ideas",
+      "reasoning": "Automated logical combination",
+      "pattern_recognition": "None",
+      "creativity": "Attempt to produce knowledge mechanically"
+    },
+    "impact": {
+      "social": "Foreshadowed symbolic AI; influenced Leibniz&#8203;:contentReference[oaicite:21]{index=21}",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [9],
+      "following": [25],
+      "parallel": []
+    }
+  },
+  {
+    "id": 16,
+    "name": "Paracelsus claims to create a homunculus (artificial man)",
+    "year": "~1500",
+    "era": "Up to 1400",
+    "technical_details": {
+      "medium": "Alchemy/legend",
+      "abstraction_level": "Mythical experiment",
+      "innovation": "Concept of artificially creating a miniature human&#8203;:contentReference[oaicite:22]{index=22}",
+      "complexity": "N/A (legendary)"
+    },
+    "cognitive_aspects": {
+      "computation": "None",
+      "reasoning": "N/A",
+      "pattern_recognition": "None",
+      "creativity": "Imaginative idea in alchemy"
+    },
+    "impact": {
+      "social": "Reflected human fascination with creating life",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [10],
+      "following": [17],
+      "parallel": []
+    }
+  },
+  {
+    "id": 17,
+    "name": "Leonardo da Vinci designs a humanoid mechanical knight",
+    "year": "1495",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Mechanical automaton",
+      "abstraction_level": "Physical robot",
+      "innovation": "First known humanoid robot design&#8203;:contentReference[oaicite:23]{index=23}",
+      "complexity": "High (gears, pulleys, cranks)"
+    },
+    "cognitive_aspects": {
+      "computation": "Mechanical motions only",
+      "reasoning": "None",
+      "pattern_recognition": "None",
+      "creativity": "Engineered mimicry of human movements"
+    },
+    "impact": {
+      "social": "Demonstrated Renaissance engineering prowess (likely built prototype)&#8203;:contentReference[oaicite:24]{index=24}",
+      "economic": "None",
+      "geopolitical": "Historical innovation noted centuries later"
+    },
+    "connections": {
+      "preceding": [14],
+      "following": [18, 19],
+      "parallel": []
+    }
+  },
+  {
+    "id": 18,
+    "name": "Legend of the Golem of Prague – an artificial clay man",
+    "year": "~1580",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Folklore/legend",
+      "abstraction_level": "Mythic automaton",
+      "innovation": "Concept of an artificial servant to protect people&#8203;:contentReference[oaicite:25]{index=25}",
+      "complexity": "N/A (legendary)"
+    },
+    "cognitive_aspects": {
+      "computation": "None",
+      "reasoning": "Attribution of obedience to commands",
+      "pattern_recognition": "None",
+      "creativity": "Mythical creation via mysticism"
+    },
+    "impact": {
+      "social": "Cultural tale reflecting hopes and fears of artificial beings",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [16],
+      "following": [],
+      "parallel": []
+    }
+  },
+  {
+    "id": 19,
+    "name": "Francis Bacon publishes Novum Organum, promoting inductive logic",
+    "year": "1620",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Philosophical treatise",
+      "abstraction_level": "Scientific method theory",
+      "innovation": "Introduced empirical inductive reasoning method&#8203;:contentReference[oaicite:26]{index=26}",
+      "complexity": "High (philosophical framework)"
+    },
+    "cognitive_aspects": {
+      "computation": "Systematic data collection",
+      "reasoning": "Inductive generalization",
+      "pattern_recognition": "Observation-based",
+      "creativity": "Discovery through experimentation"
+    },
+    "impact": {
+      "social": "Laid groundwork for scientific methodology and later data-driven AI&#8203;:contentReference[oaicite:27]{index=27}",
+      "economic": "Advanced the Scientific Revolution",
+      "geopolitical": "Influenced Western scientific dominance"
+    },
+    "connections": {
+      "preceding": [5],
+      "following": [23],
+      "parallel": []
+    }
+  },
+  {
+    "id": 20,
+    "name": "Thomas Hobbes suggests reasoning is like computation ('Leviathan')",
+    "year": "1641",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Philosophical text",
+      "abstraction_level": "Conceptual model of mind",
+      "innovation": "Mechanical view of cognition (\"reason is nothing but reckoning\")&#8203;:contentReference[oaicite:28]{index=28}",
+      "complexity": "Conceptual"
+    },
+    "cognitive_aspects": {
+      "computation": "Comparison of thinking to calculation",
+      "reasoning": "Proposed mechanistic reasoning",
+      "pattern_recognition": "N/A",
+      "creativity": "Reduction of thought to operations"
+    },
+    "impact": {
+      "social": "Early analogy between mind and machine&#8203;:contentReference[oaicite:29]{index=29}",
+      "economic": "None",
+      "geopolitical": "Influenced Enlightenment views of mind"
+    },
+    "connections": {
+      "preceding": [19],
+      "following": [56],
+      "parallel": []
+    }
+  },
+  {
+    "id": 21,
+    "name": "Blaise Pascal constructs the Pascaline, first mechanical calculator",
+    "year": "1642",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Mechanical calculator (geared)",
+      "abstraction_level": "Hardware device",
+      "innovation": "First functional digital calculating machine&#8203;:contentReference[oaicite:30]{index=30}",
+      "complexity": "Moderate (clockwork gears for addition)"
+    },
+    "cognitive_aspects": {
+      "computation": "Automated arithmetic (addition/subtraction)",
+      "reasoning": "None (arithmetic only)",
+      "pattern_recognition": "None",
+      "creativity": "Mechanical problem-solving for math"
+    },
+    "impact": {
+      "social": "Enabled faster accounting calculations&#8203;:contentReference[oaicite:31]{index=31}",
+      "economic": "Streamlined calculations in science/finance",
+      "geopolitical": "Foundation for later computing devices"
+    },
+    "connections": {
+      "preceding": [],
+      "following": [23, 33],
+      "parallel": [20]
+    }
+  },
+  {
+    "id": 22,
+    "name": "René Descartes proposes animals are automata",
+    "year": "1647",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Philosophical proposition",
+      "abstraction_level": "Conceptual model",
+      "innovation": "Biological bodies as complex machines&#8203;:contentReference[oaicite:32]{index=32}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "None",
+      "reasoning": "Mechanistic philosophy of mind",
+      "pattern_recognition": "N/A",
+      "creativity": "Conceptual reductionism"
+    },
+    "impact": {
+      "social": "Influenced views separating mind and body&#8203;:contentReference[oaicite:33]{index=33}",
+      "economic": "None",
+      "geopolitical": "Shaped scientific discourse on animal/human cognition"
+    },
+    "connections": {
+      "preceding": [20],
+      "following": [],
+      "parallel": []
+    }
+  },
+  {
+    "id": 23,
+    "name": "Foundations of probability laid (Pascal, Fermat, Arnauld, Cardano)",
+    "year": "1654–1663",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Mathematical theory",
+      "abstraction_level": "Abstract mathematics",
+      "innovation": "Probability theory formalized&#8203;:contentReference[oaicite:34]{index=34}",
+      "complexity": "High (abstract calculus of chance)"
+    },
+    "cognitive_aspects": {
+      "computation": "Quantitative risk assessment",
+      "reasoning": "Statistical inference",
+      "pattern_recognition": "N/A",
+      "creativity": "Mathematical formalization of uncertainty"
+    },
+    "impact": {
+      "social": "Probability became central to modern AI and machine learning from the 1990s onward&#8203;:contentReference[oaicite:35]{index=35}",
+      "economic": "Influenced finance and insurance calculations",
+      "geopolitical": "Improved decision-making under uncertainty"
+    },
+    "connections": {
+      "preceding": [19],
+      "following": [26, 89],
+      "parallel": []
+    }
+  },
+  {
+    "id": 24,
+    "name": "Gottfried W. Leibniz builds Stepped Reckoner for arithmetic",
+    "year": "1672",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Mechanical calculator",
+      "abstraction_level": "Hardware device",
+      "innovation": "Performs all four operations (added multiplication/division)&#8203;:contentReference[oaicite:36]{index=36}",
+      "complexity": "Moderate (stepped-drum mechanism)"
+    },
+    "cognitive_aspects": {
+      "computation": "Automated arithmetic",
+      "reasoning": "None",
+      "pattern_recognition": "None",
+      "creativity": "Engineering improvement over Pascaline"
+    },
+    "impact": {
+      "social": "Advanced mechanical computation capabilities&#8203;:contentReference[oaicite:37]{index=37}",
+      "economic": "Streamlined calculations in science/finance",
+      "geopolitical": "Solidified calculator development in Europe"
+    },
+    "connections": {
+      "preceding": [21],
+      "following": [25, 33],
+      "parallel": []
+    }
+  },
+  {
+    "id": 25,
+    "name": "Leibniz conceives a \"universal calculus\" of reasoning (alphabet of thought)",
+    "year": "1679",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Philosophical/math concept",
+      "abstraction_level": "Abstract symbolic system",
+      "innovation": "Early idea of symbolic logic to solve all problems&#8203;:contentReference[oaicite:38]{index=38}",
+      "complexity": "High (assigning numbers to concepts)"
+    },
+    "cognitive_aspects": {
+      "computation": "Symbolic manipulation envisioned",
+      "reasoning": "Mechanical resolution of arguments",
+      "pattern_recognition": "None",
+      "creativity": "Bold hypothesis of universal problem-solver"
+    },
+    "impact": {
+      "social": "Anticipated formal logic and computing languages&#8203;:contentReference[oaicite:39]{index=39}",
+      "economic": "None",
+      "geopolitical": "Influenced later logicians and AI visionaries"
+    },
+    "connections": {
+      "preceding": [15, 24],
+      "following": [40],
+      "parallel": []
+    }
+  },
+  {
+    "id": 26,
+    "name": "Jonathan Swift describes a word-combining \"Engine\" in Gulliver’s Travels",
+    "year": "1726",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Literary satire",
+      "abstraction_level": "Imaginary machine",
+      "innovation": "Parody of mechanical knowledge generation&#8203;:contentReference[oaicite:40]{index=40}",
+      "complexity": "N/A (fictional)"
+    },
+    "cognitive_aspects": {
+      "computation": "Random combination of words",
+      "reasoning": "None",
+      "pattern_recognition": "None",
+      "creativity": "Mocks idea of automatic writing"
+    },
+    "impact": {
+      "social": "Early satire on idea of AI creating content&#8203;:contentReference[oaicite:41]{index=41}",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [15],
+      "following": [],
+      "parallel": []
+    }
+  },
+  {
+    "id": 27,
+    "name": "Daniel Bernoulli introduces utility in probability theory",
+    "year": "1738",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Mathematical paper",
+      "abstraction_level": "Abstract concept",
+      "innovation": "Utility concept links probability to decision goals&#8203;:contentReference[oaicite:42]{index=42}",
+      "complexity": "Moderate"
+    },
+    "cognitive_aspects": {
+      "computation": "Expected utility calculation",
+      "reasoning": "Decision-theoretic reasoning",
+      "pattern_recognition": "N/A",
+      "creativity": "Quantifying preferences"
+    },
+    "impact": {
+      "social": "Basis of economics and AI agent goal representation&#8203;:contentReference[oaicite:43]{index=43}",
+      "economic": "Foundation of rational choice theory",
+      "geopolitical": "Informs policy via cost-benefit analysis"
+    },
+    "connections": {
+      "preceding": [23],
+      "following": [89],
+      "parallel": []
+    }
+  },
+  {
+    "id": 28,
+    "name": "David Hume articulates the problem of induction",
+    "year": "1739",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Philosophical text",
+      "abstraction_level": "Epistemology",
+      "innovation": "Observation that generalizing from examples lacks logical certainty&#8203;:contentReference[oaicite:44]{index=44}",
+      "complexity": "High (philosophical argument)"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "Skepticism about inductive inference",
+      "pattern_recognition": "Recognizing limits of learning from data",
+      "creativity": "Critical analysis of learning"
+    },
+    "impact": {
+      "social": "Highlighted fundamental challenge for machine learning centuries later&#8203;:contentReference[oaicite:45]{index=45}",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [19],
+      "following": [82],
+      "parallel": []
+    }
+  },
+  {
+    "id": 29,
+    "name": "Julien Offray de La Mettrie publishes L’Homme Machine",
+    "year": "1750",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Philosophical book",
+      "abstraction_level": "Materialist theory",
+      "innovation": "Claim that humans are purely mechanical beings&#8203;:contentReference[oaicite:46]{index=46}",
+      "complexity": "Conceptual"
+    },
+    "cognitive_aspects": {
+      "computation": "Body as mechanism",
+      "reasoning": "Denial of immaterial soul in thinking",
+      "pattern_recognition": "N/A",
+      "creativity": "Provocative analogy"
+    },
+    "impact": {
+      "social": "Influenced debates on mind vs machine in Enlightenment&#8203;:contentReference[oaicite:47]{index=47}",
+      "economic": "None",
+      "geopolitical": "Banned in some places for radical ideas"
+    },
+    "connections": {
+      "preceding": [20],
+      "following": [],
+      "parallel": []
+    }
+  },
+  {
+    "id": 30,
+    "name": "Thomas Bayes’ theorem posthumously published",
+    "year": "1763",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Mathematical paper",
+      "abstraction_level": "Statistical formula",
+      "innovation": "Bayes’ rule for updating probabilities&#8203;:contentReference[oaicite:48]{index=48}",
+      "complexity": "Moderate"
+    },
+    "cognitive_aspects": {
+      "computation": "Statistical inference calculation",
+      "reasoning": "Probabilistic reasoning under uncertainty",
+      "pattern_recognition": "N/A",
+      "creativity": "Laying groundwork for Bayesian learning"
+    },
+    "impact": {
+      "social": "Core of modern AI in Bayesian networks and machine learning&#8203;:contentReference[oaicite:49]{index=49}",
+      "economic": "Applications in forecasting and prediction",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [23],
+      "following": [89, 90],
+      "parallel": []
+    }
+  },
+  {
+    "id": 31,
+    "name": "Wolfgang von Kempelen builds a speaking machine (speech synthesizer)",
+    "year": "1769–1778",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Mechanical speech device",
+      "abstraction_level": "Physical analog of vocal tract",
+      "innovation": "First speech synthesis device producing intelligible words&#8203;:contentReference[oaicite:50]{index=50}",
+      "complexity": "High (bellows, reeds, resonators)"
+    },
+    "cognitive_aspects": {
+      "computation": "Simulation of human speech production",
+      "reasoning": "None (no understanding, just sound)",
+      "pattern_recognition": "None",
+      "creativity": "Recreation of human voice artificially"
+    },
+    "impact": {
+      "social": "Demonstrated mechanical imitation of a human cognitive function (speech)",
+      "economic": "None at the time",
+      "geopolitical": "Influenced later work in phonetics and voice tech"
+    },
+    "connections": {
+      "preceding": [],
+      "following": [58, 79],
+      "parallel": [30]
+    }
+  },
+  {
+    "id": 32,
+    "name": "The Mechanical Turk chess automaton exhibited (von Kempelen)",
+    "year": "1769",
+    "era": "1400-1800",
+    "technical_details": {
+      "medium": "Mechanical automaton (hoax)",
+      "abstraction_level": "Apparent AI (hidden human)",
+      "innovation": "First famous chess 'machine' (later exposed as human-operated)&#8203;:contentReference[oaicite:51]{index=51}",
+      "complexity": "High (illusion involving human and machine)"
+    },
+    "cognitive_aspects": {
+      "computation": "Human computation disguised as machine",
+      "reasoning": "Human chess skill",
+      "pattern_recognition": "Human pattern recognition",
+      "creativity": "Human play"
+    },
+    "impact": {
+      "social": "Sparked public interest in automata and AI&#8203;:contentReference[oaicite:52]{index=52}",
+      "economic": "Popular entertainment in Europe",
+      "geopolitical": "Played against statesmen, including Napoleon"
+    },
+    "connections": {
+      "preceding": [17],
+      "following": [72, 83],
+      "parallel": [31]
+    }
+  },
+  {
+    "id": 33,
+    "name": "Joseph Jacquard invents the punched-card programmable loom",
+    "year": "1801",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Textile loom with punched cards",
+      "abstraction_level": "Physical programmable machine",
+      "innovation": "First industrial machine controlled by a stored program (cards)&#8203;:contentReference[oaicite:53]{index=53}",
+      "complexity": "High (pattern encoding via cards)"
+    },
+    "cognitive_aspects": {
+      "computation": "Automated weaving patterns",
+      "reasoning": "None (fixed program execution)",
+      "pattern_recognition": "N/A",
+      "creativity": "Enabled complex pattern creation mechanically"
+    },
+    "impact": {
+      "social": "Displaced labor (Luddite protests); foundation for computer punch cards&#8203;:contentReference[oaicite:54]{index=54}",
+      "economic": "Revolutionized textile manufacturing",
+      "geopolitical": "Spurred automation in the Industrial Revolution"
+    },
+    "connections": {
+      "preceding": [21],
+      "following": [35, 52],
+      "parallel": []
+    }
+  },
+  {
+    "id": 34,
+    "name": "Mary Shelley publishes Frankenstein, exploring creating artificial life",
+    "year": "1818",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Literature (novel)",
+      "abstraction_level": "Fictional experiment",
+      "innovation": "Introduced ethical questions of man-made life&#8203;:contentReference[oaicite:55]{index=55}",
+      "complexity": "N/A (fictional)"
+    },
+    "cognitive_aspects": {
+      "computation": "None",
+      "reasoning": "Speculative (creature learns and reasons in story)",
+      "pattern_recognition": "None",
+      "creativity": "Imaginative cautionary tale"
+    },
+    "impact": {
+      "social": "Framed public discourse on scientists 'playing God'&#8203;:contentReference[oaicite:56]{index=56}",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [10, 18],
+      "following": [82],
+      "parallel": []
+    }
+  },
+  {
+    "id": 35,
+    "name": "Charles Babbage & Ada Lovelace conceive the Analytical Engine",
+    "year": "1822–1856",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Mechanical general-purpose computer (design)",
+      "abstraction_level": "Hardware (never built fully)",
+      "innovation": "First programmable general computer design; Ada writes first algorithm&#8203;:contentReference[oaicite:57]{index=57}",
+      "complexity": "Very high (thousands of parts anticipated)"
+    },
+    "cognitive_aspects": {
+      "computation": "General symbolic computation (theoretical)",
+      "reasoning": "Would follow instructions stepwise",
+      "pattern_recognition": "None (not intended for learning)",
+      "creativity": "Could execute any algorithm given"
+    },
+    "impact": {
+      "social": "Concept of computing separated from specific problem&#8203;:contentReference[oaicite:58]{index=58}",
+      "economic": "None immediately (design ahead of its time)",
+      "geopolitical": "Provided blueprint for modern computers"
+    },
+    "connections": {
+      "preceding": [33, 21],
+      "following": [52, 91],
+      "parallel": []
+    }
+  },
+  {
+    "id": 36,
+    "name": "Bernard Bolzano attempts to formalize semantics and logic",
+    "year": "1837",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Mathematical logic work",
+      "abstraction_level": "Abstract (propositional logic)",
+      "innovation": "First modern approach to formal semantics&#8203;:contentReference[oaicite:59]{index=59}",
+      "complexity": "High"
+    },
+    "cognitive_aspects": {
+      "computation": "Logical reasoning rules",
+      "reasoning": "Formal logical inference",
+      "pattern_recognition": "N/A",
+      "creativity": "Foundational theoretical ideas"
+    },
+    "impact": {
+      "social": "Prefigured later developments in logic and AI knowledge representation&#8203;:contentReference[oaicite:60]{index=60}",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [25],
+      "following": [40],
+      "parallel": []
+    }
+  },
+  {
+    "id": 37,
+    "name": "George Boole publishes 'Laws of Thought', inventing Boolean algebra",
+    "year": "1854",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Mathematical logic monograph",
+      "abstraction_level": "Abstract symbolic system",
+      "innovation": "Binary logic to represent true/false values&#8203;:contentReference[oaicite:61]{index=61}",
+      "complexity": "Moderate"
+    },
+    "cognitive_aspects": {
+      "computation": "Logical operations (AND, OR, NOT)",
+      "reasoning": "Algebraic reasoning about truth values",
+      "pattern_recognition": "N/A",
+      "creativity": "Formulated logic as math"
+    },
+    "impact": {
+      "social": "Foundation of digital circuit design and programming logic&#8203;:contentReference[oaicite:62]{index=62}",
+      "economic": "Enabled modern computing hardware concepts",
+      "geopolitical": "Key component of information age technology"
+    },
+    "connections": {
+      "preceding": [36],
+      "following": [40, 53],
+      "parallel": []
+    }
+  },
+  {
+    "id": 38,
+    "name": "Samuel Butler speculates on machine evolution (\"Darwin among the Machines\")",
+    "year": "1863",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Published letter/article",
+      "abstraction_level": "Conceptual analogy",
+      "innovation": "Idea that machines could evolve and outcompete humans&#8203;:contentReference[oaicite:63]{index=63}",
+      "complexity": "N/A (essay)"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "Analogical reasoning to biological evolution",
+      "pattern_recognition": "N/A",
+      "creativity": "Visionary speculation"
+    },
+    "impact": {
+      "social": "Early warning about unchecked technological growth&#8203;:contentReference[oaicite:64]{index=64}",
+      "economic": "None",
+      "geopolitical": "Influenced later science fiction and discussions on AI risk"
+    },
+    "connections": {
+      "preceding": [28],
+      "following": [82],
+      "parallel": []
+    }
+  },
+  {
+    "id": 39,
+    "name": "Leonardo Torres Quevedo demonstrates a chess-playing automaton \"El Ajedrecista\"",
+    "year": "1914",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Electro-mechanical automaton",
+      "abstraction_level": "Hardware with fixed program",
+      "innovation": "First autonomous machine to play chess endgames&#8203;:contentReference[oaicite:65]{index=65}",
+      "complexity": "High (electrical circuits for moves)"
+    },
+    "cognitive_aspects": {
+      "computation": "Hard-coded game rules",
+      "reasoning": "Endgame problem-solving (mechanical)",
+      "pattern_recognition": "None",
+      "creativity": "N/A (fixed strategy)"
+    },
+    "impact": {
+      "social": "Called \"the 20th century's first AI pioneer\"; showed machines could perform intellectual tasks&#8203;:contentReference[oaicite:66]{index=66}",
+      "economic": "None",
+      "geopolitical": "Prefigured future game-playing computers"
+    },
+    "connections": {
+      "preceding": [32],
+      "following": [72, 83],
+      "parallel": []
+    }
+  },
+  {
+    "id": 40,
+    "name": "Russell and Whitehead publish Principia Mathematica, mechanizing math logic",
+    "year": "1910-1913",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Three-volume book",
+      "abstraction_level": "Formal logic system",
+      "innovation": "Showed arithmetic reduced to symbolic logic&#8203;:contentReference[oaicite:67]{index=67}",
+      "complexity": "Very high (hundreds of formal proofs)"
+    },
+    "cognitive_aspects": {
+      "computation": "Formal proof derivation",
+      "reasoning": "Logical deduction automated in principle",
+      "pattern_recognition": "N/A",
+      "creativity": "Massive formalization of knowledge"
+    },
+    "impact": {
+      "social": "Milestone in logic, influenced development of computer algorithms&#8203;:contentReference[oaicite:68]{index=68}",
+      "economic": "None",
+      "geopolitical": "Established foundation for theoretical computer science"
+    },
+    "connections": {
+      "preceding": [36, 37],
+      "following": [43],
+      "parallel": []
+    }
+  },
+  {
+    "id": 41,
+    "name": "Karel Čapek’s play R.U.R. introduces the term “robot”",
+    "year": "1920",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Theatrical play",
+      "abstraction_level": "Fictional narrative",
+      "innovation": "Coined the word 'robot' (forced labor) for artificial workers&#8203;:contentReference[oaicite:69]{index=69}",
+      "complexity": "N/A (literary)"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "Fictional portrayal of AI rebellion",
+      "pattern_recognition": "N/A",
+      "creativity": "Dramatic exploration of AI ethics"
+    },
+    "impact": {
+      "social": "Gave language a new term; shaped public imagination of robots&#8203;:contentReference[oaicite:70]{index=70}",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [18, 34],
+      "following": [52, 85],
+      "parallel": []
+    }
+  },
+  {
+    "id": 42,
+    "name": "Lenz and Ising develop the Ising model (early recurrent network analogy)",
+    "year": "1925",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Physics model",
+      "abstraction_level": "Mathematical model",
+      "innovation": "Network of binary spins analogous to neurons&#8203;:contentReference[oaicite:71]{index=71}",
+      "complexity": "High (statistical mechanics)"
+    },
+    "cognitive_aspects": {
+      "computation": "Energy minimization (analogous to neural net relaxation)",
+      "reasoning": "N/A",
+      "pattern_recognition": "N/A",
+      "creativity": "Provided a model later viewed as neural network precursor&#8203;:contentReference[oaicite:72]{index=72}"
+    },
+    "impact": {
+      "social": "Foundation for understanding cooperative behavior (later applied in machine learning)",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [23, 30],
+      "following": [87],
+      "parallel": []
+    }
+  },
+  {
+    "id": 43,
+    "name": "Kurt Gödel proves incompleteness theorems (limits of formal systems)",
+    "year": "1931",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Mathematical proof",
+      "abstraction_level": "Metalogic",
+      "innovation": "Some true statements are unprovable by any algorithm&#8203;:contentReference[oaicite:73]{index=73}",
+      "complexity": "Very high"
+    },
+    "cognitive_aspects": {
+      "computation": "Encodes logic into arithmetic",
+      "reasoning": "Meta-reasoning about formal systems",
+      "pattern_recognition": "N/A",
+      "creativity": "Profoundly changed understanding of computability"
+    },
+    "impact": {
+      "social": "Identified fundamental limits for AI and algorithms&#8203;:contentReference[oaicite:74]{index=74}",
+      "economic": "None",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [40, 37],
+      "following": [44],
+      "parallel": []
+    }
+  },
+  {
+    "id": 44,
+    "name": "Alan Turing defines computability and Turing machines",
+    "year": "1936",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Mathematical paper",
+      "abstraction_level": "Abstract computation model",
+      "innovation": "Turing machine concept for algorithm execution&#8203;:contentReference[oaicite:75]{index=75}",
+      "complexity": "High"
+    },
+    "cognitive_aspects": {
+      "computation": "Formal model of any computation",
+      "reasoning": "Proof of halting problem unsolvability",
+      "pattern_recognition": "N/A",
+      "creativity": "Invented conceptual universal computer"
+    },
+    "impact": {
+      "social": "Foundation of computer science&#8203;:contentReference[oaicite:76]{index=76}",
+      "economic": "None (theoretical at the time)",
+      "geopolitical": "Enabled development of general-purpose computers"
+    },
+    "connections": {
+      "preceding": [43],
+      "following": [51, 53],
+      "parallel": []
+    }
+  },
+  {
+    "id": 45,
+    "name": "Nikola Tesla demonstrates a radio-controlled robotic boat",
+    "year": "1898",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Wireless remote-controlled device",
+      "abstraction_level": "Physical teleautomaton",
+      "innovation": "First wireless remote control and rudimentary 'robotry'&#8203;:contentReference[oaicite:77]{index=77}",
+      "complexity": "Moderate (radio transmitter & mechanical receiver)"
+    },
+    "cognitive_aspects": {
+      "computation": "Remote human control (no onboard AI)",
+      "reasoning": "None (tele-operated)",
+      "pattern_recognition": "None",
+      "creativity": "Pioneering use of wireless guidance"
+    },
+    "impact": {
+      "social": "Public marvel at 'mind control' technology&#8203;:contentReference[oaicite:78]{index=78}",
+      "economic": "Overlooked until mid-20th century; later crucial for drones",
+      "geopolitical": "Early example of tech envisioned for warfare (guided torpedoes)&#8203;:contentReference[oaicite:79]{index=79}"
+    },
+    "connections": {
+      "preceding": [33],
+      "following": [66, 78],
+      "parallel": []
+    }
+  },
+  {
+    "id": 46,
+    "name": "Konrad Zuse builds Z3, first programmable computer (electromechanical)",
+    "year": "1941",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Relay-based computer",
+      "abstraction_level": "Hardware (binary floating-point)",
+      "innovation": "First working program-controlled general computer&#8203;:contentReference[oaicite:80]{index=80}",
+      "complexity": "High (2,200 relays)"
+    },
+    "cognitive_aspects": {
+      "computation": "Automatic calculation of sequences",
+      "reasoning": "None (follows program)",
+      "pattern_recognition": "None",
+      "creativity": "General-purpose computing realized"
+    },
+    "impact": {
+      "social": "Proof that complex computation can be automated&#8203;:contentReference[oaicite:81]{index=81}",
+      "economic": "Military and scientific calculation potential",
+      "geopolitical": "Developed in WWII Germany (kept relatively secret)"
+    },
+    "connections": {
+      "preceding": [35, 44],
+      "following": [53],
+      "parallel": []
+    }
+  },
+  {
+    "id": 47,
+    "name": "McCulloch & Pitts model neurons with Boolean logic, founding neural network theory",
+    "year": "1943",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Scientific paper",
+      "abstraction_level": "Mathematical biology model",
+      "innovation": "First mathematical model of neural networks&#8203;:contentReference[oaicite:82]{index=82}",
+      "complexity": "Moderate (simple threshold logic units)"
+    },
+    "cognitive_aspects": {
+      "computation": "Binary threshold logic",
+      "reasoning": "Modeled brain as network of logic gates",
+      "pattern_recognition": "Potential for learning (speculated)",
+      "creativity": "Connected neuroscience and computation"
+    },
+    "impact": {
+      "social": "Laid groundwork for perceptrons and deep learning decades later&#8203;:contentReference[oaicite:83]{index=83}",
+      "economic": "None then",
+      "geopolitical": "Initiated cybernetics field"
+    },
+    "connections": {
+      "preceding": [37, 43],
+      "following": [89, 90],
+      "parallel": []
+    }
+  },
+  {
+    "id": 48,
+    "name": "Term “cybernetics” coined (Rosenblueth, Wiener, Bigelow)",
+    "year": "1943",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Scientific terminology",
+      "abstraction_level": "Interdisciplinary theory",
+      "innovation": "Defined study of control and communication in animals and machines&#8203;:contentReference[oaicite:84]{index=84}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "Feedback mechanisms",
+      "reasoning": "Homeostatic control logic",
+      "pattern_recognition": "N/A",
+      "creativity": "Conceptualizing organism-machine parallels"
+    },
+    "impact": {
+      "social": "Popularized thinking about systems and feedback loops",
+      "economic": "Influenced early automation and control systems",
+      "geopolitical": "Cybernetics influenced Cold War research agendas"
+    },
+    "connections": {
+      "preceding": [45, 47],
+      "following": [88],
+      "parallel": []
+    }
+  },
+  {
+    "id": 49,
+    "name": "Von Neumann & Morgenstern publish Theory of Games and Economic Behavior",
+    "year": "1944",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Academic book",
+      "abstraction_level": "Mathematical theory",
+      "innovation": "Founded game theory (strategic decision mathematics)&#8203;:contentReference[oaicite:85]{index=85}",
+      "complexity": "High"
+    },
+    "cognitive_aspects": {
+      "computation": "Utility optimization",
+      "reasoning": "Strategic rational choice",
+      "pattern_recognition": "N/A",
+      "creativity": "Modeling conflict and cooperation with math"
+    },
+    "impact": {
+      "social": "Game theory became invaluable in AI planning and economics&#8203;:contentReference[oaicite:86]{index=86}",
+      "economic": "Broad application in economics and finance",
+      "geopolitical": "Applied to Cold War strategies, negotiations"
+    },
+    "connections": {
+      "preceding": [27],
+      "following": [89],
+      "parallel": []
+    }
+  },
+  {
+    "id": 50,
+    "name": "Vannevar Bush publishes 'As We May Think', envisioning machine-augmented intellect",
+    "year": "1945",
+    "era": "1800-1945",
+    "technical_details": {
+      "medium": "Article (The Atlantic)",
+      "abstraction_level": "Conceptual prototype (Memex)",
+      "innovation": "Early vision of hyperlinked information systems and human-computer symbiosis&#8203;:contentReference[oaicite:87]{index=87}",
+      "complexity": "N/A (conceptual)"
+    },
+    "cognitive_aspects": {
+      "computation": "Rapid information retrieval (conceptual)",
+      "reasoning": "Amplifying human memory and association",
+      "pattern_recognition": "N/A",
+      "creativity": "Imaginative design influencing future AI (hypertext, personal PC)"
+    },
+    "impact": {
+      "social": "Inspired generations of computer scientists (hypertext, the web)&#8203;:contentReference[oaicite:88]{index=88}",
+      "economic": "Guided post-war research funding priorities",
+      "geopolitical": "Shaped US science policy (Bush led Office of Sci R&D)"
+    },
+    "connections": {
+      "preceding": [],
+      "following": [81, 96],
+      "parallel": []
+    }
+  },
+  {
+    "id": 51,
+    "name": "Alan Turing’s 'Intelligent Machinery' report lays out AI foundations",
+    "year": "1948",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Unpublished report",
+      "abstraction_level": "Conceptual AI research agenda",
+      "innovation": "First comprehensive vision of AI (search, machine learning)&#8203;:contentReference[oaicite:89]{index=89}",
+      "complexity": "High (multiple AI concepts anticipated)"
+    },
+    "cognitive_aspects": {
+      "computation": "Proposed logic-based search",
+      "reasoning": "Discussed machine problem solving",
+      "pattern_recognition": "Anticipated connectionist learning",
+      "creativity": "Imagined evolution of intelligent behavior in machines"
+    },
+    "impact": {
+      "social": "Influenced early AI researchers; regarded as AI's manifesto&#8203;:contentReference[oaicite:90]{index=90}",
+      "economic": "None immediate",
+      "geopolitical": "None"
+    },
+    "connections": {
+      "preceding": [50, 44],
+      "following": [55, 83],
+      "parallel": []
+    }
+  },
+  {
+    "id": 52,
+    "name": "Alan Turing proposes the Turing Test for machine intelligence",
+    "year": "1950",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Academic paper (Mind)",
+      "abstraction_level": "Conceptual test",
+      "innovation": "Operational definition of AI via human-like conversation&#8203;:contentReference[oaicite:91]{index=91}",
+      "complexity": "N/A (test criteria)"
+    },
+    "cognitive_aspects": {
+      "computation": "Natural language processing demonstration",
+      "reasoning": "Ability to mimic human reasoning in dialogue",
+      "pattern_recognition": "Language understanding",
+      "creativity": "Answering unrestricted questions"
+    },
+    "impact": {
+      "social": "Public yardstick for AI progress&#8203;:contentReference[oaicite:92]{index=92}",
+      "economic": "Framed goals for AI industry",
+      "geopolitical": "Set stage for East-West competition in AI later"
+    },
+    "connections": {
+      "preceding": [44],
+      "following": [84, 96],
+      "parallel": []
+    }
+  },
+  {
+    "id": 53,
+    "name": "Isaac Asimov publishes \"Three Laws of Robotics\" in I, Robot",
+    "year": "1950",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Science fiction stories",
+      "abstraction_level": "Fictional ethical rules",
+      "innovation": "First explicit robot ethics framework&#8203;:contentReference[oaicite:93]{index=93}",
+      "complexity": "Simple rules with complex implications"
+    },
+    "cognitive_aspects": {
+      "computation": "Robots constrained by built-in rules",
+      "reasoning": "Ethical conflict resolution in AI",
+      "pattern_recognition": "N/A",
+      "creativity": "Story-driven exploration of AI governance"
+    },
+    "impact": {
+      "social": "Entrenched idea that AI should have safety guardrails&#8203;:contentReference[oaicite:94]{index=94}",
+      "economic": "Influenced how people think about trusting machines",
+      "geopolitical": "Spurred discussions on AI regulation much later"
+    },
+    "connections": {
+      "preceding": [41],
+      "following": [91, 93],
+      "parallel": []
+    }
+  },
+  {
+    "id": 54,
+    "name": "First working AI programs: Strachey’s Checkers & Prinz’s Chess",
+    "year": "1951",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Software on Ferranti Mark I",
+      "abstraction_level": "Program code",
+      "innovation": "First computer game AI (playing checkers and chess)&#8203;:contentReference[oaicite:95]{index=95}",
+      "complexity": "Low (simple brute-force and heuristics)"
+    },
+    "cognitive_aspects": {
+      "computation": "State evaluation and move search",
+      "reasoning": "Basic strategy encoding",
+      "pattern_recognition": "None (minimax search)",
+      "creativity": "Machine playing intellectual games"
+    },
+    "impact": {
+      "social": "Demonstrated computers could handle intellectual tasks&#8203;:contentReference[oaicite:96]{index=96}",
+      "economic": "None at the time",
+      "geopolitical": "Milestone for UK computer science"
+    },
+    "connections": {
+      "preceding": [51],
+      "following": [72, 83],
+      "parallel": []
+    }
+  },
+  {
+    "id": 55,
+    "name": "Dartmouth Conference founds AI as a field; term “Artificial Intelligence” coined",
+    "year": "1956",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Research workshop",
+      "abstraction_level": "N/A",
+      "innovation": "Gathered pioneers to define AI research agenda&#8203;:contentReference[oaicite:97]{index=97}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "Discussed heuristics, learning, abstraction",
+      "reasoning": "Aimed for general problem solving",
+      "pattern_recognition": "Envisioned machine perception",
+      "creativity": "Kickstarted systematic attempts to build thinking machines"
+    },
+    "impact": {
+      "social": "Launch of AI research community&#8203;:contentReference[oaicite:98]{index=98}",
+      "economic": "Led to initial funding in AI (e.g., Logic Theorist demo)&#8203;:contentReference[oaicite:99]{index=99}",
+      "geopolitical": "US took early lead in AI research"
+    },
+    "connections": {
+      "preceding": [51],
+      "following": [56, 59, 63],
+      "parallel": []
+    }
+  },
+  {
+    "id": 56,
+    "name": "John McCarthy invents Lisp, the AI programming language",
+    "year": "1958",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Programming language",
+      "abstraction_level": "High-level symbolic language",
+      "innovation": "List processing language ideal for AI (dynamic, symbolic)&#8203;:contentReference[oaicite:100]{index=100}",
+      "complexity": "High (recursive functions, garbage collection)"
+    },
+    "cognitive_aspects": {
+      "computation": "Symbolic computation with expressions",
+      "reasoning": "Enabled rapid development of AI algorithms",
+      "pattern_recognition": "Representing knowledge as symbols",
+      "creativity": "Allowed AI researchers to easily try new ideas"
+    },
+    "impact": {
+      "social": "Became dominant language for AI research for decades&#8203;:contentReference[oaicite:101]{index=101}",
+      "economic": "Spurred creation of industry (e.g., Lisp machines)",
+      "geopolitical": "US maintained edge by developing AI infrastructure"
+    },
+    "connections": {
+      "preceding": [55],
+      "following": [63],
+      "parallel": []
+    }
+  },
+  {
+    "id": 57,
+    "name": "Newell & Simon create the General Problem Solver (GPS)",
+    "year": "1959",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Software (AI algorithm)",
+      "abstraction_level": "Symbolic search algorithm",
+      "innovation": "First general-purpose reasoning program (search through problem space)&#8203;:contentReference[oaicite:102]{index=102}",
+      "complexity": "Moderate"
+    },
+    "cognitive_aspects": {
+      "computation": "Heuristic search",
+      "reasoning": "Means-ends analysis to reduce differences&#8203;:contentReference[oaicite:103]{index=103}",
+      "pattern_recognition": "None",
+      "creativity": "Attempted domain-independent problem solving"
+    },
+    "impact": {
+      "social": "Showed promise of general AI but also limitations (worked only on simple puzzles)",
+      "economic": "None immediate",
+      "geopolitical": "Advanced US leadership in AI cognitive simulation"
+    },
+    "connections": {
+      "preceding": [55],
+      "following": [],
+      "parallel": []
+    }
+  },
+  {
+    "id": 58,
+    "name": "Unimate, first industrial robot, goes to work on GM assembly line",
+    "year": "1961",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Robotic arm",
+      "abstraction_level": "Hardware automation",
+      "innovation": "First robot to replace human labor in industry&#8203;:contentReference[oaicite:104]{index=104}",
+      "complexity": "Moderate (programmable via instructions)"
+    },
+    "cognitive_aspects": {
+      "computation": "Sequence of motions replayed",
+      "reasoning": "None (no autonomy beyond program)",
+      "pattern_recognition": "None",
+      "creativity": "N/A (repetitive task execution)"
+    },
+    "impact": {
+      "social": "Began robotics era in manufacturing&#8203;:contentReference[oaicite:105]{index=105}",
+      "economic": "Transformed factory productivity, spurring automation",
+      "geopolitical": "U.S. innovation in robotics influenced global manufacturing"
+    },
+    "connections": {
+      "preceding": [33],
+      "following": [65, 74],
+      "parallel": []
+    }
+  },
+  {
+    "id": 59,
+    "name": "Joseph Weizenbaum’s ELIZA chatbot simulates conversation",
+    "year": "1965",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Software (text-based chatbot)",
+      "abstraction_level": "Symbolic pattern matching",
+      "innovation": "First conversational AI (simulated a Rogerian therapist)&#8203;:contentReference[oaicite:106]{index=106}",
+      "complexity": "Low (simple pattern-response rules)"
+    },
+    "cognitive_aspects": {
+      "computation": "Pattern matching and substitution",
+      "reasoning": "No true understanding, but mimics dialogue",
+      "pattern_recognition": "Keyword spotting",
+      "creativity": "Illusion of empathy via rephrasing patient input"
+    },
+    "impact": {
+      "social": "Showed how easily people attribute understanding to machines&#8203;:contentReference[oaicite:107]{index=107}",
+      "economic": "None immediate",
+      "geopolitical": "Raised ethical questions about AI deception"
+    },
+    "connections": {
+      "preceding": [56],
+      "following": [84],
+      "parallel": []
+    }
+  },
+  {
+    "id": 60,
+    "name": "ALPAC report leads to first “AI winter” by cutting machine translation funding",
+    "year": "1966",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Government report (US)",
+      "abstraction_level": "Program evaluation",
+      "innovation": "Concluded MT progress was inadequate, recommending funding cuts&#8203;:contentReference[oaicite:108]{index=108}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "Evaluated translation quality (poor)",
+      "reasoning": "N/A",
+      "pattern_recognition": "N/A",
+      "creativity": "N/A"
+    },
+    "impact": {
+      "social": "NLP research stalled for years after funding withdrawn&#8203;:contentReference[oaicite:109]{index=109}",
+      "economic": "Translation needed human effort, delaying automation",
+      "geopolitical": "US fell behind briefly in MT; term 'AI winter' born"
+    },
+    "connections": {
+      "preceding": [59],
+      "following": [63, 68],
+      "parallel": []
+    }
+  },
+  {
+    "id": 61,
+    "name": "SRI’s Shakey robot integrates perception, planning, and action",
+    "year": "1969",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Mobile robot with camera and sensors",
+      "abstraction_level": "Hardware + software system",
+      "innovation": "First AI robot to navigate and solve tasks in world&#8203;:contentReference[oaicite:110]{index=110}",
+      "complexity": "High (vision, planning, remote computation)"
+    },
+    "cognitive_aspects": {
+      "computation": "Path planning with logic-based STRIPS planner",
+      "reasoning": "Problem solving to achieve goals in environment",
+      "pattern_recognition": "Basic computer vision (edge detection)",
+      "creativity": "Pioneered combining multiple AI components"
+    },
+    "impact": {
+      "social": "Showcased AI potential in robotics&#8203;:contentReference[oaicite:111]{index=111}",
+      "economic": "Foundation for autonomous robotics research",
+      "geopolitical": "Funded by ARPA, justified continued US investment in AI"
+    },
+    "connections": {
+      "preceding": [58, 55],
+      "following": [66],
+      "parallel": []
+    }
+  },
+  {
+    "id": 62,
+    "name": "Terry Winograd’s SHRDLU demonstrates natural language understanding in a micro-world",
+    "year": "1970",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Software (NLP system)",
+      "abstraction_level": "Rule-based language parser tied to simulated world",
+      "innovation": "Computer could understand and execute English instructions in a blocks world&#8203;:contentReference[oaicite:112]{index=112}",
+      "complexity": "High (syntactic and semantic parsing)"
+    },
+    "cognitive_aspects": {
+      "computation": "Parsing and semantic mapping",
+      "reasoning": "Contextual understanding and planning in limited domain",
+      "pattern_recognition": "N/A (structured input)",
+      "creativity": "Interactive dialogue and task execution"
+    },
+    "impact": {
+      "social": "Landmark demo of NLP success, fueling optimism in AI",
+      "economic": "Inspired research into virtual assistants",
+      "geopolitical": "Showcased US academic leadership in AI"
+    },
+    "connections": {
+      "preceding": [59],
+      "following": [85],
+      "parallel": []
+    }
+  },
+  {
+    "id": 63,
+    "name": "Alain Colmerauer and team develop PROLOG, logic programming language",
+    "year": "1972",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Programming language",
+      "abstraction_level": "Symbolic logic programming",
+      "innovation": "Enabled writing programs by specifying logic rules and goals&#8203;:contentReference[oaicite:113]{index=113}",
+      "complexity": "High (requires logical formulation of problems)"
+    },
+    "cognitive_aspects": {
+      "computation": "Automated theorem proving (backtracking search)",
+      "reasoning": "Logical inference engine (unification, resolution)",
+      "pattern_recognition": "N/A",
+      "creativity": "Facilitated rapid prototyping of AI logic systems"
+    },
+    "impact": {
+      "social": "Key language for expert systems and AI research in Europe&#8203;:contentReference[oaicite:114]{index=114}",
+      "economic": "Used in early commercial expert systems, especially in Japan (5th Gen project)",
+      "geopolitical": "Europe gained strong foothold in AI through logic programming"
+    },
+    "connections": {
+      "preceding": [56],
+      "following": [68],
+      "parallel": []
+    }
+  },
+  {
+    "id": 64,
+    "name": "James Lighthill report leads UK to cut most AI research funding",
+    "year": "1973",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Government report (UK)",
+      "abstraction_level": "Research evaluation",
+      "innovation": "Criticized lack of progress in AI, especially in robotics and translation&#8203;:contentReference[oaicite:115]{index=115}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "N/A",
+      "pattern_recognition": "N/A",
+      "creativity": "N/A"
+    },
+    "impact": {
+      "social": "Triggered the first AI winter (1970s) in UK academia&#8203;:contentReference[oaicite:116]{index=116}",
+      "economic": "Sharp reduction in AI jobs and projects in Britain",
+      "geopolitical": "UK lost leadership, ceding to US and Japan in AI"
+    },
+    "connections": {
+      "preceding": [60],
+      "following": [68],
+      "parallel": []
+    }
+  },
+  {
+    "id": 65,
+    "name": "MYCIN expert system demonstrates rule-based medical diagnosis",
+    "year": "1974",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Software (rule-based expert system)",
+      "abstraction_level": "Knowledge base and inference engine",
+      "innovation": "Used IF-THEN rules to diagnose infections and recommend antibiotics&#8203;:contentReference[oaicite:117]{index=117}",
+      "complexity": "Moderate (≈500 rules, uncertainty handled via certainty factors)"
+    },
+    "cognitive_aspects": {
+      "computation": "Backward chaining of rules",
+      "reasoning": "Emulated expert physician decision-making",
+      "pattern_recognition": "N/A (relied on input data from user)",
+      "creativity": "Not learning, but encoded expert knowledge"
+    },
+    "impact": {
+      "social": "Proved AI could outperform junior doctors in narrow domain",
+      "economic": "Inspired commercial expert system development late 1970s",
+      "geopolitical": "US success story kept AI funding alive in expert systems"
+    },
+    "connections": {
+      "preceding": [63],
+      "following": [71],
+      "parallel": []
+    }
+  },
+  {
+    "id": 66,
+    "name": "Stanford Cart successfully navigates a room avoiding obstacles",
+    "year": "1979",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Computer-controlled vehicle",
+      "abstraction_level": "Robotics demonstration",
+      "innovation": "First autonomous vehicle to sense and avoid obstacles (slowly)&#8203;:contentReference[oaicite:118]{index=118}",
+      "complexity": "High (video cameras, remote processing per move)"
+    },
+    "cognitive_aspects": {
+      "computation": "Stereo vision processing, path planning",
+      "reasoning": "No global reasoning, just iterative planning",
+      "pattern_recognition": "Basic object detection (chairs)",
+      "creativity": "None"
+    },
+    "impact": {
+      "social": "Proof of concept for self-driving vehicles in lab conditions",
+      "economic": "Foreshadowed future AV industry",
+      "geopolitical": "Kept DARPA interest in autonomous systems"
+    },
+    "connections": {
+      "preceding": [61],
+      "following": [71, 78],
+      "parallel": []
+    }
+  },
+  {
+    "id": 67,
+    "name": "XCON (Expert Configurer) deployed at DEC – first successful commercial expert system",
+    "year": "1980",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Rule-based expert system",
+      "abstraction_level": "Knowledge engineering application",
+      "innovation": "Automatically configured VAX computer orders using rules",
+      "complexity": "High (thousands of rules)"
+    },
+    "cognitive_aspects": {
+      "computation": "Symbolic rule evaluation",
+      "reasoning": "Applied expert knowledge systematically",
+      "pattern_recognition": "N/A",
+      "creativity": "No learning, codified human expertise"
+    },
+    "impact": {
+      "social": "Saved DEC millions; validated AI utility in business",
+      "economic": "Kicked off the 1980s expert systems boom",
+      "geopolitical": "Strengthened Japan and US belief in AI investment (e.g., 5th Gen Project)"
+    },
+    "connections": {
+      "preceding": [65],
+      "following": [68],
+      "parallel": []
+    }
+  },
+  {
+    "id": 68,
+    "name": "Japan launches Fifth Generation Computer Systems project",
+    "year": "1982",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "National R&D program",
+      "abstraction_level": "Integrated AI hardware/software vision",
+      "innovation": "Massively parallel logic programming machines planned&#8203;:contentReference[oaicite:119]{index=119}",
+      "complexity": "Very high (aimed for Prolog-based computing)"
+    },
+    "cognitive_aspects": {
+      "computation": "Inference in hardware (Prolog machines)",
+      "reasoning": "Automated logic as foundation",
+      "pattern_recognition": "Some subprojects on speech and vision",
+      "creativity": "N/A"
+    },
+    "impact": {
+      "social": "Prompted other nations to invest in AI to compete",
+      "economic": "Spent ~$400M; advanced some AI tools but fell short of goals",
+      "geopolitical": "Started 'AI race'; US responded with MCC and DARPA projects"
+    },
+    "connections": {
+      "preceding": [63, 64],
+      "following": [80],
+      "parallel": []
+    }
+  },
+  {
+    "id": 69,
+    "name": "Collapse of Lisp machine market triggers second 'AI winter'",
+    "year": "1987",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Computer industry event",
+      "abstraction_level": "Market failure",
+      "innovation": "N/A",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "N/A",
+      "pattern_recognition": "N/A",
+      "creativity": "N/A"
+    },
+    "impact": {
+      "social": "AI hype crashed; many companies (Symbolics, etc.) went bankrupt&#8203;:contentReference[oaicite:120]{index=120}",
+      "economic": "Investment in AI slumped until 1990s",
+      "geopolitical": "AI seen as overpromised in US; funding pivoted to other fields"
+    },
+    "connections": {
+      "preceding": [67, 68],
+      "following": [82],
+      "parallel": [70]
+    }
+  },
+  {
+    "id": 70,
+    "name": "DARPA’s DART scheduling AI proves worth in Persian Gulf War",
+    "year": "1991",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Logistics planning software",
+      "abstraction_level": "Applied AI system",
+      "innovation": "AI scheduler saved time in military logistics&#8203;:contentReference[oaicite:121]{index=121}",
+      "complexity": "Moderate (constraint satisfaction)"
+    },
+    "cognitive_aspects": {
+      "computation": "Resource allocation optimization",
+      "reasoning": "Constraint-based planning",
+      "pattern_recognition": "N/A",
+      "creativity": "Efficient search for scheduling solutions"
+    },
+    "impact": {
+      "social": "Demonstrated tangible benefits of AI after 1980s skepticism&#8203;:contentReference[oaicite:122]{index=122}",
+      "economic": "Justified continued government AI funding",
+      "geopolitical": "AI provided strategic advantage in war logistics"
+    },
+    "connections": {
+      "preceding": [67],
+      "following": [90],
+      "parallel": []
+    }
+  },
+  {
+    "id": 71,
+    "name": "Gerald Tesauro’s TD-Gammon shows self-learning in backgammon",
+    "year": "1992",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Neural network + reinforcement learning program",
+      "abstraction_level": "Software (game AI)",
+      "innovation": "Learned to play backgammon at near world-champion level via self-play&#8203;:contentReference[oaicite:123]{index=123}",
+      "complexity": "Moderate (neural net with TD-lambda learning)"
+    },
+    "cognitive_aspects": {
+      "computation": "Reinforcement learning updates to network weights",
+      "reasoning": "Stochastic strategy improvement",
+      "pattern_recognition": "Learned board evaluations",
+      "creativity": "Discovered strategies without human input"
+    },
+    "impact": {
+      "social": "Illustrated the power of learning from experience in AI",
+      "economic": "Renewed interest in neural networks in finance and games",
+      "geopolitical": "Showed AI could exceed human intuition in certain tasks"
+    },
+    "connections": {
+      "preceding": [47, 69],
+      "following": [83],
+      "parallel": []
+    }
+  },
+  {
+    "id": 72,
+    "name": "Ernst Dickmanns’ autonomous cars drive on public highways (up to 130 km/h)",
+    "year": "1994",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Vision-based robotic cars",
+      "abstraction_level": "Hardware/software system",
+      "innovation": "First autonomous vehicles in traffic (1,000+ km on Autobahn)&#8203;:contentReference[oaicite:124]{index=124}",
+      "complexity": "Very high (real-time vision, multi-sensor fusion, control)"
+    },
+    "cognitive_aspects": {
+      "computation": "Sensor fusion, planning algorithms, deep learning for perception",
+      "reasoning": "Reactive planning for lane keeping and passing",
+      "pattern_recognition": "Road and vehicle detection via vision",
+      "creativity": "None (engineered behaviors)"
+    },
+    "impact": {
+      "social": "Landmark in self-driving tech, paving way for modern AVs&#8203;:contentReference[oaicite:125]{index=125}",
+      "economic": "Inspired major investments in autonomous car research",
+      "geopolitical": "Europe demonstrated advanced robotics capability"
+    },
+    "connections": {
+      "preceding": [66],
+      "following": [78, 95],
+      "parallel": []
+    }
+  },
+  {
+    "id": 73,
+    "name": "IBM’s Deep Blue defeats world chess champion Garry Kasparov",
+    "year": "1997",
+    "era": "1945-2000",
+    "technical_details": {
+      "medium": "Specialized supercomputer",
+      "abstraction_level": "Software (minimax search with heuristics) on parallel hardware",
+      "innovation": "First time a computer beat a reigning world chess champion&#8203;:contentReference[oaicite:126]{index=126}",
+      "complexity": "Very high (200 million positions/sec search)"
+    },
+    "cognitive_aspects": {
+      "computation": "Brute-force search and domain-specific evaluation",
+      "reasoning": "Game-tree exploration for strategy",
+      "pattern_recognition": "Encapsulated in evaluation function",
+      "creativity": "Not truly creative, but some moves surprised humans"
+    },
+    "impact": {
+      "social": "Milestone that captured global public attention&#8203;:contentReference[oaicite:127]{index=127}",
+      "economic": "Boosted AI credibility; IBM benefited in marketing",
+      "geopolitical": "Symbolic of advancing computing power (some saw East vs West science rivalry)"
+    },
+    "connections": {
+      "preceding": [32, 39],
+      "following": [83, 88],
+      "parallel": []
+    }
+  },
+  {
+    "id": 74,
+    "name": "Cynthia Breazeal’s Kismet robot exhibits social interactions",
+    "year": "2000",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Humanoid robot head",
+      "abstraction_level": "Hardware + AI (facial expression, voice)",
+      "innovation": "Pioneered affective computing with expressive robot face&#8203;:contentReference[oaicite:128]{index=128}",
+      "complexity": "High (real-time perception and expression system)"
+    },
+    "cognitive_aspects": {
+      "computation": "Emotion detection and response generation",
+      "reasoning": "Simple drives and emotions model",
+      "pattern_recognition": "Recognized tone of voice, faces to some extent",
+      "creativity": "Engaged in proto-dialog and emotional exchange"
+    },
+    "impact": {
+      "social": "Showed robots could engage humans emotionally&#8203;:contentReference[oaicite:129]{index=129}",
+      "economic": "Laid groundwork for social robotics and toy robots",
+      "geopolitical": "MIT project garnered broad media interest"
+    },
+    "connections": {
+      "preceding": [58, 50],
+      "following": [85],
+      "parallel": []
+    }
+  },
+  {
+    "id": 75,
+    "name": "iRobot Roomba launches as an autonomous vacuum cleaner",
+    "year": "2002",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Consumer robot appliance",
+      "abstraction_level": "Hardware + simple AI",
+      "innovation": "First mass-market home robot (autonomous vacuum)&#8203;:contentReference[oaicite:130]{index=130}",
+      "complexity": "Low (bump sensors, basic random/spiral algorithms)"
+    },
+    "cognitive_aspects": {
+      "computation": "Simple reactive navigation",
+      "reasoning": "Minimal (bump→turn responses)",
+      "pattern_recognition": "None (no mapping of environment)",
+      "creativity": "N/A (straightforward behaviors)"
+    },
+    "impact": {
+      "social": "Robots entered everyday life at scale",
+      "economic": "Spawned home robotics market (~>10 million sold)",
+      "geopolitical": "Demonstrated US startup success in consumer AI devices"
+    },
+    "connections": {
+      "preceding": [72],
+      "following": [95],
+      "parallel": []
+    }
+  },
+  {
+    "id": 76,
+    "name": "DARPA Grand Challenge held for autonomous vehicles in the desert",
+    "year": "2004",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Competition (autonomous cars)",
+      "abstraction_level": "Integrated AI system",
+      "innovation": "Catalyzed self-driving car development with prize competition&#8203;:contentReference[oaicite:131]{index=131}",
+      "complexity": "High (off-road autonomy under time constraint)"
+    },
+    "cognitive_aspects": {
+      "computation": "Sensor fusion, path planning, control",
+      "reasoning": "Real-time decision-making for navigation",
+      "pattern_recognition": "Obstacle and terrain recognition",
+      "creativity": "Varied approaches by teams (some learning, some rule-based)"
+    },
+    "impact": {
+      "social": "Inspired a generation of autonomous vehicle engineers",
+      "economic": "Kickstarted multi-billion dollar self-driving industry",
+      "geopolitical": "US defense and tech sectors partnered to maintain lead in AV"
+    },
+    "connections": {
+      "preceding": [72],
+      "following": [92, 95],
+      "parallel": []
+    }
+  },
+  {
+    "id": 77,
+    "name": "Checkers is solved: Chinook wins world championship and perfect-play result proven",
+    "year": "2007",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Endgame database + search program",
+      "abstraction_level": "Algorithm + database",
+      "innovation": "First non-trivial board game mathematically solved (checkers drawn with perfect play)&#8203;:contentReference[oaicite:132]{index=132}",
+      "complexity": "High (extensive endgame tables)"
+    },
+    "cognitive_aspects": {
+      "computation": "Exhaustive search of game tree via database",
+      "reasoning": "Optimal strategy derived by brute-force",
+      "pattern_recognition": "N/A (brute force)",
+      "creativity": "None (complete information calculation)"
+    },
+    "impact": {
+      "social": "Showed computers mastering entire game domains&#8203;:contentReference[oaicite:133]{index=133}",
+      "economic": "N/A",
+      "geopolitical": "Demonstrated North American research strength in AI"
+    },
+    "connections": {
+      "preceding": [73, 30],
+      "following": [],
+      "parallel": []
+    }
+  },
+  {
+    "id": 78,
+    "name": "Google starts its self-driving car project (Waymo)",
+    "year": "2009",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Autonomous vehicle prototype",
+      "abstraction_level": "Integrated system",
+      "innovation": "Applied ML and sensors at scale for urban self-driving&#8203;:contentReference[oaicite:134]{index=134}",
+      "complexity": "Very high (LiDAR, radar, vision, maps, ML combined)"
+    },
+    "cognitive_aspects": {
+      "computation": "Sensor fusion, planning algorithms, deep learning for perception",
+      "reasoning": "Rule-based and learned decision policies for driving",
+      "pattern_recognition": "Computer vision for cars, pedestrians, signs",
+      "creativity": "N/A (engineered intelligence)"
+    },
+    "impact": {
+      "social": "Accelerated public awareness and debate on autonomous cars",
+      "economic": "Launched multi-billion dollar AV industry race in tech and auto sectors",
+      "geopolitical": "US maintained lead in AV; prompted regulatory efforts worldwide"
+    },
+    "connections": {
+      "preceding": [72, 76],
+      "following": [95],
+      "parallel": []
+    }
+  },
+  {
+    "id": 79,
+    "name": "IBM Watson wins Jeopardy! against champion contestants",
+    "year": "2011",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "QA system (big-data NLP on a supercomputer)",
+      "abstraction_level": "Software (statistical NLP, search) on parallel hardware",
+      "innovation": "Integrated natural language understanding and vast knowledge base to beat top trivia players&#8203;:contentReference[oaicite:135]{index=135}",
+      "complexity": "Very high (deep parsing, ML on huge text corpora)"
+    },
+    "cognitive_aspects": {
+      "computation": "Massive parallel hypothesis generation and evidence scoring",
+      "reasoning": "Shallow semantic reasoning (finding likely answers)",
+      "pattern_recognition": "Machine learning on question/answer patterns",
+      "creativity": "None (relied on learned associations)"
+    },
+    "impact": {
+      "social": "Showed AI handling complex language and broad knowledge on TV&#8203;:contentReference[oaicite:136]{index=136}",
+      "economic": "Spurred interest in AI for healthcare, enterprise (Watson commercial push)",
+      "geopolitical": "US AI milestone; White House cited it in AI reports"
+    },
+    "connections": {
+      "preceding": [73, 59],
+      "following": [96],
+      "parallel": []
+    }
+  },
+  {
+    "id": 80,
+    "name": "Apple’s Siri, first widely-used smartphone voice assistant, is released",
+    "year": "2011",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Mobile app/service",
+      "abstraction_level": "Integrated speech/NLP/knowledge system",
+      "innovation": "Brought voice-controlled AI to consumers in everyday device&#8203;:contentReference[oaicite:137]{index=137}",
+      "complexity": "High (speech recognition, NLP, dialogue management in cloud)"
+    },
+    "cognitive_aspects": {
+      "computation": "Voice-to-text processing, API queries",
+      "reasoning": "Scripted dialogue flow, limited context handling",
+      "pattern_recognition": "Statistical speech recognition",
+      "creativity": "Limited (preset joke responses, etc.)"
+    },
+    "impact": {
+      "social": "Mainstreamed talking to machines; millions interact with Siri",
+      "economic": "Set off competition (Google Now, Cortana) and voice assistant market",
+      "geopolitical": "Mobile AI became strategic for tech companies global competition"
+    },
+    "connections": {
+      "preceding": [59, 74],
+      "following": [95],
+      "parallel": []
+    }
+  },
+  {
+    "id": 81,
+    "name": "AlexNet wins ImageNet challenge, revolutionizing computer vision with deep learning",
+    "year": "2012",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Software (convolutional neural network)",
+      "abstraction_level": "Deep learning model (GPU-accelerated)",
+      "innovation": "Achieved unprecedented image recognition accuracy, halving error rates&#8203;:contentReference[oaicite:138]{index=138}",
+      "complexity": "High (8-layer CNN, 60M parameters)"
+    },
+    "cognitive_aspects": {
+      "computation": "Layered feature extraction (learned filters)",
+      "reasoning": "N/A (pattern recognition oriented)",
+      "pattern_recognition": "Yes - learned hierarchical visual features",
+      "creativity": "Learns representations automatically from data"
+    },
+    "impact": {
+      "social": "Sparked the deep learning revolution across AI fields&#8203;:contentReference[oaicite:139]{index=139}",
+      "economic": "Led to explosion of AI startups and adoption in industry (vision, speech)",
+      "geopolitical": "Nations invested in AI once seeing dramatic gains (e.g., China in vision technology)"
+    },
+    "connections": {
+      "preceding": [47, 42],
+      "following": [88, 93],
+      "parallel": []
+    }
+  },
+  {
+    "id": 82,
+    "name": "Open letter on AI safety (FLI) signed by Hawking, Musk, etc. urges research on societal impacts",
+    "year": "2015",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Open letter/policy recommendation",
+      "abstraction_level": "N/A",
+      "innovation": "Brought AI alignment and safety into mainstream discussion&#8203;:contentReference[oaicite:140]{index=140}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "Public ethical reasoning and precautionary principle application",
+      "pattern_recognition": "N/A",
+      "creativity": "N/A"
+    },
+    "impact": {
+      "social": "Researchers began focusing on AI ethics and safety challenges&#8203;:contentReference[oaicite:141]{index=141}",
+      "economic": "Some funding shifted to AI safety research",
+      "geopolitical": "Pressure on governments to consider AI regulation early"
+    },
+    "connections": {
+      "preceding": [38, 28],
+      "following": [86, 98],
+      "parallel": []
+    }
+  },
+  {
+    "id": 83,
+    "name": "DeepMind’s AlphaGo defeats Go champion Lee Sedol 4-1",
+    "year": "2016",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Software (deep neural network + MCTS)",
+      "abstraction_level": "Hybrid AI system",
+      "innovation": "Combined deep learning and tree search to master Go, a 2500-year-old game&#8203;:contentReference[oaicite:142]{index=142}",
+      "complexity": "Very high (policy and value networks, trained on millions of positions)"
+    },
+    "cognitive_aspects": {
+      "computation": "Monte Carlo Tree Search guided by neural nets",
+      "reasoning": "Evaluated board states and planned sequences",
+      "pattern_recognition": "Extensive pattern learning from human games + self-play",
+      "creativity": "Exhibited novel strategies ('move 37') surprising to human experts"
+    },
+    "impact": {
+      "social": "Huge global media event; shifted opinions on AI potential&#8203;:contentReference[oaicite:143]{index=143}",
+      "economic": "Catalyzed investment in deep learning startups and research",
+      "geopolitical": "Spurred China to dramatically increase AI funding after witnessing result"
+    },
+    "connections": {
+      "preceding": [73, 71],
+      "following": [88],
+      "parallel": []
+    }
+  },
+  {
+    "id": 84,
+    "name": "Microsoft’s Tay chatbot debuts and is quickly corrupted by online trolls",
+    "year": "2016",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "AI chatbot on Twitter",
+      "abstraction_level": "Neural network + content filters (insufficient)",
+      "innovation": "Demonstrated unintended consequences of online learning in real-time&#8203;:contentReference[oaicite:144]{index=144}",
+      "complexity": "Moderate (tweet parsing and generation via learned patterns)"
+    },
+    "cognitive_aspects": {
+      "computation": "Seq2seq style language generation",
+      "reasoning": "None (mimicked users)",
+      "pattern_recognition": "Yes – learned from Twitter input without quality control",
+      "creativity": "Formulated novel (but often inappropriate) sentences from data"
+    },
+    "impact": {
+      "social": "Highlighted the need for AI content moderation and ethics (Tay became offensive in <24h)&#8203;:contentReference[oaicite:145]{index=145}",
+      "economic": "Microsoft PR embarrassment; industry caution on release of learning bots",
+      "geopolitical": "Illustrative case in calls for AI regulation on hate speech"
+    },
+    "connections": {
+      "preceding": [59],
+      "following": [85],
+      "parallel": []
+    }
+  },
+  {
+    "id": 85,
+    "name": "Tech giants (Amazon, Google, IBM, Microsoft, Facebook) form Partnership on AI",
+    "year": "2016",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Industry consortium",
+      "abstraction_level": "Governance initiative",
+      "innovation": "Major competitors collaborate on AI best practices and ethics&#8203;:contentReference[oaicite:146]{index=146}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "N/A",
+      "pattern_recognition": "N/A",
+      "creativity": "Collaborative frameworks for AI guidelines"
+    },
+    "impact": {
+      "social": "Improved public understanding and trust through joint transparency efforts&#8203;:contentReference[oaicite:147]{index=147}",
+      "economic": "Shared research on fairness and safety benefits industry as a whole",
+      "geopolitical": "Presented united front to shape global AI norms and regulations"
+    },
+    "connections": {
+      "preceding": [82, 84],
+      "following": [93],
+      "parallel": []
+    }
+  },
+  {
+    "id": 86,
+    "name": "Asilomar Conference on Beneficial AI establishes ethical principles",
+    "year": "2017",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Conference/Principles document",
+      "abstraction_level": "Policy recommendations",
+      "innovation": "23 guidelines for safe, beneficial AI development agreed by researchers&#8203;:contentReference[oaicite:148]{index=148}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "Meta-level moral reasoning about AI",
+      "pattern_recognition": "N/A",
+      "creativity": "Collaborative norm-setting"
+    },
+    "impact": {
+      "social": "Solidified AI ethics as a field; companies and labs endorsed principles&#8203;:contentReference[oaicite:149]{index=149}",
+      "economic": "Potentially avoided reckless deployments by encouraging safety checks",
+      "geopolitical": "Laid groundwork for international cooperation on AI governance"
+    },
+    "connections": {
+      "preceding": [82],
+      "following": [92, 98],
+      "parallel": []
+    }
+  },
+  {
+    "id": 87,
+    "name": "“Attention Is All You Need” paper introduces Transformer architecture",
+    "year": "2017",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Academic paper (NIPS 2017)",
+      "abstraction_level": "Neural network architecture",
+      "innovation": "Transformer model enables parallel sequence processing, replacing recurrent networks&#8203;:contentReference[oaicite:150]{index=150}",
+      "complexity": "High (multi-head self-attention layers)"
+    },
+    "cognitive_aspects": {
+      "computation": "Parallelizable sequence modeling",
+      "reasoning": "Improved long-range dependency handling",
+      "pattern_recognition": "Excels at language pattern learning",
+      "creativity": "Forms basis of generative models (e.g., GPT) that produce human-like text"
+    },
+    "impact": {
+      "social": "Breakthrough powering modern NLP like BERT and GPT&#8203;:contentReference[oaicite:151]{index=151}",
+      "economic": "Huge impact on industry (language translators, assistants improved)",
+      "geopolitical": "NLP advances widely adopted globally (open source models, etc.)"
+    },
+    "connections": {
+      "preceding": [81],
+      "following": [95, 96],
+      "parallel": []
+    }
+  },
+  {
+    "id": 88,
+    "name": "DeepMind’s AlphaGo Zero learns Go superhumanly via self-play",
+    "year": "2017",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Software (reinforcement learning system)",
+      "abstraction_level": "Deep RL algorithm",
+      "innovation": "Surpassed prior AlphaGo without human data, using only self-play games&#8203;:contentReference[oaicite:152]{index=152}",
+      "complexity": "Very high (no human priors, learned from scratch)"
+    },
+    "cognitive_aspects": {
+      "computation": "Self-play reinforcement learning, massive search",
+      "reasoning": "Developed strategies on its own (tabula rasa)",
+      "pattern_recognition": "Neural nets learned optimal representations of Go",
+      "creativity": "Demonstrated machine-driven innovation in strategies"
+    },
+    "impact": {
+      "social": "Showed AI can achieve mastery in complex domains independently of human knowledge&#8203;:contentReference[oaicite:153]{index=153}",
+      "economic": "Techniques extended to other domains (protein folding, etc.)",
+      "geopolitical": "Intensified global competition in AI as strategic tech"
+    },
+    "connections": {
+      "preceding": [83],
+      "following": [90],
+      "parallel": []
+    }
+  },
+  {
+    "id": 89,
+    "name": "OECD countries and G20 adopt Principles on AI (trustworthy AI)",
+    "year": "2019",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "International policy (recommendation)",
+      "abstraction_level": "Governance framework",
+      "innovation": "First intergovernmental standard for AI ethics and policy&#8203;:contentReference[oaicite:154]{index=154}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "Guidelines for human oversight, fairness, transparency",
+      "pattern_recognition": "N/A",
+      "creativity": "N/A"
+    },
+    "impact": {
+      "social": "Set global consensus on values for AI (inclusive growth, human-centered)&#8203;:contentReference[oaicite:155]{index=155}",
+      "economic": "Influences corporate AI governance (compliance with principles)",
+      "geopolitical": "42 nations initially, expanded globally – foundation for future AI regulation"
+    },
+    "connections": {
+      "preceding": [82, 49],
+      "following": [93, 99],
+      "parallel": []
+    }
+  },
+  {
+    "id": 90,
+    "name": "DeepMind’s AlphaStar achieves Grandmaster level at StarCraft II",
+    "year": "2019",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Software (deep reinforcement learning agent)",
+      "abstraction_level": "Complex game AI",
+      "innovation": "Mastered a real-time strategy game with imperfect information&#8203;:contentReference[oaicite:156]{index=156}",
+      "complexity": "Very high (multiple agents, macro and micro strategy)"
+    },
+    "cognitive_aspects": {
+      "computation": "Distributed deep RL (neural networks controlling units)",
+      "reasoning": "Long-term strategic planning under uncertainty",
+      "pattern_recognition": "Learned tactics and reactions from millions of game simulations",
+      "creativity": "Developed novel multi-task strategies not seen in human play"
+    },
+    "impact": {
+      "social": "Demonstrated AI can handle extremely complex, dynamic environments (beyond board games)&#8203;:contentReference[oaicite:157]{index=157}",
+      "economic": "Techniques applicable to real-time decision systems",
+      "geopolitical": "Marked another milestone in AI dominance of human champions"
+    },
+    "connections": {
+      "preceding": [88],
+      "following": [],
+      "parallel": []
+    }
+  },
+  {
+    "id": 91,
+    "name": "OpenAI releases GPT-3, a 175-billion parameter language model",
+    "year": "2020",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Software (Transformer-based LLM)",
+      "abstraction_level": "Deep learning model",
+      "innovation": "Generated remarkably human-like text; few-shot learning emergent&#8203;:contentReference[oaicite:158]{index=158}",
+      "complexity": "Very high (largest model of its time)"
+    },
+    "cognitive_aspects": {
+      "computation": "Next-word prediction at unprecedented scale",
+      "reasoning": "Shallow pattern-based reasoning abilities (some logical puzzles, code) achieved via training",
+      "pattern_recognition": "Massive corpus ingestion enabled learning of myriad patterns",
+      "creativity": "Able to produce essays, code, and poetry mimicking human style"
+    },
+    "impact": {
+      "social": "Surprised many experts with quality; raised awareness of AI’s capabilities&#8203;:contentReference[oaicite:159]{index=159}",
+      "economic": "Spurred new applications (writing assistance, code autocompletion, chatbots)",
+      "geopolitical": "Intensified race in AI compute power; concerns about AI-generated misinformation"
+    },
+    "connections": {
+      "preceding": [87],
+      "following": [96],
+      "parallel": []
+    }
+  },
+  {
+    "id": 92,
+    "name": "DeepMind’s AlphaFold2 wins CASP14 by accurately predicting protein structures",
+    "year": "2020",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Software (deep learning for biology)",
+      "abstraction_level": "Specialized DL model",
+      "innovation": "Solved 50-year grand challenge of protein folding (atomic accuracy)&#8203;:contentReference[oaicite:160]{index=160}",
+      "complexity": "High (Transformer-based network with evolutionary data input)"
+    },
+    "cognitive_aspects": {
+      "computation": "Complex spatial pattern inference (amino acid interactions)",
+      "reasoning": "N/A (pattern recognition task turned predictive modeling)",
+      "pattern_recognition": "Yes – learned protein sequence-structure patterns",
+      "creativity": "Generalized to novel proteins with high accuracy"
+    },
+    "impact": {
+      "social": "Huge breakthrough in science; hailed a triumph for AI helping humanity",
+      "economic": "Accelerated drug discovery and biotech research",
+      "geopolitical": "Signaled that AI can drive scientific discovery; global collaboration increased"
+    },
+    "connections": {
+      "preceding": [88],
+      "following": [],
+      "parallel": []
+    }
+  },
+  {
+    "id": 93,
+    "name": "EU proposes the Artificial Intelligence Act, first comprehensive AI law",
+    "year": "2021",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Draft legislation (regulation)",
+      "abstraction_level": "Legal framework",
+      "innovation": "Risk-based approach to regulate AI systems (bans, high-risk requirements, etc.)&#8203;:contentReference[oaicite:161]{index=161}",
+      "complexity": "High (detailed compliance categories)"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "Lawmakers’ reasoning about AI risks and benefits",
+      "pattern_recognition": "N/A",
+      "creativity": "Regulatory creativity in tackling novel technology"
+    },
+    "impact": {
+      "social": "If passed, will shape AI development practices in Europe and set global precedent",
+      "economic": "Compliance costs for companies; safer products for consumers",
+      "geopolitical": "EU positions itself as leader in AI governance, influencing other countries"
+    },
+    "connections": {
+      "preceding": [89, 85],
+      "following": [94, 99],
+      "parallel": []
+    }
+  },
+  {
+    "id": 94,
+    "name": "UNESCO’s 193 member states adopt the first global agreement on AI Ethics",
+    "year": "2021",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "International agreement (Recommendation)",
+      "abstraction_level": "Normative framework",
+      "innovation": "First universal set of values and principles for AI development&#8203;:contentReference[oaicite:162]{index=162}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "Collective ethical reasoning on AI use",
+      "pattern_recognition": "N/A",
+      "creativity": "N/A"
+    },
+    "impact": {
+      "social": "Provides guiding principles (transparency, accountability, privacy, etc.) for all nations&#8203;:contentReference[oaicite:163]{index=163}",
+      "economic": "Encourages ethical innovation, could prevent harmful AI deployments",
+      "geopolitical": "Signifies global consensus on AI norms; countries to implement locally"
+    },
+    "connections": {
+      "preceding": [89],
+      "following": [],
+      "parallel": []
+    }
+  },
+  {
+    "id": 95,
+    "name": "OpenAI’s DALL·E 2 (and diffusion models) astonish with AI-generated art",
+    "year": "2022",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Software (text-to-image model)",
+      "abstraction_level": "Deep generative model",
+      "innovation": "Generate high-quality images from text prompts using diffusion + CLIP&#8203;:contentReference[oaicite:164]{index=164}",
+      "complexity": "High (billions of parameters, trained on huge image-text data)"
+    },
+    "cognitive_aspects": {
+      "computation": "Denoising diffusion process guided by learned vision-language embeddings",
+      "reasoning": "No true reasoning, but plausibly interprets many prompts",
+      "pattern_recognition": "Yes – learned visual concepts and styles from data",
+      "creativity": "Capable of producing novel art, design concepts from imagination"
+    },
+    "impact": {
+      "social": "Visual creativity somewhat democratized; sparked debates on artist rights and deepfakes&#8203;:contentReference[oaicite:165]{index=165}",
+      "economic": "Upset stock image industry; spawned new AI art startups and uses in advertising, design",
+      "geopolitical": "Raised urgency for policies on AI-generated content and copyright"
+    },
+    "connections": {
+      "preceding": [87],
+      "following": [96],
+      "parallel": []
+    }
+  },
+  {
+    "id": 96,
+    "name": "OpenAI releases ChatGPT, bringing conversational AI to millions",
+    "year": "2022",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Online chatbot (GPT-3.5 model)",
+      "abstraction_level": "Large language model interface",
+      "innovation": "First AI chatbot to gain mass adoption for general queries, showcasing fluid dialogue&#8203;:contentReference[oaicite:166]{index=166}",
+      "complexity": "High (instruct-tuned 175B parameter model)"
+    },
+    "cognitive_aspects": {
+      "computation": "Next-token prediction with conversational fine-tuning",
+      "reasoning": "Emergent ability to perform multi-step reasoning (with mistakes) in dialogue",
+      "pattern_recognition": "Extensive language pattern knowledge across domains",
+      "creativity": "Writes essays, code, poetry, etc. at human-like level in many cases"
+    },
+    "impact": {
+      "social": "Reached 100M users in 2 months (fastest ever)&#8203;:contentReference[oaicite:167]{index=167}; mainstreamed AI discussion and use",
+      "economic": "Huge productivity implications (writing, customer service, coding); prompted “AI arms race” among companies",
+      "geopolitical": "Catalyzed governments to expedite AI policy (fear of uncontrolled AI info influence)&#8203;:contentReference[oaicite:168]{index=168}"
+    },
+    "connections": {
+      "preceding": [91, 50],
+      "following": [97],
+      "parallel": []
+    }
+  },
+  {
+    "id": 97,
+    "name": "OpenAI’s GPT-4 launches with multi-modal capabilities and improved performance",
+    "year": "2023",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Software (advanced LLM)",
+      "abstraction_level": "Large multimodal model",
+      "innovation": "Accepts text and image inputs; scores at human level on many exams&#8203;:contentReference[oaicite:169]{index=169}",
+      "complexity": "Very high (estimated 0.5-1 trillion parameters, training details withheld)"
+    },
+    "cognitive_aspects": {
+      "computation": "Transformer-based, more refined and aligned than predecessors",
+      "reasoning": "Markedly better logical and coding abilities than GPT-3.5",
+      "pattern_recognition": "Extensive, across text and vision (to some degree)",
+      "creativity": "Can produce more coherent and contextually aware content"
+    },
+    "impact": {
+      "social": "Further blurred line between human and machine output; used in education, work (raising plagiarism and job concerns)&#8203;:contentReference[oaicite:170]{index=170}",
+      "economic": "Accelerated integration of AI assistants in products (e.g., Bing, ChatGPT Plus)",
+      "geopolitical": "Pressure on rivals (US and Chinese firms) to match capabilities; intensifying AI talent/resource race"
+    },
+    "connections": {
+      "preceding": [96],
+      "following": [],
+      "parallel": []
+    }
+  },
+  {
+    "id": 98,
+    "name": "Future of Life Institute’s open letter calls for pause on giant AI experiments",
+    "year": "2023",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Open letter",
+      "abstraction_level": "Policy/advocacy",
+      "innovation": "Over 1,000 tech leaders (incl. Musk, Wozniak) urge 6-month halt on training AI beyond GPT-4&#8203;:contentReference[oaicite:171]{index=171}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "Public ethical reasoning and precautionary principle application",
+      "pattern_recognition": "N/A",
+      "creativity": "N/A"
+    },
+    "impact": {
+      "social": "Stoked public fear and debate about uncontrollable AI; split the AI community",
+      "economic": "Companies had to publicly respond; some small slow-downs, but generally research continued",
+      "geopolitical": "Added urgency for policymakers to consider regulation of frontier AI development"
+    },
+    "connections": {
+      "preceding": [82],
+      "following": [100],
+      "parallel": []
+    }
+  },
+  {
+    "id": 99,
+    "name": "US President Biden signs Executive Order on Safe, Secure, Trustworthy AI",
+    "year": "2023",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "Executive Order",
+      "abstraction_level": "Policy mandate",
+      "innovation": "First comprehensive US federal initiative on AI safety (standards for testing, watermarking, etc.)&#8203;:contentReference[oaicite:172]{index=172}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "Government policy reasoning balancing innovation and safety",
+      "pattern_recognition": "N/A",
+      "creativity": "Regulatory"
+    },
+    "impact": {
+      "social": "Sets requirements for companies developing advanced AI (sharing test results with government)&#8203;:contentReference[oaicite:173]{index=173}",
+      "economic": "Will shape AI industry practices in US; compliance burden but potentially safer AI deployment",
+      "geopolitical": "US signals seriousness about AI governance, hoping to influence global norms"
+    },
+    "connections": {
+      "preceding": [93, 98],
+      "following": [100],
+      "parallel": []
+    }
+  },
+  {
+    "id": 100,
+    "name": "UK hosts first global AI Safety Summit at Bletchley Park",
+    "year": "2023",
+    "era": "2000 onward",
+    "technical_details": {
+      "medium": "International summit",
+      "abstraction_level": "Policy coordination",
+      "innovation": "Nations (incl. US, China, EU) jointly acknowledge need to manage AI risks&#8203;:contentReference[oaicite:174]{index=174}",
+      "complexity": "N/A"
+    },
+    "cognitive_aspects": {
+      "computation": "N/A",
+      "reasoning": "Diplomatic consensus building on AI risk reduction",
+      "pattern_recognition": "N/A",
+      "creativity": "Brainstorming global governance solutions"
+    },
+    "impact": {
+      "social": "Increased public confidence that governments are addressing AI existential risk",
+      "economic": "Could lead to international regulations impacting AI businesses",
+      "geopolitical": "Opened door for ongoing global cooperation on AI (28 countries signed a declaration)&#8203;:contentReference[oaicite:175]{index=175}"
+    },
+    "connections": {
+      "preceding": [98, 99],
+      "following": [],
+      "parallel": []
+    }
+  }
+]
