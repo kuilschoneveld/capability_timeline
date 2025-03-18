@@ -118,6 +118,9 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
     return className;
   };
   
+  // Get notable innovation from milestone, or use default text if not available
+  const notableInnovation = milestone.notable_innovation || "Information on innovation not available.";
+  
   return (
     <div 
       ref={itemRef}
@@ -140,45 +143,23 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
           onClick={handleDetailsClick}
           data-milestone-id={id}
         >
-          {/* Pie chart visualization of technical, societal, philosophical dimensions */}
+          {/* Pie chart visualization of impact dimensions */}
           <PieChart data={thematicTags} />
           
           <p className="timeline-item-description">{description}</p>
           
-          {/* Narrative lines visualization - replaces the thematic tags bar graphs */}
-          <NarrativeLines milestoneId={id} />
-          
-          {/* Hiding the references section for now */}
-          {/* {sourceUrls && sourceUrls.length > 0 && (
-            <div className="timeline-item-sources">
-              <h4>References</h4>
-              <ul className="source-links-list">
-                {sourceUrls.map((url, index) => {
-                  // Extract domain name for a cleaner display
-                  let displayText;
-                  try {
-                    const urlObj = new URL(url);
-                    displayText = urlObj.hostname.replace('www.', '');
-                  } catch {
-                    displayText = `Reference ${index + 1}`;
-                  }
-                  
-                  return (
-                    <li key={index}>
-                      <a 
-                        href={url} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        {displayText}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
+          {/* Narrative lines and notable innovation side by side */}
+          <div className="narrative-innovation-layout">
+            <NarrativeLines milestoneId={id} />
+            
+            {/* Notable innovation section */}
+            <div className="notable-innovation-container">
+              <h4>Notable Innovation</h4>
+              <div className="notable-innovation-content">
+                <p>{notableInnovation}</p>
+              </div>
             </div>
-          )} */}
+          </div>
         </div>
       )}
     </div>

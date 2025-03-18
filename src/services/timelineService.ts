@@ -73,8 +73,12 @@ const convertToMilestone = (event: any): Milestone => {
     thematicTags: {
       technical: event.impact.technical,
       societal: event.impact.societal,
-      philosophical: event.impact.philosophical
+      philosophical: event.impact.philosophical,
+      economic: event.impact.economic,
+      geopolitical: event.impact.geopolitical
     },
+    // Add the notable_innovation field from the event's cognitive dimensions
+    notable_innovation: event.cognitiveDimensions?.notable_innovation || '',
     // Optional fields
     imageUrl: primaryUrl,
     sourceUrls: filteredUrls

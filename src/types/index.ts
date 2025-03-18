@@ -15,6 +15,7 @@ export interface Milestone {
   thematicTags: ThematicTags;
   branchId?: string; // For future branching timelines
   parentMilestoneId?: string; // For connecting branches to main timeline
+  notable_innovation?: string; // Description of why it advanced the state of the art
 }
 
 /**
@@ -25,6 +26,8 @@ export interface ThematicTags {
   technical: number; // Technical significance (0-10)
   societal: number; // Societal impact (0-10)
   philosophical: number; // Philosophical implications (0-10)
+  economic: number; // Economic impact (0-10)
+  geopolitical: number; // Geopolitical implications (0-10)
   [key: string]: number; // Allow for future thematic dimensions
 }
 

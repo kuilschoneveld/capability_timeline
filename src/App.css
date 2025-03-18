@@ -2329,3 +2329,377 @@ body {
 .era-value[data-era="Informational"] {
   color: #8338ec; /* Information purple */
 }
+
+/* Timeline item content layout */
+.timeline-item-content-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Pie chart container */
+.pie-chart-container {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin-bottom: 20px;
+}
+
+/* Pie segment score text */
+.pie-segment-score {
+  font-size: 8px;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+/* Placeholder container on the right side */
+.placeholder-container {
+  flex: 1;
+  min-height: 110px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Narrative lines container */
+.narrative-lines-container {
+  margin: 20px 0;
+  width: 100%;
+}
+
+/* Narrative lines header with title and info icon */
+.narrative-lines-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.narrative-lines-title {
+  margin: 0;
+  margin-right: 10px;
+}
+
+/* Info icon styling */
+.info-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 12px;
+  cursor: help;
+  margin-left: 5px;
+}
+
+/* Narrative panels list */
+.narrative-panels-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.narrative-panel {
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  cursor: help;
+  transition: opacity 0.2s ease;
+}
+
+.narrative-panel:hover {
+  opacity: 1 !important;
+}
+
+.narrative-panel-name {
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Notable innovation section */
+.notable-innovation-container {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.notable-innovation-container h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.notable-innovation-content {
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+}
+
+.notable-innovation-content p {
+  margin: 0;
+}
+
+/* URLs/Sources section */
+.urls-container {
+  margin: 20px 0;
+}
+
+.urls-container h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.url-links {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.primary-link a {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: rgba(76, 201, 240, 0.2);
+  border: 1px solid rgba(76, 201, 240, 0.5);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.primary-link a:hover {
+  background-color: rgba(76, 201, 240, 0.3);
+}
+
+.additional-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.additional-links a {
+  display: inline-block;
+  padding: 4px 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 12px;
+  transition: all 0.2s ease;
+}
+
+.additional-links a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Timeline item content layout */
+.timeline-item-content-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Narrative lines and notable innovation layout */
+.narrative-innovation-layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 20px 0;
+  width: 100%;
+}
+
+/* Narrative lines container */
+.narrative-lines-container {
+  flex: 0 0 100px; /* Smaller fixed width for narrative lines section */
+  margin: 0;
+}
+
+/* Narrative lines header with title and info icon */
+.narrative-lines-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.narrative-lines-title {
+  margin: 0;
+  margin-right: 5px;
+  font-size: 0.9rem;
+}
+
+/* Info icon styling */
+.info-icon-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 10px;
+  cursor: help;
+  margin-left: 4px;
+}
+
+/* Narrative panels list - vertical layout */
+.narrative-panels-list.vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.narrative-panel {
+  padding: 5px 4px;
+  border-radius: 3px;
+  text-align: center;
+  color: white;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 18px;
+  cursor: help;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add subtle indicator for ranking */
+.narrative-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  opacity: inherit;
+}
+
+.narrative-panel:hover {
+  opacity: 1 !important;
+  transform: translateX(2px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Rank number styling */
+.narrative-rank {
+  font-size: 8px;
+  font-weight: bold;
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+}
+
+.narrative-panel-name {
+  font-weight: 500;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Notable innovation section */
+.notable-innovation-container {
+  flex: 1;
+  margin: 0;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  height: fit-content;
+  min-height: 120px; /* Ensure minimum height to match narrative panels */
+}
+
+.notable-innovation-container h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.notable-innovation-content {
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.notable-innovation-content p {
+  margin: 0;
+}
+
+/* URLs/Sources section */
+.urls-container {
+  margin: 20px 0;
+}
+
+/* Pie segment label text */
+.pie-segment-label {
+  font-size: 8px;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+/* Pie center - white circle with tooltip */
+.pie-center {
+  fill: white;
+  stroke: rgba(0, 0, 0, 0.15);
+  stroke-width: 1px;
+  cursor: help;
+  transition: fill 0.2s ease;
+}
+
+.pie-center:hover {
+  fill: rgba(255, 255, 255, 0.9);
+}
+
+/* Loading state for narrative panels */
+.narrative-panels-list.loading {
+  opacity: 0.6;
+}
+
+.narrative-panel-loading {
+  padding: 5px 4px;
+  border-radius: 3px;
+  height: 18px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 100%);
+  background-size: 200% 100%;
+  animation: loading-animation 1.5s infinite;
+}
+
+@keyframes loading-animation {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
