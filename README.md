@@ -8,8 +8,24 @@ This project provides a visual timeline of key milestones in AI and algorithmic 
 
 - Historical milestones in a linear timeline
 - Speculative future scenarios as branching timelines
-- Thematic filtering to highlight specific dimensions (technical, societal, philosophical)
+- Thematic filtering to highlight specific dimensions (technical, societal, philosophical, economic, geopolitical)
 - Multiple navigation methods (scroll, drag, zoom)
+
+## Current State & Vision
+
+The Capability Timeline currently exists as a fully functional research prototype with several key features:
+
+- **Historical Timeline**: A comprehensive chronology of significant algorithmic advancements from ancient times to the present day, with detailed information about each milestone's technical nature, cognitive dimensions, and impact.
+
+- **Future Branches**: Two speculative future paths (optimistic and pessimistic) that explore potential trajectories of algorithmic capability development, allowing for comparison and reflection.
+
+- **Advanced Search & Filtering**: Users can filter events by thematic dimensions, impact scores, and time periods to focus on specific aspects of algorithmic development.
+
+- **Comparative Analysis**: The timeline allows for side-by-side comparison of different eras and branches, facilitating deeper understanding of patterns and trends in capability development.
+
+This has been an exploration of capabilities in more than one sense, and the app has transformed into a living research prototype I plan to enrich further. The project serves as both a technical exploration of interactive visualization capabilities and a conceptual exploration of how we understand and communicate the development of algorithmic systems through time.
+
+The timeline is designed with extensibility in mind, providing space for expanding into more customized speculative futures, additional historical detail, and deeper analysis of the relationships between different capability developments.
 
 ## Features
 
@@ -30,7 +46,7 @@ src/
 │       ├── TimelineItem.tsx     # Individual milestone
 │       └── TimelineControls.tsx # Filtering and navigation controls
 ├── data/
-│   └── mockData.ts              # Sample timeline data
+│   └── timelineDatabase.ts      # Timeline event data
 ├── hooks/
 │   └── useTimeline.ts           # Custom hook for timeline state management
 ├── services/
@@ -87,11 +103,14 @@ npm run build
    npm run deploy
    ```
 
-## Future Enhancements
+## Future Directions
 
-- Advanced navigation with zoom and pan capabilities
-- CMS integration for easier content management
-- Enhanced visualization options
+- **Expanded Event Database**: Adding more granular historical events and additional future scenarios
+- **Interactive Visualization Enhancements**: Advanced navigation with zoom and pan capabilities
+- **Collaborative Features**: Allowing users to create and share their own speculative future branches
+- **Integration with Research**: Connecting timeline events with academic references and papers
+- **Comparative Analysis Tools**: Enhanced features for comparing different eras and development paths
+- **CMS Integration**: Easier content management for timeline events and branches
 
 ## License
 
