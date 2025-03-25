@@ -44,17 +44,11 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
   // Track the currently displayed year for the year indicator
   const [displayedYear, setDisplayedYear] = useState<string | null>(null);
   
-  // Track the scroll position when a milestone is expanded
-  const [expansionScrollPosition, setExpansionScrollPosition] = useState<number | null>(null);
-  
-  // Track how close we are to the scroll threshold (0-100%)
-  const [scrollThresholdProgress, setScrollThresholdProgress] = useState(0);
-  
-  // Track if user has reached the end of the timeline
-  const [hasReachedEnd, setHasReachedEnd] = useState(false);
-  
   // Reference to the timeline container for visibility checking
   const timelineContainerRef = useRef<HTMLDivElement>(null);
+
+  // Track if user has reached the end of the timeline
+  const [hasReachedEnd, setHasReachedEnd] = useState(false);
 
   // Group milestones by branch
   const milestonesByBranch = branches.reduce((acc, branch) => {
@@ -62,26 +56,16 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
     return acc;
   }, {} as Record<string, typeof milestones>);
 
-  // Add console logging to see what data Timeline component is working with
-  console.log("Timeline component data:");
-  console.log("Branches:", branches);
-  console.log("Milestones:", milestones);
-  console.log("Milestones by branch:", milestonesByBranch);
-
   // Get main timeline branch and its milestones
   const mainBranch = branches.find(branch => branch.isMainTimeline);
   
   // Get future branches and separate them into optimistic and pessimistic
   const futureBranches = branches.filter(branch => !branch.isMainTimeline);
-  console.log("Future branches:", futureBranches);
   
   // For demo purposes, we'll consider the first future branch as optimistic and the second as pessimistic
   // In a real app, this would be determined by branch metadata
   const optimisticBranch = futureBranches.find(branch => branch.id === 'future-optimistic');
   const pessimisticBranch = futureBranches.find(branch => branch.id === 'future-pessimistic');
-  
-  console.log("Optimistic branch:", optimisticBranch);
-  console.log("Pessimistic branch:", pessimisticBranch);
   
   // Get branch point date - the date when timeline branches
   const branchPointDate = futureBranches.length > 0 && futureBranches[0].startDate 
@@ -98,13 +82,12 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
   // Track if the prospecting menu is open
   const [menuOpen, setMenuOpen] = useState(false);
   
-  // Update expanded state for branches whenever expandedMilestoneId changes
+  // Update expanded state for branches and handle year display when expandedMilestoneId changes
   useEffect(() => {
     if (!expandedMilestoneId) {
       setHasExpandedOptimistic(false);
       setHasExpandedPessimistic(false);
       setDisplayedYear(null);
-      setExpansionScrollPosition(null);
       return;
     }
     
@@ -113,12 +96,6 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
     if (expandedMilestone) {
       const date = new Date(expandedMilestone.date);
       setDisplayedYear(date.getFullYear().toString());
-      
-      // Store the current scroll position when a milestone is expanded
-      const parentContainer = document.querySelector('.App-main');
-      if (parentContainer) {
-        setExpansionScrollPosition(parentContainer.scrollLeft);
-      }
     }
     
     // Check if expanded milestone is in optimistic branch
@@ -136,93 +113,103 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
     }
   }, [expandedMilestoneId, milestones, milestonesByBranch, optimisticBranch, pessimisticBranch]);
 
-  // Check if user has scrolled beyond the threshold to close the expanded milestone
+  // Check if the expanded milestone is visible in the viewport and update year indicator accordingly
   useEffect(() => {
-    if (!expandedMilestoneId || expansionScrollPosition === null) return;
+    if (!expandedMilestoneId) return;
 
-    const handleScroll = () => {
+    const checkVisibility = () => {
+      const expandedElement = document.querySelector(`[data-milestone-id="${expandedMilestoneId}"][data-expanded="true"]`);
+      if (!expandedElement) return;
+
       const parentContainer = document.querySelector('.App-main');
       if (!parentContainer) return;
+
+      const rect = expandedElement.getBoundingClientRect();
+      const containerRect = parentContainer.getBoundingClientRect();
       
-      const currentScrollPosition = parentContainer.scrollLeft;
-      const scrollDistance = Math.abs(currentScrollPosition - expansionScrollPosition);
+      // Check if the expanded milestone is visible in the viewport
+      const isVisible = !(
+        rect.right < containerRect.left ||
+        rect.left > containerRect.right
+      );
       
-      // Define a scroll threshold based on a percentage of viewport width
-      const viewportWidth = window.innerWidth;
-      const scrollThreshold = viewportWidth * 0.3; // 30% of viewport width
-      
-      // Calculate and update progress toward threshold (as a percentage)
-      const progress = Math.min(100, Math.round((scrollDistance / scrollThreshold) * 100));
-      setScrollThresholdProgress(progress);
-      
-      // If scrolled beyond threshold, close the expanded milestone
-      if (scrollDistance > scrollThreshold) {
-        // Before closing, smoothly scroll to the current position to prevent jumps
-        const expandedElement = document.querySelector(`[data-milestone-id="${expandedMilestoneId}"][data-expanded="true"]`);
-        if (expandedElement) {
-          const rect = expandedElement.getBoundingClientRect();
-          const elementCenterX = rect.left + rect.width / 2;
-          const viewportCenterX = window.innerWidth / 2;
-          
-          // If the element is not centered, center it smoothly
-          if (Math.abs(elementCenterX - viewportCenterX) > 50) {
-            const scrollAdjustment = elementCenterX - viewportCenterX;
-            parentContainer.scrollBy({
-              left: scrollAdjustment,
-              behavior: 'smooth'
-            });
-            
-            // Give time for the scroll animation before closing
-            setTimeout(() => {
-              setDisplayedYear(null);
-              toggleMilestoneExpansion(expandedMilestoneId);
-              setScrollThresholdProgress(0);
-            }, 150);
-            return;
-          }
-        }
-        
-        // If no element found or element is already centered, close immediately
+      // If not visible, close the expanded milestone and clear the year
+      if (!isVisible) {
         setDisplayedYear(null);
         toggleMilestoneExpansion(expandedMilestoneId);
-        setScrollThresholdProgress(0);
-        return;
-      }
-      
-      // Backup check: Also close if the milestone is completely out of view
-      const expandedElement = document.querySelector(`[data-milestone-id="${expandedMilestoneId}"][data-expanded="true"]`);
-      if (expandedElement) {
-        const rect = expandedElement.getBoundingClientRect();
-        const containerRect = parentContainer.getBoundingClientRect();
-        
-        const isCompletelyOutOfView = (
-          rect.right < containerRect.left ||
-          rect.left > containerRect.right
-        );
-        
-        if (isCompletelyOutOfView) {
-          setDisplayedYear(null);
-          toggleMilestoneExpansion(expandedMilestoneId);
-          setScrollThresholdProgress(0);
-        }
       }
     };
     
     // Listen for scroll events on the parent container
     const parentContainer = document.querySelector('.App-main');
     if (parentContainer) {
-      parentContainer.addEventListener('scroll', handleScroll, { passive: true });
+      parentContainer.addEventListener('scroll', checkVisibility, { passive: true });
       
       // Initial check
-      handleScroll();
+      checkVisibility();
     }
     
     return () => {
       if (parentContainer) {
-        parentContainer.removeEventListener('scroll', handleScroll);
+        parentContainer.removeEventListener('scroll', checkVisibility);
       }
     };
-  }, [expandedMilestoneId, expansionScrollPosition, toggleMilestoneExpansion]);
+  }, [expandedMilestoneId, toggleMilestoneExpansion]);
+
+  // Update the timeline title based on scroll position
+  useEffect(() => {
+    if (!onTimelineTitleChange) return;
+    
+    const handleScrollForTitle = () => {
+      const parentContainer = document.querySelector('.App-main');
+      if (!parentContainer) return;
+      
+      // Find the branch point element (the present marker)
+      const branchPointElement = parentContainer.querySelector('.timeline-present-marker');
+      if (!branchPointElement) return;
+      
+      // Calculate midpoint of window
+      const windowMidpoint = window.innerWidth / 2;
+      const branchPointRect = branchPointElement.getBoundingClientRect();
+      const branchPointCenter = branchPointRect.left + (branchPointRect.width / 2);
+      
+      // If branch point has passed the middle of the screen, we're in the "future" view
+      const isFutureView = branchPointCenter < windowMidpoint;
+      
+      // Update the title based on whether we're looking at history or future
+      if (isFutureView) {
+        if (expandedMilestoneId) {
+          // Find which branch the expanded milestone belongs to
+          const milestone = milestones.find(m => m.id === expandedMilestoneId);
+          if (milestone && milestone.branchId === 'future-optimistic') {
+            onTimelineTitleChange('optimistic');
+          } else if (milestone && milestone.branchId === 'future-pessimistic') {
+            onTimelineTitleChange('pessimistic');
+          } else {
+            onTimelineTitleChange('future');
+          }
+        } else {
+          onTimelineTitleChange('future');
+        }
+      } else {
+        onTimelineTitleChange('historical');
+      }
+    };
+    
+    const parentContainer = document.querySelector('.App-main');
+    if (parentContainer) {
+      parentContainer.addEventListener('scroll', handleScrollForTitle, { passive: true });
+      
+      // Initial check
+      handleScrollForTitle();
+    }
+    
+    return () => {
+      if (parentContainer) {
+        parentContainer.removeEventListener('scroll', handleScrollForTitle);
+      }
+    };
+  }, [onTimelineTitleChange, expandedMilestoneId, milestones]);
 
   // Detect when user has scrolled to the end of the timeline
   useEffect(() => {
@@ -256,7 +243,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
     setMenuOpen(false);
   };
 
-  // Generate dynamic classes for branches based on expansion state
+  // Get class names for various timeline elements
   const getOptimisticClassName = () => {
     return `future-branch optimistic-branch ${hasExpandedOptimistic ? 'has-expanded' : ''}`;
   };
@@ -264,124 +251,113 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
   const getPessimisticClassName = () => {
     return `future-branch pessimistic-branch ${hasExpandedPessimistic ? 'has-expanded' : ''}`;
   };
-  
-  // Generate class for the timeline content based on expanded branches
+
   const getTimelineContentClassName = () => {
-    const baseClass = 'timeline-content';
-    if (hasExpandedOptimistic && hasExpandedPessimistic) {
-      return `${baseClass} both-expanded`;
-    } else if (hasExpandedOptimistic || hasExpandedPessimistic) {
-      return `${baseClass} one-expanded`;
+    let className = 'timeline-content';
+    
+    // Add modifiers based on filter and view mode
+    if (filter.showBranches) {
+      className += ' show-branches';
     }
-    return baseClass;
+    
+    // Add view mode as a class
+    className += ` view-${viewMode.toLowerCase()}`;
+    
+    // Add class for expanded events
+    if (expandedMilestoneId) {
+      className += ' has-expanded-milestone';
+    }
+    
+    return className;
   };
 
-  // Update the header title when expandedMilestoneId changes
-  useEffect(() => {
-    if (!onTimelineTitleChange) return;
-    
-    if (expandedMilestoneId) {
-      // Find which branch the expanded milestone belongs to
-      const branchId = milestones.find(m => m.id === expandedMilestoneId)?.branchId;
-      
-      if (branchId) {
-        const branch = branches.find(b => b.id === branchId);
-        
-        if (branch) {
-          if (branch.isMainTimeline) {
-            onTimelineTitleChange('historical');
-          } else if (branch.name.toLowerCase().includes('optimistic')) {
-            onTimelineTitleChange('optimistic');
-          } else if (branch.name.toLowerCase().includes('pessimistic')) {
-            onTimelineTitleChange('pessimistic');
-          } else {
-            onTimelineTitleChange('future');
-          }
-        }
-      }
-    }
-  }, [expandedMilestoneId, milestones, branches, onTimelineTitleChange]);
-
-  // Return the appropriate branch component(s) based on whether branches are shown
+  // Render the branches for the timeline
   const renderBranches = () => {
-    if (mainBranch) {
-      return (
-        <div className="timeline-layout">
-          {/* Main timeline (historical section) */}
-          <div className="historical-timeline-section">
+    const hasBranches = branches.length > 0;
+    
+    if (!hasBranches) {
+      return <div className="timeline-empty-message">No branch data available.</div>;
+    }
+    
+    return (
+      <div className="timeline-layout">
+        {/* Historical timeline section */}
+        <div className="historical-timeline-section">
+          {mainBranch && (
             <TimelineBranch
+              key={mainBranch.id}
               branch={mainBranch}
               milestones={milestonesBeforeBranchPoint}
               expandedMilestoneId={expandedMilestoneId}
               onToggleExpand={toggleMilestoneExpansion}
               hideTitle={true}
             />
+          )}
+          
+          {/* Branch point - transition to future */}
+          <div className="timeline-branch-point timeline-present-marker" data-testid="branch-point">
+            <div className="branch-point-connector"></div>
             
-            {/* Branch point - transition to future */}
-            <div className="timeline-branch-point timeline-present-marker" data-testid="branch-point">
-              <div className="branch-point-connector"></div>
-              
-              <button 
-                className="show-future-branches-button timeline-present-marker" 
-                onClick={() => updateFilter({ ...filter, showBranches: !filter.showBranches })}
-              >
-                {filter.showBranches ? "Hide Future" : "Show Future Branches"}
-              </button>
-              
-              {/* Only show branch date if we're not showing branches */}
-              {!filter.showBranches && (
-                <div className="timeline-branch-date">
-                  {new Date().toLocaleDateString('en-US', { 
-                    year: 'numeric', 
-                    month: 'short', 
-                    day: 'numeric' 
-                  })}
-                </div>
-              )}
-            </div>
+            <button 
+              className="show-future-branches-button timeline-present-marker" 
+              onClick={() => updateFilter({ ...filter, showBranches: !filter.showBranches })}
+            >
+              {filter.showBranches ? "Hide Future" : "Show Future Branches"}
+            </button>
             
-            {/* Future branches section - only shown if showBranches is true */}
-            {filter.showBranches && (
-              <div className="future-timelines-section">
-                {/* Container for future branches */}
-                <div className={`future-paths-container ${
-                  (hasExpandedOptimistic && hasExpandedPessimistic) ? 'both-expanded' :
-                  (hasExpandedOptimistic || hasExpandedPessimistic) ? 'one-expanded' : ''
-                }`}>
-                  {/* Optimistic branch */}
-                  {optimisticBranch && (
-                    <div className={`future-branch optimistic-branch ${hasExpandedOptimistic ? 'has-expanded' : ''}`}>
-                      <TimelineBranch
-                        branch={optimisticBranch}
-                        milestones={milestonesByBranch[optimisticBranch.id] || []}
-                        expandedMilestoneId={expandedMilestoneId}
-                        onToggleExpand={toggleMilestoneExpansion}
-                        hideTitle={true}
-                      />
-                    </div>
-                  )}
-                  
-                  {/* Pessimistic branch */}
-                  {pessimisticBranch && (
-                    <div className={`future-branch pessimistic-branch ${hasExpandedPessimistic ? 'has-expanded' : ''}`}>
-                      <TimelineBranch
-                        branch={pessimisticBranch}
-                        milestones={milestonesByBranch[pessimisticBranch.id] || []}
-                        expandedMilestoneId={expandedMilestoneId}
-                        onToggleExpand={toggleMilestoneExpansion}
-                        hideTitle={true}
-                      />
-                    </div>
-                  )}
-                </div>
+            {/* Only show branch date if we're not showing branches */}
+            {!filter.showBranches && (
+              <div className="timeline-branch-date">
+                {new Date().toLocaleDateString('en-US', { 
+                  year: 'numeric', 
+                  month: 'short', 
+                  day: 'numeric' 
+                })}
               </div>
             )}
           </div>
+          
+          {/* Future branches section - only shown if showBranches is true */}
+          {filter.showBranches && (
+            <div className="future-timelines-section">
+              {/* Container for future branches */}
+              <div className={`future-paths-container ${
+                (hasExpandedOptimistic && hasExpandedPessimistic) ? 'both-expanded' :
+                (hasExpandedOptimistic || hasExpandedPessimistic) ? 'one-expanded' : ''
+              }`}>
+                {/* Optimistic branch */}
+                {optimisticBranch && (
+                  <div className={getOptimisticClassName()}>
+                    <TimelineBranch
+                      key={optimisticBranch.id}
+                      branch={optimisticBranch}
+                      milestones={milestonesByBranch[optimisticBranch.id] || []}
+                      expandedMilestoneId={expandedMilestoneId}
+                      onToggleExpand={toggleMilestoneExpansion}
+                      hideTitle={true}
+                    />
+                  </div>
+                )}
+                
+                {/* Pessimistic branch */}
+                {pessimisticBranch && (
+                  <div className={getPessimisticClassName()}>
+                    <TimelineBranch
+                      key={pessimisticBranch.id}
+                      branch={pessimisticBranch}
+                      milestones={milestonesByBranch[pessimisticBranch.id] || []}
+                      expandedMilestoneId={expandedMilestoneId}
+                      onToggleExpand={toggleMilestoneExpansion}
+                      hideTitle={true}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
-      );
-    }
-    
-    return null;
+      </div>
+    );
   };
 
   return (
@@ -423,14 +399,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
       
       {/* Year indicator at the bottom */}
       <div 
-        className={`year-indicator ${displayedYear ? 'has-year' : 'no-year'} ${
-          scrollThresholdProgress > 0 ? 'closing-progress' : ''
-        }`} 
-        style={
-          scrollThresholdProgress > 0 ? 
-          { '--closing-progress': `${scrollThresholdProgress}%` } as React.CSSProperties : 
-          undefined
-        }
+        className={`year-indicator ${displayedYear ? 'has-year' : 'no-year'}`}
       >
         {displayedYear ? (
           <div className="year-indicator-content">{displayedYear}</div>
@@ -456,17 +425,12 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
               <circle cx="10" cy="12" r="1" fill="white" fillOpacity="0.8" className="twinkle-star" />
               <circle cx="62" cy="10" r="1" fill="white" fillOpacity="0.8" className="twinkle-star" />
               <circle cx="6" cy="20" r="0.8" fill="white" fillOpacity="0.7" className="twinkle-star" />
-              <circle cx="58" cy="20" r="0.8" fill="white" fillOpacity="0.7" className="twinkle-star" />
-              <circle cx="18" cy="8" r="0.7" fill="white" fillOpacity="0.6" className="twinkle-star" />
-              <circle cx="50" cy="8" r="0.7" fill="white" fillOpacity="0.6" className="twinkle-star" />
+              <circle cx="58" cy="24" r="0.8" fill="white" fillOpacity="0.7" className="twinkle-star" />
             </svg>
           </div>
         )}
-        {scrollThresholdProgress > 0 && (
-          <div className="closing-progress-indicator" />
-        )}
       </div>
-
+      
       {/* Telescope explore button - visible when user has scrolled to the end and future branches are shown */}
       <TimelineExploreButton
         visible={hasReachedEnd && filter.showBranches}
