@@ -12,12 +12,13 @@ interface TimelineProps {
   showOptionsBox?: boolean;
   onTimelineTitleChange?: (title: 'historical' | 'optimistic' | 'pessimistic' | 'future') => void;
   filterEvents: (events: Milestone[]) => Milestone[];
+  onMilestoneExpansion?: (milestoneId: string | null) => void;
 }
 
 /**
  * Main Timeline component that displays the entire timeline
  */
-const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTitleChange, filterEvents }) => {
+const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTitleChange, filterEvents, onMilestoneExpansion }) => {
   const {
     milestones,
     branches,
@@ -232,6 +233,13 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
       parentContainer.removeEventListener('scroll', handleScrollEnd);
     };
   }, []);
+
+  // Notify parent component when a milestone is expanded
+  useEffect(() => {
+    if (onMilestoneExpansion) {
+      onMilestoneExpansion(expandedMilestoneId);
+    }
+  }, [expandedMilestoneId, onMilestoneExpansion]);
 
   // Handler for the explore button click
   const handleExploreClick = () => {

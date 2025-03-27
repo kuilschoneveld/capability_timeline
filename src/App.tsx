@@ -58,17 +58,56 @@ const SearchIcon = () => (
   </svg>
 );
 
+// Function to get the first event in a specific era
+const getFirstEventInEra = (era: EraCategoryType): typeof timelineEvents[0] | undefined => {
+  // Filter events by the era category and sort by date
+  return timelineEvents
+    .filter(event => getEraCategory(event) === era)
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())[0];
+};
+
+// Function to get the first visible event in a specific era (considering active filters)
+const getFirstVisibleEventInEra = (era: EraCategoryType, activeFilters: {
+  technical: boolean;
+  societal: boolean;
+  philosophical: boolean;
+  economic: boolean;
+  geopolitical: boolean;
+}): typeof timelineEvents[0] | undefined => {
+  // Get all events in this era
+  const eraEvents = timelineEvents.filter(event => getEraCategory(event) === era);
+  
+  // If no filters are active, return the first chronological event
+  if (!activeFilters.technical && !activeFilters.societal && !activeFilters.philosophical && 
+      !activeFilters.economic && !activeFilters.geopolitical) {
+    return eraEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())[0];
+  }
+  
+  // Apply filters to era events
+  const filteredEvents = eraEvents.filter(event => {
+    if (activeFilters.technical && event.impact && event.impact.technical >= 8) return true;
+    if (activeFilters.societal && event.impact && event.impact.societal >= 8) return true;
+    if (activeFilters.philosophical && event.impact && event.impact.philosophical >= 8) return true;
+    if (activeFilters.economic && event.impact && event.impact.economic >= 8) return true;
+    if (activeFilters.geopolitical && event.impact && event.impact.geopolitical >= 8) return true;
+    return false;
+  });
+  
+  // If there are no filtered events, return the first chronological event regardless of filters
+  if (filteredEvents.length === 0) {
+    return eraEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())[0];
+  }
+  
+  // Return the earliest filtered event
+  return filteredEvents.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())[0];
+};
+
 // Get the current event based on era categories for display in the options box
-const getCurrentEventEra = (searchTerm: string): { eraName: string, originalEra: string } => {
-  if (searchTerm) {
-    // If there's a search term active, find the first matching event's era
-    const matchingEvents = timelineEvents.filter(event => 
-      event.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (event.description && event.description.toLowerCase().includes(searchTerm.toLowerCase()))
-    );
-    
-    if (matchingEvents.length > 0) {
-      const event = matchingEvents[0];
+const getCurrentEventEra = (expandedEventId: string | null): { eraName: string, originalEra: string } => {
+  if (expandedEventId) {
+    // If there's an expanded event, show its era
+    const event = timelineEvents.find(e => e.id === expandedEventId);
+    if (event) {
       return { 
         eraName: getEraCategory(event),
         originalEra: event.era
@@ -104,6 +143,8 @@ function App() {
   const [filterTechnical, setFilterTechnical] = useState(false);
   const [filterSocietal, setFilterSocietal] = useState(false);
   const [filterPhilosophical, setFilterPhilosophical] = useState(false);
+  const [filterEconomic, setFilterEconomic] = useState(false);
+  const [filterGeopolitical, setFilterGeopolitical] = useState(false);
   
   // Add state for options box visibility
   const [showOptionsBox, setShowOptionsBox] = useState(true);
@@ -134,6 +175,9 @@ function App() {
   // Close dropdown when clicking outside
   const searchInputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLDivElement>(null);
+  
+  // Add state to track the currently expanded event ID
+  const [expandedEventId, setExpandedEventId] = useState<string | null>(null);
   
   // Toggle between view modes
   const toggleViewMode = (current: ViewMode): ViewMode => {
@@ -546,7 +590,7 @@ function App() {
   }, [optionsManuallyCollapsed, timelineTitle]);
   
   // Function to handle filter toggling
-  const handleFilterToggle = (filter: 'technical' | 'societal' | 'philosophical') => {
+  const handleFilterToggle = (filter: 'technical' | 'societal' | 'philosophical' | 'economic' | 'geopolitical') => {
     // If clicking the active filter, deactivate it
     if (filter === 'technical' && filterTechnical) {
       setFilterTechnical(false);
@@ -554,17 +598,23 @@ function App() {
       setFilterSocietal(false);
     } else if (filter === 'philosophical' && filterPhilosophical) {
       setFilterPhilosophical(false);
+    } else if (filter === 'economic' && filterEconomic) {
+      setFilterEconomic(false);
+    } else if (filter === 'geopolitical' && filterGeopolitical) {
+      setFilterGeopolitical(false);
     } else {
       // Otherwise, activate the clicked filter and deactivate others
       setFilterTechnical(filter === 'technical');
       setFilterSocietal(filter === 'societal');
       setFilterPhilosophical(filter === 'philosophical');
+      setFilterEconomic(filter === 'economic');
+      setFilterGeopolitical(filter === 'geopolitical');
     }
   };
   
   // Function to filter events based on impact scores
   const filterEvents = (events: Milestone[]) => {
-    if (!filterTechnical && !filterSocietal && !filterPhilosophical) {
+    if (!filterTechnical && !filterSocietal && !filterPhilosophical && !filterEconomic && !filterGeopolitical) {
       return events; // If no filter is active, show all events
     }
 
@@ -572,8 +622,111 @@ function App() {
       if (filterTechnical && event.thematicTags.technical >= 8) return true;
       if (filterSocietal && event.thematicTags.societal >= 8) return true;
       if (filterPhilosophical && event.thematicTags.philosophical >= 8) return true;
+      if (filterEconomic && event.thematicTags.economic >= 8) return true;
+      if (filterGeopolitical && event.thematicTags.geopolitical >= 8) return true;
       return false;
     });
+  };
+  
+  // Handle clicking on an era in the placeholder list
+  const handleEraClick = (era: EraCategoryType) => {
+    // Get the first visible event in this era, considering active filters
+    const currentFilters = {
+      technical: filterTechnical,
+      societal: filterSocietal,
+      philosophical: filterPhilosophical,
+      economic: filterEconomic,
+      geopolitical: filterGeopolitical
+    };
+    
+    const firstEvent = getFirstVisibleEventInEra(era, currentFilters);
+    
+    if (firstEvent && mainRef.current) {
+      // Clear the search
+      setSearchTerm('');
+      setSearchResults([]);
+      setSelectedResultIndex(-1);
+      
+      // Find the element with this event ID in the timeline
+      const eventElement = mainRef.current.querySelector(`[data-event-id="${firstEvent.id}"]`);
+      
+      if (eventElement) {
+        // Wait a brief moment to ensure DOM updates are processed
+        setTimeout(() => {
+          // Get the position of the event element
+          const rect = eventElement.getBoundingClientRect();
+          const eventCenterX = rect.left + rect.width / 2;
+          const viewportCenterX = window.innerWidth / 2;
+          
+          // Calculate scroll amount to center the event
+          const scrollAdjustment = eventCenterX - viewportCenterX;
+          
+          // Scroll to the event smoothly
+          if (mainRef.current) {
+            mainRef.current.scrollBy({
+              left: scrollAdjustment,
+              behavior: 'smooth'
+            });
+          }
+          
+          // Highlight the event
+          eventElement.classList.add('highlight-event');
+          
+          // Expand the event card by triggering a click on it
+          // Wait for the scrolling to complete before expanding
+          setTimeout(() => {
+            const timelineItem = eventElement as HTMLElement;
+            if (!timelineItem.classList.contains('expanded')) {
+              timelineItem.click();
+            }
+            
+            // Remove highlight after animation completes
+            setTimeout(() => {
+              eventElement.classList.remove('highlight-event');
+            }, 1500);
+          }, 700); // Slightly longer than the time for the scroll to complete
+        }, 50); // Small delay to ensure DOM is ready
+      }
+    }
+  };
+  
+  // Replace the era display with a new implementation that shows a placeholder list or the current era
+  const renderEraDisplay = () => {
+    // If expanded event is selected, show its era
+    if (expandedEventId) {
+      const { eraName } = getCurrentEventEra(expandedEventId);
+      return (
+        <div className="era-display">
+          <div className="era-value" data-era={eraName}>{eraName}</div>
+        </div>
+      );
+    }
+    
+    // Otherwise show a placeholder list of all eras
+    const allEras: EraCategoryType[] = ['Agricultural', 'Exploration', 'Industrial', 'Digital', 'Informational'];
+    
+    return (
+      <div className="era-display era-placeholder">
+        <div className="era-label">Select era:</div>
+        <div className="era-options">
+          {allEras.map(era => (
+            <div 
+              key={era}
+              className="era-option" 
+              data-era={era}
+              onClick={() => handleEraClick(era)}
+            >
+              {era}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+  
+  // Update the Timeline component to pass the expanded event ID back to App
+  const handleMilestoneExpansion = (milestoneId: string | null) => {
+    setExpandedEventId(milestoneId);
   };
   
   return (
@@ -602,7 +755,7 @@ function App() {
           </div>
         )}
         
-        {/* Filter toggles: Technical/Societal/Philosophical */}
+        {/* Filter toggles: Technical/Societal/Philosophical/Economic/Geopolitical */}
         <div className="dimension-toggles">
           <button 
             className={`dimension-toggle-btn ${filterTechnical ? 'active' : ''}`}
@@ -621,6 +774,18 @@ function App() {
             onClick={() => handleFilterToggle('philosophical')}
           >
             Philosophical
+          </button>
+          <button 
+            className={`dimension-toggle-btn ${filterEconomic ? 'active' : ''}`}
+            onClick={() => handleFilterToggle('economic')}
+          >
+            Economic
+          </button>
+          <button 
+            className={`dimension-toggle-btn ${filterGeopolitical ? 'active' : ''}`}
+            onClick={() => handleFilterToggle('geopolitical')}
+          >
+            Geopolitical
           </button>
         </div>
       </header>
@@ -720,19 +885,8 @@ function App() {
                       )}
                     </div>
                     
-                    {/* Display era info instead of the previous text */}
-                    <div className="era-display">
-                      <div className="era-label">Era:</div>
-                      {(() => {
-                        const { eraName, originalEra } = getCurrentEventEra(searchTerm);
-                        return (
-                          <>
-                            <div className="era-value" data-era={eraName}>{eraName}</div>
-                            <div className="era-original">({originalEra})</div>
-                          </>
-                        );
-                      })()}
-                    </div>
+                    {/* Updated era display component */}
+                    {renderEraDisplay()}
                   </div>
                 </div>
               )}
@@ -741,6 +895,7 @@ function App() {
                 showOptionsBox={showOptionsBox} 
                 onTimelineTitleChange={setTimelineTitle}
                 filterEvents={filterEvents}
+                onMilestoneExpansion={handleMilestoneExpansion}
               />
             </main>
             
