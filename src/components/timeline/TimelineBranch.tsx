@@ -1,11 +1,11 @@
 import React from 'react';
-import { Milestone, TimelineBranch as TimelineBranchType } from '../../types';
+import { TimelineEvent, TimelineBranch as TimelineBranchType } from '../../types';
 import TimelineItem from './TimelineItem';
 import timelineEvents from '../../data/timelineDatabase';
 
 interface TimelineBranchProps {
   branch: TimelineBranchType;
-  milestones: Milestone[];
+  milestones: TimelineEvent[];
   expandedMilestoneId: string | null;
   onToggleExpand: (id: string) => void;
   hideTitle?: boolean; // Optional prop to hide the title

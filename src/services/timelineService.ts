@@ -1,4 +1,4 @@
-import { Milestone, TimelineBranch, TimelineFilter } from '../types';
+import { TimelineEvent, TimelineBranch, TimelineFilter } from '../types';
 import timelineEvents from '../data/timelineDatabase';
 
 // Create TimelineBranches from timelineEvents
@@ -42,66 +42,17 @@ const extractBranches = (): TimelineBranch[] => {
   });
 };
 
-// Convert TimelineEvent to Milestone
-const convertToMilestone = (event: any): Milestone => {
-  // Filter out empty URLs
-  const relatedResources = event.urls?.relatedResources || [];
-  
-  // Replace example.com domains with proper domains
-  const filteredUrls = relatedResources
-    .filter((url: string) => url && url.trim() !== '')
-    .map((url: string) => {
-      if (url.includes('example.com')) {
-        // Transform example URLs to make them look more natural
-        return url.replace('example.com', 'ai-timeline.org');
-      }
-      return url;
-    });
-  
-  // Transform the primary URL if it's an example URL
-  let primaryUrl = event.urls?.primary;
-  if (primaryUrl && primaryUrl.includes('example.com')) {
-    primaryUrl = primaryUrl.replace('example.com', 'ai-timeline.org');
-  }
-  
-  return {
-    id: event.id,
-    title: event.title,
-    date: event.date,
-    description: event.description,
-    branchId: event.branchId,
-    thematicTags: {
-      technical: event.impact.technical,
-      societal: event.impact.societal,
-      philosophical: event.impact.philosophical,
-      economic: event.impact.economic,
-      geopolitical: event.impact.geopolitical
-    },
-    // Add the notable_innovation field from the event's cognitive dimensions
-    notable_innovation: event.cognitiveDimensions?.notable_innovation || '',
-    // Optional fields
-    imageUrl: primaryUrl,
-    sourceUrls: filteredUrls
-  };
-};
-
-// Create milestones from timelineEvents
-const extractMilestones = (): Milestone[] => {
-  console.log(`Extracting all ${timelineEvents.length} milestones from database`);
-  return timelineEvents.map(convertToMilestone);
-};
-
-// Extract branches and milestones
-const allBranches = extractBranches();
-const allMilestones = extractMilestones();
+// All events are directly used without conversion
+const allEvents = timelineEvents;
 
 // Log initial data
-console.log(`Initialized TimelineService with ${allBranches.length} branches and ${allMilestones.length} milestones`);
+const allBranches = extractBranches();
+console.log(`Initialized TimelineService with ${allBranches.length} branches and ${allEvents.length} events`);
 console.log("All branches:", allBranches.map(b => b.id));
-console.log("Milestone count by branch:", 
+console.log("Event count by branch:", 
   allBranches.map(branch => ({
     branch: branch.id,
-    count: allMilestones.filter(m => m.branchId === branch.id).length
+    count: allEvents.filter(m => m.branchId === branch.id).length
   }))
 );
 
@@ -132,57 +83,57 @@ export const TimelineService = {
   },
 
   /**
-   * Get all milestones
-   * @returns Promise resolving to all milestones
+   * Get all events
+   * @returns Promise resolving to all events
    */
-  getAllMilestones: async (): Promise<Milestone[]> => {
+  getAllMilestones: async (): Promise<TimelineEvent[]> => {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 500));
-    return allMilestones;
+    return allEvents;
   },
 
   /**
-   * Get milestones for a specific branch
-   * @param branchId The ID of the branch to get milestones for
-   * @returns Promise resolving to milestones for the specified branch
+   * Get events for a specific branch
+   * @param branchId The ID of the branch to get events for
+   * @returns Promise resolving to events for the specified branch
    */
-  getMilestonesByBranch: async (branchId: string): Promise<Milestone[]> => {
+  getMilestonesByBranch: async (branchId: string): Promise<TimelineEvent[]> => {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 400));
-    return allMilestones.filter(milestone => milestone.branchId === branchId);
+    return allEvents.filter(event => event.branchId === branchId);
   },
 
   /**
-   * Get a specific milestone by ID
-   * @param milestoneId The ID of the milestone to retrieve
-   * @returns Promise resolving to the requested milestone or undefined if not found
+   * Get a specific event by ID
+   * @param eventId The ID of the event to retrieve
+   * @returns Promise resolving to the requested event or undefined if not found
    */
-  getMilestoneById: async (milestoneId: string): Promise<Milestone | undefined> => {
+  getMilestoneById: async (eventId: string): Promise<TimelineEvent | undefined> => {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 200));
-    return allMilestones.find(milestone => milestone.id === milestoneId);
+    return allEvents.find(event => event.id === eventId);
   },
 
   /**
-   * Filter milestones based on provided criteria
+   * Filter events based on provided criteria
    * @param filter The filter criteria to apply
-   * @returns Promise resolving to filtered milestones
+   * @returns Promise resolving to filtered events
    */
-  filterMilestones: async (filter: TimelineFilter): Promise<Milestone[]> => {
+  filterMilestones: async (filter: TimelineFilter): Promise<TimelineEvent[]> => {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 600));
     
-    console.log("Filtering milestones with filter:", filter);
-    console.log("All milestones before filtering:", allMilestones);
+    console.log("Filtering events with filter:", filter);
+    console.log("All events before filtering:", allEvents);
     
-    // Start with all milestones
-    let filteredMilestones = [...allMilestones];
+    // Start with all events
+    let filteredEvents = [...allEvents];
     
     // Filter by branch visibility
     if (!filter.showBranches) {
       // Only show main timeline if branches are hidden
-      filteredMilestones = filteredMilestones.filter(
-        milestone => milestone.branchId === 'main'
+      filteredEvents = filteredEvents.filter(
+        event => event.branchId === 'main'
       );
     } else {
       // When showing branches, get both main and future branches
@@ -193,39 +144,39 @@ export const TimelineService = {
       console.log("Future branch IDs:", futureBranchIds);
     }
     
-    console.log("Milestones after branch visibility filtering:", filteredMilestones.length);
+    console.log("Events after branch visibility filtering:", filteredEvents.length);
     
     // Filter by thematic dimensions
     if (filter.thematicDimensions) {
-      // For each active dimension, check if the milestone meets the threshold
+      // For each active dimension, check if the event meets the threshold
       Object.entries(filter.thematicDimensions).forEach(([dimension, isActive]) => {
         if (isActive && filter.minThresholds[dimension] !== undefined) {
           const threshold = filter.minThresholds[dimension];
-          filteredMilestones = filteredMilestones.filter(
-            milestone => 
-              milestone.thematicTags[dimension] !== undefined && 
-              milestone.thematicTags[dimension] >= threshold
+          filteredEvents = filteredEvents.filter(
+            event => 
+              event.impact[dimension] !== undefined && 
+              event.impact[dimension] >= threshold
           );
         }
       });
     }
     
-    console.log("Milestones after thematic filtering:", filteredMilestones.length);
+    console.log("Events after thematic filtering:", filteredEvents.length);
     
     // Filter by date range if provided
     if (filter.dateRange) {
       const { start, end } = filter.dateRange;
-      filteredMilestones = filteredMilestones.filter(milestone => {
-        const milestoneDate = new Date(milestone.date);
+      filteredEvents = filteredEvents.filter(event => {
+        const eventDate = new Date(event.date);
         return (
-          (!start || milestoneDate >= new Date(start)) && 
-          (!end || milestoneDate <= new Date(end))
+          (!start || eventDate >= new Date(start)) && 
+          (!end || eventDate <= new Date(end))
         );
       });
     }
     
-    console.log("Final filtered milestones:", filteredMilestones);
+    console.log("Final filtered events:", filteredEvents);
     
-    return filteredMilestones;
+    return filteredEvents;
   }
 }; 

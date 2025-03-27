@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Milestone } from '../../types';
+import { TimelineEvent } from '../../types';
 import PieChart from './PieChart';
 import NarrativeLines from './NarrativeLines';
 import timelineEvents from '../../data/timelineDatabase';
 
 interface TimelineItemProps {
-  milestone: Milestone;
+  milestone: TimelineEvent;
   isExpanded: boolean;
   onToggleExpand: (id: string) => void;
 }
@@ -18,7 +18,8 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   isExpanded, 
   onToggleExpand 
 }) => {
-  const { id, title, date, description, imageUrl, sourceUrls, thematicTags } = milestone;
+  const { id, title, date, description, imageUrl, sourceUrls } = milestone;
+  const impact = milestone.impact; // Use impact instead of thematicTags
   const itemRef = useRef<HTMLDivElement>(null);
   const prevExpandedState = useRef<boolean>(isExpanded);
   const [isCollapsing, setIsCollapsing] = useState(false);
@@ -119,7 +120,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
   };
   
   // Get notable innovation from milestone, or use default text if not available
-  const notableInnovation = milestone.notable_innovation || "Information on innovation not available.";
+  const notableInnovation = milestone.cognitiveDimensions?.notable_innovation || "Information on innovation not available.";
   
   return (
     <div 
@@ -144,7 +145,7 @@ const TimelineItem: React.FC<TimelineItemProps> = ({
           data-milestone-id={id}
         >
           {/* Pie chart visualization of impact dimensions */}
-          <PieChart data={thematicTags} />
+          <PieChart data={impact} />
           
           <p className="timeline-item-description">{description}</p>
           

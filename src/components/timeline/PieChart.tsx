@@ -1,13 +1,22 @@
 import React from 'react';
-import { ThematicTags } from '../../types';
+
+// Define the impact object structure
+interface ImpactObject {
+  technical: number;
+  societal: number;
+  philosophical: number;
+  economic: number;
+  geopolitical: number;
+  [key: string]: number;
+}
 
 interface PieChartProps {
-  data: ThematicTags;
+  data: ImpactObject;
   size?: number;
 }
 
 /**
- * SVG Pie Chart component to visualize thematic dimensions
+ * SVG Pie Chart component to visualize impact dimensions
  */
 const PieChart: React.FC<PieChartProps> = ({ data, size = 110 }) => {
   // Extract all five dimensions

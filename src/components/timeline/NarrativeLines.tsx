@@ -3,7 +3,7 @@ import timelineEvents from '../../data/timelineDatabase';
 import { TimelineService } from '../../services/timelineService';
 
 interface NarrativeLinesProps {
-  milestoneId: string;
+  milestoneId: string; // Kept for backwards compatibility, but refers to eventId
 }
 
 // Define the structure of narrative line data
@@ -17,7 +17,7 @@ interface NarrativeLine {
 /**
  * Component to display narrative lines an event participates in
  */
-const NarrativeLines: React.FC<NarrativeLinesProps> = ({ milestoneId }) => {
+const NarrativeLines: React.FC<NarrativeLinesProps> = ({ milestoneId: eventId }) => {
   const [narrativeLines, setNarrativeLines] = useState<NarrativeLine[]>([]);
   const [loading, setLoading] = useState(true);
   
@@ -26,17 +26,17 @@ const NarrativeLines: React.FC<NarrativeLinesProps> = ({ milestoneId }) => {
     const fetchEventData = async () => {
       setLoading(true);
       try {
-        // Get the specific milestone data
-        const milestone = await TimelineService.getMilestoneById(milestoneId);
+        // Get the specific event data
+        const event = await TimelineService.getMilestoneById(eventId);
         
-        if (milestone) {
-          // Generate narrative line data based on the milestone
+        if (event) {
+          // Generate narrative line data based on the event
           // This is where you would normally fetch from an API
-          // For now, we'll generate it based on the milestone's data
+          // For now, we'll generate it based on the event's data
           
           // Extract relevant cognitive dimensions from the source data if possible
           // In a real app, this could come directly from a backend API
-          const foundEvent = timelineEvents.find(event => event.id === milestoneId);
+          const foundEvent = timelineEvents.find(event => event.id === eventId);
           
           // Create narrative lines with values specific to this event
           const eventNarrativeLines: NarrativeLine[] = [
@@ -78,7 +78,7 @@ const NarrativeLines: React.FC<NarrativeLinesProps> = ({ milestoneId }) => {
           setNarrativeLines(eventNarrativeLines);
         }
       } catch (error) {
-        console.error("Error fetching milestone data:", error);
+        console.error("Error fetching event data:", error);
         // Fallback to default data
         setNarrativeLines([
           { id: 'n1', name: 'AGI', relevance: 0.75, color: '#4CC9F0' },
@@ -92,7 +92,7 @@ const NarrativeLines: React.FC<NarrativeLinesProps> = ({ milestoneId }) => {
     };
     
     fetchEventData();
-  }, [milestoneId]);
+  }, [eventId]);
   
   // Sort the narrative lines by relevance in descending order
   const sortedNarrativeLines = [...narrativeLines].sort((a, b) => b.relevance - a.relevance);

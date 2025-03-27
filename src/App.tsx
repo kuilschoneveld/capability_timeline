@@ -3,7 +3,7 @@ import Timeline from './components/timeline/Timeline';
 import BasicTestPage from './pages/BasicTestPage';
 import { useRef, useState, useEffect } from 'react';
 import timelineEvents from './data/timelineDatabase';
-import { Milestone } from './types';
+import { TimelineEvent } from './types';
 
 // Define view mode type for timeline views
 type ViewMode = 'standard' | 'test';
@@ -612,18 +612,19 @@ function App() {
     }
   };
   
-  // Function to filter events based on impact scores
-  const filterEvents = (events: Milestone[]) => {
+  // Filter events based on active thematic filters
+  const filterEvents = (events: TimelineEvent[]) => {
+    // Apply filters only if any are active
     if (!filterTechnical && !filterSocietal && !filterPhilosophical && !filterEconomic && !filterGeopolitical) {
-      return events; // If no filter is active, show all events
+      return events;
     }
-
+    
     return events.filter(event => {
-      if (filterTechnical && event.thematicTags.technical >= 8) return true;
-      if (filterSocietal && event.thematicTags.societal >= 8) return true;
-      if (filterPhilosophical && event.thematicTags.philosophical >= 8) return true;
-      if (filterEconomic && event.thematicTags.economic >= 8) return true;
-      if (filterGeopolitical && event.thematicTags.geopolitical >= 8) return true;
+      if (filterTechnical && event.impact.technical >= 7) return true;
+      if (filterSocietal && event.impact.societal >= 7) return true;
+      if (filterPhilosophical && event.impact.philosophical >= 7) return true;
+      if (filterEconomic && event.impact.economic >= 7) return true;
+      if (filterGeopolitical && event.impact.geopolitical >= 7) return true;
       return false;
     });
   };

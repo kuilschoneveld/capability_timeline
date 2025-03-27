@@ -6,12 +6,12 @@ import TimelineControls from './TimelineControls';
 import TimelineExploreButton from './TimelineExploreButton';
 import ProspectingMenu from '../ProspectingMenu';
 import timelineEvents from '../../data/timelineDatabase';
-import { Milestone } from '../../types';
+import { TimelineEvent } from '../../types';
 
 interface TimelineProps {
   showOptionsBox?: boolean;
   onTimelineTitleChange?: (title: 'historical' | 'optimistic' | 'pessimistic' | 'future') => void;
-  filterEvents: (events: Milestone[]) => Milestone[];
+  filterEvents: (events: TimelineEvent[]) => TimelineEvent[];
   onMilestoneExpansion?: (milestoneId: string | null) => void;
 }
 
@@ -35,8 +35,8 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
     toggleBranchVisibility,
   } = useTimeline();
   
-  // Filter the milestones based on the active filters
-  const filteredMilestones = filterEvents(milestones);
+  // Filter the events based on the active filters
+  const filteredEvents = filterEvents(milestones);
   
   // Track the expanded state for each branch separately for better positioning
   const [hasExpandedOptimistic, setHasExpandedOptimistic] = useState(false);
@@ -51,13 +51,13 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
   // Track if user has reached the end of the timeline
   const [hasReachedEnd, setHasReachedEnd] = useState(false);
 
-  // Group milestones by branch
-  const milestonesByBranch = branches.reduce((acc, branch) => {
-    acc[branch.id] = filteredMilestones.filter(m => m.branchId === branch.id);
+  // Group events by branch
+  const eventsByBranch = branches.reduce((acc, branch) => {
+    acc[branch.id] = filteredEvents.filter(m => m.branchId === branch.id);
     return acc;
   }, {} as Record<string, typeof milestones>);
 
-  // Get main timeline branch and its milestones
+  // Get main timeline branch and its events
   const mainBranch = branches.find(branch => branch.isMainTimeline);
   
   // Get future branches and separate them into optimistic and pessimistic
@@ -73,10 +73,10 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
     ? futureBranches[0].startDate 
     : new Date().toISOString();
   
-  // Get milestones before branch point (on main branch)
-  const milestonesBeforeBranchPoint = mainBranch 
-    ? milestonesByBranch[mainBranch.id]?.filter(
-      milestone => new Date(milestone.date) < new Date(branchPointDate)
+  // Get events before branch point (on main branch)
+  const eventsBeforeBranchPoint = mainBranch 
+    ? eventsByBranch[mainBranch.id]?.filter(
+      event => new Date(event.date) < new Date(branchPointDate)
     )
     : [];
     
@@ -92,29 +92,29 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
       return;
     }
     
-    // Find the expanded milestone to get its year
-    const expandedMilestone = milestones.find(m => m.id === expandedMilestoneId);
-    if (expandedMilestone) {
-      const date = new Date(expandedMilestone.date);
+    // Find the expanded event to get its year
+    const expandedEvent = milestones.find(m => m.id === expandedMilestoneId);
+    if (expandedEvent) {
+      const date = new Date(expandedEvent.date);
       setDisplayedYear(date.getFullYear().toString());
     }
     
-    // Check if expanded milestone is in optimistic branch
-    if (optimisticBranch && milestonesByBranch[optimisticBranch.id]) {
+    // Check if expanded event is in optimistic branch
+    if (optimisticBranch && eventsByBranch[optimisticBranch.id]) {
       setHasExpandedOptimistic(
-        milestonesByBranch[optimisticBranch.id].some(m => m.id === expandedMilestoneId)
+        eventsByBranch[optimisticBranch.id].some(m => m.id === expandedMilestoneId)
       );
     }
     
-    // Check if expanded milestone is in pessimistic branch
-    if (pessimisticBranch && milestonesByBranch[pessimisticBranch.id]) {
+    // Check if expanded event is in pessimistic branch
+    if (pessimisticBranch && eventsByBranch[pessimisticBranch.id]) {
       setHasExpandedPessimistic(
-        milestonesByBranch[pessimisticBranch.id].some(m => m.id === expandedMilestoneId)
+        eventsByBranch[pessimisticBranch.id].some(m => m.id === expandedMilestoneId)
       );
     }
-  }, [expandedMilestoneId, milestones, milestonesByBranch, optimisticBranch, pessimisticBranch]);
+  }, [expandedMilestoneId, milestones, eventsByBranch, optimisticBranch, pessimisticBranch]);
 
-  // Check if the expanded milestone is visible in the viewport and update year indicator accordingly
+  // Check if the expanded event is visible in the viewport and update year indicator accordingly
   useEffect(() => {
     if (!expandedMilestoneId) return;
 
@@ -128,13 +128,13 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
       const rect = expandedElement.getBoundingClientRect();
       const containerRect = parentContainer.getBoundingClientRect();
       
-      // Check if the expanded milestone is visible in the viewport
+      // Check if the expanded event is visible in the viewport
       const isVisible = !(
         rect.right < containerRect.left ||
         rect.left > containerRect.right
       );
       
-      // If not visible, close the expanded milestone and clear the year
+      // If not visible, close the expanded event and clear the year
       if (!isVisible) {
         setDisplayedYear(null);
         toggleMilestoneExpansion(expandedMilestoneId);
@@ -180,11 +180,11 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
       // Update the title based on whether we're looking at history or future
       if (isFutureView) {
         if (expandedMilestoneId) {
-          // Find which branch the expanded milestone belongs to
-          const milestone = milestones.find(m => m.id === expandedMilestoneId);
-          if (milestone && milestone.branchId === 'future-optimistic') {
+          // Find which branch the expanded event belongs to
+          const event = milestones.find(m => m.id === expandedMilestoneId);
+          if (event && event.branchId === 'future-optimistic') {
             onTimelineTitleChange('optimistic');
-          } else if (milestone && milestone.branchId === 'future-pessimistic') {
+          } else if (event && event.branchId === 'future-pessimistic') {
             onTimelineTitleChange('pessimistic');
           } else {
             onTimelineTitleChange('future');
@@ -234,7 +234,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
     };
   }, []);
 
-  // Notify parent component when a milestone is expanded
+  // Notify parent component when a event is expanded
   useEffect(() => {
     if (onMilestoneExpansion) {
       onMilestoneExpansion(expandedMilestoneId);
@@ -295,7 +295,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
             <TimelineBranch
               key={mainBranch.id}
               branch={mainBranch}
-              milestones={milestonesBeforeBranchPoint}
+              milestones={eventsBeforeBranchPoint}
               expandedMilestoneId={expandedMilestoneId}
               onToggleExpand={toggleMilestoneExpansion}
               hideTitle={true}
@@ -339,7 +339,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
                     <TimelineBranch
                       key={optimisticBranch.id}
                       branch={optimisticBranch}
-                      milestones={milestonesByBranch[optimisticBranch.id] || []}
+                      milestones={eventsByBranch[optimisticBranch.id] || []}
                       expandedMilestoneId={expandedMilestoneId}
                       onToggleExpand={toggleMilestoneExpansion}
                       hideTitle={true}
@@ -353,7 +353,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
                     <TimelineBranch
                       key={pessimisticBranch.id}
                       branch={pessimisticBranch}
-                      milestones={milestonesByBranch[pessimisticBranch.id] || []}
+                      milestones={eventsByBranch[pessimisticBranch.id] || []}
                       expandedMilestoneId={expandedMilestoneId}
                       onToggleExpand={toggleMilestoneExpansion}
                       hideTitle={true}
@@ -400,7 +400,7 @@ const Timeline: React.FC<TimelineProps> = ({ showOptionsBox = true, onTimelineTi
         {/* Empty state */}
         {!loading && milestones.length === 0 && (
           <div className="timeline-empty">
-            <p>No milestones found. Try adjusting your filters.</p>
+            <p>No events found. Try adjusting your filters.</p>
           </div>
         )}
       </div>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Milestone, TimelineBranch, TimelineFilter, TimelineViewMode } from '../types';
+import { TimelineEvent, TimelineBranch, TimelineFilter, TimelineViewMode } from '../types';
 import { TimelineService } from '../services/timelineService';
 
 /**
@@ -24,8 +24,8 @@ const defaultFilter: TimelineFilter = {
  * Custom hook for managing timeline data and state
  */
 export const useTimeline = () => {
-  // State for milestones and branches
-  const [milestones, setMilestones] = useState<Milestone[]>([]);
+  // State for events and branches
+  const [milestones, setMilestones] = useState<TimelineEvent[]>([]);
   const [branches, setBranches] = useState<TimelineBranch[]>([]);
   const [selectedBranch, setSelectedBranch] = useState<string>('main');
   
@@ -37,7 +37,7 @@ export const useTimeline = () => {
   const [filter, setFilter] = useState<TimelineFilter>(defaultFilter);
   const [viewMode, setViewMode] = useState<TimelineViewMode>(TimelineViewMode.DRAG);
   
-  // State for expanded milestone details
+  // State for expanded event details
   const [expandedMilestoneId, setExpandedMilestoneId] = useState<string | null>(null);
 
   /**
@@ -53,15 +53,15 @@ export const useTimeline = () => {
         console.log("Loaded branches:", branchesData);
         setBranches(branchesData);
         
-        // Load ALL milestones
-        console.log("Loading all milestones");
-        const allMilestones = await TimelineService.getAllMilestones();
+        // Load ALL events
+        console.log("Loading all events");
+        const allEvents = await TimelineService.getAllMilestones();
         
         // Filter to main branch only for initial load
-        const mainBranchMilestones = allMilestones.filter(m => m.branchId === 'main');
-        console.log(`Loaded ${allMilestones.length} total milestones, ${mainBranchMilestones.length} in main branch`);
+        const mainBranchEvents = allEvents.filter(e => e.branchId === 'main');
+        console.log(`Loaded ${allEvents.length} total events, ${mainBranchEvents.length} in main branch`);
         
-        setMilestones(mainBranchMilestones);
+        setMilestones(mainBranchEvents);
         
         setError(null);
       } catch (err) {
@@ -81,13 +81,13 @@ export const useTimeline = () => {
   const changeBranch = useCallback(async (branchId: string) => {
     try {
       setLoading(true);
-      const branchMilestones = await TimelineService.getMilestonesByBranch(branchId);
-      setMilestones(branchMilestones);
+      const branchEvents = await TimelineService.getMilestonesByBranch(branchId);
+      setMilestones(branchEvents);
       setSelectedBranch(branchId);
       setError(null);
     } catch (err) {
-      setError(`Failed to load milestones for branch: ${branchId}`);
-      console.error(`Error loading milestones for branch ${branchId}:`, err);
+      setError(`Failed to load events for branch: ${branchId}`);
+      console.error(`Error loading events for branch ${branchId}:`, err);
     } finally {
       setLoading(false);
     }
@@ -106,55 +106,55 @@ export const useTimeline = () => {
       
       console.log("Applying filter:", updatedFilter);
       
-      // Load all milestones first
-      const allMilestones = await TimelineService.getAllMilestones();
-      console.log(`Total milestones loaded: ${allMilestones.length}`);
+      // Load all events first
+      const allEvents = await TimelineService.getAllMilestones();
+      console.log(`Total events loaded: ${allEvents.length}`);
       
       // Apply branch filtering
-      let filteredMilestones = allMilestones;
+      let filteredEvents = allEvents;
       if (!updatedFilter.showBranches) {
         // Only show main timeline if branches are hidden
-        filteredMilestones = allMilestones.filter(m => m.branchId === 'main');
-        console.log(`Filtered to ${filteredMilestones.length} main branch milestones`);
+        filteredEvents = allEvents.filter(e => e.branchId === 'main');
+        console.log(`Filtered to ${filteredEvents.length} main branch events`);
       }
       
       // Apply thematic dimension filtering if thresholds are set above zero
       if (updatedFilter.thematicDimensions) {
-        let beforeCount = filteredMilestones.length;
+        let beforeCount = filteredEvents.length;
         
-        // For each active dimension, check if the milestone meets the threshold
+        // For each active dimension, check if the event meets the threshold
         Object.entries(updatedFilter.thematicDimensions).forEach(([dimension, isActive]) => {
           if (isActive && updatedFilter.minThresholds[dimension] > 0) {
             const threshold = updatedFilter.minThresholds[dimension];
-            filteredMilestones = filteredMilestones.filter(
-              milestone => 
-                (milestone.thematicTags[dimension] !== undefined && 
-                milestone.thematicTags[dimension] >= threshold)
+            filteredEvents = filteredEvents.filter(
+              event => 
+                (event.impact[dimension] !== undefined && 
+                event.impact[dimension] >= threshold)
             );
           }
         });
         
-        console.log(`Thematic filtering: ${beforeCount} → ${filteredMilestones.length} milestones`);
+        console.log(`Thematic filtering: ${beforeCount} → ${filteredEvents.length} events`);
       }
       
       // Apply date range filtering if specified
       if (updatedFilter.dateRange && (updatedFilter.dateRange.start || updatedFilter.dateRange.end)) {
-        let beforeCount = filteredMilestones.length;
+        let beforeCount = filteredEvents.length;
         const { start, end } = updatedFilter.dateRange;
         
-        filteredMilestones = filteredMilestones.filter(milestone => {
-          const milestoneDate = new Date(milestone.date);
+        filteredEvents = filteredEvents.filter(event => {
+          const eventDate = new Date(event.date);
           return (
-            (!start || milestoneDate >= new Date(start)) && 
-            (!end || milestoneDate <= new Date(end))
+            (!start || eventDate >= new Date(start)) && 
+            (!end || eventDate <= new Date(end))
           );
         });
         
-        console.log(`Date range filtering: ${beforeCount} → ${filteredMilestones.length} milestones`);
+        console.log(`Date range filtering: ${beforeCount} → ${filteredEvents.length} events`);
       }
       
-      console.log(`Final filtered milestones: ${filteredMilestones.length} of ${allMilestones.length} total`);
-      setMilestones(filteredMilestones);
+      console.log(`Final filtered events: ${filteredEvents.length} of ${allEvents.length} total`);
+      setMilestones(filteredEvents);
       setError(null);
     } catch (err) {
       setError('Failed to update filter');
@@ -165,7 +165,7 @@ export const useTimeline = () => {
   }, [filter]);
 
   /**
-   * Toggle milestone expansion
+   * Toggle event expansion
    */
   const toggleMilestoneExpansion = useCallback((milestoneId: string) => {
     setExpandedMilestoneId(prevId => prevId === milestoneId ? null : milestoneId);
@@ -191,23 +191,23 @@ export const useTimeline = () => {
       
       console.log(`Toggling branch visibility: ${showBranches ? 'showing all branches' : 'showing only main branch'}`);
       
-      // Load all milestones first
-      const allMilestones = await TimelineService.getAllMilestones();
-      console.log(`Total milestones loaded: ${allMilestones.length}`);
+      // Load all events first
+      const allEvents = await TimelineService.getAllMilestones();
+      console.log(`Total events loaded: ${allEvents.length}`);
       
       // Apply branch filtering based on the new setting
-      let filteredMilestones;
+      let filteredEvents;
       if (!showBranches) {
         // Only show main timeline if branches are hidden
-        filteredMilestones = allMilestones.filter(m => m.branchId === 'main');
-        console.log(`Filtered to ${filteredMilestones.length} main branch milestones`);
+        filteredEvents = allEvents.filter(e => e.branchId === 'main');
+        console.log(`Filtered to ${filteredEvents.length} main branch events`);
       } else {
-        // Show all milestones when branches are visible
-        filteredMilestones = allMilestones;
-        console.log(`Showing all ${filteredMilestones.length} milestones from all branches`);
+        // Show all events when branches are visible
+        filteredEvents = allEvents;
+        console.log(`Showing all ${filteredEvents.length} events from all branches`);
       }
       
-      setMilestones(filteredMilestones);
+      setMilestones(filteredEvents);
       setError(null);
     } catch (err) {
       setError('Failed to toggle branch visibility');

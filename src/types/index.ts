@@ -3,24 +3,78 @@
  */
 
 /**
- * Represents a single milestone in the timeline
+ * Represents a single event in the timeline
  */
-export interface Milestone {
+export interface TimelineEvent {
+  // Basic identifiers
   id: string;
   title: string;
-  date: string; // ISO date string
+  date: string; // ISO format date
   description: string;
-  imageUrl?: string;
-  sourceUrls?: string[];
-  thematicTags: ThematicTags;
-  branchId?: string; // For future branching timelines
+  
+  // Visual properties and relationships
+  branchId: string;
+  position?: { x: number; y: number }; // For networked view
   parentMilestoneId?: string; // For connecting branches to main timeline
-  notable_innovation?: string; // Description of why it advanced the state of the art
+  
+  // URLs and resources
+  urls: {
+    primary?: string;
+    documentation?: string;
+    relatedResources: string[];
+  };
+  imageUrl?: string; // Convenience alias for urls.primary
+  sourceUrls?: string[]; // Convenience alias for urls.relatedResources
+  
+  // Connections to other events
+  connections: {
+    preceding: string[]; // IDs of events that led to this
+    following: string[]; // IDs of events that followed from this
+    parallel: string[]; // IDs of concurrent/related events
+  };
+  
+  // Technical characteristics
+  technicalNature: {
+    medium: string; // e.g., "Digital hardware", "Software", "Theoretical model"
+    abstractionLevel: string; // Descriptive list from most abstract to most concrete
+    centralMechanism: string; // 100-word summary
+    complexityScore: number; // 1-10 scale
+    innovationScore: number; // 1-10 scale
+  };
+  
+  // Cognitive dimensions
+  cognitiveDimensions: {
+    computation: number; // 1-10 scale
+    pattern_recognition: number;
+    reasoning: number;
+    self_awareness: number;
+    creativity: number;
+    notable_innovation: string; // Description of why it advanced the state of the art
+  };
+  
+  // Impact dimensions (used directly as thematicTags in the old model)
+  impact: {
+    technical: number; // 1-10 scale
+    societal: number; // 1-10 scale
+    philosophical: number; // 1-10 scale
+    economic: number; // 1-10 scale
+    geopolitical: number; // 1-10 scale
+    [key: string]: number; // Allow for future impact dimensions
+  };
+  
+  // Additional metadata
+  tags: string[];
+  contributors: string[];
+  era: string; // e.g., "Pre-computing", "Early computing", "AI winter", "Modern ML"
 }
 
+// Alias for backward compatibility
+export type Milestone = TimelineEvent;
+
 /**
- * Thematic dimensions for filtering milestones
+ * Thematic dimensions for filtering events
  * Each dimension is rated on a scale of 0-10
+ * This interface is kept for backward compatibility
  */
 export interface ThematicTags {
   technical: number; // Technical significance (0-10)
